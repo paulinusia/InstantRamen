@@ -2,6 +2,7 @@ package com.web_services.instant_pot.model;
 
 import java.io.Serializable;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -12,6 +13,7 @@ public class Product implements Serializable {
 	private static final long serialVersionUID = 1L;
 	
 	@Id
+	@Column (name="product_id")
 	@GeneratedValue(strategy = GenerationType.SEQUENCE)
 	private Long id;
 	
@@ -35,4 +37,8 @@ public class Product implements Serializable {
 		this.price = price;
 	}
 	
+	@Override
+	public String toString() {
+		return "Product Details: ID=" + this.id + ", Name=" + this.name + ", Price=" + this.price;
+	}
 }
