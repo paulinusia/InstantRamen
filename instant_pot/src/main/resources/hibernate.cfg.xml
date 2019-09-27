@@ -23,6 +23,9 @@
   
         <!-- Annotated entity classes -->
         <mapping class="com.web_services.instant_pot.model.Product"/>
+        <mapping class="com.web_services.instant_pot.model.Review"/>
+        <mapping class="com.web_services.instant_pot.model.Partner"/>
+        <mapping class="com.web_services.instant_pot.model.Customer"/>
          
     </session-factory>
 </hibernate-configuration>
