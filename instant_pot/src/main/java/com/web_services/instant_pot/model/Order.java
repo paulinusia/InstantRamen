@@ -27,7 +27,7 @@ public class Customer implements Serializable {
 	private String name;
 	
 	@OneToMany(cascade = CascadeType.ALL, mappedBy="order")
-	private List<Review> reviews = new ArrayList<Review>();
+	
 	
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "fk_order_owner")
@@ -38,7 +38,7 @@ public class Customer implements Serializable {
 	
 	private String orderStatus;
 	
-	private double orderPayment;
+	private String orderPayment;
 	
 	
 	public String getOrderOwner(){
@@ -70,7 +70,7 @@ public class Customer implements Serializable {
 		return orderPayment;
 	}
 	
-	public double setOrderPayment(double orderPayment){
+	public double setOrderPayment(String orderPayment){
 		this.orderPayment = orderPayment;
 	}
 	
