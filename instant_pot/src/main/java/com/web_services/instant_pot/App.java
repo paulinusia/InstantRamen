@@ -5,6 +5,7 @@ import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
 
 import com.web_services.instant_pot.model.Customer;
+import com.web_services.instant_pot.model.Purchase;
 import com.web_services.instant_pot.model.Partner;
 import com.web_services.instant_pot.model.Product;
 import com.web_services.instant_pot.model.Review;
@@ -25,6 +26,8 @@ public class App
         partner1.setName("Partner 1");
         Customer customer1 = new Customer();
         customer1.setName("Customer 1");
+        Purchase purchase1 = new Purchase();
+        purchase1.setPurchaseStatus("Shipped");
         
         session.beginTransaction();
         
@@ -32,6 +35,7 @@ public class App
         session.save(review1);
         session.save(partner1);
         session.save(customer1);
+        session.save(purchase1);
 		session.getTransaction().commit();
 		
 		session.close();

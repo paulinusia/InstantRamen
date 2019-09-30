@@ -21,16 +21,54 @@ public class Customer implements Serializable {
 		
 	private String name;
 
+	private String customerDetail;
+	
+	private String address;
+
 	@OneToMany(cascade = CascadeType.ALL, mappedBy="customer")
 	private List<Review> reviews = new ArrayList<Review>();
+	
+	@OneToMany(cascade = CascadeType.ALL, mappedBy="purchaseOwner")
+	private List<Purchase> purchases = new ArrayList<Purchase>();
+	
+	public List<Purchase> getPurchases() {
+		return purchases;
+	}
+
+	public void setPurchases(List<Purchase> purchases) {
+		this.purchases = purchases;
+	}
+
+	public List<Review> getReviews() {
+		return reviews;
+	}
+
+	public void setReviews(List<Review> reviews) {
+		this.reviews = reviews;
+	}
 
 	public String getName() {
 		return name;
-	}
-
+	}	
 
 	public void setName(String name) {
 		this.name = name;
+	}
+	
+	public String getCustomerDetail() {
+		return customerDetail;
+	}
+
+	public void setCustomerDetail(String customerDetail) {
+		this.customerDetail = customerDetail;
+	}
+
+	public String getAddress() {
+		return address;
+	}
+
+	public void setAddress(String address) {
+		this.address = address;
 	}
 	
 	@Override

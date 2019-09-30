@@ -3,6 +3,7 @@ package com.web_services.instant_pot.model;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Set;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -12,6 +13,8 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 
@@ -35,6 +38,26 @@ public class Product implements Serializable {
 	
 	private String description;
 	
+	@ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+	@JoinTable(name = "product_purchase", joinColumns = { @JoinColumn(name = "product_id" ) }, inverseJoinColumns = { @JoinColumn(name = "purchase_id") })
+	private Set<Purchase> purchases;
+	
+	public Partner getProductOwner() {
+		return productOwner;
+	}
+
+	public void setProductOwner(Partner productOwner) {
+		this.productOwner = productOwner;
+	}
+
+	public Set<Purchase> getPurchases() {
+		return purchases;
+	}
+
+	public void setPurchases(Set<Purchase> purchases) {
+		this.purchases = purchases;
+	}
+
 	public String getName() {
 		return name;
 	}

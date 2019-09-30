@@ -26,7 +26,7 @@
         <mapping class="com.web_services.instant_pot.model.Review"/>
         <mapping class="com.web_services.instant_pot.model.Partner"/>
         <mapping class="com.web_services.instant_pot.model.Customer"/>
-        <mapping class="com.web_services.instant_pot.model.Order"/>
+        <mapping class="com.web_services.instant_pot.model.Purchase"/>
 
     </session-factory>
 </hibernate-configuration>
