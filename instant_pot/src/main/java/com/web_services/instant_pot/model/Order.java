@@ -45,7 +45,7 @@ public class Order implements Serializable {
 		return orderOwner;
 	}
 	
-	public String setOrderOwner(String orderOwner){
+	public void setOrderOwner(String orderOwner){
 		this.orderOwner = orderOwner;
 	} 
 	
@@ -54,7 +54,7 @@ public class Order implements Serializable {
 	}
 	
 	
-	public String setOrderDetail(String orderDetail){
+	public void setOrderDetail(String orderDetail){
 		this.orderDetail = orderDetail;
 	}
 	
@@ -62,7 +62,7 @@ public class Order implements Serializable {
 		return orderStatus;
 	}
 	
-	public String setOrderStatus(String orderStatus){
+	public void setOrderStatus(String orderStatus){
 		this.orderStatus =  orderStatus;
 	}
 	
@@ -70,7 +70,7 @@ public class Order implements Serializable {
 		return orderPayment;
 	}
 	
-	public double setOrderPayment(String orderPayment){
+	public void setOrderPayment(String orderPayment){
 		this.orderPayment = orderPayment;
 	}
 	
