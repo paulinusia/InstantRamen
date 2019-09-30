@@ -18,7 +18,7 @@ import javax.persistence.OneToMany;
 
 
 @Entity
-public class Customer implements Serializable {
+public class Order implements Serializable {
 	@Id
 	@Column (name="order_id")
 	@GeneratedValue(strategy = GenerationType.SEQUENCE)
