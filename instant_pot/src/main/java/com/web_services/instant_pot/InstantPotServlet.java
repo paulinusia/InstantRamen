@@ -1,4 +1,4 @@
-package com.web_services;
+package com.web_services.instant_pot;
 
 import java.io.IOException;
 import javax.servlet.ServletException;
