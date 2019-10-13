@@ -13,7 +13,7 @@ import org.hibernate.cfg.Configuration;
 import static org.junit.Assert.*;
 import org.junit.Test;
 
-import com.web_services.instant_pot.domain.Product;
+import com.web_services.instant_pot.domain.product.Product;
 
 //NOTE: THIS TEST WILL ONLY WORK IF HIBERNATE AUTO-DDL ID SET TO 'create-drop' DUE TO HARD-CODED IDs
 public class CrudTest

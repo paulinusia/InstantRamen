@@ -1,4 +1,4 @@
-package com.web_services.instant_pot.domain;
+package com.web_services.instant_pot.domain.review;
 
 import java.io.Serializable;
 
@@ -10,6 +10,9 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+
+import com.web_services.instant_pot.domain.customer.Customer;
+import com.web_services.instant_pot.domain.product.Product;
 
 @Entity
 public class Review implements Serializable {

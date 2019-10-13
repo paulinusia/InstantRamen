@@ -1,4 +1,4 @@
-package com.web_services.instant_pot.domain;
+package com.web_services.instant_pot.domain.product;
 
 import java.io.Serializable;
 import java.util.HashSet;
@@ -16,6 +16,10 @@ import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
+
+import com.web_services.instant_pot.domain.partner.Partner;
+import com.web_services.instant_pot.domain.purchase.Purchase;
+import com.web_services.instant_pot.domain.review.Review;
 
 @Entity
 public class Product implements Serializable {	

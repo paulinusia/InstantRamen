@@ -1,4 +1,4 @@
-package com.web_services.instant_pot.domain;
+package com.web_services.instant_pot.domain.customer;
 
 import java.io.Serializable;
 import java.util.HashSet;
@@ -10,6 +10,9 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
+
+import com.web_services.instant_pot.domain.purchase.Purchase;
+import com.web_services.instant_pot.domain.review.Review;
 
 @Entity
 public class Customer implements Serializable {
