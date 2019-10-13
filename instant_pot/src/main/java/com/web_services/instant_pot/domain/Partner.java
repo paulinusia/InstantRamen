@@ -12,7 +12,7 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 
 @Entity
-public class Partner implements Serializable {
+public class Partner extends AddressOwner implements Serializable {
 	@Id
 	@Column (name="partner_id")
 	@GeneratedValue(strategy = GenerationType.SEQUENCE)
