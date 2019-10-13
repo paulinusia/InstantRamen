@@ -26,6 +26,12 @@ public class Review implements Serializable {
 	@JoinColumn(name = "fk_customer")
 	private Customer customer;
 	
+	private int rating;
+	
+	private String comment;
+
+	private Long timestamp;
+	
 	public Long getId() {
 		return id;
 	}
@@ -49,12 +55,6 @@ public class Review implements Serializable {
 	public void setCustomer(Customer customer) {
 		this.customer = customer;
 	}
-
-	private int rating;
-	
-	private String comment;
-
-	private Long timestamp;
 	
 	public int getRating() {
 		return rating;
