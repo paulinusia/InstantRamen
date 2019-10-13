@@ -44,7 +44,7 @@ public class App
         // Create new partner
         Partner partner = new Partner();
         partner.setName("Main Partner");
-        partner.setPhoneNumber("1234567891");
+        partner.setPhoneNumber(1234567891l);
         partner.setPartnerType("Primary");
         partner.setDescription("It's a partner");
         

@@ -30,7 +30,7 @@ public class Partner extends AddressOwner implements Serializable {
 	
 	private String partnerType;
 	
-	private String phoneNumber;
+	private long phoneNumber;
 	
 	public String getName() {
 		return name;
@@ -64,11 +64,11 @@ public class Partner extends AddressOwner implements Serializable {
 		this.partnerType = partnerType;
 	}
 
-	public String getPhoneNumber() {
+	public long getPhoneNumber() {
 		return phoneNumber;
 	}
 
-	public void setPhoneNumber(String phoneNumber) {
+	public void setPhoneNumber(long phoneNumber) {
 		this.phoneNumber = phoneNumber;
 	}
 	
