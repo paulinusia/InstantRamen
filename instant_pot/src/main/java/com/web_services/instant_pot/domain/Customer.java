@@ -1,8 +1,7 @@
 package com.web_services.instant_pot.domain;
 
 import java.io.Serializable;
-import java.util.ArrayList;
-import java.util.List;
+import java.util.HashSet;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -26,24 +25,24 @@ public class Customer implements Serializable {
 	private String address;
 
 	@OneToMany(cascade = CascadeType.ALL, mappedBy="customer")
-	private List<Review> reviews = new ArrayList<Review>();
+	private HashSet<Review> reviews = new HashSet<Review>();
 	
 	@OneToMany(cascade = CascadeType.ALL, mappedBy="purchaseOwner")
-	private List<Purchase> purchases = new ArrayList<Purchase>();
+	private HashSet<Purchase> purchases = new HashSet<Purchase>();
 	
-	public List<Purchase> getPurchases() {
+	public HashSet<Purchase> getPurchases() {
 		return purchases;
 	}
 
-	public void setPurchases(List<Purchase> purchases) {
+	public void setPurchases(HashSet<Purchase> purchases) {
 		this.purchases = purchases;
 	}
 
-	public List<Review> getReviews() {
+	public HashSet<Review> getReviews() {
 		return reviews;
 	}
 
-	public void setReviews(List<Review> reviews) {
+	public void setReviews(HashSet<Review> reviews) {
 		this.reviews = reviews;
 	}
 

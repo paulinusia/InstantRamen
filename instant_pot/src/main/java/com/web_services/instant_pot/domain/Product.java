@@ -1,8 +1,7 @@
 package com.web_services.instant_pot.domain;
 
 import java.io.Serializable;
-import java.util.ArrayList;
-import java.util.List;
+import java.util.HashSet;
 import java.util.Set;
 
 import javax.persistence.CascadeType;
@@ -30,7 +29,7 @@ public class Product implements Serializable {
 	private double price;
 	
 	@OneToMany(cascade = CascadeType.ALL, mappedBy="product")
-	private List<Review> reviews = new ArrayList<Review>();
+	private HashSet<Review> reviews = new HashSet<Review>();
 	
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "fk_product_owner")
@@ -74,11 +73,11 @@ public class Product implements Serializable {
 		this.price = price;
 	}
 
-	public List<Review> getReviews() {
+	public HashSet<Review> getReviews() {
 		return reviews;
 	}
 
-	public void setReviews(List<Review> reviews) {
+	public void setReviews(HashSet<Review> reviews) {
 		this.reviews = reviews;
 	}
 

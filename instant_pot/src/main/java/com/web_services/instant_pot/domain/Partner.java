@@ -1,8 +1,7 @@
 package com.web_services.instant_pot.domain;
 
 import java.io.Serializable;
-import java.util.ArrayList;
-import java.util.List;
+import java.util.HashSet;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -22,7 +21,7 @@ public class Partner implements Serializable {
 	private String name;
 
 	@OneToMany(cascade = CascadeType.ALL, mappedBy="productOwner")
-	private List<Product> inventory = new ArrayList<Product>();
+	private HashSet<Product> inventory = new HashSet<Product>();
 	
 	private String description;
 	
@@ -38,11 +37,11 @@ public class Partner implements Serializable {
 		this.name = name;
 	}
 
-	public List<Product> getProducts() {
+	public HashSet<Product> getProducts() {
 		return inventory;
 	}
 
-	public void setProducts(List<Product> products) {
+	public void setProducts(HashSet<Product> products) {
 		this.inventory = products;
 	}
 

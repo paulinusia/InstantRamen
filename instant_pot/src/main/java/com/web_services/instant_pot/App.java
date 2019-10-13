@@ -1,7 +1,6 @@
 package com.web_services.instant_pot;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.HashSet;
 
 import org.hibernate.Query;
 import org.hibernate.Session;
@@ -63,15 +62,15 @@ public class App
 	    tx.commit();
         
         // Set relationships
-        List<Purchase> allPurchases = new ArrayList<>();
+        HashSet<Purchase> allPurchases = new HashSet<>();
         allPurchases.add(purchase);
         customer.setPurchases(allPurchases);
-        List<Review> allReviews = new ArrayList<>();
+        HashSet<Review> allReviews = new HashSet<>();
         allReviews.add(review);
         customer.setReviews(allReviews);
         product.setReviews(allReviews);
         product.setProductOwner(partner);
-        List<Product> allProducts = new ArrayList<>();
+        HashSet<Product> allProducts = new HashSet<>();
         partner.setProducts(allProducts);
         
         // Save objects in DB
@@ -85,7 +84,7 @@ public class App
 	    
 	    // Get all customers from DB
 //	    Query query = session.createQuery("from Customer");
-//	    List<Customer> customers = query.list();
+//	    HashSet<Customer> customers = query.HashSet();
 	    
 	    session.close();
     }
