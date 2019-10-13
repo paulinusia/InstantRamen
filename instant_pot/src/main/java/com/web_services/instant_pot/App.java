@@ -1,7 +1,12 @@
 package com.web_services.instant_pot;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
+import org.hibernate.Transaction;
 import org.hibernate.cfg.Configuration;
 
 import com.web_services.instant_pot.domain.Customer;
@@ -17,27 +22,71 @@ public class App
     	SessionFactory sessionFactory = new Configuration().configure().buildSessionFactory();
         Session session = sessionFactory.openSession();
         
-        Product product1 = new Product();
-        product1.setName("Product 1");
-        Review review1 = new Review();
-        review1.setRating(5);
-        review1.setComment("It was good");
-        Partner partner1 = new Partner();
-        partner1.setName("Partner 1");
-        Customer customer1 = new Customer();
-        customer1.setName("Customer 1");
-        Purchase purchase1 = new Purchase();
-        purchase1.setPurchaseStatus("Shipped");
+        // Create new customer
+        Customer customer = new Customer();
+        customer.setName("New Customer");
+        customer.setAddress("123 Broadway");
+        customer.setCustomerDetail("NC Detail");
         
-        session.beginTransaction();
+        // Create new product
+        Product product = new Product();
+        product.setName("Carrot");
+        product.setDescription("It's a carrot");
+        product.setPrice(17.38);
         
-        session.save(product1);
-        session.save(review1);
-        session.save(partner1);
-        session.save(customer1);
-        session.save(purchase1);
-		session.getTransaction().commit();
-		
-		session.close();
+        // Create new purchase
+        Purchase purchase = new Purchase();
+        purchase.setPurchaseDetail("It's a purchase");
+        purchase.setPurchaseStatus("Shipped");
+        purchase.setPurchasePayment("Credit Card 0123456789");
+        
+        // Create new partner
+        Partner partner = new Partner();
+        partner.setName("Main Partner");
+        partner.setPhoneNumber("1234567891");
+        partner.setPartnerType("Primary");
+        partner.setDescription("It's a partner");
+        
+        // Create new review
+        Review review = new Review();
+        review.setComment("is good");
+        review.setRating(5);
+        review.setTimestamp(12345678910l);
+        
+        // Initially save objects in DB
+        Transaction tx = session.beginTransaction();
+	    session.save(customer);
+	    session.save(partner);
+	    session.save(review);
+	    session.save(product);
+	    session.save(purchase);
+	    tx.commit();
+        
+        // Set relationships
+        List<Purchase> allPurchases = new ArrayList<>();
+        allPurchases.add(purchase);
+        customer.setPurchases(allPurchases);
+        List<Review> allReviews = new ArrayList<>();
+        allReviews.add(review);
+        customer.setReviews(allReviews);
+        product.setReviews(allReviews);
+        product.setProductOwner(partner);
+        List<Product> allProducts = new ArrayList<>();
+        partner.setProducts(allProducts);
+        
+        // Save objects in DB
+        tx = session.beginTransaction();
+	    session.save(customer);
+	    session.save(partner);
+	    session.save(review);
+	    session.save(product);
+	    session.save(purchase);
+	    tx.commit();
+	    
+	    // Get all customers from DB
+//	    Query query = session.createQuery("from Customer");
+//	    List<Customer> customers = query.list();
+	    
+	    session.close();
     }
 }
