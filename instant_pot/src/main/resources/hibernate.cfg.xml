@@ -19,7 +19,8 @@
         <property name="show_sql">true</property>
   
         <!-- Update database on startup -->
-        <property name="hibernate.hbm2ddl.auto">update</property>
+        <property name="hibernate.hbm2ddl.create-drop">update</property>
+        <!-- TODO: change back to auto -->
   
         <!-- Annotated entity classes -->
         <mapping class="com.web_services.instant_pot.domain.Product"/>

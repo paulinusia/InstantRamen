@@ -23,9 +23,11 @@ public class App
         
         // Create new customer
         Customer customer = new Customer();
-        customer.setName("New Customer");
+        customer.setFirstName("Bob");
+        customer.setLastName("Dylan");
         customer.setAddress("123 Broadway");
-        customer.setCustomerDetail("NC Detail");
+        customer.setPhoneNumber(8471234567l);
+        customer.setEmail("bobdylan123@gmail.com");
         
         // Create new product
         Product product = new Product();
