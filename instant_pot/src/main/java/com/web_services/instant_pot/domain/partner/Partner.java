@@ -11,10 +11,11 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 
+import com.web_services.instant_pot.domain.address.AddressOwner;
 import com.web_services.instant_pot.domain.product.Product;
 
 @Entity
-public class Partner implements Serializable {
+public class Partner extends AddressOwner implements Serializable {
 	@Id
 	@Column (name="partner_id")
 	@GeneratedValue(strategy = GenerationType.SEQUENCE)
