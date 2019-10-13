@@ -4,11 +4,11 @@ import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
 
-import com.web_services.instant_pot.model.Customer;
-import com.web_services.instant_pot.model.Purchase;
-import com.web_services.instant_pot.model.Partner;
-import com.web_services.instant_pot.model.Product;
-import com.web_services.instant_pot.model.Review;
+import com.web_services.instant_pot.domain.Customer;
+import com.web_services.instant_pot.domain.Partner;
+import com.web_services.instant_pot.domain.Product;
+import com.web_services.instant_pot.domain.Purchase;
+import com.web_services.instant_pot.domain.Review;
 
 public class App 
 {

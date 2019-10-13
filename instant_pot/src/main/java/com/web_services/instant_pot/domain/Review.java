@@ -1,4 +1,4 @@
-package com.web_services.instant_pot.model;
+package com.web_services.instant_pot.domain;
 
 import java.io.Serializable;
 
