@@ -2,15 +2,21 @@ package com.web_services.instant_pot.domain.customer;
 
 import java.io.Serializable;
 import java.util.HashSet;
+import java.util.Set;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 
+import com.web_services.instant_pot.domain.address.Address;
 import com.web_services.instant_pot.domain.address.AddressOwner;
 import com.web_services.instant_pot.domain.purchase.Purchase;
 import com.web_services.instant_pot.domain.review.Review;
@@ -30,7 +36,9 @@ public class Customer extends AddressOwner implements Serializable {
 	
 	private long phoneNumber;
 	
-	private String address;
+	@ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+	@JoinTable(name = "customer_address", joinColumns = { @JoinColumn(name = "customer_id" ) }, inverseJoinColumns = { @JoinColumn(name = "address_id") })
+	private HashSet<Address> addresses = new HashSet<Address>();
 
 	@OneToMany(cascade = CascadeType.ALL, mappedBy="customer")
 	private HashSet<Review> reviews = new HashSet<Review>();
@@ -91,15 +99,23 @@ public class Customer extends AddressOwner implements Serializable {
 	public void setReviews(HashSet<Review> reviews) {
 		this.reviews = reviews;
 	}
-
-	public String getAddress() {
-		return address;
-	}
-
-	public void setAddress(String address) {
-		this.address = address;
-	}
 	
+	public Long getId() {
+		return id;
+	}
+
+	public void setId(Long id) {
+		this.id = id;
+	}
+
+	public HashSet<Address> getAddresses() {
+		return addresses;
+	}
+
+	public void setAddresses(HashSet<Address> addresses) {
+		this.addresses = addresses;
+	}
+
 	@Override
 	public String toString() {
 		return "Customer Details: ID = " + this.id + ", Name = " + this.firstName + " " + this.lastName;

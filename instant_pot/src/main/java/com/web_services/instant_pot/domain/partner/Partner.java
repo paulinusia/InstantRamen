@@ -6,11 +6,16 @@ import java.util.HashSet;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 
+import com.web_services.instant_pot.domain.address.Address;
 import com.web_services.instant_pot.domain.address.AddressOwner;
 import com.web_services.instant_pot.domain.product.Product;
 
@@ -25,6 +30,10 @@ public class Partner extends AddressOwner implements Serializable {
 
 	@OneToMany(cascade = CascadeType.ALL, mappedBy="productOwner")
 	private HashSet<Product> inventory = new HashSet<Product>();
+	
+	@ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+	@JoinTable(name = "partner_address", joinColumns = { @JoinColumn(name = "partner_id" ) }, inverseJoinColumns = { @JoinColumn(name = "address_id") })
+	private HashSet<Address> addresses = new HashSet<Address>();
 	
 	private String description;
 	
@@ -42,6 +51,30 @@ public class Partner extends AddressOwner implements Serializable {
 		
 	}
 	
+	public Long getId() {
+		return id;
+	}
+
+	public void setId(Long id) {
+		this.id = id;
+	}
+
+	public HashSet<Product> getInventory() {
+		return inventory;
+	}
+
+	public void setInventory(HashSet<Product> inventory) {
+		this.inventory = inventory;
+	}
+
+	public HashSet<Address> getAddresses() {
+		return addresses;
+	}
+
+	public void setAddresses(HashSet<Address> addresses) {
+		this.addresses = addresses;
+	}
+
 	public String getName() {
 		return name;
 	}

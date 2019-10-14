@@ -16,6 +16,7 @@ import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 
+import com.web_services.instant_pot.domain.address.Address;
 import com.web_services.instant_pot.domain.customer.Customer;
 import com.web_services.instant_pot.domain.product.Product;
 
@@ -38,6 +39,10 @@ public class Purchase implements Serializable {
 
 	@ManyToMany(fetch = FetchType.LAZY, mappedBy = "purchases")
 	private Set<Product> products = new HashSet<Product>();
+	
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "fk_address")
+	private Address address;
 	
 	public Set<Product> getProducts() {
 		return products;
