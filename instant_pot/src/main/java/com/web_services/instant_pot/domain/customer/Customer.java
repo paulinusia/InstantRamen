@@ -18,6 +18,7 @@ import javax.persistence.OneToMany;
 
 import com.web_services.instant_pot.domain.address.Address;
 import com.web_services.instant_pot.domain.address.AddressOwner;
+import com.web_services.instant_pot.domain.payment.Payment;
 import com.web_services.instant_pot.domain.purchase.Purchase;
 import com.web_services.instant_pot.domain.review.Review;
 
@@ -35,6 +36,10 @@ public class Customer extends AddressOwner implements Serializable {
 	private String email;
 	
 	private long phoneNumber;
+	
+	@ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+	@JoinTable(name = "customer_payment", joinColumns = { @JoinColumn(name = "customer_id" ) }, inverseJoinColumns = { @JoinColumn(name = "payment_id") })
+	private HashSet<Payment> payments = new HashSet<Payment>();
 	
 	@ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
 	@JoinTable(name = "customer_address", joinColumns = { @JoinColumn(name = "customer_id" ) }, inverseJoinColumns = { @JoinColumn(name = "address_id") })

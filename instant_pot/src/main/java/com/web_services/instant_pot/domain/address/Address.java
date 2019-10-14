@@ -1,5 +1,6 @@
 package com.web_services.instant_pot.domain.address;
 
+import java.io.Serializable;
 import java.util.HashSet;
 
 import javax.persistence.CascadeType;
@@ -13,7 +14,7 @@ import javax.persistence.OneToMany;
 
 import com.web_services.instant_pot.domain.purchase.Purchase;
 
-public class Address {
+public class Address implements Serializable {
 	@Id
 	@Column (name="address_id")
 	@GeneratedValue(strategy = GenerationType.SEQUENCE)
@@ -27,8 +28,8 @@ public class Address {
 	
 	private String zip;
 	
-	@ManyToMany(fetch = FetchType.LAZY, mappedBy = "address")
-	private AddressOwner addressOwner;
+	@ManyToMany(fetch = FetchType.LAZY, mappedBy = "addresses")
+	private HashSet<AddressOwner> addressOwners = new HashSet<AddressOwner>();
 	
 	@OneToMany(cascade = CascadeType.ALL, mappedBy="address")
 	private HashSet<Purchase> purchases = new HashSet<Purchase>();
@@ -73,12 +74,12 @@ public class Address {
 		this.zip = zip;
 	}
 
-	public AddressOwner getAddressOwner() {
-		return addressOwner;
+	public HashSet<AddressOwner> getAddressOwners() {
+		return addressOwners;
 	}
 
-	public void setAddressOwner(AddressOwner addressOwner) {
-		this.addressOwner = addressOwner;
+	public void setAddressOwners(HashSet<AddressOwner> addressOwners) {
+		this.addressOwners = addressOwners;
 	}
 
 	public HashSet<Purchase> getPurchases() {
