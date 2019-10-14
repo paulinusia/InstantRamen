@@ -25,7 +25,7 @@ public class App
         Customer customer = new Customer();
         customer.setFirstName("Bob");
         customer.setLastName("Dylan");
-        customer.setAddress("123 Broadway");
+        //customer.setAddresses("123 Broadway");
         customer.setPhoneNumber(8471234567l);
         customer.setEmail("bobdylan123@gmail.com");
         
