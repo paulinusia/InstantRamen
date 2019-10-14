@@ -32,6 +32,16 @@ public class Partner extends AddressOwner implements Serializable {
 	
 	private long phoneNumber;
 	
+	public Partner(String name, String partnerType, String description) {
+		this.name = name;
+		this.partnerType = partnerType;
+		this.description = description;
+	}
+	
+	public Partner() {
+		
+	}
+	
 	public String getName() {
 		return name;
 	}
