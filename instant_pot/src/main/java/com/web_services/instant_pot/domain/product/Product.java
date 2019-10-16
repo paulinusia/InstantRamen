@@ -44,6 +44,25 @@ public class Product implements Serializable {
 	@ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
 	@JoinTable(name = "product_purchase", joinColumns = { @JoinColumn(name = "product_id" ) }, inverseJoinColumns = { @JoinColumn(name = "purchase_id") })
 	private Set<Purchase> purchases;
+	private Partner partner;
+	private String productName;
+	private String productDescription;
+	private double cost;
+
+
+	
+
+	public Product() {
+	}
+	
+	public Product(Partner partner, String productName, String productDescription, double cost) {
+		this.partner = partner;
+		this.productName = productName;
+		this.productDescription = productDescription;
+		this.cost = cost;
+		}
+
+
 	
 	public Partner getProductOwner() {
 		return productOwner;
