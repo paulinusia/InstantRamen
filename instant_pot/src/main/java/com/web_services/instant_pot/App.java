@@ -37,6 +37,6 @@ public class App
     	Partner partner1 = partnerLogic.createPartner("McDonalds", "Food", "Sells hamburgers.");
     	Payment payment1 = paymentLogic.createPayment(5647382910293847l, 1122, 456);
     	Product product1 = productLogic.createProduct(partner1, "Product 1", "The first product.", 25.00);
-    	Review review1 = reviewLogic.addReview(customer1.getId(), product1.getId(), "Product 1 is great!");
+    	Review review1 = reviewLogic.addReview(customer1.getId(), product1.getId(), 5, "Product 1 is great!");
     }
 }

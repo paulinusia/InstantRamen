@@ -44,7 +44,23 @@ public class AddressDAL {
 			return newAddress;
 		}
 		
-		// update address
+		public Address updateAddress(Long id, String streetAddress, String city, String state, String zip) {
+			SessionFactory sf = (SessionFactory) new Configuration().configure("hibernate.cfg.xml").buildSessionFactory();
+			Session session = sf.openSession();
+			
+			Address address = session.get(Address.class, id);
+			if (address != null) {
+				address.setStreetAddress(streetAddress);
+				address.setCity(city);
+				address.setState(state);
+				address.setZip(zip);
+				Transaction tx = session.beginTransaction();
+				session.save(address);
+				tx.commit();
+			}
+			session.close();
+			return address;
+		}
 		
 		public Address removeAddressFromCustomer(Long addressID, Long customerID) {	
 			SessionFactory sf = (SessionFactory) new Configuration().configure("hibernate.cfg.xml").buildSessionFactory();
