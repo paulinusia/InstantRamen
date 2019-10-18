@@ -6,7 +6,6 @@ import java.util.List;
 import org.hibernate.*;
 import org.hibernate.cfg.Configuration;
 
-import com.web_services.instant_pot.domain.partner.Partner;
 import com.web_services.instant_pot.domain.payment.Payment;
 
 public class PaymentDAL {
@@ -32,6 +31,35 @@ public class PaymentDAL {
 		
 		session.close();
 		return paymentSet;
+	}
+	
+	public Payment createPayment(String payment, String paymentType, String description) {
+		SessionFactory sf = (SessionFactory) new Configuration().configure("hibernate.cfg.xml").buildSessionFactory();
+		Session session = sf.openSession();
+		
+		Payment newPayment = new Payment();
+		
+		Transaction tx = session.beginTransaction();
+		session.save(newPayment);
+		tx.commit();
+		session.close();
+		
+		return newPayment;
+	}
+	
+	public Payment deletePayment(long id) {
+		Payment moolah = new Payment();
+		SessionFactory sf = (SessionFactory) new Configuration().configure("hibernate.cfg.xml").buildSessionFactory();
+		Session session = sf.openSession();
+		
+		moolah = session.get(Payment.class, id);
+		if (moolah != null) {
+			Transaction tx = session.beginTransaction();
+			session.delete(moolah);
+			tx.commit();
+		}
+		session.close();
+		return moolah;
 	}
 
 }
