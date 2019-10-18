@@ -16,7 +16,7 @@ import com.web_services.instant_pot.domain.review.Review;
 
 public class ReviewDAL {
 	
-	public Review getReviewByID(int id) {
+	public Review getReviewByID(long id) {
 		Review review = new Review();
 		
 		SessionFactory sf = (SessionFactory) new Configuration().configure("hibernate.cfg.xml").buildSessionFactory();
@@ -28,7 +28,7 @@ public class ReviewDAL {
 		return review;
 	}
 	
-	public HashSet<Review> getAllReviewForCustomer(int custID) {
+	public HashSet<Review> getAllReviewForCustomer(long custID) {
 		
 		SessionFactory sf = (SessionFactory) new Configuration().configure("hibernate.cfg.xml").buildSessionFactory();
 	    Session session = sf.openSession();
@@ -43,7 +43,7 @@ public class ReviewDAL {
 	}
 	
 	
-	public HashSet<Review> getAllReviewForProduct(int productID) {
+	public HashSet<Review> getAllReviewForProduct(long productID) {
 		
 		SessionFactory sf = (SessionFactory) new Configuration().configure("hibernate.cfg.xml").buildSessionFactory();
 	    Session session = sf.openSession();
@@ -57,7 +57,7 @@ public class ReviewDAL {
 		return ReviewSet;
 	}
 	
-	public Review addReview(Long customerID, Long productID, String body) {	
+	public Review addReview(Long customerID, Long productID, String body) {
 		SessionFactory sf = (SessionFactory) new Configuration().configure("hibernate.cfg.xml").buildSessionFactory();
 	    Session session = sf.openSession();
 	    
@@ -73,7 +73,7 @@ public class ReviewDAL {
 	    return review;
 	}
 	
-	public Review deleteReview(int id){
+	public Review deleteReview(long id){
 		Review r = new Review();
 		
 		SessionFactory sf = (SessionFactory) new Configuration().configure("hibernate.cfg.xml").buildSessionFactory();
