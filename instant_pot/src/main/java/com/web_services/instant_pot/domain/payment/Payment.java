@@ -27,9 +27,9 @@ public class Payment implements Serializable {
 	
 	private Long cardNumber;
 	
-	private String expirationDate;
+	private int expirationDate;
 	
-	private String securityCode;
+	private int securityCode;
 	
 	@ManyToMany(fetch = FetchType.LAZY, mappedBy = "payments")
 	private HashSet<Customer> paymentOwners = new HashSet<Customer>();
@@ -58,19 +58,19 @@ public class Payment implements Serializable {
 		this.cardNumber = cardNumber;
 	}
 
-	public String getExpirationDate() {
+	public int getExpirationDate() {
 		return expirationDate;
 	}
 
-	public void setExpirationDate(String expirationDate) {
+	public void setExpirationDate(int expirationDate) {
 		this.expirationDate = expirationDate;
 	}
 
-	public String getSecurityCode() {
+	public int getSecurityCode() {
 		return securityCode;
 	}
 
-	public void setSecurityCode(String securityCode) {
+	public void setSecurityCode(int securityCode) {
 		this.securityCode = securityCode;
 	}
 

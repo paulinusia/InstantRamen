@@ -61,5 +61,35 @@ public class PaymentDAL {
 		session.close();
 		return moolah;
 	}
+	
+	public Payment updateExpirationDate(long id, int expDate) {
+		SessionFactory sf = (SessionFactory) new Configuration().configure("hibernate.cfg.xml").buildSessionFactory();
+		Session session = sf.openSession();
+		
+		Payment p = session.get(Payment.class, id);
+		if (p != null) {
+			p.setExpirationDate(expDate);
+			Transaction tx = session.beginTransaction();
+			session.save(p);
+			tx.commit();
+		}
+		session.close();
+		return p;
+	}
+	
+	public Payment updateSecurityCode(long id, int securityCode) {
+		SessionFactory sf = (SessionFactory) new Configuration().configure("hibernate.cfg.xml").buildSessionFactory();
+		Session session = sf.openSession();
+		
+		Payment p = session.get(Payment.class, id);
+		if (p != null) {
+			p.setSecurityCode(securityCode);
+			Transaction tx = session.beginTransaction();
+			session.save(p);
+			tx.commit();
+		}
+		session.close();
+		return p;
+	}
 
 }

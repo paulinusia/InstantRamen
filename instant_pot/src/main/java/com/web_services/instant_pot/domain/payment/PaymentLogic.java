@@ -20,13 +20,25 @@ public class PaymentLogic {
 	}
 	
 	public Payment createPayment(String payment, String paymentType, String description) {
-		PaymentDAL pd = new PaymentDAL();
-		return pd.createPayment(payment, paymentType, description);
+		PaymentDAL payd = new PaymentDAL();
+		return payd.createPayment(payment, paymentType, description);
 	}
 	
 	public Payment deletePayment(long id) {
-		PaymentDAL pd = new PaymentDAL();
-		Payment payment = pd.deletePayment(id);
+		PaymentDAL payd = new PaymentDAL();
+		Payment payment = payd.deletePayment(id);
+		return payment;
+	}
+	
+	public Payment updateExpirationDate(long id, int expDate) {
+		PaymentDAL payd = new PaymentDAL();
+		Payment payment = payd.updateExpirationDate(id, expDate);
+		return payment;
+	}
+	
+	public Payment updateSecurityCode(long id, int securityCode) {
+		PaymentDAL payd = new PaymentDAL();
+		Payment payment = payd.updateSecurityCode(id, securityCode);
 		return payment;
 	}
 }
