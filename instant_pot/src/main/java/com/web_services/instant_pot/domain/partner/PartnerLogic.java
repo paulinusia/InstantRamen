@@ -14,9 +14,9 @@ public class PartnerLogic {
 	}
 	
 	public HashSet<Partner> getAllPartners() {
-		PartnerDAL cd = new PartnerDAL();
+		PartnerDAL pd = new PartnerDAL();
 		HashSet<Partner> partners = new HashSet<Partner>();
-		partners = cd.getAllPartners();
+		partners = pd.getAllPartners();
 		return partners;
 	}
 	
