@@ -30,7 +30,53 @@ public class AddressDAL {
 			return address;
 		}
 		
-		// create address
+		public Address createAddress(String streetAddress, String city, String state, String zip) {
+			Address newAddress = new Address(streetAddress, city, state, zip);
+			
+			SessionFactory sf = (SessionFactory) new Configuration().configure("hibernate.cfg.xml").buildSessionFactory();
+			Session session = sf.openSession();
+			
+			Transaction tx = session.beginTransaction();
+			session.save(newAddress);
+			tx.commit();
+			session.close();
+			
+			return newAddress;
+		}
+		
+		// update address
+		
+		public Address removeAddressFromCustomer(Long addressID, Long customerID) {	
+			SessionFactory sf = (SessionFactory) new Configuration().configure("hibernate.cfg.xml").buildSessionFactory();
+		    Session session = sf.openSession();
+		    
+		    Customer customer = session.get(Customer.class, customerID);
+		    Address address = session.get(Address.class, addressID);
+		    address.getAddressOwners().remove(customer);
+		    
+		    Transaction tx = session.beginTransaction();
+		    session.save(address);
+		    tx.commit(); 
+		    session.close();
+		  
+		    return address;
+		}
+		
+		public Address removeAddressFromPartner(Long addressID, Long partnerID) {	
+			SessionFactory sf = (SessionFactory) new Configuration().configure("hibernate.cfg.xml").buildSessionFactory();
+		    Session session = sf.openSession();
+		    
+		    Partner partner = session.get(Partner.class, partnerID);
+		    Address address = session.get(Address.class, addressID);
+		    address.getAddressOwners().remove(partner);
+		    
+		    Transaction tx = session.beginTransaction();
+		    session.save(address);
+		    tx.commit(); 
+		    session.close();
+		  
+		    return address;
+		}
 		
 		public Address addAddressToCustomer(Long addressID, Long customerID) {	
 			SessionFactory sf = (SessionFactory) new Configuration().configure("hibernate.cfg.xml").buildSessionFactory();
@@ -64,7 +110,7 @@ public class AddressDAL {
 		    return address;
 		}
 		
-		public Address deleteReview(Long id){
+		public Address deleteAddress(Long id){
 			Address address = new Address();
 			
 			SessionFactory sf = (SessionFactory) new Configuration().configure("hibernate.cfg.xml").buildSessionFactory();

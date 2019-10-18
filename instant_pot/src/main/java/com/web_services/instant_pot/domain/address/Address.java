@@ -33,6 +33,15 @@ public class Address implements Serializable {
 	
 	@OneToMany(cascade = CascadeType.ALL, mappedBy="address")
 	private HashSet<Purchase> purchases = new HashSet<Purchase>();
+	
+	public Address(String streetAddress, String city, String state, String zip) {
+		this.streetAddress = streetAddress;
+		this.city = city;
+		this.state = state;
+		this.zip = zip;
+	}
+
+	public Address() {}
 
 	public Long getId() {
 		return id;
