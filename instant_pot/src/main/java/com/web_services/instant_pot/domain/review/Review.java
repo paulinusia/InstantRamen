@@ -35,14 +35,20 @@ public class Review implements Serializable {
 
 	private Long timestamp;
 	
+	private String body;
+	
+	
 
 
 	public Review() {
 		// TODO Auto-generated constructor stub
 	}
 
-	public Review(Customer customer2, Product product2, String reviewBody) {
-		// TODO Auto-generated constructor stub
+	public Review(Customer customers, Product products,int rating, String reviewBody) {
+		this.customer = customers;
+		this.product = products;
+		this.rating = rating;
+		this.body = reviewBody;
 	}
 
 	public Long getId() {
@@ -78,6 +84,13 @@ public class Review implements Serializable {
 		this.comment = comment;
 	}
 
+	public int getReviewRating() {
+		return rating;
+	}
+	
+	public void setReviewRating(int rating) {
+		this.rating = rating;
+	}
 	public Long getTimestamp() {
 		return timestamp;
 	}
@@ -86,6 +99,10 @@ public class Review implements Serializable {
 		this.timestamp = timestamp;
 	}
 	
+	public void setReviewBody(String body) {
+		this.body = body;
+		
+	}
 	@Override
 	public String toString() {
 		return "Review Details: ID=" + this.id + "Product=" + this.product.getName() +  ", Customer=" + this.customer.getName() + ", Rating= " + this.rating + ", Comment= '" + this.comment + "', Timestamp= " + this.timestamp;
