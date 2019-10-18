@@ -51,7 +51,7 @@ public class App
         // Create new review
         Review review = new Review();
         review.setComment("is good");
-        review.setRating(5);
+        //review.setRating(5);
         review.setTimestamp(12345678910l);
         
         // Initially save objects in DB
