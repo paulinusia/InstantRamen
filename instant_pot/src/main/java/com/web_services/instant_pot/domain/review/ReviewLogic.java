@@ -23,10 +23,10 @@ public class ReviewLogic {
 		return rd.getAllReviewForProduct(productID);
 	}
 	
-	public Review addReview(Long custID, Long productID, String reviewBody) {
+	public Review addReview(Long custID, Long productID, int rating, String reviewBody) {
 
 		ReviewDAL rd = new ReviewDAL();
-		return rd.addReview(custID, productID, reviewBody);
+		return rd.addReview(custID, productID, rating, reviewBody);
 	}
 	
 	public static Review deleteReview(long reviewID) {
