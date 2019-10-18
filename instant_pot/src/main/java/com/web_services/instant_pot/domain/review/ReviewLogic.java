@@ -23,7 +23,7 @@ public class ReviewLogic {
 		return rd.getAllReviewForProduct(productID);
 	}
 	
-	public Review addReview(int custID, int reviewScore, int productID, String reviewBody) {
+	public Review addReview(Long custID, Long productID, String reviewBody) {
 		ReviewDAL rd = new ReviewDAL();
 		return rd.addReview(custID, productID, reviewBody);
 	}

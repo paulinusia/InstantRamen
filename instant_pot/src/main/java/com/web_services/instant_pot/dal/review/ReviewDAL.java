@@ -57,7 +57,7 @@ public class ReviewDAL {
 		return ReviewSet;
 	}
 	
-	public Review addReview(int customerID, int productID, String body) {	
+	public Review addReview(Long customerID, Long productID, String body) {	
 		SessionFactory sf = (SessionFactory) new Configuration().configure("hibernate.cfg.xml").buildSessionFactory();
 	    Session session = sf.openSession();
 	    

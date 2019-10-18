@@ -9,85 +9,34 @@ import org.hibernate.Transaction;
 import org.hibernate.cfg.Configuration;
 
 import com.web_services.instant_pot.domain.customer.Customer;
+import com.web_services.instant_pot.domain.customer.CustomerLogic;
 import com.web_services.instant_pot.domain.partner.Partner;
+import com.web_services.instant_pot.domain.partner.PartnerLogic;
+import com.web_services.instant_pot.domain.payment.Payment;
+import com.web_services.instant_pot.domain.payment.PaymentLogic;
 import com.web_services.instant_pot.domain.product.Product;
+import com.web_services.instant_pot.domain.product.ProductLogic;
 import com.web_services.instant_pot.domain.purchase.Purchase;
 import com.web_services.instant_pot.domain.review.Review;
+import com.web_services.instant_pot.domain.review.ReviewLogic;
 
+// This class is primarily for DB table initialization, testing, and modification
 public class App 
 {
     public static void main( String[] args )
     {
-    	SessionFactory sessionFactory = new Configuration().configure().buildSessionFactory();
-        Session session = sessionFactory.openSession();
-        
-        // Create new customer
-        Customer customer = new Customer();
-        customer.setFirstName("Bob");
-        customer.setLastName("Dylan");
-        //customer.setAddresses("123 Broadway");
-        customer.setPhoneNumber(8471234567l);
-        customer.setEmail("bobdylan123@gmail.com");
-        
-        // Create new product
-        Product product = new Product();
-        product.setName("Carrot");
-        product.setDescription("It's a carrot");
-        product.setPrice(17.38);
-        
-        // Create new purchase
-        Purchase purchase = new Purchase();
-        purchase.setPurchaseDetail("It's a purchase");
-        purchase.setPurchaseStatus("Shipped");
-        purchase.setPurchasePayment("Credit Card 0123456789");
-        
-        // Create new partner
-        Partner partner = new Partner();
-        partner.setName("Main Partner");
-        partner.setPhoneNumber(1234567891l);
-        partner.setPartnerType("Primary");
-        partner.setDescription("It's a partner");
-        
-        // Create new review
-        Review review = new Review();
-        review.setComment("is good");
-        //review.setRating(5);
-        review.setTimestamp(12345678910l);
-        
-        // Initially save objects in DB
-        Transaction tx = session.beginTransaction();
-	    session.save(customer);
-	    session.save(partner);
-	    session.save(review);
-	    session.save(product);
-	    session.save(purchase);
-	    tx.commit();
-        
-        // Set relationships
-        HashSet<Purchase> allPurchases = new HashSet<>();
-        allPurchases.add(purchase);
-        customer.setPurchases(allPurchases);
-        HashSet<Review> allReviews = new HashSet<>();
-        allReviews.add(review);
-        customer.setReviews(allReviews);
-        product.setReviews(allReviews);
-        product.setProductOwner(partner);
-        HashSet<Product> allProducts = new HashSet<>();
-        partner.setProducts(allProducts);
-        
-        // Save objects in DB
-        tx = session.beginTransaction();
-	    session.save(customer);
-	    session.save(partner);
-	    session.save(review);
-	    session.save(product);
-	    session.save(purchase);
-	    tx.commit();
-	    
-	    // Get all customers from DB
-//	    Query query = session.createQuery("from Customer");
-//	    HashSet<Customer> customers = query.HashSet();
-	    
-	    session.close();
+    	// Create logic class instances
+    	CustomerLogic customerLogic = new CustomerLogic();
+    	PartnerLogic partnerLogic = new PartnerLogic();
+    	PaymentLogic paymentLogic = new PaymentLogic();
+    	ProductLogic productLogic = new ProductLogic();
+    	ReviewLogic reviewLogic = new ReviewLogic();
+    	
+    	// Create model instances
+    	Customer customer1 = customerLogic.createCustomer("Bob", "Dylan", "bobdylan@luc.edu", 1234567890l);
+    	Partner partner1 = partnerLogic.createPartner("McDonalds", "Food", "Sells hamburgers.");
+    	Payment payment1 = paymentLogic.createPayment(5647382910293847l, 1122, 456);
+    	Product product1 = productLogic.createProduct(partner1, "Product 1", "The first product.", 25.00);
+    	Review review1 = reviewLogic.addReview(customer1.getId(), product1.getId(), "Product 1 is great!");
     }
 }
