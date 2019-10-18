@@ -1,8 +1,16 @@
 package com.web_services.instant_pot.domain.customer;
 
+import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.List;
+
+import org.hibernate.Query;
+import org.hibernate.Session;
+import org.hibernate.SessionFactory;
+import org.hibernate.cfg.Configuration;
 
 import com.web_services.instant_pot.dal.customer.CustomerDAL;
+import com.web_services.instant_pot.domain.address.Address;
 
 public class CustomerLogic {
 	
@@ -53,5 +61,10 @@ public class CustomerLogic {
 		CustomerDAL cd = new CustomerDAL();
 		Customer customer = cd.updatePhoneNumber(phoneNumber, id);
 		return customer;
+	}
+	
+	public HashSet<Address> getAllAddressForCustomer(Long custID) {
+		CustomerDAL cd = new CustomerDAL();
+		return cd.getAllAddressForCustomer(custID);
 	}
 }
