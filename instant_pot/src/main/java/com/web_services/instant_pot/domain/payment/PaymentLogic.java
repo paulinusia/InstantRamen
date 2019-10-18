@@ -19,9 +19,9 @@ public class PaymentLogic {
 		return payments;
 	}
 	
-	public Payment createPayment(String payment, String paymentType, String description) {
+	public Payment createPayment(Long cardNumber, int expDate, int securityCode) {
 		PaymentDAL payd = new PaymentDAL();
-		return payd.createPayment(payment, paymentType, description);
+		return payd.createPayment(cardNumber, expDate, securityCode);
 	}
 	
 	public Payment deletePayment(long id) {

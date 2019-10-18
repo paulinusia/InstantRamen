@@ -33,7 +33,7 @@ public class PaymentDAL {
 		return paymentSet;
 	}
 	
-	public Payment createPayment(String payment, String paymentType, String description) {
+	public Payment createPayment(Long cardNumber, int expDate, int securityCode) {
 		SessionFactory sf = (SessionFactory) new Configuration().configure("hibernate.cfg.xml").buildSessionFactory();
 		Session session = sf.openSession();
 		
