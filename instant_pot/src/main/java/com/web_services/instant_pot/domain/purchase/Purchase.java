@@ -25,10 +25,12 @@ public class Purchase implements Serializable {
 	@Id
 	@Column (name="purchase_id")
 	@GeneratedValue(strategy = GenerationType.SEQUENCE)
-	private Long id;
+	private long id;
 
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "fk_purchase_owner")
+	
+
 	private Customer purchaseOwner;
 	
 	private String purchaseDetail;
@@ -44,6 +46,16 @@ public class Purchase implements Serializable {
 	@JoinColumn(name = "fk_address")
 	private Address address;
 	
+	public Purchase() {
+		//auto
+	}
+	public Purchase(Long id, Customer purchaseOwner2, String purchaseDetail2, String purchaseStatus2, String purchasePayment2) {
+		this.purchaseOwner = purchaseOwner2;
+		this.purchaseDetail = purchaseDetail2;
+		this.purchaseStatus = purchaseStatus2;
+		this.purchasePayment = purchasePayment2;
+	}
+
 	public Set<Product> getProducts() {
 		return products;
 	}
