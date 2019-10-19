@@ -77,6 +77,19 @@ public class PurchaseDAL {
 	}
 
 
+	public HashSet<Product> getAllPurchasesByCustomer(String customerID) {
+		SessionFactory sf = (SessionFactory) new Configuration().configure("hibernate.cfg.xml").buildSessionFactory();
+	    Session session = sf.openSession();
+	    
+	    Query query = session.createQuery("from Purchase where customer_id=:customerID").setParameter("customerID", customerID);
+	    List<Product> products = query.list();
+	    HashSet<Product> productSet = new HashSet<Product>(products);
+	    
+		session.close();
+		return productSet;
+	}
+
+
 
 	
 
