@@ -11,6 +11,7 @@ import com.web_services.instant_pot.dal.product.ProductDAL;
 import com.web_services.instant_pot.dal.purchase.PurchaseDAL;
 import com.web_services.instant_pot.domain.customer.Customer;
 import com.web_services.instant_pot.domain.partner.Partner;
+import com.web_services.instant_pot.domain.payment.Payment;
 import com.web_services.instant_pot.domain.product.Product;
 
 
@@ -21,9 +22,9 @@ public class PurchaseLogic {
 		return pd.getPurchaseByID(id);
 	}
 	
-	public Purchase newPurchase(Customer purchaseOwner, String purchaseDetail, String purchaseStatus,String purchasePayment) {
+	public Purchase newPurchase(Customer purchaseOwner, HashSet<Product> products, String purchaseDetail, String purchaseStatus, Payment purchasePayment) {
 		PurchaseDAL pd = new PurchaseDAL();
-		return pd.newPurchase(purchaseOwner, purchaseDetail, purchaseStatus, purchasePayment);
+		return pd.newPurchase(purchaseOwner, products, purchaseDetail, purchaseStatus, purchasePayment);
 	}
 	
 	public Purchase updatePurchaseDetail(Long id, String purchaseDetail) {

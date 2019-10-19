@@ -18,6 +18,7 @@ import javax.persistence.OneToMany;
 
 import com.web_services.instant_pot.domain.address.Address;
 import com.web_services.instant_pot.domain.customer.Customer;
+import com.web_services.instant_pot.domain.payment.Payment;
 import com.web_services.instant_pot.domain.product.Product;
 
 @Entity
@@ -35,7 +36,9 @@ public class Purchase implements Serializable {
 	
 	private String purchaseStatus;
 	
-	private String purchasePayment;
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "fk_purchase_payment")
+	private Payment purchasePayment;
 
 	@ManyToMany(fetch = FetchType.LAZY, mappedBy = "purchases")
 	private Set<Product> products = new HashSet<Product>();
@@ -47,13 +50,22 @@ public class Purchase implements Serializable {
 	public Purchase() {
 		//auto
 	}
-	public Purchase(Customer purchaseOwner, String purchaseDetail, String purchaseStatus, String purchasePayment) {
+	public Purchase(Customer purchaseOwner, HashSet<Product> products, String purchaseDetail, String purchaseStatus, Payment purchasePayment) {
 		this.purchaseOwner = purchaseOwner;
 		this.purchaseDetail = purchaseDetail;
 		this.purchaseStatus = purchaseStatus;
 		this.purchasePayment = purchasePayment;
 	}
 
+	public Address getAddress() {
+		return address;
+	}
+	public void setAddress(Address address) {
+		this.address = address;
+	}
+	public void setPurchasePayment(Payment purchasePayment) {
+		this.purchasePayment = purchasePayment;
+	}
 	public Set<Product> getProducts() {
 		return products;
 	}
@@ -92,14 +104,6 @@ public class Purchase implements Serializable {
 
 	public void setPurchaseStatus(String purchaseStatus) {
 		this.purchaseStatus = purchaseStatus;
-	}
-
-	public String getPurchasePayment() {
-		return purchasePayment;
-	}
-
-	public void setPurchasePayment(String purchasePayment) {
-		this.purchasePayment = purchasePayment;
 	}
 	
 	@Override

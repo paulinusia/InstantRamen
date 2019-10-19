@@ -12,9 +12,11 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
+import javax.persistence.OneToMany;
 
 import com.web_services.instant_pot.domain.address.Address;
 import com.web_services.instant_pot.domain.customer.Customer;
+import com.web_services.instant_pot.domain.purchase.Purchase;
 
 public class Payment implements Serializable {
 	@Id
@@ -34,6 +36,9 @@ public class Payment implements Serializable {
 	@ManyToMany(fetch = FetchType.LAZY, mappedBy = "payments")
 	private HashSet<Customer> paymentOwners = new HashSet<Customer>();
 
+	@OneToMany(cascade = CascadeType.ALL, mappedBy="purchasePayment")
+	private HashSet<Purchase> purchases = new HashSet<Purchase>();
+	
 	public Long getId() {
 		return id;
 	}

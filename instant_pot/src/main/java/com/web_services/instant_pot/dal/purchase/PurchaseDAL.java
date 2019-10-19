@@ -10,6 +10,7 @@ import org.hibernate.cfg.Configuration;
 
 import com.web_services.instant_pot.domain.customer.Customer;
 import com.web_services.instant_pot.domain.partner.Partner;
+import com.web_services.instant_pot.domain.payment.Payment;
 import com.web_services.instant_pot.domain.product.Product;
 import com.web_services.instant_pot.domain.purchase.Purchase; 
 
@@ -27,10 +28,10 @@ public class PurchaseDAL {
 	}
 
 	
-	public Purchase newPurchase(Customer purchaseOwner, String purchaseDetail, String purchaseStatus,String purchasePayment) {
+	public Purchase newPurchase(Customer purchaseOwner, HashSet<Product> products, String purchaseDetail, String purchaseStatus, Payment purchasePayment) {
 		SessionFactory sf = (SessionFactory) new Configuration().configure("hibernate.cfg.xml").buildSessionFactory();
 	    Session session = sf.openSession();
-		Purchase purchase = new Purchase(purchaseOwner, purchaseDetail, purchaseStatus, purchasePayment);
+		Purchase purchase = new Purchase(purchaseOwner, products, purchaseDetail, purchaseStatus, purchasePayment);
 		
 	    Transaction tx = session.beginTransaction();
 	    session.save(purchase); 
