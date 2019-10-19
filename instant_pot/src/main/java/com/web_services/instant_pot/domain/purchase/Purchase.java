@@ -50,11 +50,12 @@ public class Purchase implements Serializable {
 	public Purchase() {
 		//auto
 	}
-	public Purchase(Customer purchaseOwner, HashSet<Product> products, String purchaseDetail, String purchaseStatus, Payment purchasePayment) {
+	public Purchase(Customer purchaseOwner, HashSet<Product> products, String purchaseDetail, String purchaseStatus, Payment purchasePayment, Address address) {
 		this.purchaseOwner = purchaseOwner;
 		this.purchaseDetail = purchaseDetail;
 		this.purchaseStatus = purchaseStatus;
 		this.purchasePayment = purchasePayment;
+		this.address = address;
 	}
 
 	public Address getAddress() {

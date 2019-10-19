@@ -9,6 +9,7 @@ import org.hibernate.cfg.Configuration;
 
 import com.web_services.instant_pot.dal.product.ProductDAL;
 import com.web_services.instant_pot.dal.purchase.PurchaseDAL;
+import com.web_services.instant_pot.domain.address.Address;
 import com.web_services.instant_pot.domain.customer.Customer;
 import com.web_services.instant_pot.domain.partner.Partner;
 import com.web_services.instant_pot.domain.payment.Payment;
@@ -22,9 +23,9 @@ public class PurchaseLogic {
 		return pd.getPurchaseByID(id);
 	}
 	
-	public Purchase newPurchase(Customer purchaseOwner, HashSet<Product> products, String purchaseDetail, String purchaseStatus, Payment purchasePayment) {
+	public Purchase newPurchase(Customer purchaseOwner, HashSet<Product> products, String purchaseDetail, String purchaseStatus, Payment purchasePayment, Address address) {
 		PurchaseDAL pd = new PurchaseDAL();
-		return pd.newPurchase(purchaseOwner, products, purchaseDetail, purchaseStatus, purchasePayment);
+		return pd.newPurchase(purchaseOwner, products, purchaseDetail, purchaseStatus, purchasePayment, address);
 	}
 	
 	public Purchase updatePurchaseDetail(Long id, String purchaseDetail) {
