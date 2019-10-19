@@ -2,6 +2,11 @@ package com.web_services.instant_pot.domain.purchase;
 
 import java.util.HashSet;
 
+import org.hibernate.Session;
+import org.hibernate.SessionFactory;
+import org.hibernate.Transaction;
+import org.hibernate.cfg.Configuration;
+
 import com.web_services.instant_pot.dal.product.ProductDAL;
 import com.web_services.instant_pot.dal.purchase.PurchaseDAL;
 import com.web_services.instant_pot.domain.customer.Customer;
@@ -16,24 +21,23 @@ public class PurchaseLogic {
 		return pd.getPurchaseByID(id);
 	}
 	
+	public Purchase newPurchase(Customer purchaseOwner, String purchaseDetail, String purchaseStatus,String purchasePayment) {
+		PurchaseDAL pd = new PurchaseDAL();
+		return pd.newPurchase(purchaseOwner, purchaseDetail, purchaseStatus, purchasePayment);
+	}
 	
 	public Purchase updatePurchaseDetail(Long id, String purchaseDetail) {
 		PurchaseDAL purchase = new PurchaseDAL();
 	    return purchase.updatePurchaseDetail(id,purchaseDetail);
-
 	}
 	
 	public Purchase updatePurchaseStatus(Long id, String purchaseStatus) {
 		PurchaseDAL purchase = new PurchaseDAL();
 	    return purchase.updatePurchaseDetail(id,purchaseStatus);
-
 	}
 	
 	public HashSet<Product> getPurchasesFromCustomer(String customer){
 		PurchaseDAL pd = new PurchaseDAL();
 		return pd.getAllPurchasesByCustomer(customer);
 	}
-
-	
-
 }

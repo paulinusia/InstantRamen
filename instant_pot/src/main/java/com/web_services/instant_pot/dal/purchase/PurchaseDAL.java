@@ -27,7 +27,7 @@ public class PurchaseDAL {
 	}
 
 	
-	public Purchase newPurchase(Long id, Customer purchaseOwner, String purchaseDetail, String purchaseStatus,String purchasePayment) {
+	public Purchase newPurchase(Customer purchaseOwner, String purchaseDetail, String purchaseStatus,String purchasePayment) {
 		SessionFactory sf = (SessionFactory) new Configuration().configure("hibernate.cfg.xml").buildSessionFactory();
 	    Session session = sf.openSession();
 		Purchase purchase = new Purchase(purchaseOwner, purchaseDetail, purchaseStatus, purchasePayment);
