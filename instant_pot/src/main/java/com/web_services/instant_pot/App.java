@@ -65,7 +65,20 @@ public class App
     	
     	// Create additional relationships
     	
-    	//add payments to customers
+    	addressLogic.addAddressToCustomer(address1.getId(), customer1.getId());
+    	addressLogic.addAddressToCustomer(address2.getId(), customer1.getId());
+    	addressLogic.addAddressToCustomer(address1.getId(), customer2.getId());
+    	addressLogic.addAddressToCustomer(address2.getId(), customer2.getId());
+    	
+    	addressLogic.addAddressToPartner(address3.getId(), partner1.getId());
+    	addressLogic.addAddressToPartner(address4.getId(), partner1.getId());
+    	addressLogic.addAddressToPartner(address3.getId(), partner2.getId());
+    	addressLogic.addAddressToPartner(address4.getId(), partner2.getId());
+    	
+    	paymentLogic.addPaymentToCustomer(payment1.getId(), customer1.getId());
+    	paymentLogic.addPaymentToCustomer(payment2.getId(), customer1.getId());
+    	paymentLogic.addPaymentToCustomer(payment3.getId(), customer2.getId());
+    	paymentLogic.addPaymentToCustomer(payment4.getId(), customer2.getId());
     	
     	HashSet<Product> productSet1 = new HashSet<Product>();
     	productSet1.add(product1);
