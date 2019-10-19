@@ -50,6 +50,7 @@ public class Purchase implements Serializable {
 		//auto
 	}
 	public Purchase(Long id, Customer purchaseOwner2, String purchaseDetail2, String purchaseStatus2, String purchasePayment2) {
+		this.id = id;
 		this.purchaseOwner = purchaseOwner2;
 		this.purchaseDetail = purchaseDetail2;
 		this.purchaseStatus = purchaseStatus2;

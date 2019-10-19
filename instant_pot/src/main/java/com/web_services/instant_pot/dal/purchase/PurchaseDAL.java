@@ -15,7 +15,7 @@ import com.web_services.instant_pot.domain.purchase.Purchase;
 
 public class PurchaseDAL {
 	
-	public Purchase getPurchaseByID(int id) {
+	public Purchase getPurchaseByID(long id) {
 		Purchase purchase = new Purchase();
 		SessionFactory sf = (SessionFactory) new Configuration().configure("hibernate.cfg.xml").buildSessionFactory();
 	    Session session = sf.openSession();
@@ -76,6 +76,9 @@ public class PurchaseDAL {
 	    
 	    return purchase;
 	}
+
+
+
 	
 
 
