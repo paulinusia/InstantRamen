@@ -37,9 +37,6 @@ public class Review implements Serializable {
 	
 	private String body;
 	
-	
-
-
 	public Review() {
 		// TODO Auto-generated constructor stub
 	}

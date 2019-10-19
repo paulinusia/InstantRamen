@@ -9,7 +9,7 @@ import com.web_services.instant_pot.domain.partner.Partner;
 
 public class PurchaseLogic {
 
-	public static Purchase getPurchaseByID(long id) {
+	public static Purchase getPurchaseByID(Long id) {
 		PurchaseDAL pd = new PurchaseDAL();
 		return pd.getPurchaseByID(id);
 	}

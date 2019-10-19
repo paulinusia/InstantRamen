@@ -15,7 +15,7 @@ import com.web_services.instant_pot.domain.purchase.Purchase;
 
 public class PurchaseDAL {
 	
-	public Purchase getPurchaseByID(long id) {
+	public Purchase getPurchaseByID(Long id) {
 		Purchase purchase = new Purchase();
 		SessionFactory sf = (SessionFactory) new Configuration().configure("hibernate.cfg.xml").buildSessionFactory();
 	    Session session = sf.openSession();
@@ -30,9 +30,8 @@ public class PurchaseDAL {
 	public Purchase newPurchase(Long id, Customer purchaseOwner, String purchaseDetail, String purchaseStatus,String purchasePayment) {
 		SessionFactory sf = (SessionFactory) new Configuration().configure("hibernate.cfg.xml").buildSessionFactory();
 	    Session session = sf.openSession();
-		Purchase purchase = new Purchase(id, purchaseOwner, purchaseDetail, purchaseStatus, purchasePayment);
+		Purchase purchase = new Purchase(purchaseOwner, purchaseDetail, purchaseStatus, purchasePayment);
 		
-		 
 	    Transaction tx = session.beginTransaction();
 	    session.save(purchase); 
 	    tx.commit();
