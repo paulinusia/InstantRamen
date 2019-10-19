@@ -33,7 +33,7 @@ public class Review implements Serializable {
 	
 	private String comment;
 
-	private Long timestamp;
+	//private Long timestamp;
 	
 	private String body;
 	
@@ -91,20 +91,24 @@ public class Review implements Serializable {
 	public void setReviewRating(int rating) {
 		this.rating = rating;
 	}
+	/*
 	public Long getTimestamp() {
 		return timestamp;
 	}
+	
 
 	public void setTimestamp(Long timestamp) {
 		this.timestamp = timestamp;
 	}
-	
+	*/
 	public void setReviewBody(String body) {
 		this.body = body;
 		
 	}
+	
+	
 	@Override
 	public String toString() {
-		return "Review Details: ID=" + this.id + "Product=" + this.product.getName() +  ", Customer=" + this.customer.getName() + ", Rating= " + this.rating + ", Comment= '" + this.comment + "', Timestamp= " + this.timestamp;
+		return "Review Details: ID=" + this.id + "Product=" + this.product.getName() +  ", Customer=" + this.customer.getName() + ", Rating= " + this.rating + ", Comment= '" + this.comment ;
 	}
 }
