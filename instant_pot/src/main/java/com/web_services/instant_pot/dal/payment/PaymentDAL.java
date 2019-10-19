@@ -6,6 +6,8 @@ import java.util.List;
 import org.hibernate.*;
 import org.hibernate.cfg.Configuration;
 
+import com.web_services.instant_pot.domain.address.Address;
+import com.web_services.instant_pot.domain.customer.Customer;
 import com.web_services.instant_pot.domain.payment.Payment;
 
 public class PaymentDAL {
@@ -90,6 +92,38 @@ public class PaymentDAL {
 		}
 		session.close();
 		return p;
+	}
+	
+	public Payment addPaymentToCustomer(Long paymentID, Long customerID) {	
+		SessionFactory sf = (SessionFactory) new Configuration().configure("hibernate.cfg.xml").buildSessionFactory();
+	    Session session = sf.openSession();
+	    
+	    Customer customer = session.get(Customer.class, customerID);
+	    Payment payment = session.get(Payment.class, paymentID);
+	    payment.getPaymentOwners().add(customer);
+	    
+	    Transaction tx = session.beginTransaction();
+	    session.save(payment);
+	    tx.commit(); 
+	    session.close();
+	  
+	    return payment;
+	}
+	
+	public Payment removePaymentFromCustomer(Long paymentID, Long customerID) {	
+		SessionFactory sf = (SessionFactory) new Configuration().configure("hibernate.cfg.xml").buildSessionFactory();
+	    Session session = sf.openSession();
+	    
+	    Customer customer = session.get(Customer.class, customerID);
+	    Payment payment = session.get(Payment.class, paymentID);
+	    payment.getPaymentOwners().remove(customer);
+	    
+	    Transaction tx = session.beginTransaction();
+	    session.save(payment);
+	    tx.commit(); 
+	    session.close();
+	  
+	    return payment;
 	}
 
 }

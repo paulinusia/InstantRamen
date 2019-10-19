@@ -1,5 +1,6 @@
 package com.web_services.instant_pot.domain.review;
 
+import java.util.Date;
 import java.util.HashSet;
 
 import com.web_services.instant_pot.dal.review.ReviewDAL;
@@ -24,9 +25,8 @@ public class ReviewLogic {
 	}
 	
 	public Review addReview(Long custID, Long productID, int rating, String reviewBody, Long timestamp) {
-
 		ReviewDAL rd = new ReviewDAL();
-		return rd.addReview(custID, productID, rating, reviewBody,timestamp);
+		return rd.addReview(custID, productID, rating, reviewBody, timestamp);
 	}
 	
 	public static Review deleteReview(long reviewID) {
