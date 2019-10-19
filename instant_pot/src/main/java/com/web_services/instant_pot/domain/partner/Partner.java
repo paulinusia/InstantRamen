@@ -83,15 +83,16 @@ public class Partner extends AddressOwner implements Serializable {
 	public void setName(String name) {
 		this.name = name;
 	}
-
-	public Set<Product> getProducts() {
+/*
+	public HashSet<Product> getProducts() {
+>>>>>>> fde333d0a80f274c246cc11228f4603ae6adf6c1
 		return inventory;
 	}
 
 	public void setProducts(HashSet<Product> products) {
 		this.inventory = products;
 	}
-
+*/
 	public String getDescription() {
 		return description;
 	}
