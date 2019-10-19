@@ -62,5 +62,21 @@ public class App
     	Review review6 = reviewLogic.addReview(customer2.getId(), product3.getId(), 1, "Product 1 is awful!", System.currentTimeMillis());
     	Review review7 = reviewLogic.addReview(customer1.getId(), product4.getId(), 5, "Product 1 is great!", System.currentTimeMillis());
     	Review review8 = reviewLogic.addReview(customer2.getId(), product4.getId(), 3, "Product 1 is alright!", System.currentTimeMillis());
+    	
+    	// Create additional relationships
+    	
+    	//add payments to customers
+    	
+    	HashSet<Product> productSet1 = new HashSet<Product>();
+    	productSet1.add(product1);
+    	productSet1.add(product2);
+    	Purchase purchase1 = purchaseLogic.newPurchase(customer1, productSet1, "needed things", "Ordered", payment1);
+    	HashSet<Product> productSet2 = new HashSet<Product>();
+    	productSet1.add(product3);
+    	productSet1.add(product4);
+    	Purchase purchase2 = purchaseLogic.newPurchase(customer1, productSet2, "needed more things", "Ordered", payment2);
+
+    	Purchase purchase3 = purchaseLogic.newPurchase(customer2, productSet1, "wanted things", "Ordered", payment3);
+    	Purchase purchase4 = purchaseLogic.newPurchase(customer2, productSet2, "wanted more things", "Ordered", payment4);
     }
 }
