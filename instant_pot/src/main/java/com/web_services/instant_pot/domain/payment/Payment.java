@@ -2,9 +2,11 @@ package com.web_services.instant_pot.domain.payment;
 
 import java.io.Serializable;
 import java.util.HashSet;
+import java.util.Set;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
+import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -18,6 +20,7 @@ import com.web_services.instant_pot.domain.address.Address;
 import com.web_services.instant_pot.domain.customer.Customer;
 import com.web_services.instant_pot.domain.purchase.Purchase;
 
+@Entity
 public class Payment implements Serializable {
 	@Id
 	@Column (name="payment_id")
@@ -34,10 +37,10 @@ public class Payment implements Serializable {
 	private int securityCode;
 	
 	@ManyToMany(fetch = FetchType.LAZY, mappedBy = "payments")
-	private HashSet<Customer> paymentOwners = new HashSet<Customer>();
+	private Set<Customer> paymentOwners = new HashSet<Customer>();
 
 	@OneToMany(cascade = CascadeType.ALL, mappedBy="purchasePayment")
-	private HashSet<Purchase> purchases = new HashSet<Purchase>();
+	private Set<Purchase> purchases = new HashSet<Purchase>();
 	
 	public Long getId() {
 		return id;
@@ -79,11 +82,11 @@ public class Payment implements Serializable {
 		this.securityCode = securityCode;
 	}
 
-	public HashSet<Customer> getPaymentOwners() {
+	public Set<Customer> getPaymentOwners() {
 		return paymentOwners;
 	}
 
-	public void setPaymentOwners(HashSet<Customer> paymentOwners) {
+	public void setPaymentOwners(Set<Customer> paymentOwners) {
 		this.paymentOwners = paymentOwners;
 	}
 }

@@ -23,13 +23,13 @@
         <!-- TODO: change back to auto -->
   
         <!-- Annotated entity classes -->
-        <mapping class="com.web_services.instant_pot.domain.Product"/>
-        <mapping class="com.web_services.instant_pot.domain.Review"/>
-        <mapping class="com.web_services.instant_pot.domain.Partner"/>
-        <mapping class="com.web_services.instant_pot.domain.Customer"/>
-        <mapping class="com.web_services.instant_pot.domain.Purchase"/>
-        <mapping class="com.web_services.instant_pot.domain.Payment"/>
-        <mapping class="com.web_services.instant_pot.domain.Address"/>
+        <mapping class="com.web_services.instant_pot.domain.product.Product"/>
+        <mapping class="com.web_services.instant_pot.domain.review.Review"/>
+        <mapping class="com.web_services.instant_pot.domain.partner.Partner"/>
+        <mapping class="com.web_services.instant_pot.domain.customer.Customer"/>
+        <mapping class="com.web_services.instant_pot.domain.purchase.Purchase"/>
+        <mapping class="com.web_services.instant_pot.domain.payment.Payment"/>
+        <mapping class="com.web_services.instant_pot.domain.address.Address"/>
 
     </session-factory>
 </hibernate-configuration>

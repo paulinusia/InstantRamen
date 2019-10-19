@@ -2,6 +2,7 @@ package com.web_services.instant_pot.domain.partner;
 
 import java.io.Serializable;
 import java.util.HashSet;
+import java.util.Set;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -29,11 +30,11 @@ public class Partner extends AddressOwner implements Serializable {
 	private String name;
 
 	@OneToMany(cascade = CascadeType.ALL, mappedBy="productOwner")
-	private HashSet<Product> inventory = new HashSet<Product>();
+	private Set<Product> inventory = new HashSet<Product>();
 	
 	@ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
 	@JoinTable(name = "partner_address", joinColumns = { @JoinColumn(name = "partner_id" ) }, inverseJoinColumns = { @JoinColumn(name = "address_id") })
-	private HashSet<Address> addresses = new HashSet<Address>();
+	private Set<Address> addresses = new HashSet<Address>();
 	
 	private String description;
 	
@@ -59,7 +60,7 @@ public class Partner extends AddressOwner implements Serializable {
 		this.id = id;
 	}
 
-	public HashSet<Product> getInventory() {
+	public Set<Product> getInventory() {
 		return inventory;
 	}
 
@@ -67,7 +68,7 @@ public class Partner extends AddressOwner implements Serializable {
 		this.inventory = inventory;
 	}
 
-	public HashSet<Address> getAddresses() {
+	public Set<Address> getAddresses() {
 		return addresses;
 	}
 
@@ -83,7 +84,7 @@ public class Partner extends AddressOwner implements Serializable {
 		this.name = name;
 	}
 
-	public HashSet<Product> getProducts() {
+	public Set<Product> getProducts() {
 		return inventory;
 	}
 

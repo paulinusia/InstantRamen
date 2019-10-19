@@ -2,9 +2,11 @@ package com.web_services.instant_pot.domain.address;
 
 import java.io.Serializable;
 import java.util.HashSet;
+import java.util.Set;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
+import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -14,6 +16,7 @@ import javax.persistence.OneToMany;
 
 import com.web_services.instant_pot.domain.purchase.Purchase;
 
+@Entity
 public class Address implements Serializable {
 	@Id
 	@Column (name="address_id")
@@ -29,10 +32,10 @@ public class Address implements Serializable {
 	private String zip;
 	
 	@ManyToMany(fetch = FetchType.LAZY, mappedBy = "addresses")
-	private HashSet<AddressOwner> addressOwners = new HashSet<AddressOwner>();
+	private Set<AddressOwner> addressOwners = new HashSet<AddressOwner>();
 	
 	@OneToMany(cascade = CascadeType.ALL, mappedBy="address")
-	private HashSet<Purchase> purchases = new HashSet<Purchase>();
+	private Set<Purchase> purchases = new HashSet<Purchase>();
 	
 	public Address(String streetAddress, String city, String state, String zip) {
 		this.streetAddress = streetAddress;
@@ -83,19 +86,19 @@ public class Address implements Serializable {
 		this.zip = zip;
 	}
 
-	public HashSet<AddressOwner> getAddressOwners() {
+	public Set<AddressOwner> getAddressOwners() {
 		return addressOwners;
 	}
 
-	public void setAddressOwners(HashSet<AddressOwner> addressOwners) {
+	public void setAddressOwners(Set<AddressOwner> addressOwners) {
 		this.addressOwners = addressOwners;
 	}
 
-	public HashSet<Purchase> getPurchases() {
+	public Set<Purchase> getPurchases() {
 		return purchases;
 	}
 
-	public void setPurchases(HashSet<Purchase> purchases) {
+	public void setPurchases(Set<Purchase> purchases) {
 		this.purchases = purchases;
 	}
 	

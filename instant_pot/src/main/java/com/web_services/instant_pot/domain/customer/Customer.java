@@ -39,17 +39,17 @@ public class Customer extends AddressOwner implements Serializable {
 	
 	@ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
 	@JoinTable(name = "customer_payment", joinColumns = { @JoinColumn(name = "customer_id" ) }, inverseJoinColumns = { @JoinColumn(name = "payment_id") })
-	private HashSet<Payment> payments = new HashSet<Payment>();
+	private Set<Payment> payments = new HashSet<Payment>();
 	
 	@ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
 	@JoinTable(name = "customer_address", joinColumns = { @JoinColumn(name = "customer_id" ) }, inverseJoinColumns = { @JoinColumn(name = "address_id") })
-	private HashSet<Address> addresses = new HashSet<Address>();
+	private Set<Address> addresses = new HashSet<Address>();
 
 	@OneToMany(cascade = CascadeType.ALL, mappedBy="customer")
-	private HashSet<Review> reviews = new HashSet<Review>();
+	private Set<Review> reviews = new HashSet<Review>();
 	
 	@OneToMany(cascade = CascadeType.ALL, mappedBy="purchaseOwner")
-	private HashSet<Purchase> purchases = new HashSet<Purchase>();
+	private Set<Purchase> purchases = new HashSet<Purchase>();
 	
 	public Customer() {}
 	
@@ -89,7 +89,7 @@ public class Customer extends AddressOwner implements Serializable {
 		phoneNumber = number;	
 	}
 	
-	public HashSet<Purchase> getPurchases() {
+	public Set<Purchase> getPurchases() {
 		return purchases;
 	}
 
@@ -97,7 +97,7 @@ public class Customer extends AddressOwner implements Serializable {
 		this.purchases = purchases;
 	}
 
-	public HashSet<Review> getReviews() {
+	public Set<Review> getReviews() {
 		return reviews;
 	}
 
@@ -113,11 +113,11 @@ public class Customer extends AddressOwner implements Serializable {
 		this.id = id;
 	}
 
-	public HashSet<Address> getAddresses() {
+	public Set<Address> getAddresses() {
 		return addresses;
 	}
 
-	public void setAddresses(HashSet<Address> addresses) {
+	public void setAddresses(Set<Address> addresses) {
 		this.addresses = addresses;
 	}
 

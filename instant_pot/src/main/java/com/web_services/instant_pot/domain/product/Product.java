@@ -33,7 +33,7 @@ public class Product implements Serializable {
 	private double price;
 	
 	@OneToMany(cascade = CascadeType.ALL, mappedBy="product")
-	private HashSet<Review> reviews = new HashSet<Review>();
+	private Set<Review> reviews = new HashSet<Review>();
 	
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "fk_product_owner")
@@ -104,7 +104,7 @@ public class Product implements Serializable {
 		this.price = price;
 	}
 
-	public HashSet<Review> getReviews() {
+	public Set<Review> getReviews() {
 		return reviews;
 	}
 
