@@ -82,7 +82,7 @@ public class Partner extends AddressOwner implements Serializable {
 	public void setName(String name) {
 		this.name = name;
 	}
-
+/*
 	public HashSet<Product> getProducts() {
 		return inventory;
 	}
@@ -90,7 +90,7 @@ public class Partner extends AddressOwner implements Serializable {
 	public void setProducts(HashSet<Product> products) {
 		this.inventory = products;
 	}
-
+*/
 	public String getDescription() {
 		return description;
 	}
