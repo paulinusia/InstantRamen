@@ -112,10 +112,6 @@ public class AddressDAL {
 		    session.save(customer);
 		    tx.commit(); 
 		    session.close();
-		    Set<Customer> addressCustomers = address.getCustomers();
-		    for (Customer c : addressCustomers) {
-		    	System.out.println(c.getName());
-		    }
 		    
 		    return address;
 		}

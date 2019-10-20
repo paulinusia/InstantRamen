@@ -101,9 +101,11 @@ public class PaymentDAL {
 	    Customer customer = session.get(Customer.class, customerID);
 	    Payment payment = session.get(Payment.class, paymentID);
 	    payment.getPaymentOwners().add(customer);
+	    customer.getPayments().add(payment);
 	    
 	    Transaction tx = session.beginTransaction();
 	    session.save(payment);
+	    session.save(customer);
 	    tx.commit(); 
 	    session.close();
 	  
@@ -117,9 +119,11 @@ public class PaymentDAL {
 	    Customer customer = session.get(Customer.class, customerID);
 	    Payment payment = session.get(Payment.class, paymentID);
 	    payment.getPaymentOwners().remove(customer);
+	    customer.getPayments().remove(payment);
 	    
 	    Transaction tx = session.beginTransaction();
 	    session.save(payment);
+	    session.save(customer);
 	    tx.commit(); 
 	    session.close();
 	  

@@ -17,7 +17,6 @@ import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 
 import com.web_services.instant_pot.domain.address.Address;
-import com.web_services.instant_pot.domain.address.AddressOwner;
 import com.web_services.instant_pot.domain.product.Product;
 
 @Entity

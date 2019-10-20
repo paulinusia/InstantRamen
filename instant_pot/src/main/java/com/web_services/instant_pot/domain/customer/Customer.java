@@ -17,7 +17,6 @@ import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 
 import com.web_services.instant_pot.domain.address.Address;
-import com.web_services.instant_pot.domain.address.AddressOwner;
 import com.web_services.instant_pot.domain.payment.Payment;
 import com.web_services.instant_pot.domain.purchase.Purchase;
 import com.web_services.instant_pot.domain.review.Review;
@@ -58,6 +57,22 @@ public class Customer implements Serializable {
 		this.lastName = lastName;
 		this.email = email;
 		this.phoneNumber = phoneNumber;
+	}
+
+	public Set<Payment> getPayments() {
+		return payments;
+	}
+
+	public void setPayments(Set<Payment> payments) {
+		this.payments = payments;
+	}
+
+	public void setReviews(Set<Review> reviews) {
+		this.reviews = reviews;
+	}
+
+	public void setPurchases(Set<Purchase> purchases) {
+		this.purchases = purchases;
 	}
 
 	public String getFirstName() {

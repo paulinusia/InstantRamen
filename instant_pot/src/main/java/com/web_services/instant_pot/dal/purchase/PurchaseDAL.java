@@ -33,9 +33,14 @@ public class PurchaseDAL {
 		SessionFactory sf = (SessionFactory) new Configuration().configure("hibernate.cfg.xml").buildSessionFactory();
 	    Session session = sf.openSession();
 		Purchase purchase = new Purchase(purchaseOwner, products, purchaseDetail, purchaseStatus, purchasePayment, address);
-		
+		for (Product p : products) {
+			p.getPurchases().add(purchase);
+		}
 	    Transaction tx = session.beginTransaction();
 	    session.save(purchase); 
+	    for (Product prod : products) {
+			session.save(prod);
+		}
 	    tx.commit();
 	    session.close(); 
 		
