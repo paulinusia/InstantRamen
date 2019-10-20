@@ -70,9 +70,11 @@ public class AddressDAL {
 		    Customer customer = session.get(Customer.class, customerID);
 		    Address address = session.get(Address.class, addressID);
 		    address.getCustomers().remove(customer);
+		    customer.getAddresses().remove(address);
 		    
 		    Transaction tx = session.beginTransaction();
 		    session.save(address);
+		    session.save(customer);
 		    tx.commit(); 
 		    session.close();
 		  
@@ -86,9 +88,11 @@ public class AddressDAL {
 		    Partner partner = session.get(Partner.class, partnerID);
 		    Address address = session.get(Address.class, addressID);
 		    address.getPartners().remove(partner);
+		    partner.getAddresses().remove(address);
 		    
 		    Transaction tx = session.beginTransaction();
 		    session.save(address);
+		    session.save(partner);
 		    tx.commit(); 
 		    session.close();
 		  
@@ -123,9 +127,11 @@ public class AddressDAL {
 		    Partner partner = session.get(Partner.class, partnerID);
 		    Address address = session.get(Address.class, addressID);
 		    address.getPartners().add(partner);
+		    partner.getAddresses().add(address);
 		    
 		    Transaction tx = session.beginTransaction();
 		    session.save(address);
+		    session.save(partner);
 		    tx.commit(); 
 		    session.close();
 		  
