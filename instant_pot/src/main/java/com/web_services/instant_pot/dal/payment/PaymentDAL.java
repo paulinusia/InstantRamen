@@ -35,11 +35,11 @@ public class PaymentDAL {
 		return paymentSet;
 	}
 	
-	public Payment createPayment(Long cardNumber, int expDate, int securityCode) {
+	public Payment createPayment(String type, Long cardNumber, int expDate, int securityCode) {
 		SessionFactory sf = (SessionFactory) new Configuration().configure("hibernate.cfg.xml").buildSessionFactory();
 		Session session = sf.openSession();
 		
-		Payment newPayment = new Payment();
+		Payment newPayment = new Payment(type, cardNumber, expDate, securityCode);
 		
 		Transaction tx = session.beginTransaction();
 		session.save(newPayment);

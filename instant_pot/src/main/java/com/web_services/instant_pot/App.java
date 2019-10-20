@@ -46,10 +46,10 @@ public class App
     	Customer customer2 = customerLogic.createCustomer("Snoop", "Dogg", "snoopdogg@hotmail.com", 4567891234l);
     	Partner partner1 = partnerLogic.createPartner("McDonalds", "Food", "Sells hamburgers.");
     	Partner partner2 = partnerLogic.createPartner("Burger King", "Food", "Sells chicken fries.");
-    	Payment payment1 = paymentLogic.createPayment(5647382910293847l, 1122, 456);
-    	Payment payment2 = paymentLogic.createPayment(8888999922223333l, 0521, 343);
-    	Payment payment3 = paymentLogic.createPayment(1111222233334444l, 1122, 456);
-    	Payment payment4 = paymentLogic.createPayment(2143658754763298l, 0521, 343);
+    	Payment payment1 = paymentLogic.createPayment("Credit", 5647382910293847l, 1122, 456);
+    	Payment payment2 = paymentLogic.createPayment("Debit", 8888999922223333l, 0521, 343);
+    	Payment payment3 = paymentLogic.createPayment("Credit", 1111222233334444l, 1122, 456);
+    	Payment payment4 = paymentLogic.createPayment("Debit", 2143658754763298l, 0521, 343);
     	Product product1 = productLogic.createProduct(partner1, "Product 1", "The first product.", 25.00);
     	Product product2 = productLogic.createProduct(partner1, "Product 2", "The second product.", 20.00);
     	Product product3 = productLogic.createProduct(partner1, "Product 3", "The third product.", 17.00);

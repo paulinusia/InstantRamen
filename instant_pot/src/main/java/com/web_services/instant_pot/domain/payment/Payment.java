@@ -41,6 +41,15 @@ public class Payment implements Serializable {
 	@OneToMany(cascade = CascadeType.ALL, mappedBy="purchasePayment")
 	private Set<Purchase> purchases = new HashSet<Purchase>();
 	
+	public Payment(){}
+	
+	public Payment(String type, Long cardNumber, int expirationDate, int securityCode) {
+		this.type = type;
+		this.cardNumber = cardNumber;
+		this.expirationDate = expirationDate;
+		this.securityCode = securityCode;
+	}
+
 	public Long getId() {
 		return id;
 	}

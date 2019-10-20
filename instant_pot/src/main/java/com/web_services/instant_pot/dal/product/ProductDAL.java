@@ -87,7 +87,7 @@ public class ProductDAL {
 	    
 	    Product product = session.get(Product.class, productID);
 	    if (product != null) {
-	    	product.setPrice(newCost);
+	    	product.setCost(newCost);
 	    	Transaction tx = session.beginTransaction();
 	    	session.save(product);
 		    tx.commit();
@@ -104,7 +104,7 @@ public class ProductDAL {
 	    Session session = sf.openSession();
 	    Product product = session.get(Product.class, productID);
 	    if (product != null) {
-	    	product.setDescription(productDescription);
+	    	product.setProductDescription(productDescription);
 	    	Transaction tx = session.beginTransaction();
 	    	session.save(product);
 		    tx.commit();
@@ -121,7 +121,7 @@ public class ProductDAL {
 	    Session session = sf.openSession();
 	    Product product = session.get(Product.class, productID);
 	    if (product != null) {
-	    	product.setName(productName);
+	    	product.setProductName(productName);
 	    	Transaction tx = session.beginTransaction();
 	    	session.save(product);
 		    tx.commit();
