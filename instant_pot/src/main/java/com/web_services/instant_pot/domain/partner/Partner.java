@@ -40,12 +40,13 @@ public class Partner implements Serializable {
 	
 	private String partnerType;
 	
-	private long phoneNumber;
+	private Long phoneNumber;
 	
-	public Partner(String name, String partnerType, String description) {
+	public Partner(String name, String partnerType, String description, Long phoneNumber) {
 		this.name = name;
 		this.partnerType = partnerType;
 		this.description = description;
+		this.phoneNumber = phoneNumber;
 	}
 	
 	public Partner() {

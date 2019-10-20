@@ -36,11 +36,11 @@ public class PartnerDAL {
 		return partnerSet;
 	}
 	
-	public Partner createPartner(String partnerName, String partnerType, String description) {
+	public Partner createPartner(String partnerName, String partnerType, String description, Long phoneNumber) {
 		SessionFactory sf = (SessionFactory) new Configuration().configure("hibernate.cfg.xml").buildSessionFactory();
 		Session session = sf.openSession();
 		
-		Partner newPartner = new Partner(partnerName, partnerType, description);
+		Partner newPartner = new Partner(partnerName, partnerType, description, phoneNumber);
 		
 		Transaction tx = session.beginTransaction();
 		session.save(newPartner);

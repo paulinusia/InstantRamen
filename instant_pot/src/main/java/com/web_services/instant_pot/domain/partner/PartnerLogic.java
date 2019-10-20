@@ -28,9 +28,9 @@ public class PartnerLogic {
 		return partners;
 	}
 	
-	public Partner createPartner(String partnerName, String partnerType, String description) {
+	public Partner createPartner(String partnerName, String partnerType, String description, Long phoneNumber) {
 		PartnerDAL pd = new PartnerDAL();
-		return pd.createPartner(partnerName, partnerType, description);
+		return pd.createPartner(partnerName, partnerType, description, phoneNumber);
 	}
 	
 	public Partner deletePartner(long id) {
