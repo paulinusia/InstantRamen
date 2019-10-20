@@ -3,6 +3,7 @@ package com.web_services.instant_pot.dal.address;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 import org.hibernate.Query;
 import org.hibernate.Session;
@@ -101,12 +102,17 @@ public class AddressDAL {
 		    Customer customer = session.get(Customer.class, customerID);
 		    Address address = session.get(Address.class, addressID);
 		    address.getCustomers().add(customer);
-		    
+		    customer.getAddresses().add(address);
 		    Transaction tx = session.beginTransaction();
 		    session.save(address);
+		    session.save(customer);
 		    tx.commit(); 
 		    session.close();
-		  
+		    Set<Customer> addressCustomers = address.getCustomers();
+		    for (Customer c : addressCustomers) {
+		    	System.out.println(c.getName());
+		    }
+		    
 		    return address;
 		}
 		
