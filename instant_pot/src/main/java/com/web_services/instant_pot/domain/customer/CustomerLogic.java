@@ -27,7 +27,7 @@ public class CustomerLogic {
 		return customers;
 	}
 	
-	public Customer createCustomer(String firstName, String lastName, String email, long phoneNumber) {
+	public Customer createCustomer(String firstName, String lastName, String email, Long phoneNumber) {
 		CustomerDAL cd = new CustomerDAL();
 		return cd.createCustomer(firstName, lastName, email, phoneNumber);
 	}

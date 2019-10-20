@@ -36,8 +36,8 @@ public class CustomerDAL {
 		return customerSet;
 	}
 	
-	public Customer createCustomer(String firstName, String lastName, String email, long phoneNumber) {
-		Customer newCust = new Customer();
+	public Customer createCustomer(String firstName, String lastName, String email, Long phoneNumber) {
+		Customer newCust = new Customer(firstName, lastName, email, phoneNumber);
 		
 		SessionFactory sf = (SessionFactory) new Configuration().configure("hibernate.cfg.xml").buildSessionFactory();
 		Session session = sf.openSession();
