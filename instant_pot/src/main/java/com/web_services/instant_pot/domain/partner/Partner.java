@@ -21,7 +21,7 @@ import com.web_services.instant_pot.domain.address.AddressOwner;
 import com.web_services.instant_pot.domain.product.Product;
 
 @Entity
-public class Partner extends AddressOwner implements Serializable {
+public class Partner implements Serializable {
 	@Id
 	@Column (name="partner_id")
 	@GeneratedValue(strategy = GenerationType.SEQUENCE)

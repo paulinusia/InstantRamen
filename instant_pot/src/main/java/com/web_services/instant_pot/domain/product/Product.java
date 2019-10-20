@@ -28,10 +28,6 @@ public class Product implements Serializable {
 	@GeneratedValue(strategy = GenerationType.SEQUENCE)
 	private Long id;
 	
-	private String name;
-
-	private double price;
-	
 	@OneToMany(cascade = CascadeType.ALL, mappedBy="product")
 	private Set<Review> reviews = new HashSet<Review>();
 	
@@ -39,29 +35,24 @@ public class Product implements Serializable {
 	@JoinColumn(name = "fk_product_owner")
 	private Partner productOwner;
 	
-	private String description;
-	
 	@ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
 	@JoinTable(name = "product_purchase", joinColumns = { @JoinColumn(name = "product_id" ) }, inverseJoinColumns = { @JoinColumn(name = "purchase_id") })
 	private Set<Purchase> purchases;
-	private Partner partner;
+	
 	private String productName;
+	
 	private String productDescription;
+	
 	private double cost;
 
-
+	public Product() {}
 	
-
-	public Product() {
-	}
-	
-	public Product(Partner partner, String productName, String productDescription, double cost) {
-		this.partner = partner;
+	public Product(Partner productOwner, String productName, String productDescription, double cost) {
+		this.productOwner = productOwner;
 		this.productName = productName;
 		this.productDescription = productDescription;
 		this.cost = cost;
 		}
-
 
 	
 	public Long getId() {
@@ -70,6 +61,34 @@ public class Product implements Serializable {
 
 	public void setId(Long id) {
 		this.id = id;
+	}
+
+	public String getProductName() {
+		return productName;
+	}
+
+	public void setProductName(String productName) {
+		this.productName = productName;
+	}
+
+	public String getProductDescription() {
+		return productDescription;
+	}
+
+	public void setProductDescription(String productDescription) {
+		this.productDescription = productDescription;
+	}
+
+	public double getCost() {
+		return cost;
+	}
+
+	public void setCost(double cost) {
+		this.cost = cost;
+	}
+
+	public void setReviews(Set<Review> reviews) {
+		this.reviews = reviews;
 	}
 
 	public Partner getProductOwner() {
@@ -88,22 +107,6 @@ public class Product implements Serializable {
 		this.purchases = purchases;
 	}
 
-	public String getName() {
-		return name;
-	}
-
-	public void setName(String name) {
-		this.name = name;
-	}
-
-	public double getPrice() {
-		return price;
-	}
-
-	public void setPrice(double price) {
-		this.price = price;
-	}
-
 	public Set<Review> getReviews() {
 		return reviews;
 	}
@@ -111,17 +114,9 @@ public class Product implements Serializable {
 	public void setReviews(HashSet<Review> reviews) {
 		this.reviews = reviews;
 	}
-
-	public String getDescription() {
-		return description;
-	}
-
-	public void setDescription(String description) {
-		this.description = description;
-	}
 	
 	@Override
 	public String toString() {
-		return "Product Details: ID=" + this.id + ", Name=" + this.name + ", Price=" + this.price + ", Description= " + this.description + ", Product Owner= " + this.productOwner.getName();
+		return "Product Details: ID=" + this.id + ", Name=" + this.productName + ", Price=" + this.cost + ", Description= " + this.productDescription + ", Product Owner= " + this.productOwner.getName();
 	}
 }

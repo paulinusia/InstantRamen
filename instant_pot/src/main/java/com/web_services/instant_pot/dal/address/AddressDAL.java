@@ -33,9 +33,9 @@ public class AddressDAL {
 		public Address createAddress(String streetAddress, String city, String state, String zip) {
 			Address newAddress = new Address(streetAddress, city, state, zip);
 			
-			SessionFactory sf = (SessionFactory) new Configuration().configure("hibernate.cfg.xml").buildSessionFactory();
+			SessionFactory sf = (SessionFactory) new Configuration().configure().buildSessionFactory();
 			Session session = sf.openSession();
-			
+            
 			Transaction tx = session.beginTransaction();
 			session.save(newAddress);
 			tx.commit();
@@ -68,7 +68,7 @@ public class AddressDAL {
 		    
 		    Customer customer = session.get(Customer.class, customerID);
 		    Address address = session.get(Address.class, addressID);
-		    address.getAddressOwners().remove(customer);
+		    address.getCustomers().remove(customer);
 		    
 		    Transaction tx = session.beginTransaction();
 		    session.save(address);
@@ -84,7 +84,7 @@ public class AddressDAL {
 		    
 		    Partner partner = session.get(Partner.class, partnerID);
 		    Address address = session.get(Address.class, addressID);
-		    address.getAddressOwners().remove(partner);
+		    address.getPartners().remove(partner);
 		    
 		    Transaction tx = session.beginTransaction();
 		    session.save(address);
@@ -100,7 +100,7 @@ public class AddressDAL {
 		    
 		    Customer customer = session.get(Customer.class, customerID);
 		    Address address = session.get(Address.class, addressID);
-		    address.getAddressOwners().add(customer);
+		    address.getCustomers().add(customer);
 		    
 		    Transaction tx = session.beginTransaction();
 		    session.save(address);
@@ -116,7 +116,7 @@ public class AddressDAL {
 		    
 		    Partner partner = session.get(Partner.class, partnerID);
 		    Address address = session.get(Address.class, addressID);
-		    address.getAddressOwners().add(partner);
+		    address.getPartners().add(partner);
 		    
 		    Transaction tx = session.beginTransaction();
 		    session.save(address);

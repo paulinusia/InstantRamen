@@ -11,9 +11,16 @@ import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 
+import org.hibernate.annotations.AnyMetaDef;
+import org.hibernate.annotations.ManyToAny;
+import org.hibernate.annotations.MetaValue;
+
+import com.web_services.instant_pot.domain.customer.Customer;
+import com.web_services.instant_pot.domain.partner.Partner;
 import com.web_services.instant_pot.domain.purchase.Purchase;
 
 @Entity
@@ -32,7 +39,10 @@ public class Address implements Serializable {
 	private String zip;
 	
 	@ManyToMany(fetch = FetchType.LAZY, mappedBy = "addresses")
-	private Set<AddressOwner> addressOwners = new HashSet<AddressOwner>();
+	private Set<Customer> customers = new HashSet<Customer>();
+	
+	@ManyToMany(fetch = FetchType.LAZY, mappedBy = "addresses")
+	private Set<Partner> partners = new HashSet<Partner>();
 	
 	@OneToMany(cascade = CascadeType.ALL, mappedBy="address")
 	private Set<Purchase> purchases = new HashSet<Purchase>();
@@ -52,6 +62,22 @@ public class Address implements Serializable {
 
 	public void setId(Long id) {
 		this.id = id;
+	}
+
+	public Set<Customer> getCustomers() {
+		return customers;
+	}
+
+	public void setCustomers(Set<Customer> customers) {
+		this.customers = customers;
+	}
+
+	public Set<Partner> getPartners() {
+		return partners;
+	}
+
+	public void setPartners(Set<Partner> partners) {
+		this.partners = partners;
 	}
 
 	public String getStreetAddress() {
@@ -86,13 +112,13 @@ public class Address implements Serializable {
 		this.zip = zip;
 	}
 
-	public Set<AddressOwner> getAddressOwners() {
-		return addressOwners;
-	}
-
-	public void setAddressOwners(Set<AddressOwner> addressOwners) {
-		this.addressOwners = addressOwners;
-	}
+//	public Set<AddressOwner> getAddressOwners() {
+//		return addressOwners;
+//	}
+//
+//	public void setAddressOwners(Set<AddressOwner> addressOwners) {
+//		this.addressOwners = addressOwners;
+//	}
 
 	public Set<Purchase> getPurchases() {
 		return purchases;

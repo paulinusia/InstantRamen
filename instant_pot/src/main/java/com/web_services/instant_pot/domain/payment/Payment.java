@@ -27,7 +27,6 @@ public class Payment implements Serializable {
 	@GeneratedValue(strategy = GenerationType.SEQUENCE)
 	private Long id;
 
-	
 	private String type;
 	
 	private Long cardNumber;

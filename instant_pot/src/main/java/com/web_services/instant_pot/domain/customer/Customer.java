@@ -23,7 +23,7 @@ import com.web_services.instant_pot.domain.purchase.Purchase;
 import com.web_services.instant_pot.domain.review.Review;
 
 @Entity
-public class Customer extends AddressOwner implements Serializable {
+public class Customer implements Serializable {
 	@Id
 	@Column (name="customer_id")
 	@GeneratedValue(strategy = GenerationType.SEQUENCE)
