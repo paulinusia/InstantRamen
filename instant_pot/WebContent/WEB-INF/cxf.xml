@@ -16,7 +16,7 @@
       	
   <jaxrs:server name="InstantPotService" address="http://localhost:8081">
 		<jaxrs:serviceBeans>
-			<ref bean="instantPotServiceRest" />
+			<ref bean="productServiceRest" />
 		</jaxrs:serviceBeans>
 		<jaxrs:providers>
 			<ref bean="jacksonProvider" />

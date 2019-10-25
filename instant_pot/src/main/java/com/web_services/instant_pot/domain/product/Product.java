@@ -37,7 +37,7 @@ public class Product implements Serializable {
 	
 	@ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
 	@JoinTable(name = "product_purchase", joinColumns = { @JoinColumn(name = "product_id" ) }, inverseJoinColumns = { @JoinColumn(name = "purchase_id") })
-	private Set<Purchase> purchases = new HashSet<>();
+	private Set<Purchase> purchases = new HashSet<Purchase>();
 	
 	private String productName;
 	
