@@ -10,7 +10,7 @@ import com.web_services.instant_pot.service.review.representation.ReviewRequest;
 
 public class ReviewActivity {
 	
-	public ReviewRepresentation getReviewByID(long reviewID) {
+	public ReviewRepresentation getReviewByID(Long reviewID) {
 		ReviewLogic rd = new ReviewLogic();
 		Review review = rd.getReviewByID(reviewID);
 		
@@ -25,7 +25,7 @@ public class ReviewActivity {
 		return rRep;
 	}
 	
-	public HashSet<ReviewRepresentation> getAllReviewForCustomer(long custID){
+	public HashSet<ReviewRepresentation> getAllReviewForCustomer(Long custID){
 		ReviewLogic rd = new ReviewLogic();
 		HashSet<Review> reviewSet = new HashSet<Review>();
 		HashSet<ReviewRepresentation> reviewRepresentations = new HashSet<ReviewRepresentation>();
@@ -48,7 +48,7 @@ public class ReviewActivity {
 	
 
 
-	public HashSet<ReviewRepresentation> getAllReviewForProduct(long productID){
+	public HashSet<ReviewRepresentation> getAllReviewForProduct(Long productID){
 		ReviewLogic rd = new ReviewLogic();
 		HashSet<Review> reviewProductSet = new HashSet<Review>();
 		

@@ -23,7 +23,7 @@ public class ReviewResource implements ReviewService {
 	@GET
 	@Produces({"application/xml" , "application/json"})
 	@Path("/reviews/{reviewID}")
-	public 	ReviewRepresentation getReviewByID(long reviewID) {
+	public 	ReviewRepresentation getReviewByID(Long reviewID) {
 		System.out.println("GET METHOD Request for Review by ID .............");
 		ReviewActivity rAct = new ReviewActivity();
 		return rAct.getReviewByID(reviewID);
@@ -32,7 +32,7 @@ public class ReviewResource implements ReviewService {
 	@GET
 	@Produces({"application/xml" , "application/json"})
 	@Path("/reviews/{custID}")
-	public HashSet<ReviewRepresentation> getAllReviewForCustomer(long custID){
+	public HashSet<ReviewRepresentation> getAllReviewForCustomer(Long custID){
 		System.out.println("GET METHOD Request for all reviews by customer .............");
 	ReviewActivity rAct = new ReviewActivity();
 	return rAct.getAllReviewForCustomer(custID);
@@ -41,7 +41,7 @@ public class ReviewResource implements ReviewService {
 	@GET
 	@Produces({"application/xml" , "application/json"})
 	@Path("/reviews/{productID}")
-	public HashSet<ReviewRepresentation> getAllReviewForProduct(long productID){
+	public HashSet<ReviewRepresentation> getAllReviewForProduct(Long productID){
 	System.out.println("GET METHOD Request for all reviews for product .............");
 	ReviewActivity rAct = new ReviewActivity();
 	return rAct.getAllReviewForProduct(productID);

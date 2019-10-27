@@ -6,9 +6,9 @@ import com.web_services.instant_pot.service.review.representation.ReviewRepresen
 import com.web_services.instant_pot.service.review.representation.ReviewRequest;
 
 public interface ReviewService {
-	public ReviewRepresentation getReviewByID(long reviewID);
-	public HashSet<ReviewRepresentation> getAllReviewForCustomer(long custID);
-	public HashSet<ReviewRepresentation> getAllReviewForProduct(long productID);
+	public ReviewRepresentation getReviewByID(Long reviewID);
+	public HashSet<ReviewRepresentation> getAllReviewForCustomer(Long custID);
+	public HashSet<ReviewRepresentation> getAllReviewForProduct(Long productID);
 	public ReviewRepresentation addReview(ReviewRequest request);
 	//Response deleteReview(Long reviewID);
 	
