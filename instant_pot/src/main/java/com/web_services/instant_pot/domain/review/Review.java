@@ -35,6 +35,8 @@ public class Review implements Serializable {
 	
 	private String body;
 	
+
+	
 	public Review() {
 		// TODO Auto-generated constructor stub
 	}
@@ -62,6 +64,7 @@ public class Review implements Serializable {
 	public void setProduct(Product product) {
 		this.product = product;
 	}
+	
 
 	public Customer getCustomer() {
 		return customer;
@@ -96,10 +99,7 @@ public class Review implements Serializable {
 		this.timestamp = timestamp;
 	}
 	
-	public void setReviewBody(String body) {
-		this.body = body;
-		
-	}
+
 	
 	
 	@Override

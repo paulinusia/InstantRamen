@@ -68,6 +68,11 @@ public class Purchase implements Serializable {
 	public void setPurchasePayment(Payment purchasePayment) {
 		this.purchasePayment = purchasePayment;
 	}
+	
+	public Payment getPurchasePayment() {
+		return purchasePayment;
+	}
+	
 	public Set<Product> getProducts() {
 		return products;
 	}

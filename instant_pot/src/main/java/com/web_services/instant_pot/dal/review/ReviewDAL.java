@@ -36,10 +36,10 @@ public class ReviewDAL {
 
 	    Query query = session.createQuery("from Review where customer_id=:custID").setParameter("custID", custID);
 	    List reviews = query.list();
-	    HashSet<Review> ReviewSet = new HashSet<Review>(reviews);
+	    HashSet<Review> reviewSet = new HashSet<Review>(reviews);
 	    
 		session.close();
-		return ReviewSet;
+		return reviewSet;
 	}
 	
 	

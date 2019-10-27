@@ -24,7 +24,7 @@ public class ReviewLogic {
 		return rd.getAllReviewForProduct(productID);
 	}
 	
-	public Review addReview(Long custID, Long productID, int rating, String reviewBody, Long timestamp) {
+	public Review addReview(long custID, Long productID, int rating, String reviewBody, Long timestamp) {
 		ReviewDAL rd = new ReviewDAL();
 		return rd.addReview(custID, productID, rating, reviewBody, timestamp);
 	}

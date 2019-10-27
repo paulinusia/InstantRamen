@@ -15,7 +15,7 @@ import com.web_services.instant_pot.domain.product.Product;
 
 
 public class ProductDAL {
-	public Product getProductByID(int id) {
+	public Product getProductByID(long id) {
 		Product product = new Product();
 		SessionFactory sf = (SessionFactory) new Configuration().configure("hibernate.cfg.xml").buildSessionFactory();
 	    Session session = sf.openSession();
