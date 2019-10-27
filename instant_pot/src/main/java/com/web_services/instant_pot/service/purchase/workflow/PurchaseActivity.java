@@ -55,14 +55,36 @@ public class PurchaseActivity {
 	
 	
 	
-	public Purchase updatePurchaseDetail(Long id, String purchaseDetail) {
-		PurchaseDAL purchase = new PurchaseDAL();
-	    return purchase.updatePurchaseDetail(id,purchaseDetail);
+	public PurchaseRepresentation updatePurchaseDetail(Long id, String purchaseDetail) {
+		Purchase purchase = pl.getPurchaseByID(id);
+		
+		PurchaseRepresentation pRep = new PurchaseRepresentation();
+		
+		pRep.setPurchaseDetail(purchaseDetail);
+		
+		pRep.setAddress(purchase.getAddress());
+		pRep.setPurchaseOwner(purchase.getPurchaseOwner());
+		pRep.setProducts(purchase.getProducts());
+		pRep.setPurchaseStatus(purchase.getPurchaseStatus());
+		pRep.setPurchasePayment(purchase.getPurchasePayment());
+		
+		return pRep;
 	}
 	
-	public Purchase updatePurchaseStatus(Long id, String purchaseStatus) {
-		PurchaseDAL purchase = new PurchaseDAL();
-	    return purchase.updatePurchaseDetail(id,purchaseStatus);
+	public PurchaseRepresentation updatePurchaseStatus(Long id, String purchaseStatus) {
+		Purchase purchase = pl.getPurchaseByID(id);
+		
+		PurchaseRepresentation pRep = new PurchaseRepresentation();
+		
+		pRep.setPurchaseStatus(purchaseStatus);
+		pRep.setAddress(purchase.getAddress());
+		pRep.setPurchaseOwner(purchase.getPurchaseOwner());
+		pRep.setProducts(purchase.getProducts());
+		pRep.setPurchasePayment(purchase.getPurchasePayment());
+		pRep.setPurchaseDetail(purchase.getPurchaseDetail());
+		
+		return pRep;
+		
 	}
 	
 	
