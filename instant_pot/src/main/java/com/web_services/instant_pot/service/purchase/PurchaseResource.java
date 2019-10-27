@@ -6,6 +6,8 @@ import javax.ws.rs.Consumes;
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
+import javax.ws.rs.core.Response;
+import javax.ws.rs.core.Response.Status;
 
 import com.web_services.instant_pot.domain.address.Address;
 import com.web_services.instant_pot.domain.customer.Customer;
@@ -41,19 +43,27 @@ public class PurchaseResource implements PurchaseService{
 	@Consumes({"application/xml" , "application/json"})
 	@Produces({"application/xml" , "application/json"})
 	@Path("/purchase")
-	public PurchaseRepresentation updatePurchaseDetail(Long id, String purchaseDetail) {
+	public Response updatePurchaseDetail(Long id, String purchaseDetail) {
 		System.out.println("GET METHOD Request for updating purchase detail .............");
 		PurchaseActivity pAct = new PurchaseActivity();
-		return pAct.updatePurchaseDetail(id, purchaseDetail);
+		pAct.updatePurchaseDetail(id, purchaseDetail);
+		if (pAct.equals("OK")) {
+			return Response.status(Status.OK).build();
+		}
+		return null;
 	}
 	
 	@Consumes({"application/xml" , "application/json"})
 	@Produces({"application/xml" , "application/json"})
 	@Path("/purchase")
-	public PurchaseRepresentation updatePurchaseStatus(Long id, String purchaseStatus) {
+	public Response updatePurchaseStatus(Long id, String purchaseStatus) {
 		System.out.println("GET METHOD Request for updating purchase status .............");
 		PurchaseActivity pAct = new PurchaseActivity();	
-		return pAct.updatePurchaseStatus(id, purchaseStatus);
+		pAct.updatePurchaseStatus(id, purchaseStatus);
+		if (pAct.equals("OK")) {
+			return Response.status(Status.OK).build();
+		}
+		return null;
 	}
 	
 	@Consumes({"application/xml" , "application/json"})

@@ -16,10 +16,10 @@ import com.web_services.instant_pot.service.purchase.representation.PurchaseRepr
 public interface PurchaseService {
 	
 
-	PurchaseRepresentation getPurchaseByID(Long id);
-	PurchaseRepresentation newPurchase(Customer purchaseOwner, HashSet<Product> products, String purchaseDetail, String purchaseStatus, Payment purchasePayment, Address address);
-	PurchaseRepresentation updatePurchaseDetail(Long id, String purchaseDetail);
-	PurchaseRepresentation updatePurchaseStatus(Long id, String purchaseStatus);
-	HashSet<ProductRepresentation> getPurchasesFromCustomer(Long customerID);
+	public PurchaseRepresentation getPurchaseByID(Long id);
+	public PurchaseRepresentation newPurchase(Customer purchaseOwner, HashSet<Product> products, String purchaseDetail, String purchaseStatus, Payment purchasePayment, Address address);
+	//public Response updatePurchaseDetail(Long id, String purchaseDetail);
+	//public Response updatePurchaseStatus(Long id, String purchaseStatus);
+	public HashSet<ProductRepresentation> getPurchasesFromCustomer(Long customerID);
 	
 }
