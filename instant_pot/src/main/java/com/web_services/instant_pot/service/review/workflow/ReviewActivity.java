@@ -84,19 +84,12 @@ public class ReviewActivity {
 		
 	}
 	
-	public static ReviewRepresentation deleteReview(long reviewID) {
+	public String deleteReview(long reviewID) {
 		ReviewLogic rd = new ReviewLogic();
 		
-		ReviewLogic rLogic = new ReviewLogic();
-		Review review = rLogic.deleteReview(reviewID);
+		rd.deleteReview(reviewID);
 		
-		ReviewRepresentation rRes = new ReviewRepresentation();
-		rRes.setId(review.getId());
-		rRes.setCustomer(review.getCustomer());
-		rRes.setProduct(review.getProduct());
-		rRes.setReviewRating(review.getReviewRating());
-		rRes.setBody(review.getBody());	
-		return rRes;
+		return "OK";
 	}
 	
 	

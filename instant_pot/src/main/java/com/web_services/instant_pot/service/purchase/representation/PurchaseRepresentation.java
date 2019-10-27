@@ -86,13 +86,6 @@ public class PurchaseRepresentation {
 		this.purchaseStatus = purchaseStatus;
 	}
 	
-	public void setPurchaseAddress(Address address) {
-		this.address = address;
-	}
-	
-	public Address getPurchaseAddress() {
-		return address;
-		
-	}
+
 
 }
