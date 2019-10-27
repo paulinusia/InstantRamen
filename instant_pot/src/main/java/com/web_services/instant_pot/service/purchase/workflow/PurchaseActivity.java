@@ -4,6 +4,8 @@ import java.util.HashSet;
 import java.util.Iterator;
 import java.util.Set;
 
+import com.web_services.instant_pot.dal.purchase.PurchaseDAL;
+import com.web_services.instant_pot.domain.product.ProductLogic;
 import com.web_services.instant_pot.domain.purchase.Purchase;
 import com.web_services.instant_pot.domain.purchase.PurchaseLogic;
 import com.web_services.instant_pot.service.purchase.representation.PurchaseRepresentation;
@@ -12,9 +14,11 @@ import com.web_services.instant_pot.service.purchase.representation.PurchaseRepr
 
 public class PurchaseActivity {
 
-	public Set<PurchaseRepresentation> getProducts() {
-		// TODO Auto-generated method stub
-		return null;
+	private static PurchaseLogic pl = new PurchaseLogic();
+	
+	public PurchaseRepresentation getPurchaseByID(Long id) {
+		PurchaseDAL pd = new PurchaseDAL();
+		
 	}
 
 }

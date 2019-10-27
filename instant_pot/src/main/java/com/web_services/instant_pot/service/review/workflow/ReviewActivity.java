@@ -28,11 +28,22 @@ public class ReviewActivity {
 	public HashSet<ReviewRepresentation> getAllReviewForCustomer(long custID){
 		ReviewLogic rd = new ReviewLogic();
 		HashSet<Review> reviewSet = new HashSet<Review>();
-		HashSet<ReviewRepresentation> reviewResponseSet = new HashSet<ReviewRepresentation>();
+		HashSet<ReviewRepresentation> reviewRepresentations = new HashSet<ReviewRepresentation>();
 		reviewSet = rd.getAllReviewForCustomer(custID);
-		reviewResponseSet = (HashSet<ReviewRepresentation>) reviewSet.clone();
-		 
-		return reviewResponseSet;
+		
+		for (Review review : reviewSet) {
+			ReviewRepresentation reviewRepresentation = new ReviewRepresentation();
+			reviewRepresentation.setBody(review.getBody());
+			reviewRepresentation.setCustomer(review.getCustomer());
+			reviewRepresentation.setId(review.getId());
+			reviewRepresentation.setProduct(review.getProduct());
+			reviewRepresentation.setReviewRating(review.getReviewRating());
+			reviewRepresentation.setTimestamp(review.getTimestamp());
+		}
+		
+		
+		return reviewRepresentations;
+		
 	}
 	
 
@@ -40,11 +51,21 @@ public class ReviewActivity {
 	public HashSet<ReviewRepresentation> getAllReviewForProduct(long productID){
 		ReviewLogic rd = new ReviewLogic();
 		HashSet<Review> reviewProductSet = new HashSet<Review>();
-		HashSet<ReviewRepresentation> reviewResponseProductSet = new HashSet<ReviewRepresentation>();
-		reviewProductSet = rd.getAllReviewForProduct(productID);
-		reviewResponseProductSet = (HashSet<ReviewRepresentation>) reviewProductSet.clone();
 		
-		return reviewResponseProductSet;
+		HashSet<ReviewRepresentation> reviewRepresentations = new HashSet<ReviewRepresentation>();
+		reviewProductSet = rd.getAllReviewForProduct(productID);
+		for (Review review : reviewProductSet) {
+			ReviewRepresentation reviewRepresentation = new ReviewRepresentation();
+			reviewRepresentation.setBody(review.getBody());
+			reviewRepresentation.setCustomer(review.getCustomer());
+			reviewRepresentation.setId(review.getId());
+			reviewRepresentation.setProduct(review.getProduct());
+			reviewRepresentation.setReviewRating(review.getReviewRating());
+			reviewRepresentation.setTimestamp(review.getTimestamp());
+		}
+		
+		
+		return reviewRepresentations;
 	}
 	
 	
