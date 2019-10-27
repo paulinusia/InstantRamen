@@ -2,7 +2,9 @@ package com.web_services.instant_pot.service.review;
 
 import javax.jws.WebService;
 import javax.ws.rs.Consumes;
+import javax.ws.rs.DELETE;
 import javax.ws.rs.GET;
+import javax.ws.rs.POST;
 import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.Response;
@@ -35,6 +37,7 @@ public class ReviewResource implements ReviewService {
 	ReviewActivity rAct = new ReviewActivity();
 	return rAct.getAllReviewForCustomer(custID);
 	}
+	
 	@GET
 	@Produces({"application/xml" , "application/json"})
 	@Path("/reviews/{productID}")
@@ -44,7 +47,7 @@ public class ReviewResource implements ReviewService {
 	return rAct.getAllReviewForProduct(productID);
 	
 	}
-	@GET
+	@POST
 	@Produces({"application/xml" , "application/json"})
 	@Path("/reviews")
 	public ReviewRepresentation addReview(ReviewRequest request) {
@@ -52,7 +55,8 @@ public class ReviewResource implements ReviewService {
 		ReviewActivity rAct = new ReviewActivity();
 		return rAct.addReview(request);
 	}
-	@GET
+	
+	@DELETE
 	@Produces({"application/xml" , "application/json"})
 	@Path("/reviews")
 	public Response deleteReview(Long reviewID) {

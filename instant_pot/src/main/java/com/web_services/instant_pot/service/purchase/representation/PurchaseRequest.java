@@ -44,7 +44,8 @@ public class PurchaseRequest {
 	public String getPurchaseStatus() {
 		return purchaseStatus;
 	}
-
+	
+	//Allows people to cancel their order if necessary
 	public void setPurchaseStatus(String purchaseStatus) {
 		this.purchaseStatus = purchaseStatus;
 	}

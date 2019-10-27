@@ -4,6 +4,8 @@ import java.util.Set;
 
 import javax.ws.rs.Consumes;
 import javax.ws.rs.GET;
+import javax.ws.rs.POST;
+import javax.ws.rs.PUT;
 import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.Response;
@@ -30,7 +32,7 @@ public class PurchaseResource implements PurchaseService{
 		PurchaseActivity pAct = new PurchaseActivity();
 		return pAct.getPurchaseByID(purchaseID);
 	}
-	@GET
+	@POST
 	@Consumes({"application/xml" , "application/json"})
 	@Produces({"application/xml" , "application/json"})
 	@Path("/purchase")
@@ -39,7 +41,7 @@ public class PurchaseResource implements PurchaseService{
 		PurchaseActivity pAct = new PurchaseActivity();	
 		return pAct.newPurchase(purchaseOwner, products, purchaseDetail, purchaseStatus, purchasePayment, address);
 	}
-	@GET
+	@PUT
 	@Consumes({"application/xml" , "application/json"})
 	@Produces({"application/xml" , "application/json"})
 	@Path("/purchase")
@@ -52,7 +54,7 @@ public class PurchaseResource implements PurchaseService{
 		}
 		return null;
 	}
-	@GET
+	@PUT
 	@Consumes({"application/xml" , "application/json"})
 	@Produces({"application/xml" , "application/json"})
 	@Path("/purchase")

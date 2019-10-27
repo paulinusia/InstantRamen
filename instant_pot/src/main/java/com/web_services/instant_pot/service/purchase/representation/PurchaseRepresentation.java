@@ -53,6 +53,7 @@ public class PurchaseRepresentation {
 	public void setProducts(Set<Product> products) {
 		this.products = products;
 	}
+	
 
 	public Long getId() {
 		return id;
@@ -78,6 +79,7 @@ public class PurchaseRepresentation {
 		this.purchaseDetail = purchaseDetail;
 	}
 
+	//Allows people to cancel their order if necessary
 	public String getPurchaseStatus() {
 		return purchaseStatus;
 	}
