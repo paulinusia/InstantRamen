@@ -21,7 +21,7 @@ import com.web_services.instant_pot.service.purchase.workflow.PurchaseActivity;
 @Path("/productservice/")
 public class PurchaseResource implements PurchaseService{
 
-@GET
+	@GET
 	@Consumes({"application/xml" , "application/json"})
 	@Produces({"application/xml" , "application/json"})
 	@Path("/purchase/{purchaseID}")
@@ -30,7 +30,7 @@ public class PurchaseResource implements PurchaseService{
 		PurchaseActivity pAct = new PurchaseActivity();
 		return pAct.getPurchaseByID(purchaseID);
 	}
-
+	@GET
 	@Consumes({"application/xml" , "application/json"})
 	@Produces({"application/xml" , "application/json"})
 	@Path("/purchase")
@@ -39,7 +39,7 @@ public class PurchaseResource implements PurchaseService{
 		PurchaseActivity pAct = new PurchaseActivity();	
 		return pAct.newPurchase(purchaseOwner, products, purchaseDetail, purchaseStatus, purchasePayment, address);
 	}
-	
+	@GET
 	@Consumes({"application/xml" , "application/json"})
 	@Produces({"application/xml" , "application/json"})
 	@Path("/purchase")
@@ -52,7 +52,7 @@ public class PurchaseResource implements PurchaseService{
 		}
 		return null;
 	}
-	
+	@GET
 	@Consumes({"application/xml" , "application/json"})
 	@Produces({"application/xml" , "application/json"})
 	@Path("/purchase")
@@ -65,7 +65,7 @@ public class PurchaseResource implements PurchaseService{
 		}
 		return null;
 	}
-	
+	@GET
 	@Consumes({"application/xml" , "application/json"})
 	@Produces({"application/xml" , "application/json"})
 	@Path("/purchase/{customerID}")

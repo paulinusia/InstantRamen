@@ -18,8 +18,7 @@ import com.web_services.instant_pot.service.review.workflow.ReviewActivity;
 @WebService
 public class ReviewResource implements ReviewService {
 	
-@GET
-
+	@GET
 	@Produces({"application/xml" , "application/json"})
 	@Path("/reviews/{reviewID}")
 	public 	ReviewRepresentation getReviewByID(long reviewID) {
@@ -28,7 +27,7 @@ public class ReviewResource implements ReviewService {
 		return rAct.getReviewByID(reviewID);
 		
 	}
-	
+	@GET
 	@Produces({"application/xml" , "application/json"})
 	@Path("/reviews/{custID}")
 	public HashSet<ReviewRepresentation> getAllReviewForCustomer(long custID){
@@ -36,7 +35,7 @@ public class ReviewResource implements ReviewService {
 	ReviewActivity rAct = new ReviewActivity();
 	return rAct.getAllReviewForCustomer(custID);
 	}
-	
+	@GET
 	@Produces({"application/xml" , "application/json"})
 	@Path("/reviews/{productID}")
 	public HashSet<ReviewRepresentation> getAllReviewForProduct(long productID){
@@ -45,7 +44,7 @@ public class ReviewResource implements ReviewService {
 	return rAct.getAllReviewForProduct(productID);
 	
 	}
-	
+	@GET
 	@Produces({"application/xml" , "application/json"})
 	@Path("/reviews")
 	public ReviewRepresentation addReview(ReviewRequest request) {
@@ -53,10 +52,11 @@ public class ReviewResource implements ReviewService {
 		ReviewActivity rAct = new ReviewActivity();
 		return rAct.addReview(request);
 	}
-	
+	@GET
 	@Produces({"application/xml" , "application/json"})
 	@Path("/reviews")
 	public Response deleteReview(Long reviewID) {
+		System.out.println("GET METHOD Request for deleting a review .............");
 		ReviewActivity rAct = new ReviewActivity();
 		if (rAct.equals("OK")) {
 			return Response.status(Status.OK).build();
