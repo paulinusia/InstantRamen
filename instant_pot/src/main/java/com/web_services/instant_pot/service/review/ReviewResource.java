@@ -6,6 +6,7 @@ import javax.ws.rs.DELETE;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
 import javax.ws.rs.Path;
+import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.Response;
 import javax.ws.rs.core.Response.Status;
@@ -23,7 +24,7 @@ public class ReviewResource implements ReviewService {
 	@GET
 	@Produces({"application/xml" , "application/json"})
 	@Path("/reviews/{reviewID}")
-	public 	ReviewRepresentation getReviewByID(Long reviewID) {
+	public 	ReviewRepresentation getReviewByID(@PathParam("id") Long reviewID) {
 		System.out.println("GET METHOD Request for Review by ID .............");
 		ReviewActivity rAct = new ReviewActivity();
 		return rAct.getReviewByID(reviewID);
@@ -32,7 +33,7 @@ public class ReviewResource implements ReviewService {
 	@GET
 	@Produces({"application/xml" , "application/json"})
 	@Path("/reviews/{custID}")
-	public HashSet<ReviewRepresentation> getAllReviewForCustomer(Long custID){
+	public HashSet<ReviewRepresentation> getAllReviewForCustomer(@PathParam("custID") Long custID){
 		System.out.println("GET METHOD Request for all reviews by customer .............");
 	ReviewActivity rAct = new ReviewActivity();
 	return rAct.getAllReviewForCustomer(custID);
@@ -41,7 +42,7 @@ public class ReviewResource implements ReviewService {
 	@GET
 	@Produces({"application/xml" , "application/json"})
 	@Path("/reviews/{productID}")
-	public HashSet<ReviewRepresentation> getAllReviewForProduct(Long productID){
+	public HashSet<ReviewRepresentation> getAllReviewForProduct(@PathParam("productID") Long productID){
 	System.out.println("GET METHOD Request for all reviews for product .............");
 	ReviewActivity rAct = new ReviewActivity();
 	return rAct.getAllReviewForProduct(productID);
@@ -59,7 +60,7 @@ public class ReviewResource implements ReviewService {
 	@DELETE
 	@Produces({"application/xml" , "application/json"})
 	@Path("/reviews")
-	public Response deleteReview(Long reviewID) {
+	public Response deleteReview(@PathParam("reviewID") Long reviewID) {
 		System.out.println("GET METHOD Request for deleting a review .............");
 		ReviewActivity rAct = new ReviewActivity();
 		if (rAct.equals("OK")) {

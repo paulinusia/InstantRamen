@@ -7,6 +7,7 @@ import javax.ws.rs.GET;
 import javax.ws.rs.POST;
 import javax.ws.rs.PUT;
 import javax.ws.rs.Path;
+import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.Response;
 import javax.ws.rs.core.Response.Status;
@@ -27,7 +28,7 @@ public class PurchaseResource implements PurchaseService{
 	@Consumes({"application/xml" , "application/json"})
 	@Produces({"application/xml" , "application/json"})
 	@Path("/purchase/{purchaseID}")
-	public PurchaseRepresentation getPurchaseByID(Long purchaseID) {
+	public PurchaseRepresentation getPurchaseByID(@PathParam("id") Long purchaseID) {
 	System.out.println("GET METHOD Request for Purchase by ID .............");
 		PurchaseActivity pAct = new PurchaseActivity();
 		return pAct.getPurchaseByID(purchaseID);
@@ -45,7 +46,7 @@ public class PurchaseResource implements PurchaseService{
 	@Consumes({"application/xml" , "application/json"})
 	@Produces({"application/xml" , "application/json"})
 	@Path("/purchase")
-	public Response updatePurchaseDetail(Long id, String purchaseDetail) {
+	public Response updatePurchaseDetail(@PathParam("id") Long id, String purchaseDetail) {
 		System.out.println("GET METHOD Request for updating purchase detail .............");
 		PurchaseActivity pAct = new PurchaseActivity();
 		pAct.updatePurchaseDetail(id, purchaseDetail);
@@ -58,7 +59,7 @@ public class PurchaseResource implements PurchaseService{
 	@Consumes({"application/xml" , "application/json"})
 	@Produces({"application/xml" , "application/json"})
 	@Path("/purchase")
-	public Response updatePurchaseStatus(Long id, String purchaseStatus) {
+	public Response updatePurchaseStatus(@PathParam("id") Long id, String purchaseStatus) {
 		System.out.println("GET METHOD Request for updating purchase status .............");
 		PurchaseActivity pAct = new PurchaseActivity();	
 		pAct.updatePurchaseStatus(id, purchaseStatus);
@@ -71,7 +72,7 @@ public class PurchaseResource implements PurchaseService{
 	@Consumes({"application/xml" , "application/json"})
 	@Produces({"application/xml" , "application/json"})
 	@Path("/purchase/{customerID}")
-	public HashSet<ProductRepresentation> getPurchasesFromCustomer(Long customerID){
+	public HashSet<ProductRepresentation> getPurchasesFromCustomer(@PathParam("id") Long customerID){
 		System.out.println("GET METHOD Request for Purchases by customer .............");
 		PurchaseActivity pAct = new PurchaseActivity();	
 		return pAct.getPurchasesFromCustomer(customerID);
