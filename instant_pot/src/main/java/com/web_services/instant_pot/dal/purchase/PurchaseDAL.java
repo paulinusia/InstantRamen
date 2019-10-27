@@ -84,7 +84,7 @@ public class PurchaseDAL {
 	}
 
 
-	public HashSet<Product> getAllPurchasesByCustomer(String customerID) {
+	public HashSet<Product> getAllPurchasesByCustomer(Long customerID) {
 		SessionFactory sf = (SessionFactory) new Configuration().configure("hibernate.cfg.xml").buildSessionFactory();
 	    Session session = sf.openSession();
 	    

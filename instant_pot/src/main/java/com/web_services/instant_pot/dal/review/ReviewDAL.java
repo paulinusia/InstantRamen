@@ -73,7 +73,7 @@ public class ReviewDAL {
 	    return review;
 	}
 	
-	public Review deleteReview(long id){
+	public Review deleteReview(Long id){
 		Review r = new Review();
 		
 		SessionFactory sf = (SessionFactory) new Configuration().configure("hibernate.cfg.xml").buildSessionFactory();

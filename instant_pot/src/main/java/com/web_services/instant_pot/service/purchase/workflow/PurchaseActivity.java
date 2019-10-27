@@ -89,7 +89,7 @@ public class PurchaseActivity {
 	
 	
 	
-	public HashSet<ProductRepresentation> getPurchasesFromCustomer(String customer){
+	public HashSet<ProductRepresentation> getPurchasesFromCustomer(Long customer){
 		
 		HashSet<Product> purchases = pl.getPurchasesFromCustomer(customer);
 		HashSet<ProductRepresentation> productRepresentations = new HashSet<ProductRepresentation>();

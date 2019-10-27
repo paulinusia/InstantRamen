@@ -38,7 +38,7 @@ public class PurchaseLogic {
 	    return purchase.updatePurchaseDetail(id,purchaseStatus);
 	}
 	
-	public HashSet<Product> getPurchasesFromCustomer(String customer){
+	public HashSet<Product> getPurchasesFromCustomer(Long customer){
 		PurchaseDAL pd = new PurchaseDAL();
 		return pd.getAllPurchasesByCustomer(customer);
 	}

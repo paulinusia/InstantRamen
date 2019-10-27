@@ -5,6 +5,8 @@ import javax.ws.rs.Consumes;
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
+import javax.ws.rs.core.Response;
+import javax.ws.rs.core.Response.Status;
 
 import java.util.HashSet;
 import java.util.Set;
@@ -30,6 +32,7 @@ public class ReviewResource implements ReviewService {
 	@Produces({"application/xml" , "application/json"})
 	@Path("/reviews/{custID}")
 	public HashSet<ReviewRepresentation> getAllReviewForCustomer(long custID){
+		System.out.println("GET METHOD Request for all reviews by customer .............");
 	ReviewActivity rAct = new ReviewActivity();
 	return rAct.getAllReviewForCustomer(custID);
 	}
@@ -37,6 +40,7 @@ public class ReviewResource implements ReviewService {
 	@Produces({"application/xml" , "application/json"})
 	@Path("/reviews/{productID}")
 	public HashSet<ReviewRepresentation> getAllReviewForProduct(long productID){
+	System.out.println("GET METHOD Request for all reviews for product .............");
 	ReviewActivity rAct = new ReviewActivity();
 	return rAct.getAllReviewForProduct(productID);
 	
@@ -45,14 +49,18 @@ public class ReviewResource implements ReviewService {
 	@Produces({"application/xml" , "application/json"})
 	@Path("/reviews")
 	public ReviewRepresentation addReview(ReviewRequest request) {
+		System.out.println("GET METHOD Request for adding a review .............");
 		ReviewActivity rAct = new ReviewActivity();
 		return rAct.addReview(request);
 	}
 	
 	@Produces({"application/xml" , "application/json"})
 	@Path("/reviews")
-	public ReviewRepresentation deleteReview(long reviewID) {
+	public Response deleteReview(Long reviewID) {
 		ReviewActivity rAct = new ReviewActivity();
-		return rAct.deleteReview(reviewID);
+		if (rAct.equals("OK")) {
+			return Response.status(Status.OK).build();
+		}
+		return null;
 	}
 }

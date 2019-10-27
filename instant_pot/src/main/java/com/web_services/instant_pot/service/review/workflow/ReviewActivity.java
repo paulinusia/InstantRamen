@@ -84,7 +84,7 @@ public class ReviewActivity {
 		
 	}
 	
-	public String deleteReview(long reviewID) {
+	public String deleteReview(Long reviewID) {
 		ReviewLogic rd = new ReviewLogic();
 		
 		rd.deleteReview(reviewID);
