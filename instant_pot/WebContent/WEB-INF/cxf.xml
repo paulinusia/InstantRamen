@@ -12,15 +12,11 @@
   <import resource="classpath:META-INF/cxf/cxf.xml" />
   <import resource="classpath:META-INF/cxf/cxf-servlet.xml" />
   	
-  <bean id="jacksonProvider" class="org.codehaus.jackson.jaxrs.JacksonJaxbJsonProvider" />
       	
   <jaxrs:server name="InstantPotService" address="http://localhost:8081">
 		<jaxrs:serviceBeans>
 			<ref bean="productServiceRest" />
 		</jaxrs:serviceBeans>
-		<jaxrs:providers>
-			<ref bean="jacksonProvider" />
-		</jaxrs:providers> 
 
 		<jaxrs:schemaLocations>
 			<jaxrs:schemaLocation>com.web_services.instant_pot.service.product.representation.ProductRepresentation</jaxrs:schemaLocation>
