@@ -14,7 +14,6 @@ import com.web_services.instant_pot.service.product.workflow.ProductActivity;
 public class ProductResource implements ProductService{
 
 	@GET
-	@Consumes({"application/xml" , "application/json"})
 	@Produces({"application/xml" , "application/json"})
 	@Path("/products")
 	public Set<ProductRepresentation> getProducts() {

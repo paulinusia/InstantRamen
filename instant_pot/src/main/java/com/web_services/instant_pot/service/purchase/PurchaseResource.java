@@ -18,7 +18,7 @@ import com.web_services.instant_pot.service.product.workflow.ProductActivity;
 import com.web_services.instant_pot.service.purchase.representation.PurchaseRepresentation;
 import com.web_services.instant_pot.service.purchase.workflow.PurchaseActivity;
 
-@Path("/productservice/")
+@Path("/purchaseservice/")
 public class PurchaseResource implements PurchaseService{
 
 	@GET
