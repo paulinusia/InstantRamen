@@ -22,7 +22,9 @@ public class ReviewDAL {
 		SessionFactory sf = (SessionFactory) new Configuration().configure("hibernate.cfg.xml").buildSessionFactory();
 	    Session session = sf.openSession();
 	    
-	    review = session.get(Review.class, id);
+	    //create JOIN FETCH (INNER JOIN) to handle Lazy Initialization Exception
+	    Query query = session.createQuery("select body" +  "from public.review body" + "join fetch body.product" + "where review_id=:id", Review.class).setParameter("reviewID", id);
+	    //review = session.get(Review.class, id);
 	    
 		session.close();
 		return review;
@@ -35,7 +37,7 @@ public class ReviewDAL {
 	    
 
 	    Query query = session.createQuery("from Review where customer_id=:custID").setParameter("custID", custID);
-	    List reviews = query.list();
+	    List<Review> reviews = query.list();
 	    HashSet<Review> reviewSet = new HashSet<Review>(reviews);
 	    
 		session.close();

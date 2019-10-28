@@ -32,6 +32,8 @@ public class ReviewResource implements ReviewService {
 		return rAct.getReviewByID(reviewID);
 		
 	}
+	
+	/*
 	@GET
 	@Produces({"application/xml" , "application/json"})
 	@Path("/reviews/{custID}")
@@ -71,4 +73,5 @@ public class ReviewResource implements ReviewService {
 		}
 		return null;
 	}
+	*/
 }
