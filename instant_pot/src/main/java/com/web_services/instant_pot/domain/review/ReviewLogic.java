@@ -9,7 +9,7 @@ import antlr.collections.List;
 
 public class ReviewLogic {
 	
-	public Review getReviewByID(long reviewID) {
+	public Review getReviewByID(Long reviewID) {
 		ReviewDAL rd = new ReviewDAL();
 		return rd.getReviewByID(reviewID);
 	}

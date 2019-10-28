@@ -28,7 +28,7 @@ public class PurchaseResource implements PurchaseService{
 	@Consumes({"application/xml" , "application/json"})
 	@Produces({"application/xml" , "application/json"})
 	@Path("/purchase/{purchaseID}")
-	public PurchaseRepresentation getPurchaseByID(@PathParam("id") Long purchaseID) {
+	public PurchaseRepresentation getPurchaseByID(@PathParam("purchaseID") Long purchaseID) {
 	System.out.println("GET METHOD Request for Purchase by ID .............");
 		PurchaseActivity pAct = new PurchaseActivity();
 		return pAct.getPurchaseByID(purchaseID);

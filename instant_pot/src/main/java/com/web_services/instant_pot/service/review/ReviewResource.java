@@ -18,13 +18,15 @@ import com.web_services.instant_pot.service.review.representation.ReviewRepresen
 import com.web_services.instant_pot.service.review.representation.ReviewRequest;
 import com.web_services.instant_pot.service.review.workflow.ReviewActivity;
 
-@WebService
+@Path("/reviewservice/")
 public class ReviewResource implements ReviewService {
 	
 	@GET
 	@Produces({"application/xml" , "application/json"})
 	@Path("/reviews/{reviewID}")
-	public 	ReviewRepresentation getReviewByID(@PathParam("id") Long reviewID) {
+	public 	ReviewRepresentation getReviewByID(@PathParam("reviewID") Long reviewID) {
+		System.out.println(reviewID);
+//		System.out.println("GET METHOD Request for Review by ID ............." + Long.toString(reviewID));
 		System.out.println("GET METHOD Request for Review by ID .............");
 		ReviewActivity rAct = new ReviewActivity();
 		return rAct.getReviewByID(reviewID);

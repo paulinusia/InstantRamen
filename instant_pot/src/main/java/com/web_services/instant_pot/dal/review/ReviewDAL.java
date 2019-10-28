@@ -16,7 +16,7 @@ import com.web_services.instant_pot.domain.review.Review;
 
 public class ReviewDAL {
 	
-	public Review getReviewByID(long id) {
+	public Review getReviewByID(Long id) {
 		Review review = new Review();
 		
 		SessionFactory sf = (SessionFactory) new Configuration().configure("hibernate.cfg.xml").buildSessionFactory();
