@@ -65,6 +65,7 @@ public class ReviewResource implements ReviewService {
 	public Response deleteReview(@PathParam("reviewID") Long reviewID) {
 		System.out.println("GET METHOD Request for deleting a review .............");
 		ReviewActivity rAct = new ReviewActivity();
+		String res = rAct.deleteReview(reviewID);
 		if (rAct.equals("OK")) {
 			return Response.status(Status.OK).build();
 		}
