@@ -11,10 +11,13 @@ import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
+import javax.persistence.Transient;
 
+import org.codehaus.jackson.annotate.JsonIgnore;
 import org.hibernate.annotations.AnyMetaDef;
 import org.hibernate.annotations.ManyToAny;
 import org.hibernate.annotations.MetaValue;
@@ -38,12 +41,13 @@ public class Address implements Serializable {
 	
 	private String zip;
 	
-	@ManyToMany(fetch = FetchType.LAZY, mappedBy = "addresses")
+	@ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+	@JoinTable(name = "customer_address", joinColumns = { @JoinColumn(name = "address_id" ) }, inverseJoinColumns = { @JoinColumn(name = "customer_id") })
 	private Set<Customer> customers = new HashSet<Customer>();
 	
 	@ManyToMany(fetch = FetchType.LAZY, mappedBy = "addresses")
 	private Set<Partner> partners = new HashSet<Partner>();
-	
+
 	@OneToMany(cascade = CascadeType.ALL, mappedBy="address")
 	private Set<Purchase> purchases = new HashSet<Purchase>();
 	

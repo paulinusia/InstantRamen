@@ -23,8 +23,8 @@ public class ReviewDAL {
 	    Session session = sf.openSession();
 	    
 	    //create JOIN FETCH (INNER JOIN) to handle Lazy Initialization Exception
-	    Query query = session.createQuery("select body" +  "from public.review body" + "join fetch body.product" + "where review_id=:id", Review.class).setParameter("reviewID", id);
-	    //review = session.get(Review.class, id);
+	    //Query query = session.createQuery("select body" +  "from public.review body" + "join fetch body.product" + "where review_id=:id", Review.class).setParameter("reviewID", id);
+	    review = session.get(Review.class, id);
 	    
 		session.close();
 		return review;

@@ -15,6 +15,10 @@ import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
+import javax.persistence.Transient;
+
+import org.codehaus.jackson.annotate.JsonIgnore;
+import org.codehaus.jackson.annotate.JsonManagedReference;
 
 import com.web_services.instant_pot.domain.address.Address;
 import com.web_services.instant_pot.domain.payment.Payment;
@@ -36,17 +40,19 @@ public class Customer implements Serializable {
 	
 	private long phoneNumber;
 	
-	@ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-	@JoinTable(name = "customer_payment", joinColumns = { @JoinColumn(name = "customer_id" ) }, inverseJoinColumns = { @JoinColumn(name = "payment_id") })
+	@Transient
+	@ManyToMany(fetch = FetchType.LAZY, mappedBy = "paymentOwners")
 	private Set<Payment> payments = new HashSet<Payment>();
 	
-	@ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-	@JoinTable(name = "customer_address", joinColumns = { @JoinColumn(name = "customer_id" ) }, inverseJoinColumns = { @JoinColumn(name = "address_id") })
+	@Transient
+	@ManyToMany(fetch = FetchType.LAZY, mappedBy = "customers")
 	private Set<Address> addresses = new HashSet<Address>();
 
+	@Transient
 	@OneToMany(cascade = CascadeType.ALL, mappedBy="customer")
 	private Set<Review> reviews = new HashSet<Review>();
 	
+	@Transient
 	@OneToMany(cascade = CascadeType.ALL, mappedBy="purchaseOwner")
 	private Set<Purchase> purchases = new HashSet<Purchase>();
 	

@@ -12,6 +12,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
@@ -40,7 +41,8 @@ public class Purchase implements Serializable {
 	@JoinColumn(name = "fk_purchase_payment")
 	private Payment purchasePayment;
 
-	@ManyToMany(fetch = FetchType.LAZY, mappedBy = "purchases")
+	@ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+	@JoinTable(name = "product_purchase", joinColumns = { @JoinColumn(name = "purchase_id" ) }, inverseJoinColumns = { @JoinColumn(name = "product_id") })
 	private Set<Product> products = new HashSet<Product>();
 	
 	@ManyToOne(fetch = FetchType.LAZY)

@@ -20,6 +20,9 @@
   
         <!-- Update database on startup -->
         <property name="hibernate.hbm2ddl.auto">update</property>
+        
+        <!-- try to fix lazyinitialization exception (the stupid way) -->
+        <property name="hibernate.enable_lazy_load_no_trans">true</property>
   
         <!-- Annotated entity classes -->
         <mapping class="com.web_services.instant_pot.domain.product.Product"/>

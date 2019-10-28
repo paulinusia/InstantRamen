@@ -15,6 +15,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
+import javax.persistence.Transient;
 
 import com.web_services.instant_pot.domain.address.Address;
 import com.web_services.instant_pot.domain.customer.Customer;
@@ -35,7 +36,8 @@ public class Payment implements Serializable {
 	
 	private int securityCode;
 	
-	@ManyToMany(fetch = FetchType.LAZY, mappedBy = "payments")
+	@ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+	@JoinTable(name = "customer_payment", joinColumns = { @JoinColumn(name = "payment_id" ) }, inverseJoinColumns = { @JoinColumn(name = "customer_id") })
 	private Set<Customer> paymentOwners = new HashSet<Customer>();
 
 	@OneToMany(cascade = CascadeType.ALL, mappedBy="purchasePayment")
