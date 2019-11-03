@@ -31,7 +31,7 @@ public class ProductLogic{
 	    return pd.createProduct(partner, productName, productDescription, cost);
 	}
 	
-	public Product deleteProduct(int id){
+	public Product deleteProduct(Long id){
 		ProductDAL pd = new ProductDAL();
 		return pd.deleteProduct(id);
 	}

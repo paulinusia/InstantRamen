@@ -20,7 +20,7 @@ public interface ProductService {
 	
 	public ProductRepresentation createProduct(ProductRequest productRequest);
 	
-	public Response updateProduct(ProductRequest productRequest);
+	public ProductRepresentation updateProduct(ProductRequest productRequest);
 	
-	public Response deleteProduct(Long productId);
+	public Response deleteProduct(Long id);
 }

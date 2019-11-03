@@ -64,4 +64,10 @@ public class ProductActivity {
 		Product newProduct =  pl.createProduct(partnerLogic.getPartner(productRequest.getPartnerId()), productRequest.getProductName(), productRequest.getProductDescription(), productRequest.getCost());
 		return getProductRepresentation(newProduct);
 	}
+	
+	public String deleteProduct(Long id) {
+		Product response = pl.deleteProduct(id);
+		if (response != null) return "OK";
+		else return "Something went wrong.";
+	}
 }

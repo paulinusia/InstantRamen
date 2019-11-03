@@ -64,7 +64,7 @@ public class ProductDAL {
 	    return product;
 	}
 	
-	public Product deleteProduct(long id){
+	public Product deleteProduct(Long id){
 		Product product = new Product();
 		
 		SessionFactory sf = (SessionFactory) new Configuration().configure("hibernate.cfg.xml").buildSessionFactory();

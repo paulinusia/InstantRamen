@@ -3,12 +3,14 @@ package com.web_services.instant_pot.service.product;
 import java.util.Set;
 
 import javax.ws.rs.Consumes;
+import javax.ws.rs.DELETE;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.Response;
+import javax.ws.rs.core.Response.Status;
 
 import com.web_services.instant_pot.service.payment.workflow.PaymentActivity;
 import com.web_services.instant_pot.service.product.representation.ProductRepresentation;
@@ -57,14 +59,23 @@ public class ProductResource implements ProductService{
 		return productActivity.createProduct(productRequest);
 	}
 
-	public Response updateProduct(ProductRequest productRequest) {
+	public ProductRepresentation updateProduct(ProductRequest productRequest) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
-	public Response deleteProduct(Long productId) {
-		// TODO Auto-generated method stub
-		return null;
+	@DELETE
+	@Consumes({"application/xml" , "application/json"})
+	@Produces({"application/xml" , "application/json"})
+	@Path("/product/{id}")
+	public Response deleteProduct(@PathParam("id") Long id) {
+		System.out.println("DELETE METHOD Request for product with ID: " + Long.toString(id));
+		
+		String res = productActivity.deleteProduct(id);
+		if (res.equals("OK")) {
+			return Response.status(Response.Status.OK).entity("Successfully deleted product with ID " + Long.toString(id)).build();
+		}
+		return Response.status(Status.INTERNAL_SERVER_ERROR).entity("Could not delete product with ID " + Long.toString(id)).build();
 	}
 
 }
