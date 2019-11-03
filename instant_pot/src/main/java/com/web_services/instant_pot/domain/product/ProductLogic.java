@@ -11,7 +11,7 @@ import com.web_services.instant_pot.domain.product.Product;
 public class ProductLogic{
 	
 	
-	public static Product getProductByID(int id) {
+	public Product getProductByID(Long id) {
 		ProductDAL pd = new ProductDAL();
 		return pd.getProductByID(id);
 	}

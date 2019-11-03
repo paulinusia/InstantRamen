@@ -13,7 +13,7 @@ import com.web_services.instant_pot.service.product.representation.ProductRepres
 public interface ProductService {
 	public Set<ProductRepresentation> getProducts();
 	
-	public ProductRepresentation getProductById(Long id);
+	public ProductRepresentation getProduct(Long id);
 	
 	public Set<ProductRepresentation> searchProducts(String name);
 	

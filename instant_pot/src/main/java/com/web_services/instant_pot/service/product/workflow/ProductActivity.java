@@ -14,19 +14,30 @@ public class ProductActivity {
 	public Set<ProductRepresentation> getProducts() {
 		Set<Product> products = new HashSet<Product>();
 		Set<ProductRepresentation> productRepresentations = new HashSet<ProductRepresentation>();
-		//employees = dao.getAllEmployees();
 		products = pl.getAllProducts();
 		
 		for (Product product : products) {
-			ProductRepresentation productRepresentation = new ProductRepresentation();
-			productRepresentation.setId(product.getId());
-			productRepresentation.setProductName(product.getProductName());
-			productRepresentation.setProductDescription(product.getProductDescription());
-			productRepresentation.setCost(product.getCost());
-			
+			ProductRepresentation productRepresentation = getProductRepresentation(product);
 			productRepresentations.add(productRepresentation);
 		}
 		
 		return productRepresentations;
+	}
+	
+	public ProductRepresentation getProductById(Long id) {
+		Product product =  pl.getProductByID(id);
+		return getProductRepresentation(product);
+		
+	}
+	
+	private static ProductRepresentation getProductRepresentation(Product product) {
+		ProductRepresentation productRepresentation = new ProductRepresentation();
+		
+		productRepresentation.setId(product.getId());
+		productRepresentation.setProductName(product.getProductName());
+		productRepresentation.setProductDescription(product.getProductDescription());
+		productRepresentation.setCost(product.getCost());
+		
+		return productRepresentation;
 	}
 }
