@@ -4,9 +4,11 @@ import java.util.HashSet;
 import java.util.Iterator;
 import java.util.Set;
 
+import com.web_services.instant_pot.domain.partner.PartnerLogic;
 import com.web_services.instant_pot.domain.product.Product;
 import com.web_services.instant_pot.domain.product.ProductLogic;
 import com.web_services.instant_pot.service.product.representation.ProductRepresentation;
+import com.web_services.instant_pot.service.product.representation.ProductRequest;
 
 public class ProductActivity {
 	private static ProductLogic pl = new ProductLogic();
@@ -55,5 +57,11 @@ public class ProductActivity {
 		}
 		
 		return productRepresentations;
+	}
+	
+	public ProductRepresentation createProduct(ProductRequest productRequest) {
+		PartnerLogic partnerLogic = new PartnerLogic();
+		Product newProduct =  pl.createProduct(partnerLogic.getPartner(productRequest.getPartnerId()), productRequest.getProductName(), productRequest.getProductDescription(), productRequest.getCost());
+		return getProductRepresentation(newProduct);
 	}
 }

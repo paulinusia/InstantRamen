@@ -12,7 +12,7 @@ import com.web_services.instant_pot.domain.partner.Partner;
 
 public class PartnerDAL {
 	
-	public Partner getPartnerByID(long id) {
+	public Partner getPartnerByID(Long id) {
 		Partner partner = new Partner();
 		
 		SessionFactory sf = (SessionFactory) new Configuration().configure("hibernate.cfg.xml").buildSessionFactory();

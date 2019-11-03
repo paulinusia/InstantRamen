@@ -12,6 +12,7 @@ import javax.ws.rs.core.Response;
 
 import com.web_services.instant_pot.service.payment.workflow.PaymentActivity;
 import com.web_services.instant_pot.service.product.representation.ProductRepresentation;
+import com.web_services.instant_pot.service.product.representation.ProductRequest;
 import com.web_services.instant_pot.service.product.workflow.ProductActivity;
 
 @Path("/productservice/")
@@ -47,13 +48,16 @@ public class ProductResource implements ProductService{
 		return productActivity.searchProducts(name);	
 	}
 
-	public ProductRepresentation createProduct(Long partnerId, String productName, String productDescription,
-			double cost) {
-		// TODO Auto-generated method stub
-		return null;
+	@POST
+	@Consumes({"application/xml" , "application/json"})
+	@Produces({"application/xml" , "application/json"})
+	@Path("/product")
+	public ProductRepresentation createProduct(ProductRequest productRequest) {
+		System.out.println("POST METHOD Request to create new product with name: " + productRequest.getProductName());
+		return productActivity.createProduct(productRequest);
 	}
 
-	public Response updateProduct(Long partnerId, String productName, String productDescription, double cost) {
+	public Response updateProduct(ProductRequest productRequest) {
 		// TODO Auto-generated method stub
 		return null;
 	}

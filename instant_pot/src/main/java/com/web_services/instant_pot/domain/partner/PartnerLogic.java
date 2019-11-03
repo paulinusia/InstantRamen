@@ -15,7 +15,7 @@ import com.web_services.instant_pot.domain.partner.Partner;
 
 public class PartnerLogic {
 	
-	public Partner getPartner(long partID) {
+	public Partner getPartner(Long partID) {
 		PartnerDAL pd = new PartnerDAL();
 		Partner partner = pd.getPartnerByID(partID);
 		return partner;
