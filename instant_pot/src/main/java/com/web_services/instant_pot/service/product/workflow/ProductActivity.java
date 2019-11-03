@@ -40,4 +40,19 @@ public class ProductActivity {
 		
 		return productRepresentation;
 	}
+	
+	public Set<ProductRepresentation> searchProducts(String name) {
+		Set<Product> products = new HashSet<Product>();
+		Set<ProductRepresentation> productRepresentations = new HashSet<ProductRepresentation>();
+		products = pl.getAllProducts();
+		
+		for (Product product : products) {
+			if (product.getProductName().contains(name)) {
+				ProductRepresentation productRepresentation = getProductRepresentation(product);
+				productRepresentations.add(productRepresentation);
+			}
+		}
+		
+		return productRepresentations;
+	}
 }

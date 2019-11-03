@@ -33,14 +33,18 @@ public class ProductResource implements ProductService{
 	@Produces({"application/xml" , "application/json"})
 	@Path("/product/{id}")
 	public ProductRepresentation getProduct(@PathParam("id") Long id) {
-		System.out.println(Long.toString(id));
-		System.out.println("GET METHOD Request for Product by ID .............");
+		System.out.println();
+		System.out.println("GET METHOD Request for Product with ID: " + Long.toString(id));
 		return productActivity.getProductById(id);
 	}
 
-	public Set<ProductRepresentation> searchProducts(String name) {
-		// TODO Auto-generated method stub
-		return null;
+	@GET
+	@Consumes({"application/xml" , "application/json"})
+	@Produces({"application/xml" , "application/json"})
+	@Path("/products/{name}")
+	public Set<ProductRepresentation> searchProducts(@PathParam("name")String name) {
+		System.out.println("GET METHOD Request to search Products for names containing: " + name);
+		return productActivity.searchProducts(name);	
 	}
 
 	public ProductRepresentation createProduct(Long partnerId, String productName, String productDescription,
