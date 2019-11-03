@@ -18,12 +18,22 @@ public class ProductRepresentation {
 	
 	private double cost;
 
+	private Long partnerId;
+	
 	public Long getId() {
 		return id;
 	}
 
 	public void setId(Long id) {
 		this.id = id;
+	}
+
+	public Long getPartnerId() {
+		return partnerId;
+	}
+
+	public void setPartnerId(Long partnerId) {
+		this.partnerId = partnerId;
 	}
 
 	public String getProductName() {

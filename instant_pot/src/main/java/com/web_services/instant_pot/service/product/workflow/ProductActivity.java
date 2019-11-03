@@ -37,6 +37,7 @@ public class ProductActivity {
 		productRepresentation.setProductName(product.getProductName());
 		productRepresentation.setProductDescription(product.getProductDescription());
 		productRepresentation.setCost(product.getCost());
+		productRepresentation.setPartnerId(product.getProductOwner().getId());
 		
 		return productRepresentation;
 	}
