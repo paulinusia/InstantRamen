@@ -57,5 +57,10 @@ public class AddressLogic {
 		public Address deleteAddress(Long id){
 			AddressDAL ad = new AddressDAL();
 			return ad.deleteAddress(id);
-		}	
+		}
+		
+		public HashSet<Address> getAllAddressForCustomer(Long customerID) {
+			AddressDAL ad = new AddressDAL();
+			return ad.getAllAddressForCustomer(customerID);
+		}
 }

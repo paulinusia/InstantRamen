@@ -19,7 +19,7 @@ public class ReviewLogic {
 		return rd.getAllReviewForCustomer(custID);
 	}
 
-	public HashSet<Review> getAllReviewForProduct(long productID){
+	public HashSet<Review> getAllReviewForProduct(Long productID){
 		ReviewDAL rd = new ReviewDAL();
 		return rd.getAllReviewForProduct(productID);
 	}

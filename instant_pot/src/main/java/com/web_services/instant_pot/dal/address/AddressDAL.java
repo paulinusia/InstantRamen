@@ -148,5 +148,24 @@ public class AddressDAL {
 		    } 
 			session.close();
 			return address;
-		}	
+		}
+		
+		public HashSet<Address> getAllAddressForCustomer(Long customerID) {
+			
+			SessionFactory sf = (SessionFactory) new Configuration().configure("hibernate.cfg.xml").buildSessionFactory();
+		    Session session = sf.openSession();
+		    
+
+		    Query query = session.createQuery("SELECT R.firstName FROM customer_address R where customer_id=:customerID;").setParameter("customerID", customerID);
+		    List<Long> addressIDs = query.list();
+		    
+		    HashSet<Address> addressSet = new HashSet<Address>();
+		    for (Long addressID : addressIDs) {
+		    	Address address = session.get(Address.class, addressID);
+		    	addressSet.add(address);
+		    }
+		    
+			session.close();
+			return addressSet;
+		}
 }
