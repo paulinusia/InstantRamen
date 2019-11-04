@@ -68,14 +68,9 @@ public class ProductResource implements ProductService{
 	@Consumes({"application/xml" , "application/json"})
 	@Produces({"application/xml" , "application/json"})
 	@Path("/product/{id}")
-	public Response deleteProduct(@PathParam("id") Long id) {
+	public ProductRepresentation deleteProduct(@PathParam("id") Long id) {
 		System.out.println("DELETE METHOD Request for product with ID: " + Long.toString(id));
-		
-		String res = productActivity.deleteProduct(id);
-		if (res.equals("OK")) {
-			return Response.status(Response.Status.OK).entity("Successfully deleted product with ID " + Long.toString(id)).build();
-		}
-		return Response.status(Status.INTERNAL_SERVER_ERROR).entity("Could not delete product with ID " + Long.toString(id)).build();
+		return productActivity.deleteProduct(id);
 	}
 
 }

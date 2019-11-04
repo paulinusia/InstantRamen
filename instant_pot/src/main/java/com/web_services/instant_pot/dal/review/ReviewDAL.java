@@ -45,13 +45,13 @@ public class ReviewDAL {
 	}
 	
 	
-	public HashSet<Review> getAllReviewForProduct(long productID) {
+	public HashSet<Review> getAllReviewForProduct(Long productID) {
 		
 		SessionFactory sf = (SessionFactory) new Configuration().configure("hibernate.cfg.xml").buildSessionFactory();
 	    Session session = sf.openSession();
 	    
 
-	    Query query = session.createQuery("from Review where product_id=:productID").setParameter("productID", productID);
+	    Query query = session.createQuery("from Review where fk_product=:productID").setParameter("productID", productID);
 	    List<Review> reviews = query.list();
 	    HashSet<Review> ReviewSet = new HashSet<Review>(reviews);
 	    
@@ -85,6 +85,8 @@ public class ReviewDAL {
 	    r = session.get(Review.class, id);
 	    if (r != null) {
 	    	Transaction tx = session.beginTransaction();
+//	    	r.setCustomer(null);
+//	    	r.setProduct(null);
 	    	session.delete(r);
 		    tx.commit();
 	    } 

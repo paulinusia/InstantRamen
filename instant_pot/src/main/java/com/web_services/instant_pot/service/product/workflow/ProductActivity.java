@@ -65,9 +65,8 @@ public class ProductActivity {
 		return getProductRepresentation(newProduct);
 	}
 	
-	public String deleteProduct(Long id) {
+	public ProductRepresentation deleteProduct(Long id) {
 		Product response = pl.deleteProduct(id);
-		if (response != null) return "OK";
-		else return "Something went wrong.";
+		return getProductRepresentation(response);
 	}
 }

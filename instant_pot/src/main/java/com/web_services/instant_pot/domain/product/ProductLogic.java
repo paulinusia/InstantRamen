@@ -1,11 +1,14 @@
 package com.web_services.instant_pot.domain.product;
 
 import java.util.HashSet;
+import java.util.Set;
 
 import com.web_services.instant_pot.dal.partner.PartnerDAL;
 import com.web_services.instant_pot.dal.product.ProductDAL;
+import com.web_services.instant_pot.dal.review.ReviewDAL;
 import com.web_services.instant_pot.domain.partner.Partner;
 import com.web_services.instant_pot.domain.product.Product;
+import com.web_services.instant_pot.domain.review.Review;
 
 
 public class ProductLogic{
@@ -33,6 +36,14 @@ public class ProductLogic{
 	
 	public Product deleteProduct(Long id){
 		ProductDAL pd = new ProductDAL();
+		ReviewDAL rd = new ReviewDAL();
+		Product p = pd.getProductByID(id);
+		Set<Review> reviews = rd.getAllReviewForProduct(id);
+		for (Review r : reviews) {
+			System.out.println("Deleting Review with ID: " + Long.toString(r.getId()));
+			rd.deleteReview(r.getId());
+		}
+		System.out.println("Deleting Product...");
 		return pd.deleteProduct(id);
 	}
 	

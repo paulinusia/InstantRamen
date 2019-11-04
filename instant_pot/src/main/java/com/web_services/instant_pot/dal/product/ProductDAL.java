@@ -5,13 +5,16 @@ import java.util.HashSet;
 
 import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 import org.hibernate.*;
 import org.hibernate.cfg.Configuration;
 
 
 import com.web_services.instant_pot.domain.partner.Partner;
-import com.web_services.instant_pot.domain.product.Product; 
+import com.web_services.instant_pot.domain.product.Product;
+import com.web_services.instant_pot.domain.purchase.Purchase;
+import com.web_services.instant_pot.domain.review.Review; 
 
 
 public class ProductDAL {
@@ -73,7 +76,28 @@ public class ProductDAL {
 	    
 	    product = session.get(Product.class, id);
 	    if (product != null) {
-	    	Transaction tx = session.beginTransaction();
+	    	Transaction tx;
+	    	
+	    	Set<Purchase> purchases = product.getPurchases();
+	    	for (Purchase p : purchases) {
+	    		tx = session.beginTransaction();
+	    		p.getProducts().remove(product);
+	    		session.save(p);
+	    		tx.commit();
+	    	}
+	    	
+//	    	Set<Review> reviews = product.getReviews();
+//	    	for (Review r : reviews) {
+//	    		tx = session.beginTransaction();
+//	    		r.setProduct(null);
+//	    		session.save(r);
+//	    		tx.commit();
+//	    	}
+	    	
+//	    	product.setPurchases(null);
+//	    	product.setProductOwner(null);
+//	    	product.setReviews(null);
+	    	tx = session.beginTransaction();
 	    	session.delete(product);
 		    tx.commit();
 	    } 
