@@ -10,6 +10,7 @@ import javax.ws.rs.PUT;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
+import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 import javax.ws.rs.core.Response.Status;
 
@@ -75,7 +76,8 @@ public class ProductResource implements ProductService{
 	@Path("/product/{id}")
 	public ProductRepresentation deleteProduct(@PathParam("id") Long id) {
 		System.out.println("DELETE METHOD Request for product with ID: " + Long.toString(id));
-		return productActivity.deleteProduct(id);
+		ProductRepresentation response = productActivity.deleteProduct(id);
+		return response;
 	}
 
 }
