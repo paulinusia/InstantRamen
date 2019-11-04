@@ -86,17 +86,6 @@ public class ProductDAL {
 	    		tx.commit();
 	    	}
 	    	
-//	    	Set<Review> reviews = product.getReviews();
-//	    	for (Review r : reviews) {
-//	    		tx = session.beginTransaction();
-//	    		r.setProduct(null);
-//	    		session.save(r);
-//	    		tx.commit();
-//	    	}
-	    	
-//	    	product.setPurchases(null);
-//	    	product.setProductOwner(null);
-//	    	product.setReviews(null);
 	    	tx = session.beginTransaction();
 	    	session.delete(product);
 		    tx.commit();
@@ -105,7 +94,7 @@ public class ProductDAL {
 		return product;
 	}
 	
-	public Product updateCost(int productID, double newCost) {
+	public Product updateCost(Long productID, double newCost) {
 		SessionFactory sf = (SessionFactory) new Configuration().configure("hibernate.cfg.xml").buildSessionFactory();
 	    Session session = sf.openSession();
 	    
@@ -121,7 +110,7 @@ public class ProductDAL {
 	    return product;
 	}
 	
-	public Product updateProductDescription(int productID, String productDescription) {
+	public Product updateProductDescription(Long productID, String productDescription) {
 
 		
 		SessionFactory sf = (SessionFactory) new Configuration().configure("hibernate.cfg.xml").buildSessionFactory();
@@ -140,7 +129,7 @@ public class ProductDAL {
 	}
 	
 	
-	public Product updateProductName(int productID, String productName) {
+	public Product updateProductName(Long productID, String productName) {
 		SessionFactory sf = (SessionFactory) new Configuration().configure("hibernate.cfg.xml").buildSessionFactory();
 	    Session session = sf.openSession();
 	    Product product = session.get(Product.class, productID);
@@ -155,7 +144,22 @@ public class ProductDAL {
 	    return product;
 	}
 
-
+	public Product updateProduct(Long productID, String productName, String productDescription, double cost) {
+		SessionFactory sf = (SessionFactory) new Configuration().configure("hibernate.cfg.xml").buildSessionFactory();
+	    Session session = sf.openSession();
+	    Product product = session.get(Product.class, productID);
+	    if (product != null) {
+	    	product.setProductName(productName);
+	    	product.setProductDescription(productDescription);
+	    	product.setCost(cost);
+	    	Transaction tx = session.beginTransaction();
+	    	session.save(product);
+		    tx.commit();
+	    } 
+	    session.close();
+	    
+	    return product;
+	}
 }
 
 

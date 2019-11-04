@@ -6,6 +6,7 @@ import javax.ws.rs.Consumes;
 import javax.ws.rs.DELETE;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
+import javax.ws.rs.PUT;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
@@ -58,10 +59,14 @@ public class ProductResource implements ProductService{
 		System.out.println("POST METHOD Request to create new product with name: " + productRequest.getProductName());
 		return productActivity.createProduct(productRequest);
 	}
-
-	public ProductRepresentation updateProduct(ProductRequest productRequest) {
-		// TODO Auto-generated method stub
-		return null;
+	
+	@PUT
+	@Consumes({"application/xml" , "application/json"})
+	@Produces({"application/xml" , "application/json"})
+	@Path("/product/{id}")
+	public ProductRepresentation updateProduct(@PathParam("id") Long id, ProductRequest productRequest) {
+		System.out.println("PUT METHOD Request for Product with ID: " + Long.toString(id));
+		return productActivity.updateProduct(id, productRequest);
 	}
 
 	@DELETE

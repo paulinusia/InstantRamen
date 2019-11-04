@@ -69,4 +69,8 @@ public class ProductActivity {
 		Product response = pl.deleteProduct(id);
 		return getProductRepresentation(response);
 	}
+	
+	public ProductRepresentation updateProduct(Long id, ProductRequest productRequest) {
+		return getProductRepresentation(pl.updateProduct(id, productRequest.getProductName(), productRequest.getProductDescription(), productRequest.getCost()));
+	}
 }

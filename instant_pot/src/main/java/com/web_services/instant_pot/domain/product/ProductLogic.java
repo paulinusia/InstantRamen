@@ -47,10 +47,23 @@ public class ProductLogic{
 		return pd.deleteProduct(id);
 	}
 	
-	public Product updateCost(int productID, double newCost) {
+	public Product updateCost(Long productID, double newCost) {
 		ProductDAL pd = new ProductDAL();
 	    return pd.updateCost(productID, newCost);
 	}
 	
+	public Product updateProductName(Long id, String newName) {
+		ProductDAL pd = new ProductDAL();
+		return pd.updateProductName(id, newName);
+	}
 	
+	public Product updateProductDescription(Long id, String newDescription) {
+		ProductDAL pd = new ProductDAL();
+		return pd.updateProductDescription(id, newDescription);
+	}	
+	
+	public Product updateProduct(Long productID, String productName, String productDescription, double cost) {
+		ProductDAL pd = new ProductDAL();
+		return pd.updateProduct(productID, productName, productDescription, cost);
+	}
 }
