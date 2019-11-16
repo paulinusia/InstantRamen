@@ -25,7 +25,6 @@ public class ProductResource implements ProductService{
 	private static ProductActivity productActivity = new ProductActivity();
 	
 	@GET
-	@Consumes({"application/xml" , "application/json"})
 	@Produces({"application/xml" , "application/json"})
 	@Path("/products")
 	public Set<ProductRepresentation> getProducts() {
@@ -34,7 +33,6 @@ public class ProductResource implements ProductService{
 	}
 
 	@GET
-	@Consumes({"application/xml" , "application/json"})
 	@Produces({"application/xml" , "application/json"})
 	@Path("/product/{id}")
 	public ProductRepresentation getProduct(@PathParam("id") Long id) {
@@ -44,7 +42,6 @@ public class ProductResource implements ProductService{
 	}
 
 	@GET
-	@Consumes({"application/xml" , "application/json"})
 	@Produces({"application/xml" , "application/json"})
 	@Path("/products/{name}")
 	public Set<ProductRepresentation> searchProducts(@PathParam("name")String name) {
@@ -74,11 +71,20 @@ public class ProductResource implements ProductService{
 	@Consumes({"application/xml" , "application/json"})
 	@Produces({"application/xml" , "application/json"})
 	@Path("/product/{id}")
-	public Response deleteProduct(@PathParam("id") Long id) {
+	public ProductRepresentation deleteProduct(@PathParam("id") Long id) {
 		System.out.println("DELETE METHOD Request for product with ID: " + Long.toString(id));
-		ProductRepresentation result = productActivity.deleteProduct(id);
-		if (result != null) return Response.status(Response.Status.OK).entity(result).build();
-		else return Response.status(Response.Status.BAD_REQUEST).build();
+		return productActivity.deleteProduct(id);
 	}
+	
+//	@DELETE
+//	@Consumes({"application/xml" , "application/json"})
+//	@Produces({"application/xml" , "application/json"})
+//	@Path("/product/{id}")
+//	public Response deleteProduct(@PathParam("id") Long id) {
+//		System.out.println("DELETE METHOD Request for product with ID: " + Long.toString(id));
+//		ProductRepresentation result = productActivity.deleteProduct(id);
+//		if (result != null) return Response.status(Response.Status.OK).entity(result).build();
+//		else return Response.status(Response.Status.BAD_REQUEST).build();
+//	}
 
 }

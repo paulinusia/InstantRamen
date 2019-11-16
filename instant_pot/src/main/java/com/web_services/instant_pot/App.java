@@ -80,15 +80,8 @@ public class App
     	paymentLogic.addPaymentToCustomer(payment3.getId(), customer2.getId());
     	paymentLogic.addPaymentToCustomer(payment4.getId(), customer2.getId());
     	
-    	HashSet<Product> productSet1 = new HashSet<Product>();
-    	productSet1.add(product1);
-    	productSet1.add(product2);
     	Purchase purchase1 = purchaseLogic.newPurchase(customer1, product1, "needed things", "Ordered", payment1, address1);
-    	HashSet<Product> productSet2 = new HashSet<Product>();
-    	productSet2.add(product3);
-    	productSet2.add(product4);
     	Purchase purchase2 = purchaseLogic.newPurchase(customer1, product2, "needed more things", "Ordered", payment2, address2);
-
     	Purchase purchase3 = purchaseLogic.newPurchase(customer2, product3, "wanted things", "Ordered", payment3, address1);
     	Purchase purchase4 = purchaseLogic.newPurchase(customer2, product4, "wanted more things", "Ordered", payment4, address2);
     }
