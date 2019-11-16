@@ -46,8 +46,9 @@ public class Address implements Serializable {
 	@JoinColumn(name = "fk_customer")
 	private Customer customer;
 	
-	@ManyToMany(fetch = FetchType.LAZY, mappedBy = "addresses")
-	private Set<Partner> partners = new HashSet<Partner>();
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "fk_partner")
+	private Partner partner;
 
 	@OneToMany(cascade = CascadeType.ALL, mappedBy="address")
 	private Set<Purchase> purchases = new HashSet<Purchase>();
@@ -77,12 +78,12 @@ public class Address implements Serializable {
 		this.customer = customer;
 	}
 
-	public Set<Partner> getPartners() {
-		return partners;
+	public Partner getPartner() {
+		return partner;
 	}
 
-	public void setPartners(Set<Partner> partners) {
-		this.partners = partners;
+	public void setPartner(Partner partner) {
+		this.partner = partner;
 	}
 
 	public String getStreetAddress() {

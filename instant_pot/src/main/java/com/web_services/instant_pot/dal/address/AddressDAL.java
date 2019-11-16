@@ -87,7 +87,7 @@ public class AddressDAL {
 		    
 		    Partner partner = session.get(Partner.class, partnerID);
 		    Address address = session.get(Address.class, addressID);
-		    address.getPartners().remove(partner);
+		    address.setPartner(null);
 		    partner.getAddresses().remove(address);
 		    
 		    Transaction tx = session.beginTransaction();
@@ -122,7 +122,7 @@ public class AddressDAL {
 		    
 		    Partner partner = session.get(Partner.class, partnerID);
 		    Address address = session.get(Address.class, addressID);
-		    address.getPartners().add(partner);
+		    address.setPartner(partner);
 		    partner.getAddresses().add(address);
 		    
 		    Transaction tx = session.beginTransaction();

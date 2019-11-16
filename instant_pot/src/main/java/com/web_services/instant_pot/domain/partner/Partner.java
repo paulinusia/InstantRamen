@@ -31,8 +31,7 @@ public class Partner implements Serializable {
 	@OneToMany(cascade = CascadeType.ALL, mappedBy="productOwner")
 	private Set<Product> inventory = new HashSet<Product>();
 	
-	@ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-	@JoinTable(name = "partner_address", joinColumns = { @JoinColumn(name = "partner_id" ) }, inverseJoinColumns = { @JoinColumn(name = "address_id") })
+	@OneToMany(cascade = CascadeType.ALL, mappedBy="partner")
 	private Set<Address> addresses = new HashSet<Address>();
 	
 	private String description;
