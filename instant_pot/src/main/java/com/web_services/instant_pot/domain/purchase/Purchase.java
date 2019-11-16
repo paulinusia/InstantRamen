@@ -41,9 +41,9 @@ public class Purchase implements Serializable {
 	@JoinColumn(name = "fk_purchase_payment")
 	private Payment purchasePayment;
 
-	@ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-	@JoinTable(name = "product_purchase", joinColumns = { @JoinColumn(name = "purchase_id" ) }, inverseJoinColumns = { @JoinColumn(name = "product_id") })
-	private Set<Product> products = new HashSet<Product>();
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "fk_product")
+	private Product product;
 	
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "fk_address")
@@ -52,9 +52,9 @@ public class Purchase implements Serializable {
 	public Purchase() {
 		//auto
 	}
-	public Purchase(Customer purchaseOwner, HashSet<Product> products, String purchaseDetail, String purchaseStatus, Payment purchasePayment, Address address) {
+	public Purchase(Customer purchaseOwner, Product product, String purchaseDetail, String purchaseStatus, Payment purchasePayment, Address address) {
 		this.purchaseOwner = purchaseOwner;
-		this.products = products;
+		this.product = product;
 		this.purchaseDetail = purchaseDetail;
 		this.purchaseStatus = purchaseStatus;
 		this.purchasePayment = purchasePayment;
@@ -74,15 +74,13 @@ public class Purchase implements Serializable {
 	public Payment getPurchasePayment() {
 		return purchasePayment;
 	}
-	
-	public Set<Product> getProducts() {
-		return products;
-	}
 
-	public void setProducts(Set<Product> products) {
-		this.products = products;
+	public Product getProduct() {
+		return product;
 	}
-
+	public void setProduct(Product product) {
+		this.product = product;
+	}
 	public Long getId() {
 		return id;
 	}

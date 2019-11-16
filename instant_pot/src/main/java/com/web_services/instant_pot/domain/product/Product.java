@@ -31,7 +31,6 @@ public class Product implements Serializable {
 	@GeneratedValue(strategy = GenerationType.SEQUENCE)
 	private Long id;
 	
-	@Transient
 	@OneToMany(cascade = CascadeType.ALL, mappedBy="product")
 	private Set<Review> reviews = new HashSet<Review>();
 	
@@ -39,8 +38,7 @@ public class Product implements Serializable {
 	@JoinColumn(name = "fk_product_owner")
 	private Partner productOwner;
 	
-	@Transient
-	@ManyToMany(fetch = FetchType.LAZY, mappedBy = "products")
+	@OneToMany(cascade = CascadeType.ALL, mappedBy = "product")
 	private Set<Purchase> purchases = new HashSet<Purchase>();
 	
 	private String productName;

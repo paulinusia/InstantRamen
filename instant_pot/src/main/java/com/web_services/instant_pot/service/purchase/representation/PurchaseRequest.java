@@ -11,7 +11,7 @@ public class PurchaseRequest {
 	//purchaseOwner, products, purchaseDetail, purchaseStatus, purchasePayment, address);
 	
 	private Customer purchaseOwner;
-	private Set<Product> products;
+	private Product product;
 	private String purchaseDetail;
 	private String purchaseStatus;
 	private Payment purchasePayment;
@@ -24,13 +24,13 @@ public class PurchaseRequest {
 	public void setPurchaseOwner(Customer purchaseOwner) {
 		this.purchaseOwner = purchaseOwner;
 	}
-	
-	public Set<Product> getProducts() {
-		return products;
+
+	public Product getProduct() {
+		return product;
 	}
 
-	public void setProducts(Set<Product> products) {
-		this.products = products;
+	public void setProduct(Product product) {
+		this.product = product;
 	}
 
 	public String getPurchaseDetail() {

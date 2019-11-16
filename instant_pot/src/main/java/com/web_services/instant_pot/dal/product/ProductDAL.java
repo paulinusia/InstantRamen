@@ -81,7 +81,7 @@ public class ProductDAL {
 	    	Set<Purchase> purchases = product.getPurchases();
 	    	for (Purchase p : purchases) {
 	    		tx = session.beginTransaction();
-	    		p.getProducts().remove(product);
+	    		p.setProduct(null);
 	    		session.save(p);
 	    		tx.commit();
 	    	}

@@ -28,7 +28,8 @@ public class PurchaseRepresentation {
 	private Payment purchasePayment;
 	
 	private Address address;
-	private Set<Product> products = new HashSet<Product>();
+	
+	private Product product;
 	
 
 	public Address getAddress() {
@@ -46,15 +47,13 @@ public class PurchaseRepresentation {
 		return purchasePayment;
 	}
 	
-	public Set<Product> getProducts() {
-		return products;
+	public Product getProduct() {
+		return product;
 	}
-
-	public void setProducts(Set<Product> products) {
-		this.products = products;
+	public void setProduct(Product product) {
+		this.product = product;
 	}
 	
-
 	public Long getId() {
 		return id;
 	}

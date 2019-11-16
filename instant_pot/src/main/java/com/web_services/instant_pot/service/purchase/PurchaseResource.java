@@ -37,10 +37,10 @@ public class PurchaseResource implements PurchaseService{
 	@Consumes({"application/xml" , "application/json"})
 	@Produces({"application/xml" , "application/json"})
 	@Path("/purchase")
-	public PurchaseRepresentation newPurchase(Customer purchaseOwner, HashSet<Product> products, String purchaseDetail, String purchaseStatus, Payment purchasePayment, Address address) {
+	public PurchaseRepresentation newPurchase(Customer purchaseOwner, Product product, String purchaseDetail, String purchaseStatus, Payment purchasePayment, Address address) {
 		System.out.println("GET METHOD Request for new Purchase .............");
 		PurchaseActivity pAct = new PurchaseActivity();	
-		return pAct.newPurchase(purchaseOwner, products, purchaseDetail, purchaseStatus, purchasePayment, address);
+		return pAct.newPurchase(purchaseOwner, product, purchaseDetail, purchaseStatus, purchasePayment, address);
 	}
 	@PUT
 	@Consumes({"application/xml" , "application/json"})

@@ -29,18 +29,14 @@ public class PurchaseDAL {
 	}
 
 	
-	public Purchase newPurchase(Customer purchaseOwner, HashSet<Product> products, String purchaseDetail, String purchaseStatus, Payment purchasePayment, Address address) {
+	public Purchase newPurchase(Customer purchaseOwner, Product product, String purchaseDetail, String purchaseStatus, Payment purchasePayment, Address address) {
 		SessionFactory sf = (SessionFactory) new Configuration().configure("hibernate.cfg.xml").buildSessionFactory();
 	    Session session = sf.openSession();
-		Purchase purchase = new Purchase(purchaseOwner, products, purchaseDetail, purchaseStatus, purchasePayment, address);
-		for (Product p : products) {
-			p.getPurchases().add(purchase);
-		}
+		Purchase purchase = new Purchase(purchaseOwner, product, purchaseDetail, purchaseStatus, purchasePayment, address);
+		product.getPurchases().add(purchase);
 	    Transaction tx = session.beginTransaction();
 	    session.save(purchase); 
-	    for (Product prod : products) {
-			session.save(prod);
-		}
+		session.save(product);
 	    tx.commit();
 	    session.close(); 
 		

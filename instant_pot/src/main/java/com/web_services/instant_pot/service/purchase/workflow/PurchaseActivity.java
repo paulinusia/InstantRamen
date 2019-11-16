@@ -28,7 +28,7 @@ public class PurchaseActivity {
 		
 		pRep.setAddress(purchase.getAddress());
 		pRep.setId(purchase.getId());
-		pRep.setProducts(purchase.getProducts());
+		pRep.setProduct(purchase.getProduct());
 		pRep.setPurchaseDetail(purchase.getPurchaseDetail());
 		pRep.setPurchaseOwner(purchase.getPurchaseOwner());
 		pRep.setPurchasePayment(purchase.getPurchasePayment());
@@ -39,12 +39,12 @@ public class PurchaseActivity {
 	
 	
 	
-	public PurchaseRepresentation newPurchase(Customer purchaseOwner, HashSet<Product> products, String purchaseDetail, String purchaseStatus, Payment purchasePayment, Address address) {
-	Purchase purchase = pl.newPurchase(purchaseOwner, products, purchaseDetail, purchaseStatus, purchasePayment, address);
+	public PurchaseRepresentation newPurchase(Customer purchaseOwner, Product product, String purchaseDetail, String purchaseStatus, Payment purchasePayment, Address address) {
+	Purchase purchase = pl.newPurchase(purchaseOwner, product, purchaseDetail, purchaseStatus, purchasePayment, address);
 	
 	PurchaseRepresentation pRep = new PurchaseRepresentation();
 	pRep.setPurchaseOwner(purchase.getPurchaseOwner());
-	pRep.setProducts(purchase.getProducts());
+	pRep.setProduct(purchase.getProduct());
 	pRep.setPurchaseDetail(purchase.getPurchaseDetail());
 	pRep.setPurchaseStatus(purchase.getPurchaseStatus());
 	pRep.setPurchasePayment(purchase.getPurchasePayment());
@@ -64,7 +64,7 @@ public class PurchaseActivity {
 		
 		pRep.setAddress(purchase.getAddress());
 		pRep.setPurchaseOwner(purchase.getPurchaseOwner());
-		pRep.setProducts(purchase.getProducts());
+		pRep.setProduct(purchase.getProduct());
 		pRep.setPurchaseStatus(purchase.getPurchaseStatus());
 		pRep.setPurchasePayment(purchase.getPurchasePayment());
 		
@@ -79,7 +79,7 @@ public class PurchaseActivity {
 		pRep.setPurchaseStatus(purchaseStatus);
 		pRep.setAddress(purchase.getAddress());
 		pRep.setPurchaseOwner(purchase.getPurchaseOwner());
-		pRep.setProducts(purchase.getProducts());
+		pRep.setProduct(purchase.getProduct());
 		pRep.setPurchasePayment(purchase.getPurchasePayment());
 		pRep.setPurchaseDetail(purchase.getPurchaseDetail());
 		
