@@ -14,6 +14,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Transient;
 
@@ -41,9 +42,9 @@ public class Address implements Serializable {
 	
 	private String zip;
 	
-	@ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-	@JoinTable(name = "customer_address", joinColumns = { @JoinColumn(name = "address_id" ) }, inverseJoinColumns = { @JoinColumn(name = "customer_id") })
-	private Set<Customer> customers = new HashSet<Customer>();
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "fk_customer")
+	private Customer customer;
 	
 	@ManyToMany(fetch = FetchType.LAZY, mappedBy = "addresses")
 	private Set<Partner> partners = new HashSet<Partner>();
@@ -68,12 +69,12 @@ public class Address implements Serializable {
 		this.id = id;
 	}
 
-	public Set<Customer> getCustomers() {
-		return customers;
+	public Customer getCustomer() {
+		return customer;
 	}
 
-	public void setCustomers(Set<Customer> customers) {
-		this.customers = customers;
+	public void setCustomer(Customer customer) {
+		this.customer = customer;
 	}
 
 	public Set<Partner> getPartners() {
@@ -115,14 +116,6 @@ public class Address implements Serializable {
 	public void setZip(String zip) {
 		this.zip = zip;
 	}
-
-//	public Set<AddressOwner> getAddressOwners() {
-//		return addressOwners;
-//	}
-//
-//	public void setAddressOwners(Set<AddressOwner> addressOwners) {
-//		this.addressOwners = addressOwners;
-//	}
 
 	public Set<Purchase> getPurchases() {
 		return purchases;

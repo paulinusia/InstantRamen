@@ -69,7 +69,7 @@ public class AddressDAL {
 		    
 		    Customer customer = session.get(Customer.class, customerID);
 		    Address address = session.get(Address.class, addressID);
-		    address.getCustomers().remove(customer);
+		    address.setCustomer(null);
 		    customer.getAddresses().remove(address);
 		    
 		    Transaction tx = session.beginTransaction();
@@ -105,7 +105,7 @@ public class AddressDAL {
 		    
 		    Customer customer = session.get(Customer.class, customerID);
 		    Address address = session.get(Address.class, addressID);
-		    address.getCustomers().add(customer);
+		    address.setCustomer(customer);
 		    customer.getAddresses().add(address);
 		    Transaction tx = session.beginTransaction();
 		    session.save(address);

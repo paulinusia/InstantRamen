@@ -44,15 +44,13 @@ public class Customer implements Serializable {
 	@ManyToMany(fetch = FetchType.LAZY, mappedBy = "paymentOwners")
 	private Set<Payment> payments = new HashSet<Payment>();
 	
-	@Transient
-	@ManyToMany(fetch = FetchType.LAZY, mappedBy = "customers")
+	@OneToMany(cascade = CascadeType.ALL, mappedBy = "customer")
 	private Set<Address> addresses = new HashSet<Address>();
 
 	@Transient
 	@OneToMany(cascade = CascadeType.ALL, mappedBy="customer")
 	private Set<Review> reviews = new HashSet<Review>();
 	
-	@Transient
 	@OneToMany(cascade = CascadeType.ALL, mappedBy="purchaseOwner")
 	private Set<Purchase> purchases = new HashSet<Purchase>();
 	
