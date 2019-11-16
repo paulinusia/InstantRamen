@@ -46,7 +46,6 @@ public class Customer implements Serializable {
 	@OneToMany(cascade = CascadeType.ALL, mappedBy = "customer")
 	private Set<Address> addresses = new HashSet<Address>();
 
-	@Transient
 	@OneToMany(cascade = CascadeType.ALL, mappedBy="customer")
 	private Set<Review> reviews = new HashSet<Review>();
 	
