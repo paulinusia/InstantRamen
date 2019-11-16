@@ -19,6 +19,7 @@
 			<ref bean="purchaseServiceRest" />
 			<ref bean="reviewServiceRest" />
 			<ref bean="paymentServiceRest" />
+			<ref bean="addressServiceRest" />
 		</jaxrs:serviceBeans>
 
 		<jaxrs:schemaLocations>
@@ -37,5 +38,5 @@
   	<bean id="purchaseServiceRest" class="com.web_services.instant_pot.service.purchase.PurchaseResource" />
   	<bean id="reviewServiceRest" class="com.web_services.instant_pot.service.review.ReviewResource" />
   	<bean id="paymentServiceRest" class="com.web_services.instant_pot.service.payment.PaymentResource" />
-  
+  	<bean id="addressServiceRest" class="com.web_services.instant_pot.service.address.AddressResource" />  
 </beans>

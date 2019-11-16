@@ -13,15 +13,16 @@ import com.web_services.instant_pot.domain.address.Address;
 import com.web_services.instant_pot.service.address.representation.AddressRepresentation;
 import com.web_services.instant_pot.service.address.workflow.AddressActivity;
 
+@Path("/addressservice/")
 public class AddressResource implements AddressService {
 	private static AddressActivity aa = new AddressActivity();
 	
 	@GET
 	@Consumes({"application/xml" , "application/json"})
 	@Produces({"application/xml" , "application/json"})
-	@Path("/addresses/customer/{id}")
+	@Path("/customeraddresses/{id}")
 	public Set<AddressRepresentation> getAllAddressForCustomer(@PathParam("id") Long customerID) {
-		System.out.println("GET METHOD Request for all Products .............");
+		System.out.println("GET METHOD Request for all Addresses from Customer with ID: " + Long.toString(customerID));
 		return aa.getAllAddressForCustomer(customerID);
 	}
 //	public Address getAddressByID(Long id) {

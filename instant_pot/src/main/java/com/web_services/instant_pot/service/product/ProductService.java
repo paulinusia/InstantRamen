@@ -22,5 +22,5 @@ public interface ProductService {
 	
 	public ProductRepresentation updateProduct(Long id, ProductRequest productRequest);
 	
-	public ProductRepresentation deleteProduct(Long id);
+	public Response deleteProduct(Long id);
 }

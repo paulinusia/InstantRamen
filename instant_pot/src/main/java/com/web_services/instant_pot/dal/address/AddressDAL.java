@@ -156,14 +156,17 @@ public class AddressDAL {
 		    Session session = sf.openSession();
 		    
 
-		    Query query = session.createQuery("SELECT R.firstName FROM customer_address R where customer_id=:customerID;").setParameter("customerID", customerID);
-		    List<Long> addressIDs = query.list();
+		    Query query = session.createQuery("select address from Customer cust join cust.addresses address where customer_id=:customerID").setParameter("customerID", customerID);
+//		    List<Long> addressIDs = query.list();
+		    List<Address> addresses = query.list();
 		    
-		    HashSet<Address> addressSet = new HashSet<Address>();
-		    for (Long addressID : addressIDs) {
-		    	Address address = session.get(Address.class, addressID);
-		    	addressSet.add(address);
-		    }
+//		    HashSet<Address> addressSet = new HashSet<Address>();
+//		    for (Long addressID : addressIDs) {
+//		    	Address address = session.get(Address.class, addressID);
+//		    	addressSet.add(address);
+//		    }
+		    
+		    HashSet<Address> addressSet = new HashSet<Address>(addresses);
 		    
 			session.close();
 			return addressSet;
