@@ -14,6 +14,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Transient;
 
@@ -36,9 +37,9 @@ public class Payment implements Serializable {
 	
 	private int securityCode;
 	
-	@ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-	@JoinTable(name = "customer_payment", joinColumns = { @JoinColumn(name = "payment_id" ) }, inverseJoinColumns = { @JoinColumn(name = "customer_id") })
-	private Set<Customer> paymentOwners = new HashSet<Customer>();
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "fk_customer")
+	private Customer paymentOwner;
 
 	@OneToMany(cascade = CascadeType.ALL, mappedBy="purchasePayment")
 	private Set<Purchase> purchases = new HashSet<Purchase>();
@@ -92,11 +93,20 @@ public class Payment implements Serializable {
 		this.securityCode = securityCode;
 	}
 
-	public Set<Customer> getPaymentOwners() {
-		return paymentOwners;
+	public Customer getPaymentOwner() {
+		return paymentOwner;
 	}
 
-	public void setPaymentOwners(Set<Customer> paymentOwners) {
-		this.paymentOwners = paymentOwners;
+	public void setPaymentOwner(Customer paymentOwner) {
+		this.paymentOwner = paymentOwner;
 	}
+
+	public Set<Purchase> getPurchases() {
+		return purchases;
+	}
+
+	public void setPurchases(Set<Purchase> purchases) {
+		this.purchases = purchases;
+	}
+	
 }

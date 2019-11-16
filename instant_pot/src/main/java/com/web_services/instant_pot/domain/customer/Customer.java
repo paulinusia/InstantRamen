@@ -40,8 +40,7 @@ public class Customer implements Serializable {
 	
 	private long phoneNumber;
 	
-	@Transient
-	@ManyToMany(fetch = FetchType.LAZY, mappedBy = "paymentOwners")
+	@OneToMany(cascade = CascadeType.ALL, mappedBy = "paymentOwner")
 	private Set<Payment> payments = new HashSet<Payment>();
 	
 	@OneToMany(cascade = CascadeType.ALL, mappedBy = "customer")
