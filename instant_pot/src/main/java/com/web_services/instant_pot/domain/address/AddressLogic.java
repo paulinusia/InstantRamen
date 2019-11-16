@@ -3,6 +3,7 @@ package com.web_services.instant_pot.domain.address;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 import org.hibernate.Query;
 import org.hibernate.Session;
@@ -59,7 +60,7 @@ public class AddressLogic {
 			return ad.deleteAddress(id);
 		}
 		
-		public HashSet<Address> getAllAddressForCustomer(Long customerID) {
+		public Set<Address> getAllAddressForCustomer(Long customerID) {
 			AddressDAL ad = new AddressDAL();
 			return ad.getAllAddressForCustomer(customerID);
 		}

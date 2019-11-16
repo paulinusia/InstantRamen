@@ -18,7 +18,6 @@ public class AddressResource implements AddressService {
 	private static AddressActivity aa = new AddressActivity();
 	
 	@GET
-	@Consumes({"application/xml" , "application/json"})
 	@Produces({"application/xml" , "application/json"})
 	@Path("/customeraddresses/{id}")
 	public Set<AddressRepresentation> getAllAddressForCustomer(@PathParam("id") Long customerID) {
