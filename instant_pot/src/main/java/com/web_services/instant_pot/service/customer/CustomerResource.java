@@ -40,8 +40,8 @@ public class CustomerResource implements CustomerService {
 	@Produces({"application/xml" , "application/json"})
 	@Path("/customer")
 	public CustomerRepresentation createCustomer(CustomerRequest customerRequest) {
-		// TODO Auto-generated method stub
-		return null;
+		System.out.println("POST METHOD Request to create new customer with name: " + customerRequest.getFirstName() + " " + customerRequest.getLastName());
+		return customerActivity.createCustomer(customerRequest);
 	}
 
 	@PUT

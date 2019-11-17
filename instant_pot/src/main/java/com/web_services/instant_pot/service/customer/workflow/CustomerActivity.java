@@ -5,8 +5,10 @@ import java.util.Set;
 
 import com.web_services.instant_pot.domain.customer.Customer;
 import com.web_services.instant_pot.domain.customer.CustomerLogic;
+import com.web_services.instant_pot.domain.partner.PartnerLogic;
 import com.web_services.instant_pot.domain.product.Product;
 import com.web_services.instant_pot.service.customer.representation.CustomerRepresentation;
+import com.web_services.instant_pot.service.customer.representation.CustomerRequest;
 import com.web_services.instant_pot.service.product.representation.ProductRepresentation;
 
 public class CustomerActivity {
@@ -36,5 +38,11 @@ public class CustomerActivity {
 		cRep.setLastName(customer.getLastName());
 		cRep.setPhoneNumber(customer.getPhoneNumber());
 		return cRep;
+	}
+
+	public CustomerRepresentation createCustomer(CustomerRequest customerRequest) {
+		CustomerLogic customerLogic = new CustomerLogic();
+		Customer newCustomer =  customerLogic.createCustomer(customerRequest.getFirstName(), customerRequest.getLastName(), customerRequest.getEmail(), customerRequest.getPhoneNumber());
+		return getCustomerRepresentation(newCustomer);
 	}
 }

@@ -10,11 +10,8 @@ import javax.xml.bind.annotation.XmlType;
 @XmlType(name = "")
 public class CustomerRequest {
 	private String firstName;
-	
 	private String lastName;
-	
 	private String email;
-	
 	private Long phoneNumber;
 
 	public String getFirstName() {
