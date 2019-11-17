@@ -99,16 +99,16 @@ public class ReviewActivity {
 //		return getReviewRepresentation(newReview);
 //	}
 	
-	public String deleteReview(Long reviewID) {
-		ReviewLogic rd = new ReviewLogic();
-		rd.deleteReview(reviewID);
-		return "OK";
-	}
-	
 //	public String deleteReview(Long reviewID) {
-//		Review response = rl.deleteReview(reviewID);
-//		return getReviewRepresentation(response);
+//		ReviewLogic rd = new ReviewLogic();
+//		rd.deleteReview(reviewID);
+//		return "OK";
 //	}
+	
+	public ReviewRepresentation deleteReview(Long reviewID) {
+		Review response = rl.deleteReview(reviewID);
+		return getReviewRepresentation(response);
+	}
 	
 	public ReviewRepresentation updateReview(Long id, ReviewRequest request) {
 		return getReviewRepresentation(rl.updateReview(id, request.getReviewRating(), request.getBody()));

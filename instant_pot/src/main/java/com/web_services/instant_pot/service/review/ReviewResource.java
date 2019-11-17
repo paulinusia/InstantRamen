@@ -14,6 +14,8 @@ import javax.ws.rs.core.Response.Status;
 
 import java.util.HashSet;
 import java.util.Set;
+
+import com.web_services.instant_pot.service.product.representation.ProductRepresentation;
 import com.web_services.instant_pot.service.review.representation.ReviewRepresentation;
 import com.web_services.instant_pot.service.review.representation.ReviewRequest;
 import com.web_services.instant_pot.service.review.workflow.ReviewActivity;
@@ -76,14 +78,18 @@ public class ReviewResource implements ReviewService {
 	@DELETE
 	@Produces({"application/xml" , "application/json"})
 	@Path("/review/{id}")
-	public Response deleteReview(@PathParam("reviewID") Long reviewID) {
-		System.out.println("GET METHOD Request for deleting a review .............");
-		ReviewActivity rAct = new ReviewActivity();
-		String res = rAct.deleteReview(reviewID);
-		if (rAct.equals("OK")) {
-			return Response.status(Status.OK).build();
-		}
-		return null;
+	public ReviewRepresentation deleteReview(@PathParam("id") Long id) {
+		System.out.println("DELETE METHOD Request for review with ID: " + Long.toString(id));
+		return reviewActivity.deleteReview(id);
 	}
+//	public Response deleteReview(@PathParam("reviewID") Long reviewID) {
+//		System.out.println("DELETE METHOD Request for deleting a review .............");
+//		ReviewActivity rAct = new ReviewActivity();
+//		String res = rAct.deleteReview(reviewID);
+//		if (rAct.equals("OK")) {
+//			return Response.status(Status.OK).build();
+//		}
+//		return null;
+//	}
 	
 }
