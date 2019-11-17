@@ -13,16 +13,11 @@ import com.web_services.instant_pot.domain.product.Product;
 @XmlType(name = "")
 public class ReviewRepresentation {
 	private Long id;
-	
-	private Customer customer;
-	
+	private Long customerID;
 	private int rating;
-
 	private Long timestamp;
-	
 	private String body;
-
-	private Product product;
+	private Long productID;
 	
 	
 	public Long getId() {
@@ -33,20 +28,20 @@ public class ReviewRepresentation {
 		this.id = id;
 	}
 	
-	public Customer getCustomer() {
-		return customer;
+	public Long getCustomerID() {
+		return customerID;
 	}
 
-	public void setCustomer(Customer customer) {
-		this.customer = customer;
+	public void setCustomerID(Long customerID) {
+		this.customerID = customerID;
 	}
 	
-	public Product getProduct() {
-		return product;
+	public Long getProductID() {
+		return productID;
 	}
 
-	public void setProduct(Product product) {
-		this.product = product;
+	public void setProductID(Long productID) {
+		this.productID = productID;
 	}
 	
 	

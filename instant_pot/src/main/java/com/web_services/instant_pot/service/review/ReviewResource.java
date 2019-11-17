@@ -33,25 +33,25 @@ public class ReviewResource implements ReviewService {
 		
 	}
 	
-	/*
-	@GET
-	@Produces({"application/xml" , "application/json"})
-	@Path("/reviews/{custID}")
-	public HashSet<ReviewRepresentation> getAllReviewForCustomer(@PathParam("custID") Long custID){
-		System.out.println("GET METHOD Request for all reviews by customer .............");
-	ReviewActivity rAct = new ReviewActivity();
-	return rAct.getAllReviewForCustomer(custID);
-	}
 	
-	@GET
-	@Produces({"application/xml" , "application/json"})
-	@Path("/reviews/{productID}")
-	public HashSet<ReviewRepresentation> getAllReviewForProduct(@PathParam("productID") Long productID){
-	System.out.println("GET METHOD Request for all reviews for product .............");
-	ReviewActivity rAct = new ReviewActivity();
-	return rAct.getAllReviewForProduct(productID);
-	
-	}
+//	@GET
+//	@Produces({"application/xml" , "application/json"})
+//	@Path("/reviews/{custID}")
+//	public HashSet<ReviewRepresentation> getAllReviewForCustomer(@PathParam("custID") Long custID){
+//		System.out.println("GET METHOD Request for all reviews by customer .............");
+//	ReviewActivity rAct = new ReviewActivity();
+//	return rAct.getAllReviewForCustomer(custID);
+//	}
+//	
+//	@GET
+//	@Produces({"application/xml" , "application/json"})
+//	@Path("/reviews/{productID}")
+//	public HashSet<ReviewRepresentation> getAllReviewForProduct(@PathParam("productID") Long productID){
+//	System.out.println("GET METHOD Request for all reviews for product .............");
+//	ReviewActivity rAct = new ReviewActivity();
+//	return rAct.getAllReviewForProduct(productID);
+//	
+//	}
 	@POST
 	@Produces({"application/xml" , "application/json"})
 	@Path("/reviews")
@@ -73,5 +73,5 @@ public class ReviewResource implements ReviewService {
 		}
 		return null;
 	}
-	*/
+	
 }

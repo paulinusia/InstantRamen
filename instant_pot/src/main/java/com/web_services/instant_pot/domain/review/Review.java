@@ -41,9 +41,7 @@ public class Review implements Serializable {
 	
 
 	
-	public Review() {
-		// TODO Auto-generated constructor stub
-	}
+	public Review() {}
 
 	public Review(Customer customers, Product products, int rating, String reviewBody, Long timestamp) {
 		this.customer = customers;
