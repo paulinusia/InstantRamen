@@ -111,8 +111,8 @@ public class PurchaseActivity {
 			Set<Purchase> purchases = pl.getAllPurchasesByCustomer(customerID);
 
 		for (Purchase purchase : purchases) {
-			
-			purchaseRepresentations.add(getPurchaseRepresentation(purchase));
+			PurchaseRepresentation purchaseRepresentation = getPurchaseRepresentation(purchase);
+			purchaseRepresentations.add(purchaseRepresentation);
 		}
 		return purchaseRepresentations;
 	}

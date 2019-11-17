@@ -68,7 +68,7 @@ public class PurchaseResource implements PurchaseService{
 	//ERROR: operator does not exist: bigint = bytea
 	@GET
 	@Produces({"application/xml" , "application/json"})
-	@Path("/customerpurchases/{customerID}")
+	@Path("/customerpurchases/{id}")
 	public Set<PurchaseRepresentation> getPurchasesFromCustomer(@PathParam("id") Long customerID){
 		System.out.println("GET METHOD Request for Purchases by customer .............");
 		PurchaseActivity pAct = new PurchaseActivity();	
