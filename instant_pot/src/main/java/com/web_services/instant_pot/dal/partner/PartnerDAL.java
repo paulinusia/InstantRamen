@@ -130,4 +130,21 @@ public class PartnerDAL {
 		return AddressSet;
 	}
 
+	public Partner updatePartner(Long id, String partnerName, String description, Long phoneNumber) {
+		SessionFactory sf = (SessionFactory) new Configuration().configure("hibernate.cfg.xml").buildSessionFactory();
+		Session session = sf.openSession();
+		
+		Partner partner = session.get(Partner.class, id);
+		if (partner != null) {
+			partner.setName(partnerName);
+			partner.setDescription(description);
+			partner.setPhoneNumber(phoneNumber);
+			Transaction tx = session.beginTransaction();
+			session.save(partner);
+			tx.commit();
+		}
+		session.close();
+		return partner;
+	}
+
 }

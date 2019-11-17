@@ -61,4 +61,15 @@ public class PartnerLogic {
 		PartnerDAL pd = new PartnerDAL();
 		return pd.getAllAddressForPartner(partID);		
 	}
+
+	public Partner getPartnerByID(Long id) {
+		PartnerDAL pd = new PartnerDAL();
+		return pd.getPartnerByID(id);
+	}
+
+	public Partner updatePartner(Long id, String partnerName, String description, Long phoneNumber) {
+		PartnerDAL pd = new PartnerDAL();
+		Partner partner = pd.updatePartner(id, partnerName, description, phoneNumber);
+		return partner;
+	}
 }
