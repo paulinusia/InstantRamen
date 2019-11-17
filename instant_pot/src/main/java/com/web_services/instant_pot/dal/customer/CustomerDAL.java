@@ -12,7 +12,7 @@ import com.web_services.instant_pot.domain.customer.Customer;
 
 public class CustomerDAL {
 	
-	public Customer getCustomerByID(long id) {
+	public Customer getCustomerByID(Long id) {
 		Customer customer = new Customer();
 		
 		SessionFactory sf = (SessionFactory) new Configuration().configure("hibernate.cfg.xml").buildSessionFactory();
@@ -50,7 +50,7 @@ public class CustomerDAL {
 		return newCust;
 	}
 	
-	public Customer deleteCustomer(long id) {
+	public Customer deleteCustomer(Long id) {
 		Customer customer = new Customer();
 		
 		SessionFactory sf = (SessionFactory) new Configuration().configure("hibernate.cfg.xml").buildSessionFactory();
@@ -60,6 +60,24 @@ public class CustomerDAL {
 		if (customer != null) {
 			Transaction tx = session.beginTransaction();
 			session.delete(customer);
+			tx.commit();
+		}
+		session.close();
+		return customer;
+	}
+	
+	public Customer updateCustomer(Long id, String firstName, String lastName, String email, Long phoneNumber) {
+		SessionFactory sf = (SessionFactory) new Configuration().configure("hibernate.cfg.xml").buildSessionFactory();
+		Session session = sf.openSession();
+		
+		Customer customer = session.get(Customer.class, id);
+		if (customer != null) {
+			customer.setFirstName(firstName);
+			customer.setLastName(lastName);
+			customer.setEmail(email);
+			customer.setPhoneNumber(phoneNumber);
+			Transaction tx = session.beginTransaction();
+			session.save(customer);
 			tx.commit();
 		}
 		session.close();
@@ -125,25 +143,4 @@ public class CustomerDAL {
 		session.close();
 		return customer;
 	}
-
-//	
-//	public HashSet<Address> getAllAddressForCustomer(Long custID) {
-//		
-//		SessionFactory sf = (SessionFactory) new Configuration().configure("hibernate.cfg.xml").buildSessionFactory();
-//	    Session session = sf.openSession();
-//	    
-//
-//	    Query query = session.createQuery("from customer_address where customer_id=:custID").setParameter("custID", custID);
-//	    List addressIDs = query.list();
-//	    List addresses = new ArrayList<Address>();
-//	    
-//	    for (Object addressID : addressIDs) {
-//	    	query = session.createQuery("from address where address_id=:addID").setParameter("addID", (Long) addressID );
-//	    	addresses.add((Address) query.getSingleResult());
-//	    }	
-//	    
-//	    HashSet<Address> AddressSet = new HashSet<Address>(addresses);
-//		session.close();
-//		return AddressSet;
-//	}
 }

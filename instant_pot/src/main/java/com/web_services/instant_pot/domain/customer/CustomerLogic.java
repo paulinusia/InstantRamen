@@ -38,6 +38,12 @@ public class CustomerLogic {
 		return customer;
 	}
 	
+	public Customer updateCustomer(Long id, String firstName, String lastName, String email, Long phoneNumber) {
+		CustomerDAL cd = new CustomerDAL();
+		Customer customer = cd.updateCustomer(id, firstName, lastName, email, phoneNumber);
+		return customer;
+	}
+	
 	public Customer updateFirstName(String firstName, long id) {
 		CustomerDAL cd = new CustomerDAL();
 		Customer customer = cd.updateFirstName(firstName, id);
