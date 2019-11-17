@@ -13,5 +13,5 @@ public interface CustomerService {
 	public Set<CustomerRepresentation> getCustomers();
 	public CustomerRepresentation createCustomer(CustomerRequest customerRequest);
 	public CustomerRepresentation updateCustomer(Long id, CustomerRequest customerRequest);
-	public CustomerRepresentation deleteCustomer(Long id);
+	//public CustomerRepresentation deleteCustomer(Long id);
 }

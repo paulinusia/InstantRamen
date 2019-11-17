@@ -54,14 +54,14 @@ public class CustomerResource implements CustomerService {
 		
 	}
 
-	@DELETE
-	@Consumes({"application/xml" , "application/json"})
-	@Produces({"application/xml" , "application/json"})
-	@Path("/customer/{id}")
-	public CustomerRepresentation deleteCustomer(@PathParam("id") Long id) {
-		System.out.println("DELETE METHOD Request for review with ID: " + Long.toString(id));
-		
-		return  CustomerActivity.deleteCustomer(id);
-	}
+//	@DELETE
+//	@Consumes({"application/xml" , "application/json"})
+//	@Produces({"application/xml" , "application/json"})
+//	@Path("/customer/{id}")
+//	public CustomerRepresentation deleteCustomer(@PathParam("id") Long id) {
+//		System.out.println("DELETE METHOD Request for review with ID: " + Long.toString(id));
+//		
+//		return  CustomerActivity.deleteCustomer(id);
+//	}
 
 }
