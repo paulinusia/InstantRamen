@@ -5,6 +5,7 @@ import java.util.Set;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
+import javax.ws.rs.PUT;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
@@ -50,15 +51,19 @@ public class AddressResource implements AddressService {
 	@Produces({"application/xml" , "application/json"})
 	@Path("/address")
 	public AddressRepresentation createAddress(AddressRequest addressRequest) {
-		System.out.println("POST METHOD Request to create new address with street address: " + addressRequest.getStreetAddress());
+		System.out.println("POST METHOD Request to create new Address with street address: " + addressRequest.getStreetAddress());
 		return aa.createAddress(addressRequest);
 	}
-//	
-//	public Address createAddress(String streetAddress, String city, String state, String zip) {
-//		AddressDAL ad = new AddressDAL();
-//		return ad.createAddress(streetAddress, city, state, zip);
-//	}
-//	
+	
+	@PUT
+	@Consumes({"application/xml" , "application/json"})
+	@Produces({"application/xml" , "application/json"})
+	@Path("/address/{id}")
+	public AddressRepresentation updateAddress(@PathParam("id") Long id, AddressRequest addressRequest) {
+		System.out.println("PUT METHOD Request for Address with ID: " + Long.toString(id));
+		return aa.updateAddress(id, addressRequest);
+	}
+	
 //	public Address updateAddress(Long id, String streetAddress, String city, String state, String zip) {
 //		AddressDAL ad = new AddressDAL();
 //		return ad.updateAddress(id, streetAddress, city, state, zip);

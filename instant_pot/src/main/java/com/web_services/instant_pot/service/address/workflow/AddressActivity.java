@@ -57,6 +57,10 @@ public class AddressActivity {
 		return addressRepresentations;
 	}
 	
+	public AddressRepresentation updateAddress(Long id, AddressRequest addressRequest) {
+		return getAddressRepresentation(al.updateAddress(id, addressRequest.getStreetAddress(), addressRequest.getCity(), addressRequest.getState(), addressRequest.getZip()));
+	}
+	
 	private static AddressRepresentation getAddressRepresentation(Address address) {
 		AddressRepresentation ar = new AddressRepresentation();
 		ar.setCity(address.getCity());
