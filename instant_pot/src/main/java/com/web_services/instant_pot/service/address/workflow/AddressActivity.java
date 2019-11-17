@@ -61,6 +61,11 @@ public class AddressActivity {
 		return getAddressRepresentation(al.updateAddress(id, addressRequest.getStreetAddress(), addressRequest.getCity(), addressRequest.getState(), addressRequest.getZip()));
 	}
 	
+	public AddressRepresentation deleteAddress(Long id) {
+		Address result = al.deleteAddress(id);
+		return getAddressRepresentation(result);
+	}
+	
 	private static AddressRepresentation getAddressRepresentation(Address address) {
 		AddressRepresentation ar = new AddressRepresentation();
 		ar.setCity(address.getCity());

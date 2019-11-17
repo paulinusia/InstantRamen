@@ -3,6 +3,7 @@ package com.web_services.instant_pot.service.address;
 import java.util.Set;
 
 import javax.ws.rs.Consumes;
+import javax.ws.rs.DELETE;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
 import javax.ws.rs.PUT;
@@ -64,13 +65,12 @@ public class AddressResource implements AddressService {
 		return aa.updateAddress(id, addressRequest);
 	}
 	
-//	public Address updateAddress(Long id, String streetAddress, String city, String state, String zip) {
-//		AddressDAL ad = new AddressDAL();
-//		return ad.updateAddress(id, streetAddress, city, state, zip);
-//	}
-//	
-//	public Address deleteAddress(Long id){
-//		AddressDAL ad = new AddressDAL();
-//		return ad.deleteAddress(id);
-//	}
+	@DELETE
+	@Consumes({"application/xml" , "application/json"})
+	@Produces({"application/xml" , "application/json"})
+	@Path("/address/{id}")
+	public AddressRepresentation deleteAddress(@PathParam("id") Long id) {
+		System.out.println("DELETE METHOD Request for Address with ID: " + Long.toString(id));
+		return aa.deleteAddress(id);
+	}
 }
