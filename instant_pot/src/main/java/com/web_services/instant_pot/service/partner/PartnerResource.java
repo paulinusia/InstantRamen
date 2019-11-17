@@ -33,7 +33,7 @@ public class PartnerResource {
 	public PartnerRepresentation getPartner(@PathParam("id") Long id) {
 		System.out.println();
 		System.out.println("GET METHOD Request for partner with ID: " + Long.toString(id));
-		return partnerActivity.getPartnerById(id);
+		return partnerActivity.getPartnerByID(id);
 	}
 
 	@POST
