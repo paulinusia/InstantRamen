@@ -31,8 +31,8 @@ public class CustomerResource implements CustomerService {
 	@Produces({"application/xml" , "application/json"})
 	@Path("/customers")
 	public Set<CustomerRepresentation> getCustomers() {
-		// TODO Auto-generated method stub
-		return null;
+		System.out.println("GET METHOD Request for all Customers .............");
+		return customerActivity.getCustomers();
 	}
 
 	@POST
