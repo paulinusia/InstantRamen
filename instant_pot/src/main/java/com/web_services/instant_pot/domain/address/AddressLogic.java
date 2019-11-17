@@ -64,4 +64,9 @@ public class AddressLogic {
 			AddressDAL ad = new AddressDAL();
 			return ad.getAllAddressForCustomer(customerID);
 		}
+		
+		public Set<Address> getAllAddressForPartner(Long partnerID) {
+			AddressDAL ad = new AddressDAL();
+			return ad.getAllAddressForPartner(partnerID);
+		}
 }

@@ -59,6 +59,15 @@ public class AddressActivity {
 		return addressRepresentations;
 	}
 	
+	public Set<AddressRepresentation> getAllAddressForPartner(Long partnerID) {
+		Set<AddressRepresentation> addressRepresentations = new HashSet<>();
+		Set<Address> addresses = al.getAllAddressForPartner(partnerID);
+		for (Address a : addresses) {
+			addressRepresentations.add(getAddressRepresentation(a));
+		}
+		return addressRepresentations;
+	}
+	
 	private static AddressRepresentation getAddressRepresentation(Address address) {
 		AddressRepresentation ar = new AddressRepresentation();
 		ar.setCity(address.getCity());

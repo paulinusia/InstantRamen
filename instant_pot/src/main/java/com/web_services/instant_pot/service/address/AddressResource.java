@@ -27,6 +27,14 @@ public class AddressResource implements AddressService {
 	
 	@GET
 	@Produces({"application/xml" , "application/json"})
+	@Path("/partneraddresses/{id}")
+	public Set<AddressRepresentation> getAllAddressForPartner(@PathParam("id") Long partnerID) {
+		System.out.println("GET METHOD Request for all Addresses from Partner with ID: " + Long.toString(partnerID));
+		return aa.getAllAddressForPartner(partnerID);
+	}
+	
+	@GET
+	@Produces({"application/xml" , "application/json"})
 	@Path("/address/{id}")
 	public AddressRepresentation getAddressByID(@PathParam("id") Long id) {
 		System.out.println("GET METHOD Request for Address with ID: " + Long.toString(id));
