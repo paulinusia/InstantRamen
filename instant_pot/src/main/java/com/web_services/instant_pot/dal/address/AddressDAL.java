@@ -11,6 +11,8 @@ import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
 import org.hibernate.cfg.Configuration;
 
+import com.web_services.instant_pot.dal.customer.CustomerDAL;
+import com.web_services.instant_pot.dal.partner.PartnerDAL;
 import com.web_services.instant_pot.domain.address.Address;
 import com.web_services.instant_pot.domain.customer.Customer;
 import com.web_services.instant_pot.domain.partner.Partner;
@@ -32,8 +34,18 @@ public class AddressDAL {
 			return address;
 		}
 		
-		public Address createAddress(String streetAddress, String city, String state, String zip) {
-			Address newAddress = new Address(streetAddress, city, state, zip);
+		public Address createAddress(String streetAddress, String city, String state, String zip, Long ownerId, String ownerType) {
+			Address newAddress;
+			
+			if (ownerType.equals("Customer")) {
+				CustomerDAL cd = new CustomerDAL();
+				newAddress = new Address(streetAddress, city, state, zip, cd.getCustomerByID(ownerId), null);
+			}
+			else if (ownerType.equals("Partner")) {
+				PartnerDAL pd = new PartnerDAL();
+				newAddress = new Address(streetAddress, city, state, zip,  null, pd.getPartnerByID(ownerId));
+			}
+			else return null;
 			
 			SessionFactory sf = (SessionFactory) new Configuration().configure().buildSessionFactory();
 			Session session = sf.openSession();

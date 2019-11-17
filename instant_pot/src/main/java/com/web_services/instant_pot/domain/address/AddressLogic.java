@@ -25,9 +25,9 @@ public class AddressLogic {
 			return ad.getAddressByID(id);
 		}
 		
-		public Address createAddress(String streetAddress, String city, String state, String zip) {
+		public Address createAddress(String streetAddress, String city, String state, String zip, Long ownerId, String ownerType) {
 			AddressDAL ad = new AddressDAL();
-			return ad.createAddress(streetAddress, city, state, zip);
+			return ad.createAddress(streetAddress, city, state, zip, ownerId, ownerType);
 		}
 		
 		public Address updateAddress(Long id, String streetAddress, String city, String state, String zip) {

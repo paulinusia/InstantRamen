@@ -53,11 +53,13 @@ public class Address implements Serializable {
 //	@OneToMany(cascade = CascadeType.ALL, mappedBy="address")
 //	private Set<Purchase> purchases = new HashSet<Purchase>();
 	
-	public Address(String streetAddress, String city, String state, String zip) {
+	public Address(String streetAddress, String city, String state, String zip, Customer customer, Partner partner) {
 		this.streetAddress = streetAddress;
 		this.city = city;
 		this.state = state;
 		this.zip = zip;
+		this.customer = customer;
+		this.partner = partner;
 	}
 
 	public Address() {}

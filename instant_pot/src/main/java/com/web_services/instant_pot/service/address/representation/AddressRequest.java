@@ -1,12 +1,20 @@
 package com.web_services.instant_pot.service.address.representation;
 
+import javax.xml.bind.annotation.XmlAccessType;
+import javax.xml.bind.annotation.XmlAccessorType;
+import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.XmlType;
+
+@XmlRootElement(name = "Address")
+@XmlAccessorType(XmlAccessType.FIELD)
+@XmlType(name = "")
 public class AddressRequest {
 	private String streetAddress;
 	private String city;
 	private String state;
 	private String zip;
-	private Long customerId;
-	private Long partnerId;
+	private Long ownerId;
+	private String ownerType;
 	
 	public String getStreetAddress() {
 		return streetAddress;
@@ -32,17 +40,17 @@ public class AddressRequest {
 	public void setZip(String zip) {
 		this.zip = zip;
 	}
-	public Long getCustomerId() {
-		return customerId;
+	public Long getOwnerId() {
+		return ownerId;
 	}
-	public void setCustomerId(Long customerId) {
-		this.customerId = customerId;
+	public void setOwnerId(Long ownerId) {
+		this.ownerId = ownerId;
 	}
-	public Long getPartnerId() {
-		return partnerId;
+	public String getOwnerType() {
+		return ownerType;
 	}
-	public void setPartnerId(Long partnerId) {
-		this.partnerId = partnerId;
+	public void setOwnerType(String ownerType) {
+		this.ownerType = ownerType;
 	}
 	
 }

@@ -45,14 +45,14 @@ public class AddressResource implements AddressService {
 		return aa.getAddressByID(id);
 	}
 	
-//	@POST
-//	@Consumes({"application/xml" , "application/json"})
-//	@Produces({"application/xml" , "application/json"})
-//	@Path("/address")
-//	public AddressRepresentation createProduct(AddressRequest addressRequest) {
-//		System.out.println("POST METHOD Request to create new address with street address: " + addressRequest.getProductName());
-//		return aa.createAddress(addressRequest);
-//	}
+	@POST
+	@Consumes({"application/xml" , "application/json"})
+	@Produces({"application/xml" , "application/json"})
+	@Path("/address")
+	public AddressRepresentation createAddress(AddressRequest addressRequest) {
+		System.out.println("POST METHOD Request to create new address with street address: " + addressRequest.getStreetAddress());
+		return aa.createAddress(addressRequest);
+	}
 //	
 //	public Address createAddress(String streetAddress, String city, String state, String zip) {
 //		AddressDAL ad = new AddressDAL();

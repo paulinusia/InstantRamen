@@ -5,7 +5,12 @@ import java.util.Set;
 
 import com.web_services.instant_pot.domain.address.Address;
 import com.web_services.instant_pot.domain.address.AddressLogic;
+import com.web_services.instant_pot.domain.partner.PartnerLogic;
+import com.web_services.instant_pot.domain.product.Product;
 import com.web_services.instant_pot.service.address.representation.AddressRepresentation;
+import com.web_services.instant_pot.service.address.representation.AddressRequest;
+import com.web_services.instant_pot.service.product.representation.ProductRepresentation;
+import com.web_services.instant_pot.service.product.representation.ProductRequest;
 
 public class AddressActivity {
 	private static AddressLogic al = new AddressLogic();
@@ -24,31 +29,15 @@ public class AddressActivity {
 //		AddressDAL ad = new AddressDAL();
 //		return ad.updateAddress(id, streetAddress, city, state, zip);
 //	}
-//	
-//	public Address removeAddressFromCustomer(Long addressID, Long customerID) {	
-//		AddressDAL ad = new AddressDAL();
-//		return ad.removeAddressFromCustomer(addressID, customerID);
-//	}
-//	
-//	public Address removeAddressFromPartner(Long addressID, Long partnerID) {	
-//		AddressDAL ad = new AddressDAL();
-//		return ad.removeAddressFromPartner(addressID, partnerID);
-//	}
-//	
-//	public Address addAddressToCustomer(Long addressID, Long customerID) {	
-//		AddressDAL ad = new AddressDAL();
-//		return ad.addAddressToCustomer(addressID, customerID);
-//	}
-//	
-//	public Address addAddressToPartner(Long addressID, Long partnerID) {	
-//		AddressDAL ad = new AddressDAL();
-//		return ad.addAddressToPartner(addressID, partnerID);
-//	}
-//	
 //	public Address deleteAddress(Long id){
 //		AddressDAL ad = new AddressDAL();
 //		return ad.deleteAddress(id);
 //	}
+	
+	public AddressRepresentation createAddress(AddressRequest addressRequest) {
+		Address newAddress = al.createAddress(addressRequest.getStreetAddress(), addressRequest.getCity(), addressRequest.getState(), addressRequest.getZip(), addressRequest.getOwnerId(), addressRequest.getOwnerType());
+		return getAddressRepresentation(newAddress);
+	}
 	
 	public Set<AddressRepresentation> getAllAddressForCustomer(Long customerID) {
 		Set<AddressRepresentation> addressRepresentations = new HashSet<>();
@@ -75,8 +64,8 @@ public class AddressActivity {
 		ar.setState(address.getState());
 		ar.setStreetAddress(address.getStreetAddress());
 		ar.setZip(address.getZip());
-		ar.setCustomerId(address.getCustomer().getId());
-		ar.setPartnerId(address.getPartner().getId());
+		if (address.getCustomer() != null) ar.setCustomerId(address.getCustomer().getId());
+		if (address.getPartner() != null) ar.setPartnerId(address.getPartner().getId());
 		return ar;
 	}
 }
