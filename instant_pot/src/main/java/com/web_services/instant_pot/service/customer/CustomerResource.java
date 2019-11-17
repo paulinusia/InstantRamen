@@ -59,8 +59,9 @@ public class CustomerResource implements CustomerService {
 	@Produces({"application/xml" , "application/json"})
 	@Path("/customer")
 	public CustomerRepresentation deleteCustomer(Long id) {
-		// TODO Auto-generated method stub
-		return null;
+		System.out.println("DELETE METHOD Request for review with ID: " + Long.toString(id));
+		
+		return  CustomerActivity.deleteCustomer(id);
 	}
 
 }

@@ -51,4 +51,10 @@ public class CustomerActivity {
 		Customer customer = customerLogic.updateCustomer(id, customerRequest.getFirstName(), customerRequest.getLastName(), customerRequest.getEmail(), customerRequest.getPhoneNumber());
 		return getCustomerRepresentation(customer);
 	}
+
+	public static CustomerRepresentation deleteCustomer(Long id) {
+		CustomerLogic customerLogic = new CustomerLogic();
+		Customer customer = customerLogic.deleteCustomer(id);
+		return getCustomerRepresentation(customer);
+	}
 }
