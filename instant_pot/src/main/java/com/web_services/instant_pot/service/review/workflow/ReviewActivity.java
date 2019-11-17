@@ -2,12 +2,8 @@ package com.web_services.instant_pot.service.review.workflow;
 
 import java.util.HashSet;
 
-import com.web_services.instant_pot.domain.partner.PartnerLogic;
-import com.web_services.instant_pot.domain.product.Product;
 import com.web_services.instant_pot.domain.review.Review;
 import com.web_services.instant_pot.domain.review.ReviewLogic;
-import com.web_services.instant_pot.service.product.representation.ProductRepresentation;
-import com.web_services.instant_pot.service.product.representation.ProductRequest;
 import com.web_services.instant_pot.service.review.representation.ReviewRepresentation;
 import com.web_services.instant_pot.service.review.representation.ReviewRequest;
 
@@ -29,7 +25,7 @@ public class ReviewActivity {
 		return rRep;
 	}
 	
-	private ReviewRepresentation getReviewRepresentation(Review review) {
+	private static ReviewRepresentation getReviewRepresentation(Review review) {
 		ReviewRepresentation reviewRepresentation = new ReviewRepresentation();
 		
 		reviewRepresentation.setId(review.getId());
@@ -105,11 +101,14 @@ public class ReviewActivity {
 	
 	public String deleteReview(Long reviewID) {
 		ReviewLogic rd = new ReviewLogic();
-		
 		rd.deleteReview(reviewID);
-		
 		return "OK";
 	}
+	
+//	public String deleteReview(Long reviewID) {
+//		Review response = rl.deleteReview(reviewID);
+//		return getReviewRepresentation(response);
+//	}
 	
 	public ReviewRepresentation updateReview(Long id, ReviewRequest request) {
 		return getReviewRepresentation(rl.updateReview(id, request.getReviewRating(), request.getBody()));

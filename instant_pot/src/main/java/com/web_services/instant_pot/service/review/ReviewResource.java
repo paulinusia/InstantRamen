@@ -75,7 +75,7 @@ public class ReviewResource implements ReviewService {
 	
 	@DELETE
 	@Produces({"application/xml" , "application/json"})
-	@Path("/reviews")
+	@Path("/review/{id}")
 	public Response deleteReview(@PathParam("reviewID") Long reviewID) {
 		System.out.println("GET METHOD Request for deleting a review .............");
 		ReviewActivity rAct = new ReviewActivity();

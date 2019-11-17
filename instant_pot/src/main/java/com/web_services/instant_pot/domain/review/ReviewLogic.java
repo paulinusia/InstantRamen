@@ -41,7 +41,7 @@ public class ReviewLogic {
 		return rd.updateBody(id, newBody);
 	}
 	
-	public static Review deleteReview(long reviewID) {
+	public Review deleteReview(long reviewID) {
 		ReviewDAL rd = new ReviewDAL();
 		return rd.deleteReview(reviewID);
 	}
