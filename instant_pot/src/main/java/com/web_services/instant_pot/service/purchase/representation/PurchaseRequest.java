@@ -25,12 +25,13 @@ public class PurchaseRequest {
 	private Long addressID;
 	
 	
-	private Long customerID;
-	public Long getCustomerID() {
-		return customerID;
+	private Long purchaseOwner;
+	
+	public Long getpurchaseOwner() {
+		return purchaseOwner;
 	}
-	public void setCustomerID(Long customerID) {
-		this.customerID = customerID;
+	public void setPurchaseOwner(Long purchaseOwner) {
+		this.purchaseOwner = purchaseOwner;
 	}
 	public Long getProductID() {
 		return productID;

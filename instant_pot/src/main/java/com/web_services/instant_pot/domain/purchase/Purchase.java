@@ -52,6 +52,7 @@ public class Purchase implements Serializable {
 	public Purchase() {
 		//auto
 	}
+	
 	public Purchase(Customer purchaseOwner, Product product, String purchaseDetail, String purchaseStatus, Payment purchasePayment, Address address) {
 		this.purchaseOwner = purchaseOwner;
 		this.product = product;

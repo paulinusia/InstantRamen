@@ -30,17 +30,21 @@ public class PurchaseDAL {
 	}
 
 	
-	public Purchase newPurchase(Long customerID, Long productID, String purchaseDetail, String purchaseStatus, Long pay, Long addressID) {
+	public Purchase newPurchase(Long customerID, Long productID, String purchaseDetail, String purchaseStatus, Long paymentID, Long addressID) {
 		SessionFactory sf = (SessionFactory) new Configuration().configure("hibernate.cfg.xml").buildSessionFactory();
 	    Session session = sf.openSession();
+	    
 	    Customer customer = session.get(Customer.class, customerID);
 	    Product product = session.get(Product.class, productID);
 	    Address address = session.get(Address.class, addressID);
-	    Payment payment = session.get(Payment.class, pay);
+	    Payment payment = session.get(Payment.class, paymentID);
+	    
 		Purchase purchase = new Purchase(customer, product, purchaseDetail, purchaseStatus, payment, address);
+		
 	    Transaction tx = session.beginTransaction();
 	    session.save(purchase); 
-		session.save(productID);
+	    
+		
 	    tx.commit();
 	    session.close(); 
 		

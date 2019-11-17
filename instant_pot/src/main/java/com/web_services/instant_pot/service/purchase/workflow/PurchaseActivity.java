@@ -120,23 +120,23 @@ public class PurchaseActivity {
 
 
 	public PurchaseRepresentation newPurchase(PurchaseRequest request) {
-		
-		Purchase purchase = pl.newPurchase(request.getCustomerID(), request.getProductID(), request.getPurchaseDetail(), request.getPurchaseStatus(), request.getPurchasePaymentID(), request.getAddressID());
+		PurchaseLogic plr = new PurchaseLogic();
+		Purchase purchase = plr.newPurchase(request.getpurchaseOwner(), request.getProductID(), request.getPurchaseDetail(), request.getPurchaseStatus(), request.getPurchasePaymentID(), request.getAddressID());
 		PurchaseRepresentation pr = new PurchaseRepresentation();
 		
+		pr.setId(purchase.getId());
 		
 		pr.setAddressID(purchase.getAddress().getId());
-		System.out.println("1");
-		pr.setPurchaseOwner(purchase.getPurchaseOwner().getId());
-		System.out.println("1");
-		pr.setProductID(purchase.getProduct().getId());
-		System.out.println("1");
-		pr.setPurchaseDetail(purchase.getPurchaseDetail());
-		System.out.println("1");
-		pr.setPurchaseStatus(purchase.getPurchaseStatus());
-		System.out.println("1");
-		pr.setPurchasePaymentID(purchase.getPurchasePayment().getId());
 		
+		pr.setPurchaseOwner(purchase.getPurchaseOwner().getId());
+		
+		pr.setProductID(purchase.getProduct().getId());
+		
+		pr.setPurchaseDetail(purchase.getPurchaseDetail());
+		
+		pr.setPurchaseStatus(purchase.getPurchaseStatus());
+		
+		pr.setPurchasePaymentID(purchase.getPurchasePayment().getId());
 		
 		
 		
