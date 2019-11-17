@@ -15,8 +15,8 @@ import com.web_services.instant_pot.service.partner.workflow.PartnerActivity;
 import com.web_services.instant_pot.service.partner.representation.PartnerRepresentation;
 import com.web_services.instant_pot.service.partner.representation.PartnerRequest;
 
+@Path("/partnerservice/")
 public class PartnerResource {
-	
 	private static PartnerActivity partnerActivity = new PartnerActivity();
 
 	@GET
