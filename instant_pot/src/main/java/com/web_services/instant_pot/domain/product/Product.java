@@ -31,15 +31,15 @@ public class Product implements Serializable {
 	@GeneratedValue(strategy = GenerationType.SEQUENCE)
 	private Long id;
 	
-	@OneToMany(cascade = CascadeType.ALL, mappedBy="product")
-	private Set<Review> reviews = new HashSet<Review>();
+//	@OneToMany(cascade = CascadeType.ALL, mappedBy="product")
+//	private Set<Review> reviews = new HashSet<Review>();
 	
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "fk_product_owner")
 	private Partner productOwner;
 	
-	@OneToMany(cascade = CascadeType.ALL, mappedBy = "product")
-	private Set<Purchase> purchases = new HashSet<Purchase>();
+//	@OneToMany(cascade = CascadeType.ALL, mappedBy = "product")
+//	private Set<Purchase> purchases = new HashSet<Purchase>();
 	
 	private String productName;
 	
@@ -89,9 +89,9 @@ public class Product implements Serializable {
 		this.cost = cost;
 	}
 
-	public void setReviews(Set<Review> reviews) {
-		this.reviews = reviews;
-	}
+//	public void setReviews(Set<Review> reviews) {
+//		this.reviews = reviews;
+//	}
 
 	public Partner getProductOwner() {
 		return productOwner;
@@ -101,21 +101,21 @@ public class Product implements Serializable {
 		this.productOwner = productOwner;
 	}
 
-	public Set<Purchase> getPurchases() {
-		return purchases;
-	}
+//	public Set<Purchase> getPurchases() {
+//		return purchases;
+//	}
+//
+//	public void setPurchases(Set<Purchase> purchases) {
+//		this.purchases = purchases;
+//	}
 
-	public void setPurchases(Set<Purchase> purchases) {
-		this.purchases = purchases;
-	}
-
-	public Set<Review> getReviews() {
-		return reviews;
-	}
-
-	public void setReviews(HashSet<Review> reviews) {
-		this.reviews = reviews;
-	}
+//	public Set<Review> getReviews() {
+//		return reviews;
+//	}
+//
+//	public void setReviews(HashSet<Review> reviews) {
+//		this.reviews = reviews;
+//	}
 	
 	@Override
 	public String toString() {

@@ -10,10 +10,10 @@ import com.web_services.instant_pot.service.address.representation.AddressRepres
 public class AddressActivity {
 	private static AddressLogic al = new AddressLogic();
 	
-//	public Address getAddressByID(Long id) {
-//		AddressDAL ad = new AddressDAL();
-//		return ad.getAddressByID(id);
-//	}
+	public AddressRepresentation getAddressByID(Long id) {
+		Address address = al.getAddressByID(id);
+		return getAddressRepresentation(address);
+	}
 //	
 //	public Address createAddress(String streetAddress, String city, String state, String zip) {
 //		AddressDAL ad = new AddressDAL();

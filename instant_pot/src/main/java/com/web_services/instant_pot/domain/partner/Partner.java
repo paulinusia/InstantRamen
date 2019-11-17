@@ -28,11 +28,11 @@ public class Partner implements Serializable {
 	
 	private String name;
 
-	@OneToMany(cascade = CascadeType.ALL, mappedBy="productOwner")
-	private Set<Product> inventory = new HashSet<Product>();
-	
-	@OneToMany(cascade = CascadeType.ALL, mappedBy="partner")
-	private Set<Address> addresses = new HashSet<Address>();
+//	@OneToMany(cascade = CascadeType.ALL, mappedBy="productOwner")
+//	private Set<Product> inventory = new HashSet<Product>();
+//	
+//	@OneToMany(cascade = CascadeType.ALL, mappedBy="partner")
+//	private Set<Address> addresses = new HashSet<Address>();
 	
 	private String description;
 	
@@ -59,21 +59,21 @@ public class Partner implements Serializable {
 		this.id = id;
 	}
 
-	public Set<Product> getInventory() {
-		return inventory;
-	}
-
-	public void setInventory(HashSet<Product> inventory) {
-		this.inventory = inventory;
-	}
-
-	public Set<Address> getAddresses() {
-		return addresses;
-	}
-
-	public void setAddresses(HashSet<Address> addresses) {
-		this.addresses = addresses;
-	}
+//	public Set<Product> getInventory() {
+//		return inventory;
+//	}
+//
+//	public void setInventory(HashSet<Product> inventory) {
+//		this.inventory = inventory;
+//	}
+//
+//	public Set<Address> getAddresses() {
+//		return addresses;
+//	}
+//
+//	public void setAddresses(HashSet<Address> addresses) {
+//		this.addresses = addresses;
+//	}
 
 	public String getName() {
 		return name;

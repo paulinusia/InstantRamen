@@ -23,6 +23,8 @@
 		</jaxrs:serviceBeans>
 
 		<jaxrs:schemaLocations>
+			<jaxrs:schemaLocation>com.web_services.instant_pot.service.address.representation.AddressRepresentation</jaxrs:schemaLocation>
+			<jaxrs:schemaLocation>com.web_services.instant_pot.service.address.representation.AddressRequest</jaxrs:schemaLocation>
 			<jaxrs:schemaLocation>com.web_services.instant_pot.service.product.representation.ProductRepresentation</jaxrs:schemaLocation>
 			<jaxrs:schemaLocation>com.web_services.instant_pot.service.product.representation.ProductRequest</jaxrs:schemaLocation>
 			<jaxrs:schemaLocation>com.web_services.instant_pot.service.review.representation.ReviewRepresentation</jaxrs:schemaLocation>

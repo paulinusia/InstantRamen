@@ -24,10 +24,14 @@ public class AddressResource implements AddressService {
 		System.out.println("GET METHOD Request for all Addresses from Customer with ID: " + Long.toString(customerID));
 		return aa.getAllAddressForCustomer(customerID);
 	}
-//	public Address getAddressByID(Long id) {
-//		AddressDAL ad = new AddressDAL();
-//		return ad.getAddressByID(id);
-//	}
+	
+	@GET
+	@Produces({"application/xml" , "application/json"})
+	@Path("/address/{id}")
+	public AddressRepresentation getAddressByID(@PathParam("id") Long id) {
+		System.out.println("GET METHOD Request for Address with ID: " + Long.toString(id));
+		return aa.getAddressByID(id);
+	}
 //	
 //	public Address createAddress(String streetAddress, String city, String state, String zip) {
 //		AddressDAL ad = new AddressDAL();

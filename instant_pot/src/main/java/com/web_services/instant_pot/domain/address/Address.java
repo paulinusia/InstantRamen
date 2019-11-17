@@ -50,8 +50,8 @@ public class Address implements Serializable {
 	@JoinColumn(name = "fk_partner")
 	private Partner partner;
 
-	@OneToMany(cascade = CascadeType.ALL, mappedBy="address")
-	private Set<Purchase> purchases = new HashSet<Purchase>();
+//	@OneToMany(cascade = CascadeType.ALL, mappedBy="address")
+//	private Set<Purchase> purchases = new HashSet<Purchase>();
 	
 	public Address(String streetAddress, String city, String state, String zip) {
 		this.streetAddress = streetAddress;
@@ -118,12 +118,12 @@ public class Address implements Serializable {
 		this.zip = zip;
 	}
 
-	public Set<Purchase> getPurchases() {
-		return purchases;
-	}
-
-	public void setPurchases(Set<Purchase> purchases) {
-		this.purchases = purchases;
-	}
+//	public Set<Purchase> getPurchases() {
+//		return purchases;
+//	}
+//
+//	public void setPurchases(Set<Purchase> purchases) {
+//		this.purchases = purchases;
+//	}
 	
 }

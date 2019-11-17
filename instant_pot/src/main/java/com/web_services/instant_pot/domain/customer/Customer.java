@@ -40,17 +40,17 @@ public class Customer implements Serializable {
 	
 	private long phoneNumber;
 	
-	@OneToMany(cascade = CascadeType.ALL, mappedBy = "paymentOwner")
-	private Set<Payment> payments = new HashSet<Payment>();
+//	@OneToMany(cascade = CascadeType.ALL, mappedBy = "paymentOwner")
+//	private Set<Payment> payments = new HashSet<Payment>();
 	
-	@OneToMany(cascade = CascadeType.ALL, mappedBy = "customer")
-	private Set<Address> addresses = new HashSet<Address>();
+//	@OneToMany(cascade = CascadeType.ALL, mappedBy = "customer")
+//	private Set<Address> addresses = new HashSet<Address>();
 
-	@OneToMany(cascade = CascadeType.ALL, mappedBy="customer")
-	private Set<Review> reviews = new HashSet<Review>();
-	
-	@OneToMany(cascade = CascadeType.ALL, mappedBy="purchaseOwner")
-	private Set<Purchase> purchases = new HashSet<Purchase>();
+//	@OneToMany(cascade = CascadeType.ALL, mappedBy="customer")
+//	private Set<Review> reviews = new HashSet<Review>();
+//	
+//	@OneToMany(cascade = CascadeType.ALL, mappedBy="purchaseOwner")
+//	private Set<Purchase> purchases = new HashSet<Purchase>();
 	
 	public Customer() {}
 	
@@ -61,21 +61,21 @@ public class Customer implements Serializable {
 		this.phoneNumber = phoneNumber;
 	}
 
-	public Set<Payment> getPayments() {
-		return payments;
-	}
+//	public Set<Payment> getPayments() {
+//		return payments;
+//	}
+//
+//	public void setPayments(Set<Payment> payments) {
+//		this.payments = payments;
+//	}
 
-	public void setPayments(Set<Payment> payments) {
-		this.payments = payments;
-	}
-
-	public void setReviews(Set<Review> reviews) {
-		this.reviews = reviews;
-	}
-
-	public void setPurchases(Set<Purchase> purchases) {
-		this.purchases = purchases;
-	}
+//	public void setReviews(Set<Review> reviews) {
+//		this.reviews = reviews;
+//	}
+//
+//	public void setPurchases(Set<Purchase> purchases) {
+//		this.purchases = purchases;
+//	}
 
 	public String getFirstName() {
 		return firstName;
@@ -113,21 +113,21 @@ public class Customer implements Serializable {
 		phoneNumber = number;	
 	}
 	
-	public Set<Purchase> getPurchases() {
-		return purchases;
-	}
-
-	public void setPurchases(HashSet<Purchase> purchases) {
-		this.purchases = purchases;
-	}
-
-	public Set<Review> getReviews() {
-		return reviews;
-	}
-
-	public void setReviews(HashSet<Review> reviews) {
-		this.reviews = reviews;
-	}
+//	public Set<Purchase> getPurchases() {
+//		return purchases;
+//	}
+//
+//	public void setPurchases(HashSet<Purchase> purchases) {
+//		this.purchases = purchases;
+//	}
+//
+//	public Set<Review> getReviews() {
+//		return reviews;
+//	}
+//
+//	public void setReviews(HashSet<Review> reviews) {
+//		this.reviews = reviews;
+//	}
 	
 	public Long getId() {
 		return id;
@@ -137,13 +137,13 @@ public class Customer implements Serializable {
 		this.id = id;
 	}
 
-	public Set<Address> getAddresses() {
-		return addresses;
-	}
-
-	public void setAddresses(Set<Address> addresses) {
-		this.addresses = addresses;
-	}
+//	public Set<Address> getAddresses() {
+//		return addresses;
+//	}
+//
+//	public void setAddresses(Set<Address> addresses) {
+//		this.addresses = addresses;
+//	}
 
 	@Override
 	public String toString() {
