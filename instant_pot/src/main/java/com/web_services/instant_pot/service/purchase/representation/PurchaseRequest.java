@@ -2,68 +2,69 @@ package com.web_services.instant_pot.service.purchase.representation;
 
 import java.util.Set;
 
+import javax.xml.bind.annotation.XmlAccessType;
+import javax.xml.bind.annotation.XmlAccessorType;
+import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.XmlType;
+
 import com.web_services.instant_pot.domain.address.Address;
 import com.web_services.instant_pot.domain.customer.Customer;
 import com.web_services.instant_pot.domain.payment.Payment;
 import com.web_services.instant_pot.domain.product.Product;
 
+@XmlRootElement(name = "Purchase")
+@XmlAccessorType(XmlAccessType.FIELD)
+@XmlType(name = "")
 public class PurchaseRequest {
 	//purchaseOwner, products, purchaseDetail, purchaseStatus, purchasePayment, address);
 	
-	private Customer purchaseOwner;
-	private Product product;
+	private Long productID;
 	private String purchaseDetail;
 	private String purchaseStatus;
-	private Payment purchasePayment;
-	private Address address;
-
-	public Customer getPurchaseOwner() {
-		return purchaseOwner;
+	private Long purchasePaymentID;
+	private Long addressID;
+	
+	
+	private Long customerID;
+	public Long getCustomerID() {
+		return customerID;
 	}
-
-	public void setPurchaseOwner(Customer purchaseOwner) {
-		this.purchaseOwner = purchaseOwner;
+	public void setCustomerID(Long customerID) {
+		this.customerID = customerID;
 	}
-
-	public Product getProduct() {
-		return product;
+	public Long getProductID() {
+		return productID;
 	}
-
-	public void setProduct(Product product) {
-		this.product = product;
+	public void setProductID(Long productID) {
+		this.productID = productID;
 	}
-
 	public String getPurchaseDetail() {
 		return purchaseDetail;
 	}
-
 	public void setPurchaseDetail(String purchaseDetail) {
 		this.purchaseDetail = purchaseDetail;
-		}
-	
+	}
 	public String getPurchaseStatus() {
 		return purchaseStatus;
 	}
-	
-	//Allows people to cancel their order if necessary
 	public void setPurchaseStatus(String purchaseStatus) {
 		this.purchaseStatus = purchaseStatus;
 	}
+	public Long getPurchasePaymentID() {
+		return purchasePaymentID;
+	}
+	public void setPurchasePaymentID(Long purchasePaymentID) {
+		this.purchasePaymentID = purchasePaymentID;
+	}
+	public Long getAddressID() {
+		return addressID;
+	}
+	public void setAddressID(Long addressID) {
+		this.addressID = addressID;
+	}
+
 	
-	public Payment getPurchasePayment() {
-		return purchasePayment;
-	}
-	
-	public void setPurchasePayment(Payment purchasePayment) {
-		this.purchasePayment = purchasePayment;
-	}
-	
-	public Address getAddress() {
-		return address;
-	}
-	public void setAddress(Address address) {
-		this.address = address;
-	}
+
 	
 		
 }

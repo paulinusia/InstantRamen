@@ -14,6 +14,7 @@ import com.web_services.instant_pot.domain.purchase.Purchase;
 import com.web_services.instant_pot.domain.purchase.PurchaseLogic;
 import com.web_services.instant_pot.service.product.representation.ProductRepresentation;
 import com.web_services.instant_pot.service.purchase.representation.PurchaseRepresentation;
+import com.web_services.instant_pot.service.purchase.representation.PurchaseRequest;
 
 
 
@@ -26,12 +27,11 @@ public class PurchaseActivity {
 		
 		PurchaseRepresentation pRep = new PurchaseRepresentation();
 		
-		pRep.setAddress(purchase.getAddress());
-		pRep.setId(purchase.getId());
-		pRep.setProduct(purchase.getProduct());
+		pRep.setAddressID(purchase.getAddress().getId());
+		pRep.setProductID(purchase.getProduct().getId());
 		pRep.setPurchaseDetail(purchase.getPurchaseDetail());
-		pRep.setPurchaseOwner(purchase.getPurchaseOwner());
-		pRep.setPurchasePayment(purchase.getPurchasePayment());
+		pRep.setPurchaseOwner(purchase.getPurchaseOwner().getId());
+		pRep.setPurchasePaymentID(purchase.getPurchasePayment().getId());
 		pRep.setPurchaseStatus(purchase.getPurchaseStatus());
 		
 		return pRep;
@@ -39,16 +39,18 @@ public class PurchaseActivity {
 	
 	
 	
-	public PurchaseRepresentation newPurchase(Customer purchaseOwner, Product product, String purchaseDetail, String purchaseStatus, Payment purchasePayment, Address address) {
+	public PurchaseRepresentation newPurchase(Long purchaseOwner, Long product, String purchaseDetail, String purchaseStatus, Long purchasePayment, Long address) {
 	Purchase purchase = pl.newPurchase(purchaseOwner, product, purchaseDetail, purchaseStatus, purchasePayment, address);
 	
 	PurchaseRepresentation pRep = new PurchaseRepresentation();
-	pRep.setPurchaseOwner(purchase.getPurchaseOwner());
-	pRep.setProduct(purchase.getProduct());
-	pRep.setPurchaseDetail(purchase.getPurchaseDetail());
+	
+	
+	pRep.setPurchaseOwner(purchase.getPurchaseOwner().getId());
+	pRep.setProductID(purchase.getProduct().getId());
 	pRep.setPurchaseStatus(purchase.getPurchaseStatus());
-	pRep.setPurchasePayment(purchase.getPurchasePayment());
-	pRep.setAddress(purchase.getAddress());
+	pRep.setPurchaseDetail(purchase.getPurchaseDetail());
+	pRep.setPurchasePaymentID(purchase.getPurchasePayment().getId());
+	pRep.setAddressID(purchase.getAddress().getId());
 	
 	return pRep;
 	}
@@ -62,11 +64,11 @@ public class PurchaseActivity {
 		
 		pRep.setPurchaseDetail(purchaseDetail);
 		
-		pRep.setAddress(purchase.getAddress());
-		pRep.setPurchaseOwner(purchase.getPurchaseOwner());
-		pRep.setProduct(purchase.getProduct());
+		pRep.setAddressID(purchase.getAddress().getId());
+		pRep.setPurchaseOwner(purchase.getPurchaseOwner().getId());
+		pRep.setProductID(purchase.getProduct().getId());
 		pRep.setPurchaseStatus(purchase.getPurchaseStatus());
-		pRep.setPurchasePayment(purchase.getPurchasePayment());
+		pRep.setPurchasePaymentID(purchase.getPurchasePayment().getId());
 		
 		return pRep;
 	}
@@ -77,11 +79,14 @@ public class PurchaseActivity {
 		PurchaseRepresentation pRep = new PurchaseRepresentation();
 		
 		pRep.setPurchaseStatus(purchaseStatus);
-		pRep.setAddress(purchase.getAddress());
-		pRep.setPurchaseOwner(purchase.getPurchaseOwner());
-		pRep.setProduct(purchase.getProduct());
-		pRep.setPurchasePayment(purchase.getPurchasePayment());
+		pRep.setAddressID(purchase.getAddress().getId());
+		System.out.println("2");
+		pRep.setPurchaseOwner(purchase.getPurchaseOwner().getId());
+		pRep.setProductID(purchase.getProduct().getId());
+		System.out.println("2");
+		pRep.setPurchasePaymentID(purchase.getPurchasePayment().getId());
 		pRep.setPurchaseDetail(purchase.getPurchaseDetail());
+		
 		
 		return pRep;
 		
@@ -91,9 +96,9 @@ public class PurchaseActivity {
 		PurchaseRepresentation purchaseRepresentation = new PurchaseRepresentation();
 		
 		purchaseRepresentation.setId(purchase.getId());
-		purchaseRepresentation.setAddress(purchase.getAddress());
-		purchaseRepresentation.setPurchaseOwner(purchase.getPurchaseOwner());
-		purchaseRepresentation.setProduct(purchase.getProduct());
+		purchaseRepresentation.setAddressID(purchase.getAddress().getId());
+		purchaseRepresentation.setPurchaseOwner(purchase.getPurchaseOwner().getId());
+		purchaseRepresentation.setProductID(purchase.getProduct().getId());
 		purchaseRepresentation.setPurchaseDetail(purchase.getPurchaseDetail());
 		purchaseRepresentation.setPurchaseStatus(purchase.getPurchaseStatus());
 		
@@ -101,15 +106,41 @@ public class PurchaseActivity {
 	}
 	
 	public Set<PurchaseRepresentation> getPurchasesFromCustomer(Long customerID){
-			Set<Purchase> purchases = new HashSet<Purchase>();
+			
 			Set<PurchaseRepresentation> purchaseRepresentations = new HashSet<PurchaseRepresentation>();	
-			purchases = pl.getAllPurchasesByCustomer(customerID);
+			Set<Purchase> purchases = pl.getAllPurchasesByCustomer(customerID);
 
 		for (Purchase purchase : purchases) {
-			PurchaseRepresentation purchaseRepresentation = getPurchaseRepresentation(purchase);
-			purchaseRepresentations.add(purchaseRepresentation);
+			
+			purchaseRepresentations.add(getPurchaseRepresentation(purchase));
 		}
 		return purchaseRepresentations;
+	}
+
+
+
+	public PurchaseRepresentation newPurchase(PurchaseRequest request) {
+		
+		Purchase purchase = pl.newPurchase(request.getCustomerID(), request.getProductID(), request.getPurchaseDetail(), request.getPurchaseStatus(), request.getPurchasePaymentID(), request.getAddressID());
+		PurchaseRepresentation pr = new PurchaseRepresentation();
+		
+		
+		pr.setAddressID(purchase.getAddress().getId());
+		System.out.println("1");
+		pr.setPurchaseOwner(purchase.getPurchaseOwner().getId());
+		System.out.println("1");
+		pr.setProductID(purchase.getProduct().getId());
+		System.out.println("1");
+		pr.setPurchaseDetail(purchase.getPurchaseDetail());
+		System.out.println("1");
+		pr.setPurchaseStatus(purchase.getPurchaseStatus());
+		System.out.println("1");
+		pr.setPurchasePaymentID(purchase.getPurchasePayment().getId());
+		
+		
+		
+		
+		return pr;
 	}
 	
 }

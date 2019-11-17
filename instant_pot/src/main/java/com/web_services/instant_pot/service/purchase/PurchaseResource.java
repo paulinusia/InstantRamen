@@ -19,6 +19,7 @@ import com.web_services.instant_pot.domain.product.Product;
 import com.web_services.instant_pot.service.product.representation.ProductRepresentation;
 import com.web_services.instant_pot.service.product.workflow.ProductActivity;
 import com.web_services.instant_pot.service.purchase.representation.PurchaseRepresentation;
+import com.web_services.instant_pot.service.purchase.representation.PurchaseRequest;
 import com.web_services.instant_pot.service.purchase.workflow.PurchaseActivity;
 
 @Path("/purchaseservice/")
@@ -35,12 +36,13 @@ public class PurchaseResource implements PurchaseService{
 	}
 	//unsupported media type
 	@POST
+	@Consumes({"application/xml" , "application/json"})
 	@Produces({"application/xml" , "application/json"})
 	@Path("/purchase")
-	public PurchaseRepresentation newPurchase(Customer purchaseOwner, Product product, String purchaseDetail, String purchaseStatus, Payment purchasePayment, Address address) {
+	public PurchaseRepresentation newPurchase(PurchaseRequest request) {
 		System.out.println("GET METHOD Request for new Purchase .............");
 		PurchaseActivity pAct = new PurchaseActivity();	
-		return pAct.newPurchase(purchaseOwner, product, purchaseDetail, purchaseStatus, purchasePayment, address);
+		return pAct.newPurchase(request);
 	}
 	@PUT
 	@Consumes({"application/xml" , "application/json"})

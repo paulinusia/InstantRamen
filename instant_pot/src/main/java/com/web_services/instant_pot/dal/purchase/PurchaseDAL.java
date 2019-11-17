@@ -30,13 +30,17 @@ public class PurchaseDAL {
 	}
 
 	
-	public Purchase newPurchase(Customer purchaseOwner, Product product, String purchaseDetail, String purchaseStatus, Payment purchasePayment, Address address) {
+	public Purchase newPurchase(Long customerID, Long productID, String purchaseDetail, String purchaseStatus, Long pay, Long addressID) {
 		SessionFactory sf = (SessionFactory) new Configuration().configure("hibernate.cfg.xml").buildSessionFactory();
 	    Session session = sf.openSession();
-		Purchase purchase = new Purchase(purchaseOwner, product, purchaseDetail, purchaseStatus, purchasePayment, address);
+	    Customer customer = session.get(Customer.class, customerID);
+	    Product product = session.get(Product.class, productID);
+	    Address address = session.get(Address.class, addressID);
+	    Payment payment = session.get(Payment.class, pay);
+		Purchase purchase = new Purchase(customer, product, purchaseDetail, purchaseStatus, payment, address);
 	    Transaction tx = session.beginTransaction();
 	    session.save(purchase); 
-		session.save(product);
+		session.save(productID);
 	    tx.commit();
 	    session.close(); 
 		
@@ -106,6 +110,9 @@ public class PurchaseDAL {
 		session.close();
 		return purchaseSet;
 	}
+
+
+
 
 	
 

@@ -120,5 +120,6 @@ public class Purchase implements Serializable {
 		return "Purchase [id=" + id + ", purchaseOwner=" + purchaseOwner.getName() + ", purchaseDetail=" + purchaseDetail
 				+ ", purchaseStatus=" + purchaseStatus + ", purchasePayment=" + purchasePayment + "]";
 	}
+
 	
 }

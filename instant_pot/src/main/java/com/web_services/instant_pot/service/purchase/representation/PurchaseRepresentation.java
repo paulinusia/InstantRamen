@@ -18,56 +18,20 @@ import com.web_services.instant_pot.domain.product.Product;
 @XmlType(name = "")
 public class PurchaseRepresentation {
 	private Long id;
-	
-	private Customer purchaseOwner;
-	
+
+	private Long productID;
 	private String purchaseDetail;
-	
 	private String purchaseStatus;
+	private Long purchasePaymentID;
+	private Long addressID;
+	private Long purchaseOwner;
 	
-	private Payment purchasePayment;
-	
-	private Address address;
-	
-	private Product product;
-	
-
-	public Address getAddress() {
-		return address;
-	}
-	public void setAddress(Address address) {
-		this.address = address;
-	}
-	
-	public void setPurchasePayment(Payment purchasePayment) {
-		this.purchasePayment = purchasePayment;
-	}
-	
-	public Payment getPurchasePayment() {
-		return purchasePayment;
-	}
-	
-	public Product getProduct() {
-		return product;
-	}
-	public void setProduct(Product product) {
-		this.product = product;
-	}
-	
-	public Long getId() {
-		return id;
+	public Long getProductID() {
+		return productID;
 	}
 
-	public void setId(Long id) {
-		this.id = id;
-	}
-
-	public Customer getPurchaseOwner() {
-		return purchaseOwner;
-	}
-
-	public void setPurchaseOwner(Customer purchaseOwner) {
-		this.purchaseOwner = purchaseOwner;
+	public void setProductID(Long productID) {
+		this.productID = productID;
 	}
 
 	public String getPurchaseDetail() {
@@ -78,7 +42,6 @@ public class PurchaseRepresentation {
 		this.purchaseDetail = purchaseDetail;
 	}
 
-	//Allows people to cancel their order if necessary
 	public String getPurchaseStatus() {
 		return purchaseStatus;
 	}
@@ -86,7 +49,44 @@ public class PurchaseRepresentation {
 	public void setPurchaseStatus(String purchaseStatus) {
 		this.purchaseStatus = purchaseStatus;
 	}
+
+	public Long getPurchasePaymentID() {
+		return purchasePaymentID;
+	}
+
+	public void setPurchasePaymentID(Long purchasePaymentID) {
+		this.purchasePaymentID = purchasePaymentID;
+	}
+
+	public Long getAddressID() {
+		return addressID;
+	}
+
+	public void setAddressID(Long address) {
+		this.addressID = address;
+	}
+
+	public Long getPurchaseOwner() {
+		return purchaseOwner;
+	}
+
+	public void setPurchaseOwner(Long purchaseOwner) {
+		this.purchaseOwner = purchaseOwner;
+	}
 	
+
+
+	
+	public Long getId() {
+		return id;
+	}
+
+	public void setId(Long id) {
+		this.id = id;
+	}
+
+
+
 
 
 }

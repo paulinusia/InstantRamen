@@ -11,11 +11,12 @@ import com.web_services.instant_pot.domain.payment.Payment;
 import com.web_services.instant_pot.domain.product.Product;
 import com.web_services.instant_pot.service.product.representation.ProductRepresentation;
 import com.web_services.instant_pot.service.purchase.representation.PurchaseRepresentation;
+import com.web_services.instant_pot.service.purchase.representation.PurchaseRequest;
 
 @WebService
 public interface PurchaseService {
 	
-	public PurchaseRepresentation newPurchase(Customer purchaseOwner, Product product, String purchaseDetail, String purchaseStatus, Payment purchasePayment, Address address);
+	public PurchaseRepresentation newPurchase(PurchaseRequest request);
 	public PurchaseRepresentation getPurchaseByID(Long id);
 	public PurchaseRepresentation  updatePurchaseDetail(Long id, String purchaseDetail);
 	public PurchaseRepresentation updatePurchaseStatus(Long id, String purchaseStatus);

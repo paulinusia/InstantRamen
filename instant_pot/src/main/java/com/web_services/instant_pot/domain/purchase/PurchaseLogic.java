@@ -24,9 +24,9 @@ public class PurchaseLogic {
 		return pd.getPurchaseByID(id);
 	}
 	
-	public Purchase newPurchase(Customer purchaseOwner, Product product, String purchaseDetail, String purchaseStatus, Payment purchasePayment, Address address) {
+	public Purchase newPurchase(Long CustomerID, Long productID, String purchaseDetail, String purchaseStatus, Long payment, Long addressID) {
 		PurchaseDAL pd = new PurchaseDAL();
-		return pd.newPurchase(purchaseOwner, product, purchaseDetail, purchaseStatus, purchasePayment, address);
+		return pd.newPurchase(CustomerID, productID, purchaseDetail, purchaseStatus, payment, addressID);
 	}
 	
 	public Purchase updatePurchaseDetail(Long id, String purchaseDetail) {
@@ -43,4 +43,6 @@ public class PurchaseLogic {
 		PurchaseDAL pd = new PurchaseDAL();
 		return pd.getAllPurchasesByCustomer(customerID);
 	}
+
+
 }
