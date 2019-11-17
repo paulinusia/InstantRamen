@@ -2,16 +2,8 @@ package com.web_services.instant_pot.service.payment.workflow;
 
 import com.web_services.instant_pot.domain.payment.Payment;
 import com.web_services.instant_pot.domain.payment.PaymentLogic;
-import com.web_services.instant_pot.domain.product.Product;
-import com.web_services.instant_pot.domain.purchase.Purchase;
-import com.web_services.instant_pot.domain.review.Review;
-import com.web_services.instant_pot.domain.review.ReviewLogic;
 import com.web_services.instant_pot.service.payment.representation.PaymentRepresentation;
 import com.web_services.instant_pot.service.payment.representation.PaymentRequest;
-import com.web_services.instant_pot.service.product.representation.ProductRepresentation;
-import com.web_services.instant_pot.service.product.representation.ProductRequest;
-import com.web_services.instant_pot.service.purchase.representation.PurchaseRepresentation;
-import com.web_services.instant_pot.service.review.representation.ReviewRepresentation;
 
 public class PaymentActivity {
 	private static PaymentLogic pl = new PaymentLogic();

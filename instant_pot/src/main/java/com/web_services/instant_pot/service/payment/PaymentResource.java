@@ -11,12 +11,9 @@ import javax.ws.rs.Produces;
 import javax.ws.rs.core.Response;
 import javax.ws.rs.core.Response.Status;
 
-import com.web_services.instant_pot.domain.payment.Payment;
 import com.web_services.instant_pot.service.payment.representation.PaymentRepresentation;
 import com.web_services.instant_pot.service.payment.representation.PaymentRequest;
 import com.web_services.instant_pot.service.payment.workflow.PaymentActivity;
-import com.web_services.instant_pot.service.purchase.workflow.PurchaseActivity;
-import com.web_services.instant_pot.service.review.representation.ReviewRepresentation;
 
 @Path("/paymentservice/")
 public class PaymentResource implements PaymentService {

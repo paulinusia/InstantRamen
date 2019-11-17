@@ -5,12 +5,8 @@ import java.util.Set;
 
 import com.web_services.instant_pot.domain.address.Address;
 import com.web_services.instant_pot.domain.address.AddressLogic;
-import com.web_services.instant_pot.domain.partner.PartnerLogic;
-import com.web_services.instant_pot.domain.product.Product;
 import com.web_services.instant_pot.service.address.representation.AddressRepresentation;
 import com.web_services.instant_pot.service.address.representation.AddressRequest;
-import com.web_services.instant_pot.service.product.representation.ProductRepresentation;
-import com.web_services.instant_pot.service.product.representation.ProductRequest;
 
 public class AddressActivity {
 	private static AddressLogic al = new AddressLogic();

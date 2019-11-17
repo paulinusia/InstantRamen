@@ -3,9 +3,8 @@ package com.web_services.instant_pot.service.product;
 import java.util.Set;
 
 import javax.jws.WebService;
-import javax.ws.rs.core.Response;
+//import javax.ws.rs.core.Response;
 
-import com.web_services.instant_pot.domain.partner.Partner;
 import com.web_services.instant_pot.service.product.representation.ProductRepresentation;
 import com.web_services.instant_pot.service.product.representation.ProductRequest;
 

@@ -1,27 +1,27 @@
 package com.web_services.instant_pot;
 
-import java.util.HashSet;
-
-import org.hibernate.Query;
-import org.hibernate.Session;
-import org.hibernate.SessionFactory;
-import org.hibernate.Transaction;
-import org.hibernate.cfg.Configuration;
-
-import com.web_services.instant_pot.domain.address.Address;
-import com.web_services.instant_pot.domain.address.AddressLogic;
-import com.web_services.instant_pot.domain.customer.Customer;
-import com.web_services.instant_pot.domain.customer.CustomerLogic;
-import com.web_services.instant_pot.domain.partner.Partner;
-import com.web_services.instant_pot.domain.partner.PartnerLogic;
-import com.web_services.instant_pot.domain.payment.Payment;
-import com.web_services.instant_pot.domain.payment.PaymentLogic;
-import com.web_services.instant_pot.domain.product.Product;
-import com.web_services.instant_pot.domain.product.ProductLogic;
-import com.web_services.instant_pot.domain.purchase.Purchase;
-import com.web_services.instant_pot.domain.purchase.PurchaseLogic;
-import com.web_services.instant_pot.domain.review.Review;
-import com.web_services.instant_pot.domain.review.ReviewLogic;
+//import java.util.HashSet;
+//
+//import org.hibernate.Query;
+//import org.hibernate.Session;
+//import org.hibernate.SessionFactory;
+//import org.hibernate.Transaction;
+//import org.hibernate.cfg.Configuration;
+//
+//import com.web_services.instant_pot.domain.address.Address;
+//import com.web_services.instant_pot.domain.address.AddressLogic;
+//import com.web_services.instant_pot.domain.customer.Customer;
+//import com.web_services.instant_pot.domain.customer.CustomerLogic;
+//import com.web_services.instant_pot.domain.partner.Partner;
+//import com.web_services.instant_pot.domain.partner.PartnerLogic;
+//import com.web_services.instant_pot.domain.payment.Payment;
+//import com.web_services.instant_pot.domain.payment.PaymentLogic;
+//import com.web_services.instant_pot.domain.product.Product;
+//import com.web_services.instant_pot.domain.product.ProductLogic;
+//import com.web_services.instant_pot.domain.purchase.Purchase;
+//import com.web_services.instant_pot.domain.purchase.PurchaseLogic;
+//import com.web_services.instant_pot.domain.review.Review;
+//import com.web_services.instant_pot.domain.review.ReviewLogic;
 
 // This class is primarily for DB table initialization, testing, and modification
 public class App 

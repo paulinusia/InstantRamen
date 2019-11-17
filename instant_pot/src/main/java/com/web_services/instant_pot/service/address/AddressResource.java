@@ -11,13 +11,9 @@ import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 
-import com.web_services.instant_pot.dal.address.AddressDAL;
-import com.web_services.instant_pot.domain.address.Address;
 import com.web_services.instant_pot.service.address.representation.AddressRepresentation;
 import com.web_services.instant_pot.service.address.representation.AddressRequest;
 import com.web_services.instant_pot.service.address.workflow.AddressActivity;
-import com.web_services.instant_pot.service.product.representation.ProductRepresentation;
-import com.web_services.instant_pot.service.product.representation.ProductRequest;
 
 @Path("/addressservice/")
 public class AddressResource implements AddressService {

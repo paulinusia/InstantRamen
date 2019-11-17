@@ -1,17 +1,9 @@
 package com.web_services.instant_pot.service.purchase.representation;
 
-import java.util.HashSet;
-import java.util.Set;
-
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlType;
-
-import com.web_services.instant_pot.domain.address.Address;
-import com.web_services.instant_pot.domain.customer.Customer;
-import com.web_services.instant_pot.domain.payment.Payment;
-import com.web_services.instant_pot.domain.product.Product;
 
 @XmlRootElement(name = "Purchase")
 @XmlAccessorType(XmlAccessType.FIELD)

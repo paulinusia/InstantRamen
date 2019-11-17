@@ -1,5 +1,5 @@
 package com.web_services.instant_pot.service.purchase;
-import java.util.HashSet;
+//import java.util.HashSet;
 import java.util.Set;
 
 import javax.ws.rs.Consumes;
@@ -9,15 +9,9 @@ import javax.ws.rs.PUT;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
-import javax.ws.rs.core.Response;
-import javax.ws.rs.core.Response.Status;
+//import javax.ws.rs.core.Response;
+//import javax.ws.rs.core.Response.Status;
 
-import com.web_services.instant_pot.domain.address.Address;
-import com.web_services.instant_pot.domain.customer.Customer;
-import com.web_services.instant_pot.domain.payment.Payment;
-import com.web_services.instant_pot.domain.product.Product;
-import com.web_services.instant_pot.service.product.representation.ProductRepresentation;
-import com.web_services.instant_pot.service.product.workflow.ProductActivity;
 import com.web_services.instant_pot.service.purchase.representation.PurchaseRepresentation;
 import com.web_services.instant_pot.service.purchase.representation.PurchaseRequest;
 import com.web_services.instant_pot.service.purchase.workflow.PurchaseActivity;

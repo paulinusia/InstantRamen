@@ -1,18 +1,11 @@
 package com.web_services.instant_pot.service.purchase.workflow;
 
 import java.util.HashSet;
-import java.util.Iterator;
+//import java.util.Iterator;
 import java.util.Set;
 
-import com.web_services.instant_pot.dal.purchase.PurchaseDAL;
-import com.web_services.instant_pot.domain.address.Address;
-import com.web_services.instant_pot.domain.customer.Customer;
-import com.web_services.instant_pot.domain.payment.Payment;
-import com.web_services.instant_pot.domain.product.Product;
-import com.web_services.instant_pot.domain.product.ProductLogic;
 import com.web_services.instant_pot.domain.purchase.Purchase;
 import com.web_services.instant_pot.domain.purchase.PurchaseLogic;
-import com.web_services.instant_pot.service.product.representation.ProductRepresentation;
 import com.web_services.instant_pot.service.purchase.representation.PurchaseRepresentation;
 import com.web_services.instant_pot.service.purchase.representation.PurchaseRequest;
 
