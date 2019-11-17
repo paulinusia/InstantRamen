@@ -12,6 +12,7 @@ import com.web_services.instant_pot.service.review.representation.ReviewRepresen
 import com.web_services.instant_pot.service.review.representation.ReviewRequest;
 
 public class ReviewActivity {
+	private static ReviewLogic rl = new ReviewLogic();
 	
 	public ReviewRepresentation getReviewByID(Long reviewID) {
 		ReviewLogic rd = new ReviewLogic();
@@ -26,6 +27,19 @@ public class ReviewActivity {
 		rRep.setBody(review.getBody());
 		rRep.setTimestamp(review.getTimestamp());
 		return rRep;
+	}
+	
+	private ReviewRepresentation getReviewRepresentation(Review review) {
+		ReviewRepresentation reviewRepresentation = new ReviewRepresentation();
+		
+		reviewRepresentation.setId(review.getId());
+		reviewRepresentation.setCustomerID(review.getCustomer().getId());
+		reviewRepresentation.setProductID(review.getProduct().getId());
+		reviewRepresentation.setReviewRating(review.getReviewRating());
+		reviewRepresentation.setBody(review.getBody());
+		reviewRepresentation.setTimestamp(review.getTimestamp());
+
+		return reviewRepresentation;
 	}
 	
 //	public HashSet<ReviewRepresentation> getAllReviewForCustomer(Long custID){
@@ -44,11 +58,9 @@ public class ReviewActivity {
 //			reviewRepresentation.setTimestamp(review.getTimestamp());
 //		}
 //		
-//		
 //		return reviewRepresentations;
 //		
 //	}
-//	
 //
 //
 //	public HashSet<ReviewRepresentation> getAllReviewForProduct(Long productID){
@@ -67,11 +79,9 @@ public class ReviewActivity {
 //			reviewRepresentation.setTimestamp(review.getTimestamp());
 //		}
 //		
-//		
 //		return reviewRepresentations;
 //	}
-	
-	
+
 	public ReviewRepresentation addReview(ReviewRequest request) {
 		ReviewLogic rd = new ReviewLogic();
 		
@@ -86,6 +96,7 @@ public class ReviewActivity {
 		return rRes;
 		
 	}
+	
 //	public ReviewRepresentation addReview(ReviewRequest reviewRequest) {
 //		CustomerLogic customerLogic = new CustomerLogic();
 //		Review newReview =  rl.addReview(customerLogic.getCustomer(reviewRequest.getCustomerID()), reviewRequest.getProductID(), reviewRequest.getReviewRating(), reviewRequest.getBody());
@@ -100,6 +111,8 @@ public class ReviewActivity {
 		return "OK";
 	}
 	
-	
+	public ReviewRepresentation updateReview(Long id, ReviewRequest request) {
+		return getReviewRepresentation(rl.updateReview(id, request.getReviewRating(), request.getBody()));
+	}
 
 }

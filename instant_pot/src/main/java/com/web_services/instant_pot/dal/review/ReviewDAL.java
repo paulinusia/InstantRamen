@@ -93,5 +93,53 @@ public class ReviewDAL {
 		session.close();
 		return r;
 	}
+	
+	public Review updateRating(Long reviewID, int newRating) {
+		SessionFactory sf = (SessionFactory) new Configuration().configure("hibernate.cfg.xml").buildSessionFactory();
+	    Session session = sf.openSession();
+	    
+	    Review review = session.get(Review.class, reviewID);
+	    if (review != null) {
+	    	review.setReviewRating(newRating);
+	    	Transaction tx = session.beginTransaction();
+	    	session.save(review);
+		    tx.commit();
+	    } 
+	    session.close();
+	    
+	    return review;
+	}
+	
+	public Review updateBody(Long reviewID, String newBody) {
+		SessionFactory sf = (SessionFactory) new Configuration().configure("hibernate.cfg.xml").buildSessionFactory();
+	    Session session = sf.openSession();
+	    
+	    Review review = session.get(Review.class, reviewID);
+	    if (review != null) {
+	    	review.setBody(newBody);
+	    	Transaction tx = session.beginTransaction();
+	    	session.save(review);
+		    tx.commit();
+	    } 
+	    session.close();
+	    
+	    return review;
+	}
+
+	public Review updateReview(Long id, int reviewRating, String body) {
+		SessionFactory sf = (SessionFactory) new Configuration().configure("hibernate.cfg.xml").buildSessionFactory();
+	    Session session = sf.openSession();
+	    Review review = session.get(Review.class, id);
+	    if (review != null) {
+	    	review.setReviewRating(reviewRating);
+	    	review.setBody(body);
+	    	Transaction tx = session.beginTransaction();
+	    	session.save(review);
+		    tx.commit();
+	    } 
+	    session.close();
+	    
+	    return review;
+	}
 
 }
