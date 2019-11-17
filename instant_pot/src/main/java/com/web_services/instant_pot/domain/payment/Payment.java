@@ -41,8 +41,8 @@ public class Payment implements Serializable {
 	@JoinColumn(name = "fk_customer")
 	private Customer paymentOwner;
 
-	@OneToMany(cascade = CascadeType.ALL, mappedBy="purchasePayment")
-	private Set<Purchase> purchases = new HashSet<Purchase>();
+//	@OneToMany(cascade = CascadeType.ALL, mappedBy="purchasePayment")
+//	private Set<Purchase> purchases = new HashSet<Purchase>();
 	
 	public Payment(){}
 	
@@ -100,13 +100,13 @@ public class Payment implements Serializable {
 	public void setPaymentOwner(Customer paymentOwner) {
 		this.paymentOwner = paymentOwner;
 	}
-
-	public Set<Purchase> getPurchases() {
-		return purchases;
-	}
-
-	public void setPurchases(Set<Purchase> purchases) {
-		this.purchases = purchases;
-	}
+//
+//	public Set<Purchase> getPurchases() {
+//		return purchases;
+//	}
+//
+//	public void setPurchases(Set<Purchase> purchases) {
+//		this.purchases = purchases;
+//	}
 	
 }

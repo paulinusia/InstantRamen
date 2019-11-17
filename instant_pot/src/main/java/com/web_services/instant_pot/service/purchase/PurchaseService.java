@@ -20,6 +20,6 @@ public interface PurchaseService {
 	public PurchaseRepresentation newPurchase(Customer purchaseOwner, Product product, String purchaseDetail, String purchaseStatus, Payment purchasePayment, Address address);
 	//public Response updatePurchaseDetail(Long id, String purchaseDetail);
 	//public Response updatePurchaseStatus(Long id, String purchaseStatus);
-	public HashSet<ProductRepresentation> getPurchasesFromCustomer(Long customerID);
+	public Set<PurchaseRepresentation> getPurchasesFromCustomer(Long customerID);
 	
 }

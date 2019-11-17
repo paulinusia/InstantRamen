@@ -1,6 +1,7 @@
 package com.web_services.instant_pot.domain.purchase;
 
 import java.util.HashSet;
+import java.util.Set;
 
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
@@ -38,8 +39,8 @@ public class PurchaseLogic {
 	    return purchase.updatePurchaseDetail(id,purchaseStatus);
 	}
 	
-	public HashSet<Product> getPurchasesFromCustomer(Long customer){
+	public Set<Purchase> getPurchasesFromCustomer(Long customerID){
 		PurchaseDAL pd = new PurchaseDAL();
-		return pd.getAllPurchasesByCustomer(customer);
+		return pd.getAllPurchasesByCustomer(customerID);
 	}
 }

@@ -34,27 +34,27 @@ public class AddressLogic {
 			AddressDAL ad = new AddressDAL();
 			return ad.updateAddress(id, streetAddress, city, state, zip);
 		}
-		
-		public Address removeAddressFromCustomer(Long addressID, Long customerID) {	
-			AddressDAL ad = new AddressDAL();
-			return ad.removeAddressFromCustomer(addressID, customerID);
-		}
-		
-		public Address removeAddressFromPartner(Long addressID, Long partnerID) {	
-			AddressDAL ad = new AddressDAL();
-			return ad.removeAddressFromPartner(addressID, partnerID);
-		}
-		
-		public Address addAddressToCustomer(Long addressID, Long customerID) {	
-			AddressDAL ad = new AddressDAL();
-			return ad.addAddressToCustomer(addressID, customerID);
-		}
-		
-		public Address addAddressToPartner(Long addressID, Long partnerID) {	
-			AddressDAL ad = new AddressDAL();
-			return ad.addAddressToPartner(addressID, partnerID);
-		}
-		
+//		
+//		public Address removeAddressFromCustomer(Long addressID, Long customerID) {	
+//			AddressDAL ad = new AddressDAL();
+//			return ad.removeAddressFromCustomer(addressID, customerID);
+//		}
+//		
+//		public Address removeAddressFromPartner(Long addressID, Long partnerID) {	
+//			AddressDAL ad = new AddressDAL();
+//			return ad.removeAddressFromPartner(addressID, partnerID);
+//		}
+//		
+//		public Address addAddressToCustomer(Long addressID, Long customerID) {	
+//			AddressDAL ad = new AddressDAL();
+//			return ad.addAddressToCustomer(addressID, customerID);
+//		}
+//		
+//		public Address addAddressToPartner(Long addressID, Long partnerID) {	
+//			AddressDAL ad = new AddressDAL();
+//			return ad.addAddressToPartner(addressID, partnerID);
+//		}
+//		
 		public Address deleteAddress(Long id){
 			AddressDAL ad = new AddressDAL();
 			return ad.deleteAddress(id);

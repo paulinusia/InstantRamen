@@ -47,14 +47,14 @@ public class PaymentLogic {
 		Payment payment = payd.updateSecurityCode(id, securityCode);
 		return payment;
 	}
-	
-	public Payment addPaymentToCustomer(Long paymentID, Long customerID) {	
-		PaymentDAL payd = new PaymentDAL();
-		return payd.addPaymentToCustomer(paymentID, customerID);
-	}
-	
-	public Payment removePaymentFromCustomer(Long paymentID, Long customerID) {	
-		PaymentDAL payd = new PaymentDAL();
-		return payd.removePaymentFromCustomer(paymentID, customerID);
-	}
+//	
+//	public Payment addPaymentToCustomer(Long paymentID, Long customerID) {	
+//		PaymentDAL payd = new PaymentDAL();
+//		return payd.addPaymentToCustomer(paymentID, customerID);
+//	}
+//	
+//	public Payment removePaymentFromCustomer(Long paymentID, Long customerID) {	
+//		PaymentDAL payd = new PaymentDAL();
+//		return payd.removePaymentFromCustomer(paymentID, customerID);
+//	}
 }

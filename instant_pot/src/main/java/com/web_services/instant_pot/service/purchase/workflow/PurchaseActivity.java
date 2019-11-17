@@ -89,22 +89,16 @@ public class PurchaseActivity {
 	
 	
 	
-	public HashSet<ProductRepresentation> getPurchasesFromCustomer(Long customer){
+	public Set<PurchaseRepresentation> getPurchasesFromCustomer(Long customerID){
 		
-		HashSet<Product> purchases = pl.getPurchasesFromCustomer(customer);
-		HashSet<ProductRepresentation> productRepresentations = new HashSet<ProductRepresentation>();
-		ProductRepresentation pRep = new ProductRepresentation();
+		Set<Purchase> purchases = pl.getPurchasesFromCustomer(customerID);
+		Set<PurchaseRepresentation> purchaseRepresentations = new HashSet<PurchaseRepresentation>();
 		
-		
-		
-		for (Product product : purchases) {
-		pRep.setCost(product.getCost());
-		pRep.setId(product.getId());
-		pRep.setProductDescription(product.getProductDescription());
-		pRep.setProductName(product.getProductName());
-		
-		}
-		return productRepresentations;
+//		for (Purchase purchase : purchases) {
+//			PurchaseRepresentation pRep = new PurchaseRepresentation();
+//			p
+//		}
+		return purchaseRepresentations;
 	}
 	
 }

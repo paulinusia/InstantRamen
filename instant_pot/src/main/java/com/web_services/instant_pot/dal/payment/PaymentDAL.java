@@ -94,40 +94,40 @@ public class PaymentDAL {
 		return p;
 	}
 	
-	public Payment addPaymentToCustomer(Long paymentID, Long customerID) {	
-		SessionFactory sf = (SessionFactory) new Configuration().configure("hibernate.cfg.xml").buildSessionFactory();
-	    Session session = sf.openSession();
-	    
-	    Customer customer = session.get(Customer.class, customerID);
-	    Payment payment = session.get(Payment.class, paymentID);
-	    payment.setPaymentOwner(customer);
-	    customer.getPayments().add(payment);
-	    
-	    Transaction tx = session.beginTransaction();
-	    session.save(payment);
-	    session.save(customer);
-	    tx.commit(); 
-	    session.close();
-	  
-	    return payment;
-	}
-	
-	public Payment removePaymentFromCustomer(Long paymentID, Long customerID) {	
-		SessionFactory sf = (SessionFactory) new Configuration().configure("hibernate.cfg.xml").buildSessionFactory();
-	    Session session = sf.openSession();
-	    
-	    Customer customer = session.get(Customer.class, customerID);
-	    Payment payment = session.get(Payment.class, paymentID);
-	    payment.setPaymentOwner(null);
-	    customer.getPayments().remove(payment);
-	    
-	    Transaction tx = session.beginTransaction();
-	    session.save(payment);
-	    session.save(customer);
-	    tx.commit(); 
-	    session.close();
-	  
-	    return payment;
-	}
+//	public Payment addPaymentToCustomer(Long paymentID, Long customerID) {	
+//		SessionFactory sf = (SessionFactory) new Configuration().configure("hibernate.cfg.xml").buildSessionFactory();
+//	    Session session = sf.openSession();
+//	    
+//	    Customer customer = session.get(Customer.class, customerID);
+//	    Payment payment = session.get(Payment.class, paymentID);
+//	    payment.setPaymentOwner(customer);
+//	    customer.getPayments().add(payment);
+//	    
+//	    Transaction tx = session.beginTransaction();
+//	    session.save(payment);
+//	    session.save(customer);
+//	    tx.commit(); 
+//	    session.close();
+//	  
+//	    return payment;
+//	}
+//	
+//	public Payment removePaymentFromCustomer(Long paymentID, Long customerID) {	
+//		SessionFactory sf = (SessionFactory) new Configuration().configure("hibernate.cfg.xml").buildSessionFactory();
+//	    Session session = sf.openSession();
+//	    
+//	    Customer customer = session.get(Customer.class, customerID);
+//	    Payment payment = session.get(Payment.class, paymentID);
+//	    payment.setPaymentOwner(null);
+//	    customer.getPayments().remove(payment);
+//	    
+//	    Transaction tx = session.beginTransaction();
+//	    session.save(payment);
+//	    session.save(customer);
+//	    tx.commit(); 
+//	    session.close();
+//	  
+//	    return payment;
+//	}
 
 }
