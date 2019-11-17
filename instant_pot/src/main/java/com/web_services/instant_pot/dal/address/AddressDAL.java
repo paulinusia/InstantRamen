@@ -162,4 +162,17 @@ public class AddressDAL {
 			session.close();
 			return addressSet;
 		}
+		
+		public Set<Address> getAllAddressForPartner(Long partnerID) {
+			
+			SessionFactory sf = (SessionFactory) new Configuration().configure("hibernate.cfg.xml").buildSessionFactory();
+		    Session session = sf.openSession();
+		    
+		    Query query = session.createQuery("from Address where fk_partner=:partnerID").setParameter("partnerID", partnerID);
+		    List<Address> addresses = query.list();
+		    Set<Address> addressSet = new HashSet<Address>(addresses);
+		    
+			session.close();
+			return addressSet;
+		}
 }
