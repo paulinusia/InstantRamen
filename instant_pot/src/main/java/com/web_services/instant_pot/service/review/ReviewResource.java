@@ -5,6 +5,7 @@ import javax.ws.rs.Consumes;
 import javax.ws.rs.DELETE;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
+import javax.ws.rs.PUT;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
@@ -13,13 +14,15 @@ import javax.ws.rs.core.Response.Status;
 
 import java.util.HashSet;
 import java.util.Set;
-import com.web_services.instant_pot.service.product.representation.ProductRepresentation;
 import com.web_services.instant_pot.service.review.representation.ReviewRepresentation;
 import com.web_services.instant_pot.service.review.representation.ReviewRequest;
 import com.web_services.instant_pot.service.review.workflow.ReviewActivity;
 
 @Path("/reviewservice/")
 public class ReviewResource implements ReviewService {
+	
+	private static ReviewActivity reviewActivity = new ReviewActivity();
+
 	
 	@GET
 	@Produces({"application/xml" , "application/json"})
@@ -59,6 +62,15 @@ public class ReviewResource implements ReviewService {
 		System.out.println("GET METHOD Request for adding a review .............");
 		ReviewActivity rAct = new ReviewActivity();
 		return rAct.addReview(request);
+	}
+	
+	@PUT
+	@Consumes({"application/xml" , "application/json"})
+	@Produces({"application/xml" , "application/json"})
+	@Path("/review/{id}")
+	public ReviewRepresentation updateReview(@PathParam("id") Long id, ReviewRequest reviewRequest) {
+		System.out.println("PUT METHOD Request for Review with ID: " + Long.toString(id));
+		return reviewActivity.updateReview(id, reviewRequest);
 	}
 	
 	@DELETE
