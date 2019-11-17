@@ -38,7 +38,7 @@ public class Customer implements Serializable {
 	
 	private String email;
 	
-	private long phoneNumber;
+	private Long phoneNumber;
 	
 //	@OneToMany(cascade = CascadeType.ALL, mappedBy = "paymentOwner")
 //	private Set<Payment> payments = new HashSet<Payment>();
@@ -54,7 +54,7 @@ public class Customer implements Serializable {
 	
 	public Customer() {}
 	
-	public Customer(String firstName, String lastName, String email, long phoneNumber) {
+	public Customer(String firstName, String lastName, String email, Long phoneNumber) {
 		this.firstName = firstName;
 		this.lastName = lastName;
 		this.email = email;
@@ -105,11 +105,11 @@ public class Customer implements Serializable {
 		this.email = email;
 	}
 	
-	public long getPhoneNumber() {
+	public Long getPhoneNumber() {
 		return phoneNumber;
 	}
 	
-	public void setPhoneNumber(long number) {
+	public void setPhoneNumber(Long number) {
 		phoneNumber = number;	
 	}
 	

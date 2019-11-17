@@ -2,9 +2,12 @@ package com.web_services.instant_pot.service.customer;
 
 import java.util.Set;
 
+import javax.jws.WebService;
+
 import com.web_services.instant_pot.service.customer.representation.CustomerRepresentation;
 import com.web_services.instant_pot.service.customer.representation.CustomerRequest;
 
+@WebService
 public interface CustomerService {
 	public CustomerRepresentation getCustomerById(Long id);
 	public Set<CustomerRepresentation> getCustomers();

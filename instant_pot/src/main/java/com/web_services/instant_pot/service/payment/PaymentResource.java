@@ -45,12 +45,12 @@ public class PaymentResource implements PaymentService {
 	@Produces({"application/xml" , "application/json"})
 	@Path("/payments/{paymentID}")
 	public Response updateCardNumber(@PathParam("paymentID") Long id) {
-		System.out.println("GET METHOD Request for updating payment card number .............");
-		PaymentActivity pAct = new PaymentActivity();
-		pAct.updateCardNumber(id, );
-		if (pAct.equals("OK")) {
-			return Response.status(Status.OK).build();
-		}
+//		System.out.println("GET METHOD Request for updating payment card number .............");
+//		PaymentActivity pAct = new PaymentActivity();
+//		pAct.updateCardNumber(id, cardNumber);
+//		if (pAct.equals("OK")) {
+//			return Response.status(Status.OK).build();
+//		}
 		return null;
 	}
 	
@@ -67,4 +67,9 @@ public class PaymentResource implements PaymentService {
 		return null;
 	}
 
+	@Override
+	public Response updateCardNumber(Long id, Long cardNumber) {
+		// TODO Auto-generated method stub
+		return null;
+	}
 }
