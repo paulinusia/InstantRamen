@@ -49,8 +49,9 @@ public class CustomerResource implements CustomerService {
 	@Produces({"application/xml" , "application/json"})
 	@Path("/customer/{id}")
 	public CustomerRepresentation updateCustomer(@PathParam("id") Long id, CustomerRequest customerRequest) {
-		// TODO Auto-generated method stub
-		return null;
+		System.out.println("POST METHOD Request to create update customer with id: " + Long.toString(id));
+		return customerActivity.updateCustomer(id, customerRequest);
+		
 	}
 
 	@DELETE

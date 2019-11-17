@@ -45,4 +45,10 @@ public class CustomerActivity {
 		Customer newCustomer =  customerLogic.createCustomer(customerRequest.getFirstName(), customerRequest.getLastName(), customerRequest.getEmail(), customerRequest.getPhoneNumber());
 		return getCustomerRepresentation(newCustomer);
 	}
+
+	public CustomerRepresentation updateCustomer(Long id, CustomerRequest customerRequest) {
+		CustomerLogic customerLogic = new CustomerLogic();
+		Customer customer = customerLogic.updateCustomer(id, customerRequest.getFirstName(), customerRequest.getLastName(), customerRequest.getEmail(), customerRequest.getPhoneNumber());
+		return getCustomerRepresentation(customer);
+	}
 }

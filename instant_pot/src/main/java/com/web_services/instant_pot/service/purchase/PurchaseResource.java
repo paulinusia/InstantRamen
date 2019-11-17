@@ -26,7 +26,6 @@ import com.web_services.instant_pot.service.purchase.workflow.PurchaseActivity;
 public class PurchaseResource implements PurchaseService{
 
 	@GET
-	@Consumes({"application/xml" , "application/json"})
 	@Produces({"application/xml" , "application/json"})
 	@Path("/purchase/{purchaseID}")
 	public PurchaseRepresentation getPurchaseByID(@PathParam("purchaseID") Long purchaseID) {
@@ -65,7 +64,7 @@ public class PurchaseResource implements PurchaseService{
 		
 	}
 	
-	//ERROR: operator does not exist: bigint = bytea
+	
 	@GET
 	@Produces({"application/xml" , "application/json"})
 	@Path("/customerpurchases/{id}")

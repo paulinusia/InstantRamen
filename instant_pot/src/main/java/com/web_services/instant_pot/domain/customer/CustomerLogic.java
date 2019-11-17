@@ -68,6 +68,8 @@ public class CustomerLogic {
 		Customer customer = cd.updatePhoneNumber(phoneNumber, id);
 		return customer;
 	}
+
+
 	
 //	public HashSet<Address> getAllAddressForCustomer(Long custID) {
 //		CustomerDAL cd = new CustomerDAL();
