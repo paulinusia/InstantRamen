@@ -87,17 +87,28 @@ public class PurchaseActivity {
 		
 	}
 	
-	
+	private static PurchaseRepresentation getPurchaseRepresentation(Purchase purchase) {
+		PurchaseRepresentation purchaseRepresentation = new PurchaseRepresentation();
+		
+		purchaseRepresentation.setId(purchase.getId());
+		purchaseRepresentation.setAddress(purchase.getAddress());
+		purchaseRepresentation.setPurchaseOwner(purchase.getPurchaseOwner());
+		purchaseRepresentation.setProduct(purchase.getProduct());
+		purchaseRepresentation.setPurchaseDetail(purchase.getPurchaseDetail());
+		purchaseRepresentation.setPurchaseStatus(purchase.getPurchaseStatus());
+		
+		return purchaseRepresentation;
+	}
 	
 	public Set<PurchaseRepresentation> getPurchasesFromCustomer(Long customerID){
-		
-		Set<Purchase> purchases = pl.getPurchasesFromCustomer(customerID);
-		Set<PurchaseRepresentation> purchaseRepresentations = new HashSet<PurchaseRepresentation>();
-		
-//		for (Purchase purchase : purchases) {
-//			PurchaseRepresentation pRep = new PurchaseRepresentation();
-//			p
-//		}
+			Set<Purchase> purchases = new HashSet<Purchase>();
+			Set<PurchaseRepresentation> purchaseRepresentations = new HashSet<PurchaseRepresentation>();	
+			purchases = pl.getAllPurchasesByCustomer(customerID);
+
+		for (Purchase purchase : purchases) {
+			PurchaseRepresentation purchaseRepresentation = getPurchaseRepresentation(purchase);
+			purchaseRepresentations.add(purchaseRepresentation);
+		}
 		return purchaseRepresentations;
 	}
 	

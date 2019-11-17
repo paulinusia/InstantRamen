@@ -39,15 +39,15 @@ public class PaymentResource implements PaymentService {
 		PaymentActivity paymentActivity = new PaymentActivity();
 		return paymentActivity.createPayment(paymentRequest);
 	}
-	
+	//fix
 	@PUT
 	@Consumes({"application/xml" , "application/json"})
 	@Produces({"application/xml" , "application/json"})
-	@Path("/payment")
-	public Response updateCardNumber(@PathParam("id") Long id, Long cardNumber) {
+	@Path("/payments/{paymentID}")
+	public Response updateCardNumber(@PathParam("paymentID") Long id) {
 		System.out.println("GET METHOD Request for updating payment card number .............");
 		PaymentActivity pAct = new PaymentActivity();
-		pAct.updateCardNumber(id, cardNumber);
+		pAct.updateCardNumber(id, );
 		if (pAct.equals("OK")) {
 			return Response.status(Status.OK).build();
 		}
@@ -56,7 +56,7 @@ public class PaymentResource implements PaymentService {
 	
 	@DELETE
 	@Produces({"application/xml" , "application/json"})
-	@Path("/payments")
+	@Path("/payments/{paymentID}")
 	public Response deletePayment(@PathParam("paymentID") Long paymentID) {
 		System.out.println("GET METHOD Request for deleting a payment .............");
 		PaymentActivity pAct = new PaymentActivity();

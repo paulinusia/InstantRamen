@@ -113,10 +113,12 @@ public class Purchase implements Serializable {
 		this.purchaseStatus = purchaseStatus;
 	}
 	
+	
+	
 	@Override
 	public String toString() {
 		return "Purchase [id=" + id + ", purchaseOwner=" + purchaseOwner.getName() + ", purchaseDetail=" + purchaseDetail
 				+ ", purchaseStatus=" + purchaseStatus + ", purchasePayment=" + purchasePayment + "]";
 	}
-
+	
 }

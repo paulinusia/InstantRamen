@@ -45,32 +45,28 @@ public class PurchaseResource implements PurchaseService{
 	@PUT
 	@Consumes({"application/xml" , "application/json"})
 	@Produces({"application/xml" , "application/json"})
-	@Path("/purchase")
-	public Response updatePurchaseDetail(@PathParam("id") Long id, String purchaseDetail) {
+	@Path("/purchase/{id}")
+	public PurchaseRepresentation updatePurchaseDetail(@PathParam("id") Long id, String purchaseDetail) {
 		System.out.println("GET METHOD Request for updating purchase detail .............");
 		PurchaseActivity pAct = new PurchaseActivity();
-		pAct.updatePurchaseDetail(id, purchaseDetail);
-		if (pAct.equals("OK")) {
-			return Response.status(Status.OK).build();
-		}
-		return null;
+		return pAct.updatePurchaseDetail(id, purchaseDetail);
+		
 	}
 	@PUT
 	@Consumes({"application/xml" , "application/json"})
 	@Produces({"application/xml" , "application/json"})
-	@Path("/purchase")
-	public Response updatePurchaseStatus(@PathParam("id") Long id, String purchaseStatus) {
+	@Path("/purchaseStatusUpdate/{id}")
+	public PurchaseRepresentation updatePurchaseStatus(@PathParam("id") Long id, String purchaseStatus) {
 		System.out.println("GET METHOD Request for updating purchase status .............");
 		PurchaseActivity pAct = new PurchaseActivity();	
-		pAct.updatePurchaseStatus(id, purchaseStatus);
-		if (pAct.equals("OK")) {
-			return Response.status(Status.OK).build();
-		}
-		return null;
+		return pAct.updatePurchaseStatus(id, purchaseStatus);
+		
 	}
+	
+	//ERROR: operator does not exist: bigint = bytea
 	@GET
 	@Produces({"application/xml" , "application/json"})
-	@Path("/purchase/{customerID}")
+	@Path("/customerpurchases/{customerID}")
 	public Set<PurchaseRepresentation> getPurchasesFromCustomer(@PathParam("id") Long customerID){
 		System.out.println("GET METHOD Request for Purchases by customer .............");
 		PurchaseActivity pAct = new PurchaseActivity();	
