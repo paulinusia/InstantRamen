@@ -33,8 +33,8 @@ public class PurchaseResource implements PurchaseService{
 		PurchaseActivity pAct = new PurchaseActivity();
 		return pAct.getPurchaseByID(purchaseID);
 	}
+	//unsupported media type
 	@POST
-	@Consumes({"application/xml" , "application/json"})
 	@Produces({"application/xml" , "application/json"})
 	@Path("/purchase")
 	public PurchaseRepresentation newPurchase(Customer purchaseOwner, Product product, String purchaseDetail, String purchaseStatus, Payment purchasePayment, Address address) {

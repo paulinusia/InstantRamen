@@ -10,6 +10,6 @@ import com.web_services.instant_pot.service.payment.representation.PaymentReques
 public interface PaymentService {
 	public PaymentRepresentation getPayment(Long id);
 	public PaymentRepresentation createPayment(PaymentRequest paymentRequest);
-	public Response updateCardNumber(Long id, Long cardNumber);
+	public PaymentRepresentation updateCardNumber(Long id, PaymentRequest paymentRequest);
 	Response deletePayment(Long paymentID);
 }

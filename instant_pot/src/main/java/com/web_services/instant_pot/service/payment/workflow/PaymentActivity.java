@@ -2,11 +2,14 @@ package com.web_services.instant_pot.service.payment.workflow;
 
 import com.web_services.instant_pot.domain.payment.Payment;
 import com.web_services.instant_pot.domain.payment.PaymentLogic;
+import com.web_services.instant_pot.domain.product.Product;
 import com.web_services.instant_pot.domain.purchase.Purchase;
 import com.web_services.instant_pot.domain.review.Review;
 import com.web_services.instant_pot.domain.review.ReviewLogic;
 import com.web_services.instant_pot.service.payment.representation.PaymentRepresentation;
 import com.web_services.instant_pot.service.payment.representation.PaymentRequest;
+import com.web_services.instant_pot.service.product.representation.ProductRepresentation;
+import com.web_services.instant_pot.service.product.representation.ProductRequest;
 import com.web_services.instant_pot.service.purchase.representation.PurchaseRepresentation;
 import com.web_services.instant_pot.service.review.representation.ReviewRepresentation;
 
@@ -23,6 +26,16 @@ public class PaymentActivity {
 		return paymentRepresentation;
 	}
 	
+	private static PaymentRepresentation getPaymentRepresentation(Payment payment) {
+		PaymentRepresentation paymentRepresentation = new PaymentRepresentation();
+		paymentRepresentation.setCardNumber(payment.getCardNumber());
+		paymentRepresentation.setType(payment.getType());
+		paymentRepresentation.setExpirationDate(payment.getExpirationDate());
+		paymentRepresentation.setSecurityCode(payment.getSecurityCode());
+		return paymentRepresentation;
+	}
+	
+	
 	public PaymentRepresentation getPayment(Long paymentID) {
 		PaymentLogic pd = new PaymentLogic();
 		Payment payment = pd.getPayment(paymentID);
@@ -37,19 +50,17 @@ public class PaymentActivity {
 		return paymentRep;
 	}
 	
-	public PaymentRepresentation updateCardNumber(Long id, Long cardNumber) {
-		Payment payment = pl.getPayment(id);
+
+	
+	public PaymentRepresentation updateCardNumber(Long id, PaymentRequest paymentRequest) {
+		PaymentLogic pd = new PaymentLogic();
 		
-		PaymentRepresentation pRep = new PaymentRepresentation();
 		
-		pRep.setCardNumber(cardNumber);
+		return getPaymentRepresentation(pd.updateCardNumber(id, paymentRequest.getType(), paymentRequest.getCardNumber(), paymentRequest.getExpirationDate(), paymentRequest.getSecurityCode()));
 		
-		pRep.setType(payment.getType());
-		pRep.setExpirationDate(payment.getExpirationDate());
-		pRep.setSecurityCode(payment.getSecurityCode());
 		
-		return pRep;
 	}
+		
 	
 	public String deletePayment(Long paymentID) {
 		PaymentLogic pd = new PaymentLogic();

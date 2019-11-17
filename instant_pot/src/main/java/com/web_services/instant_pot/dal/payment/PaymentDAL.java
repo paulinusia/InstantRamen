@@ -93,6 +93,26 @@ public class PaymentDAL {
 		session.close();
 		return p;
 	}
+
+	public Payment updateCardNumber(long id, String type, long number, int expDate, int securityCode) {
+		SessionFactory sf = (SessionFactory) new Configuration().configure("hibernate.cfg.xml").buildSessionFactory();
+		Session session = sf.openSession();
+		
+		Payment p = session.get(Payment.class, id);
+		if (p != null) {
+			p.setCardNumber(number);
+			p.setType(type);
+			p.setSecurityCode(securityCode);
+			p.setExpirationDate(expDate);
+			
+			Transaction tx = session.beginTransaction();
+			session.save(p);
+			tx.commit();
+		}
+		session.close();
+		return p;
+	
+	}
 	
 //	public Payment addPaymentToCustomer(Long paymentID, Long customerID) {	
 //		SessionFactory sf = (SessionFactory) new Configuration().configure("hibernate.cfg.xml").buildSessionFactory();

@@ -9,10 +9,11 @@ import org.hibernate.cfg.Configuration;
 
 import com.web_services.instant_pot.dal.payment.PaymentDAL;
 import com.web_services.instant_pot.domain.customer.Customer;
+import com.web_services.instant_pot.service.payment.representation.PaymentRequest;
 
 public class PaymentLogic {
 	
-	public Payment getPayment(long id) {
+	public Payment getPayment(Long id) {
 		PaymentDAL payd = new PaymentDAL();
 		Payment payment = payd.getPaymentByID(id);
 		return payment;
@@ -30,22 +31,28 @@ public class PaymentLogic {
 		return payd.createPayment(type, cardNumber, expDate, securityCode);
 	}
 	
-	public Payment deletePayment(long id) {
+	public Payment deletePayment(Long id) {
 		PaymentDAL payd = new PaymentDAL();
 		Payment payment = payd.deletePayment(id);
 		return payment;
 	}
 	
-	public Payment updateExpirationDate(long id, int expDate) {
+	public Payment updateExpirationDate(Long id, int expDate) {
 		PaymentDAL payd = new PaymentDAL();
 		Payment payment = payd.updateExpirationDate(id, expDate);
 		return payment;
 	}
 	
-	public Payment updateSecurityCode(long id, int securityCode) {
+	public Payment updateSecurityCode(Long id, int securityCode) {
 		PaymentDAL payd = new PaymentDAL();
 		Payment payment = payd.updateSecurityCode(id, securityCode);
 		return payment;
+	}
+	
+	public Payment updateCardNumber(Long id, String type, Long cardNumber, int expDate, int securityCode) {
+		PaymentDAL payd = new PaymentDAL();
+		return payd.updateCardNumber(id, type, cardNumber, expDate, securityCode);
+		
 	}
 //	
 //	public Payment addPaymentToCustomer(Long paymentID, Long customerID) {	
@@ -57,4 +64,6 @@ public class PaymentLogic {
 //		PaymentDAL payd = new PaymentDAL();
 //		return payd.removePaymentFromCustomer(paymentID, customerID);
 //	}
+
+
 }
