@@ -63,8 +63,8 @@ public class CustomerLogic {
 		return customer;
 	}
 	
-	public HashSet<Address> getAllAddressForCustomer(Long custID) {
-		CustomerDAL cd = new CustomerDAL();
-		return cd.getAllAddressForCustomer(custID);
-	}
+//	public HashSet<Address> getAllAddressForCustomer(Long custID) {
+//		CustomerDAL cd = new CustomerDAL();
+//		return cd.getAllAddressForCustomer(custID);
+//	}
 }

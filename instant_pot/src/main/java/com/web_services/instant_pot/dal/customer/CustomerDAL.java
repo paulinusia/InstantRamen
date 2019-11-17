@@ -126,24 +126,24 @@ public class CustomerDAL {
 		return customer;
 	}
 
-	
-	public HashSet<Address> getAllAddressForCustomer(Long custID) {
-		
-		SessionFactory sf = (SessionFactory) new Configuration().configure("hibernate.cfg.xml").buildSessionFactory();
-	    Session session = sf.openSession();
-	    
-
-	    Query query = session.createQuery("from customer_address where customer_id=:custID").setParameter("custID", custID);
-	    List addressIDs = query.list();
-	    List addresses = new ArrayList<Address>();
-	    
-	    for (Object addressID : addressIDs) {
-	    	query = session.createQuery("from address where address_id=:addID").setParameter("addID", (Long) addressID );
-	    	addresses.add((Address) query.getSingleResult());
-	    }	
-	    
-	    HashSet<Address> AddressSet = new HashSet<Address>(addresses);
-		session.close();
-		return AddressSet;
-	}
+//	
+//	public HashSet<Address> getAllAddressForCustomer(Long custID) {
+//		
+//		SessionFactory sf = (SessionFactory) new Configuration().configure("hibernate.cfg.xml").buildSessionFactory();
+//	    Session session = sf.openSession();
+//	    
+//
+//	    Query query = session.createQuery("from customer_address where customer_id=:custID").setParameter("custID", custID);
+//	    List addressIDs = query.list();
+//	    List addresses = new ArrayList<Address>();
+//	    
+//	    for (Object addressID : addressIDs) {
+//	    	query = session.createQuery("from address where address_id=:addID").setParameter("addID", (Long) addressID );
+//	    	addresses.add((Address) query.getSingleResult());
+//	    }	
+//	    
+//	    HashSet<Address> AddressSet = new HashSet<Address>(addresses);
+//		session.close();
+//		return AddressSet;
+//	}
 }

@@ -22,7 +22,5 @@ public interface ProductService {
 	
 	public ProductRepresentation updateProduct(Long id, ProductRequest productRequest);
 	
-//	public Response deleteProduct(Long id);
-	
 	public ProductRepresentation deleteProduct(Long id);
 }
