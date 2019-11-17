@@ -18,6 +18,10 @@ private Long id;
 	private String state;
 	
 	private String zip;
+	
+	private Long customerId;
+	
+	private Long partnerId;
 
 	public Long getId() {
 		return id;
@@ -25,6 +29,22 @@ private Long id;
 
 	public void setId(Long id) {
 		this.id = id;
+	}
+
+	public Long getCustomerId() {
+		return customerId;
+	}
+
+	public void setCustomerId(Long customerId) {
+		this.customerId = customerId;
+	}
+
+	public Long getPartnerId() {
+		return partnerId;
+	}
+
+	public void setPartnerId(Long partnerId) {
+		this.partnerId = partnerId;
 	}
 
 	public String getStreetAddress() {

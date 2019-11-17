@@ -75,6 +75,8 @@ public class AddressActivity {
 		ar.setState(address.getState());
 		ar.setStreetAddress(address.getStreetAddress());
 		ar.setZip(address.getZip());
+		ar.setCustomerId(address.getCustomer().getId());
+		ar.setPartnerId(address.getPartner().getId());
 		return ar;
 	}
 }
