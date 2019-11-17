@@ -1,20 +1,20 @@
 package com.web_services.instant_pot.service.review.representation;
 
-import com.web_services.instant_pot.domain.customer.Customer;
-import com.web_services.instant_pot.domain.product.Product;
+import javax.xml.bind.annotation.XmlAccessType;
+import javax.xml.bind.annotation.XmlAccessorType;
+import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.XmlType;
 
+@XmlRootElement(name = "Review")
+@XmlAccessorType(XmlAccessType.FIELD)
+@XmlType(name = "")
 public class ReviewRequest {
 	private Long id;
-	
-	private Customer customer;
-	
+	private Long customerID;
 	private int rating;
-
 	private Long timestamp;
-	
 	private String body;
-	
-	private Product product;
+	private Long productID;
 	
 
 	public Long getId() {
@@ -25,20 +25,20 @@ public class ReviewRequest {
 		this.id = id;
 	}
 
-	public Product getProduct() {
-		return product;
+	public Long getProductID() {
+		return productID;
 	}
 
-	public void setProduct(Product product) {
-		this.product = product;
+	public void setProductID(Long productID) {
+		this.productID = productID;
 	}
 
-	public Customer getCustomer() {
-		return customer;
+	public Long getCustomerID() {
+		return customerID;
 	}
 
-	public void setCustomer(Customer customer) {
-		this.customer = customer;
+	public void setCustomerID(Long customerID) {
+		this.customerID = customerID;
 	}
 
 	public String getBody() {

@@ -12,7 +12,7 @@ public interface ReviewService {
 	public ReviewRepresentation getReviewByID(Long reviewID);
 	//public HashSet<ReviewRepresentation> getAllReviewForCustomer(Long custID);
 	//public HashSet<ReviewRepresentation> getAllReviewForProduct(Long productID);
-	//public ReviewRepresentation addReview(ReviewRequest request);
+	public ReviewRepresentation addReview(ReviewRequest request);
 	//Response deleteReview(Long reviewID);
 	
 }
