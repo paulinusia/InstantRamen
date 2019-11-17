@@ -14,7 +14,7 @@ import com.web_services.instant_pot.domain.address.Address;
 
 public class CustomerLogic {
 	
-	public Customer getCustomer(long custID) {
+	public Customer getCustomerById(Long custID) {
 		CustomerDAL cd = new CustomerDAL();
 		Customer customer = cd.getCustomerByID(custID);
 		return customer;
