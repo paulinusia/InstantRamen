@@ -16,6 +16,7 @@
   <jaxrs:server name="InstantPotService" address="http://localhost:8081">
 		<jaxrs:serviceBeans>
 			<ref bean="customerServiceRest" />
+			<ref bean="partnerServiceRest" />
 			<ref bean="productServiceRest" />
 			<ref bean="purchaseServiceRest" />
 			<ref bean="reviewServiceRest" />
@@ -26,6 +27,8 @@
 		<jaxrs:schemaLocations>
 			<jaxrs:schemaLocation>com.web_services.instant_pot.service.customer.representation.CustomerRepresentation</jaxrs:schemaLocation>
 			<jaxrs:schemaLocation>com.web_services.instant_pot.service.customer.representation.CustomerRequest</jaxrs:schemaLocation>
+			<jaxrs:schemaLocation>com.web_services.instant_pot.service.partner.representation.PartnerRepresentation</jaxrs:schemaLocation>
+			<jaxrs:schemaLocation>com.web_services.instant_pot.service.partner.representation.PartnerRequest</jaxrs:schemaLocation>
 			<jaxrs:schemaLocation>com.web_services.instant_pot.service.address.representation.AddressRepresentation</jaxrs:schemaLocation>
 			<jaxrs:schemaLocation>com.web_services.instant_pot.service.address.representation.AddressRequest</jaxrs:schemaLocation>
 			<jaxrs:schemaLocation>com.web_services.instant_pot.service.product.representation.ProductRepresentation</jaxrs:schemaLocation>
@@ -40,6 +43,7 @@
 
 	</jaxrs:server>
 	<bean id="customerServiceRest" class="com.web_services.instant_pot.service.customer.CustomerResource" />
+	<bean id="partnerServiceRest" class="com.web_services.instant_pot.service.partner.PartnerResource" />
   	<bean id="productServiceRest" class="com.web_services.instant_pot.service.product.ProductResource" />
   	<bean id="purchaseServiceRest" class="com.web_services.instant_pot.service.purchase.PurchaseResource" />
   	<bean id="reviewServiceRest" class="com.web_services.instant_pot.service.review.ReviewResource" />
