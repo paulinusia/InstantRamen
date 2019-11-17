@@ -15,6 +15,7 @@ import com.web_services.instant_pot.domain.address.Address;
 import com.web_services.instant_pot.domain.customer.Customer;
 import com.web_services.instant_pot.domain.partner.Partner;
 import com.web_services.instant_pot.domain.product.Product;
+import com.web_services.instant_pot.domain.purchase.Purchase;
 import com.web_services.instant_pot.domain.review.Review;
 
 public class AddressDAL {
@@ -63,76 +64,75 @@ public class AddressDAL {
 			return address;
 		}
 		
-		public Address removeAddressFromCustomer(Long addressID, Long customerID) {	
-			SessionFactory sf = (SessionFactory) new Configuration().configure("hibernate.cfg.xml").buildSessionFactory();
-		    Session session = sf.openSession();
-		    
-		    Customer customer = session.get(Customer.class, customerID);
-		    Address address = session.get(Address.class, addressID);
-		    address.setCustomer(null);
-		    customer.getAddresses().remove(address);
-		    
-		    Transaction tx = session.beginTransaction();
-		    session.save(address);
-		    session.save(customer);
-		    tx.commit(); 
-		    session.close();
-		  
-		    return address;
-		}
-		
-		public Address removeAddressFromPartner(Long addressID, Long partnerID) {	
-			SessionFactory sf = (SessionFactory) new Configuration().configure("hibernate.cfg.xml").buildSessionFactory();
-		    Session session = sf.openSession();
-		    
-		    Partner partner = session.get(Partner.class, partnerID);
-		    Address address = session.get(Address.class, addressID);
-		    address.setPartner(null);
-		    partner.getAddresses().remove(address);
-		    
-		    Transaction tx = session.beginTransaction();
-		    session.save(address);
-		    session.save(partner);
-		    tx.commit(); 
-		    session.close();
-		  
-		    return address;
-		}
-		
-		public Address addAddressToCustomer(Long addressID, Long customerID) {	
-			SessionFactory sf = (SessionFactory) new Configuration().configure("hibernate.cfg.xml").buildSessionFactory();
-		    Session session = sf.openSession();
-		    
-		    Customer customer = session.get(Customer.class, customerID);
-		    Address address = session.get(Address.class, addressID);
-		    address.setCustomer(customer);
-		    customer.getAddresses().add(address);
-		    Transaction tx = session.beginTransaction();
-		    session.save(address);
-		    session.save(customer);
-		    tx.commit(); 
-		    session.close();
-		    
-		    return address;
-		}
-		
-		public Address addAddressToPartner(Long addressID, Long partnerID) {	
-			SessionFactory sf = (SessionFactory) new Configuration().configure("hibernate.cfg.xml").buildSessionFactory();
-		    Session session = sf.openSession();
-		    
-		    Partner partner = session.get(Partner.class, partnerID);
-		    Address address = session.get(Address.class, addressID);
-		    address.setPartner(partner);
-		    partner.getAddresses().add(address);
-		    
-		    Transaction tx = session.beginTransaction();
-		    session.save(address);
-		    session.save(partner);
-		    tx.commit(); 
-		    session.close();
-		  
-		    return address;
-		}
+//		public Address removeAddressFromCustomer(Long addressID, Long customerID) {	
+//			SessionFactory sf = (SessionFactory) new Configuration().configure("hibernate.cfg.xml").buildSessionFactory();
+//		    Session session = sf.openSession();
+//		    
+//		    Customer customer = session.get(Customer.class, customerID);
+//		    Address address = session.get(Address.class, addressID);
+//		    address.setCustomer(null);
+//		    
+//		    Transaction tx = session.beginTransaction();
+//		    session.save(address);
+//		    session.save(customer);
+//		    tx.commit(); 
+//		    session.close();
+//		  
+//		    return address;
+//		}
+//		
+//		public Address removeAddressFromPartner(Long addressID, Long partnerID) {	
+//			SessionFactory sf = (SessionFactory) new Configuration().configure("hibernate.cfg.xml").buildSessionFactory();
+//		    Session session = sf.openSession();
+//		    
+//		    Partner partner = session.get(Partner.class, partnerID);
+//		    Address address = session.get(Address.class, addressID);
+//		    address.setPartner(null);
+//		    partner.getAddresses().remove(address);
+//		    
+//		    Transaction tx = session.beginTransaction();
+//		    session.save(address);
+//		    session.save(partner);
+//		    tx.commit(); 
+//		    session.close();
+//		  
+//		    return address;
+//		}
+//		
+//		public Address addAddressToCustomer(Long addressID, Long customerID) {	
+//			SessionFactory sf = (SessionFactory) new Configuration().configure("hibernate.cfg.xml").buildSessionFactory();
+//		    Session session = sf.openSession();
+//		    
+//		    Customer customer = session.get(Customer.class, customerID);
+//		    Address address = session.get(Address.class, addressID);
+//		    address.setCustomer(customer);
+//		    customer.getAddresses().add(address);
+//		    Transaction tx = session.beginTransaction();
+//		    session.save(address);
+//		    session.save(customer);
+//		    tx.commit(); 
+//		    session.close();
+//		    
+//		    return address;
+//		}
+//		
+//		public Address addAddressToPartner(Long addressID, Long partnerID) {	
+//			SessionFactory sf = (SessionFactory) new Configuration().configure("hibernate.cfg.xml").buildSessionFactory();
+//		    Session session = sf.openSession();
+//		    
+//		    Partner partner = session.get(Partner.class, partnerID);
+//		    Address address = session.get(Address.class, addressID);
+//		    address.setPartner(partner);
+//		    partner.getAddresses().add(address);
+//		    
+//		    Transaction tx = session.beginTransaction();
+//		    session.save(address);
+//		    session.save(partner);
+//		    tx.commit(); 
+//		    session.close();
+//		  
+//		    return address;
+//		}
 		
 		public Address deleteAddress(Long id){
 			Address address = new Address();
@@ -155,18 +155,9 @@ public class AddressDAL {
 			SessionFactory sf = (SessionFactory) new Configuration().configure("hibernate.cfg.xml").buildSessionFactory();
 		    Session session = sf.openSession();
 		    
-
-//		    Query query = session.createQuery("select address from Customer cust join cust.addresses address where customer_id=:customerID").setParameter("customerID", customerID);
-//		    List<Long> addressIDs = query.list();
-//		    List<Address> addresses = query.list();
-		    
-//		    HashSet<Address> addressSet = new HashSet<Address>();
-//		    for (Long addressID : addressIDs) {
-//		    	Address address = session.get(Address.class, addressID);
-//		    	addressSet.add(address);
-//		    }
-		    Customer customer = session.get(Customer.class, customerID);
-		    Set<Address> addressSet = customer.getAddresses();
+		    Query query = session.createQuery("from Address where fk_customer=:customerID").setParameter("customerID", customerID);
+		    List<Address> addresses = query.list();
+		    Set<Address> addressSet = new HashSet<Address>(addresses);
 		    
 			session.close();
 			return addressSet;

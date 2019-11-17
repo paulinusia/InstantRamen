@@ -4,6 +4,7 @@ import java.util.HashSet;
 
 import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 import org.hibernate.*;
 import org.hibernate.cfg.Configuration;
@@ -33,7 +34,6 @@ public class PurchaseDAL {
 		SessionFactory sf = (SessionFactory) new Configuration().configure("hibernate.cfg.xml").buildSessionFactory();
 	    Session session = sf.openSession();
 		Purchase purchase = new Purchase(purchaseOwner, product, purchaseDetail, purchaseStatus, purchasePayment, address);
-		product.getPurchases().add(purchase);
 	    Transaction tx = session.beginTransaction();
 	    session.save(purchase); 
 		session.save(product);
@@ -80,19 +80,29 @@ public class PurchaseDAL {
 	}
 
 
-	public HashSet<Product> getAllPurchasesByCustomer(Long customerID) {
+	public Set<Purchase> getAllPurchasesByCustomer(Long customerID) {
 		SessionFactory sf = (SessionFactory) new Configuration().configure("hibernate.cfg.xml").buildSessionFactory();
 	    Session session = sf.openSession();
 	    
-	    Query query = session.createQuery("from Purchase where customer_id=:customerID").setParameter("customerID", customerID);
-	    List<Product> products = query.list();
-	    HashSet<Product> productSet = new HashSet<Product>(products);
+	    Query query = session.createQuery("from Purchase where fk_customer=:customerID").setParameter("customerID", customerID);
+	    List<Purchase> purchases = query.list();
+	    Set<Purchase> purchaseSet = new HashSet<Purchase>(purchases);
 	    
 		session.close();
-		return productSet;
+		return purchaseSet;
 	}
 
-
+	public Set<Purchase> getAllPurchasesByProduct(Long productID) {
+		SessionFactory sf = (SessionFactory) new Configuration().configure("hibernate.cfg.xml").buildSessionFactory();
+	    Session session = sf.openSession();
+	    
+	    Query query = session.createQuery("from Purchase where fk_product=:productID").setParameter("productID", productID);
+	    List<Purchase> purchases = query.list();
+	    Set<Purchase> purchaseSet = new HashSet<Purchase>(purchases);
+	    
+		session.close();
+		return purchaseSet;
+	}
 
 	
 

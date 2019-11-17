@@ -10,7 +10,7 @@ import java.util.Set;
 import org.hibernate.*;
 import org.hibernate.cfg.Configuration;
 
-
+import com.web_services.instant_pot.dal.purchase.PurchaseDAL;
 import com.web_services.instant_pot.domain.partner.Partner;
 import com.web_services.instant_pot.domain.product.Product;
 import com.web_services.instant_pot.domain.purchase.Purchase;
@@ -69,7 +69,7 @@ public class ProductDAL {
 	
 	public Product deleteProduct(Long id){
 		Product product = new Product();
-		
+		PurchaseDAL purchaseDal = new PurchaseDAL();
 		SessionFactory sf = (SessionFactory) new Configuration().configure("hibernate.cfg.xml").buildSessionFactory();
 	    Session session = sf.openSession();
 	    
@@ -78,10 +78,11 @@ public class ProductDAL {
 	    if (product != null) {
 	    	Transaction tx;
 	    	
-	    	Set<Purchase> purchases = product.getPurchases();
+	    	Set<Purchase> purchases = purchaseDal.getAllPurchasesByProduct(id);
 	    	for (Purchase p : purchases) {
 	    		tx = session.beginTransaction();
 	    		p.setProduct(null);
+	    		p.setPurchaseStatus("Purchased product has been deleted.");
 	    		session.save(p);
 	    		tx.commit();
 	    	}
