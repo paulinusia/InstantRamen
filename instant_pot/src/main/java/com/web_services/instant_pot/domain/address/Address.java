@@ -1,10 +1,10 @@
 package com.web_services.instant_pot.domain.address;
 
 import java.io.Serializable;
-import java.util.HashSet;
-import java.util.Set;
+//import java.util.HashSet;
+//import java.util.Set;
 
-import javax.persistence.CascadeType;
+//import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -12,20 +12,20 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.JoinTable;
-import javax.persistence.ManyToMany;
+//import javax.persistence.JoinTable;
+//import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
-import javax.persistence.Transient;
+//import javax.persistence.OneToMany;
+//import javax.persistence.Transient;
 
-import org.codehaus.jackson.annotate.JsonIgnore;
-import org.hibernate.annotations.AnyMetaDef;
-import org.hibernate.annotations.ManyToAny;
-import org.hibernate.annotations.MetaValue;
+//import org.codehaus.jackson.annotate.JsonIgnore;
+//import org.hibernate.annotations.AnyMetaDef;
+//import org.hibernate.annotations.ManyToAny;
+//import org.hibernate.annotations.MetaValue;
 
 import com.web_services.instant_pot.domain.customer.Customer;
 import com.web_services.instant_pot.domain.partner.Partner;
-import com.web_services.instant_pot.domain.purchase.Purchase;
+//import com.web_services.instant_pot.domain.purchase.Purchase;
 
 @Entity
 public class Address implements Serializable {
