@@ -5,9 +5,54 @@ import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlType;
 
+import java.net.InetAddress;
+
 @XmlRootElement(name = "Link")
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "")
 public class Link {
-
+	private static String baseDomain = "";
+	
+	private String rel;
+	private String uri;
+	private String mediaType;
+	
+	public Link(String rel, String uri, String mediaType) {
+		this.rel = rel;
+		this.uri = uri;
+		this.mediaType = mediaType;
+		
+		try {
+			InetAddress.getLocalHost().getHostName();
+		}
+		catch (Exception e) {
+			System.out.println("Could not set base domain...");
+		}
+	}
+	
+	public String getRel() {
+		return rel;
+	}
+	public void setRel(String rel) {
+		this.rel = rel;
+	}
+	public String getUri() {
+		return uri;
+	}
+	public void setUri(String uri) {
+		this.uri = uri;
+	}
+	public String getMediaType() {
+		return mediaType;
+	}
+	public void setMediaType(String mediaType) {
+		this.mediaType = mediaType;
+	}
+	public static String getBaseDomain() {
+		return baseDomain;
+	}
+	public static void setBaseDomain(String baseDomain) {
+		Link.baseDomain = baseDomain;
+	}
+	
 }
