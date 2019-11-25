@@ -1,20 +1,27 @@
 package com.web_services.instant_pot.service.customer.representation;
 
+import java.util.HashSet;
+import java.util.Set;
+
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlType;
 
+import com.web_services.instant_pot.service.link.Link;
+
 @XmlRootElement(name = "Customer")
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "")
 public class CustomerRepresentation {
+	
 	private Long id;
 	private String firstName;
 	private String lastName;
 	private String email;
 	private Long phoneNumber;
-
+	private Set<Link> links = new HashSet<>();
+	
 	public Long getId() {
 		return id;
 	}
@@ -53,6 +60,14 @@ public class CustomerRepresentation {
 
 	public void setPhoneNumber(Long phoneNumber) {
 		this.phoneNumber = phoneNumber;
+	}
+
+	public Set<Link> getLinks() {
+		return links;
+	}
+
+	public void setLinks(Set<Link> links) {
+		this.links = links;
 	}
 	
 }

@@ -1,9 +1,14 @@
 package com.web_services.instant_pot.service.address.representation;
 
+import java.util.HashSet;
+import java.util.Set;
+
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlType;
+
+import com.web_services.instant_pot.service.link.Link;
 
 @XmlRootElement(name = "Address")
 @XmlAccessorType(XmlAccessType.FIELD)
@@ -23,6 +28,8 @@ private Long id;
 	
 	private Long partnerId;
 
+	private Set<Link> links = new HashSet<>();
+	
 	public Long getId() {
 		return id;
 	}
@@ -77,6 +84,14 @@ private Long id;
 
 	public void setZip(String zip) {
 		this.zip = zip;
+	}
+
+	public Set<Link> getLinks() {
+		return links;
+	}
+
+	public void setLinks(Set<Link> links) {
+		this.links = links;
 	}
 	
 }

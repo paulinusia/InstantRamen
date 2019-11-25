@@ -1,9 +1,14 @@
 package com.web_services.instant_pot.service.partner.representation;
 
+import java.util.HashSet;
+import java.util.Set;
+
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlType;
+
+import com.web_services.instant_pot.service.link.Link;
 
 @XmlRootElement(name = "Partner")
 @XmlAccessorType(XmlAccessType.FIELD)
@@ -15,6 +20,7 @@ public class PartnerRepresentation {
 	private String partnerType;
 	private String description;
 	private Long phoneNumber;
+	private Set<Link> links = new HashSet<>();
 	
 	public Long getId() {
 		return id;
@@ -45,6 +51,12 @@ public class PartnerRepresentation {
 	}
 	public void setPhoneNumber(Long phoneNumber) {
 		this.phoneNumber = phoneNumber;
+	}
+	public Set<Link> getLinks() {
+		return links;
+	}
+	public void setLinks(Set<Link> links) {
+		this.links = links;
 	}
 
 }

@@ -1,9 +1,14 @@
 package com.web_services.instant_pot.service.payment.representation;
 
+import java.util.HashSet;
+import java.util.Set;
+
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlType;
+
+import com.web_services.instant_pot.service.link.Link;
 
 @XmlRootElement(name = "Payment")
 @XmlAccessorType(XmlAccessType.FIELD)
@@ -19,6 +24,8 @@ public class PaymentRepresentation {
 	private int expirationDate;
 	
 	private int securityCode;
+	
+	private Set<Link> links = new HashSet<>();
 	
 	public Long getId() {
 		return id;
@@ -49,5 +56,11 @@ public class PaymentRepresentation {
 	}
 	public void setSecurityCode(int securityCode) {
 		this.securityCode = securityCode;
+	}
+	public Set<Link> getLinks() {
+		return links;
+	}
+	public void setLinks(Set<Link> links) {
+		this.links = links;
 	}
 }

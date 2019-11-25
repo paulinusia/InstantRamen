@@ -1,9 +1,14 @@
 package com.web_services.instant_pot.service.product.representation;
 
+import java.util.HashSet;
+import java.util.Set;
+
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlType;
+
+import com.web_services.instant_pot.service.link.Link;
 
 @XmlRootElement(name = "Product")
 @XmlAccessorType(XmlAccessType.FIELD)
@@ -19,6 +24,8 @@ public class ProductRepresentation {
 	private double cost;
 
 	private Long partnerId;
+	
+	private Set<Link> links = new HashSet<>();
 	
 	public Long getId() {
 		return id;
@@ -58,6 +65,14 @@ public class ProductRepresentation {
 
 	public void setCost(double cost) {
 		this.cost = cost;
+	}
+
+	public Set<Link> getLinks() {
+		return links;
+	}
+
+	public void setLinks(Set<Link> links) {
+		this.links = links;
 	}
 	
 }

@@ -1,5 +1,8 @@
 package com.web_services.instant_pot.service.review.representation;
 
+import java.util.HashSet;
+import java.util.Set;
+
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlRootElement;
@@ -7,6 +10,7 @@ import javax.xml.bind.annotation.XmlType;
 
 import com.web_services.instant_pot.domain.customer.Customer;
 import com.web_services.instant_pot.domain.product.Product;
+import com.web_services.instant_pot.service.link.Link;
 
 @XmlRootElement(name = "Review")
 @XmlAccessorType(XmlAccessType.FIELD)
@@ -18,7 +22,7 @@ public class ReviewRepresentation {
 	private Long timestamp;
 	private String body;
 	private Long productID;
-	
+	private Set<Link> links = new HashSet<>();
 	
 	public Long getId() {
 		return id;
@@ -68,6 +72,14 @@ public class ReviewRepresentation {
 
 	public void setTimestamp(Long timestamp) {
 		this.timestamp = timestamp;
+	}
+
+	public Set<Link> getLinks() {
+		return links;
+	}
+
+	public void setLinks(Set<Link> links) {
+		this.links = links;
 	}
 		
 	

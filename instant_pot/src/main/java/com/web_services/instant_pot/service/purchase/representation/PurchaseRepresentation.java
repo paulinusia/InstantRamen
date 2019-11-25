@@ -1,9 +1,14 @@
 package com.web_services.instant_pot.service.purchase.representation;
 
+import java.util.HashSet;
+import java.util.Set;
+
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlType;
+
+import com.web_services.instant_pot.service.link.Link;
 
 @XmlRootElement(name = "Purchase")
 @XmlAccessorType(XmlAccessType.FIELD)
@@ -17,6 +22,7 @@ public class PurchaseRepresentation {
 	private Long purchasePaymentID;
 	private Long addressID;
 	private Long purchaseOwner;
+	private Set<Link> links = new HashSet<>();
 	
 	public Long getProductID() {
 		return productID;
@@ -75,6 +81,14 @@ public class PurchaseRepresentation {
 
 	public void setId(Long id) {
 		this.id = id;
+	}
+
+	public Set<Link> getLinks() {
+		return links;
+	}
+
+	public void setLinks(Set<Link> links) {
+		this.links = links;
 	}
 
 
