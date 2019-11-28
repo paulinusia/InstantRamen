@@ -30,7 +30,7 @@ public class ProductResource implements ProductService{
 		System.out.println("GET METHOD Request for all Products .............");
 		return productActivity.getProducts();	
 	}
-
+	
 	@GET
 	@Produces({"application/xml" , "application/json"})
 	@Path("/product/{id}")
@@ -39,7 +39,15 @@ public class ProductResource implements ProductService{
 		System.out.println("GET METHOD Request for Product with ID: " + Long.toString(id));
 		return productActivity.getProductById(id);
 	}
-
+	
+	@GET
+	@Produces({"application/xml" , "application/json"})
+	@Path("/partnerproducts/{id}")
+	public Set<ProductRepresentation> getProductsByPartner(@PathParam("id") Long id) {
+		System.out.println("GET METHOD Request for Products from Partner with ID: " + Long.toString(id));
+		return productActivity.getProductsByPartner(id);
+	}
+	
 	@GET
 	@Produces({"application/xml" , "application/json"})
 	@Path("/products/{name}")

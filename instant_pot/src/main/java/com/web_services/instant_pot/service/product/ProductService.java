@@ -15,6 +15,8 @@ public interface ProductService {
 	
 	public ProductRepresentation getProduct(Long id);
 	
+	public Set<ProductRepresentation> getProductsByPartner(Long id);
+	
 	public Set<ProductRepresentation> searchProducts(String name);
 	
 	public ProductRepresentation createProduct(ProductRequest productRequest);

@@ -54,13 +54,13 @@ public class PartnerResource {
 		return partnerActivity.updatePartner(id, partnerRequest);
 	}
 
-	@DELETE
-	@Consumes({"application/xml" , "application/json"})
-	@Produces({"application/xml" , "application/json"})
-	@Path("/partner/{id}")
-	public PartnerRepresentation deletePartner(@PathParam("id") Long id) {
-		System.out.println("DELETE METHOD Request for partner with ID: " + Long.toString(id));
-		return partnerActivity.deletePartner(id);
-	}
+//	@DELETE
+//	@Consumes({"application/xml" , "application/json"})
+//	@Produces({"application/xml" , "application/json"})
+//	@Path("/partner/{id}")
+//	public PartnerRepresentation deletePartner(@PathParam("id") Long id) {
+//		System.out.println("DELETE METHOD Request for partner with ID: " + Long.toString(id));
+//		return partnerActivity.deletePartner(id);
+//	}
 
 }

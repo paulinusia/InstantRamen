@@ -5,6 +5,7 @@ import java.util.Set;
 
 import com.web_services.instant_pot.domain.partner.Partner;
 import com.web_services.instant_pot.domain.partner.PartnerLogic;
+import com.web_services.instant_pot.service.link.Link;
 import com.web_services.instant_pot.service.partner.representation.PartnerRepresentation;
 import com.web_services.instant_pot.service.partner.representation.PartnerRequest;
 
@@ -36,24 +37,47 @@ public class PartnerActivity {
 	}
 
 	public PartnerRepresentation getPartnerByID(Long id) {
-		return getPartnerRepresentation(pl.getPartnerByID(id));
+		PartnerRepresentation pRep = getPartnerRepresentation(pl.getPartnerByID(id));
+		Set<Link> links = new HashSet<>();
+		links.add(new Link("updatePartner", "/partnerservice/partner/" + pRep.getId(), "application/InstantPot.Partner+xml|json"));
+		links.add(new Link("createAddress", "/addressservice/address", "application/InstantPot.Address+xml|json"));
+		links.add(new Link("createProduct", "/productservice/product", "application/InstantPot.Product+xml|json"));
+		links.add(new Link("getAddressesForPartner", "/addressservice/partneraddresses/" + pRep.getId(), null));
+		links.add(new Link("getProductsForPartner", "/productservice/partnerproducts/" + pRep.getId(), null));
+		pRep.setLinks(links);
+		return pRep;
 	}
 
 	public PartnerRepresentation createPartner(PartnerRequest partnerRequest) {
 		PartnerLogic partnerLogic = new PartnerLogic();
-		Partner newPartner =  partnerLogic.createPartner(partnerRequest.getPartnerName(), partnerRequest.getDescription(), partnerRequest.getPartnerType(), partnerRequest.getPhoneNumber());
-		return getPartnerRepresentation(newPartner);
+		Partner newPartner =  partnerLogic.createPartner(partnerRequest.getPartnerName(), partnerRequest.getPartnerType(), partnerRequest.getDescription(), partnerRequest.getPhoneNumber());
+		PartnerRepresentation pRep = getPartnerRepresentation(newPartner);
+		Set<Link> links = new HashSet<>();
+		links.add(new Link("updatePartner", "/partnerservice/partner/" + pRep.getId(), "application/InstantPot.Partner+xml|json"));
+		links.add(new Link("createAddress", "/addressservice/address", "application/InstantPot.Address+xml|json"));
+		links.add(new Link("createProduct", "/productservice/product", "application/InstantPot.Product+xml|json"));
+		links.add(new Link("getAddressesForPartner", "/addressservice/partneraddresses/" + pRep.getId(), null));
+		links.add(new Link("getProductsForPartner", "/productservice/partnerproducts/" + pRep.getId(), null));
+		pRep.setLinks(links);
+		return pRep;
 	}
 
 	public PartnerRepresentation updatePartner(Long id, PartnerRequest partnerRequest) {
 		PartnerLogic partnerLogic = new PartnerLogic();
 		Partner partner = partnerLogic.updatePartner(id, partnerRequest.getPartnerName(), partnerRequest.getDescription(), partnerRequest.getPhoneNumber());
-		return getPartnerRepresentation(partner);
+		PartnerRepresentation pRep = getPartnerRepresentation(partner);
+		Set<Link> links = new HashSet<>();
+		links.add(new Link("createAddress", "/addressservice/address", "application/InstantPot.Address+xml|json"));
+		links.add(new Link("createProduct", "/productservice/product", "application/InstantPot.Product+xml|json"));
+		links.add(new Link("getAddressesForPartner", "/addressservice/partneraddresses/" + pRep.getId(), null));
+		links.add(new Link("getProductsForPartner", "/productservice/partnerproducts/" + pRep.getId(), null));
+		pRep.setLinks(links);
+		return pRep;
 	}
 
-	public PartnerRepresentation deletePartner(Long id) {
-		// TODO Auto-generated method stub
-		return null;
-	}
+//	public PartnerRepresentation deletePartner(Long id) {
+//		// TODO Auto-generated method stub
+//		return null;
+//	}
 
 }

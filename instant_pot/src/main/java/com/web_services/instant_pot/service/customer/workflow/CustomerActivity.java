@@ -20,12 +20,11 @@ public class CustomerActivity {
 	public CustomerRepresentation getCustomerById(Long id) {
 		CustomerRepresentation cRep = getCustomerRepresentation(customerLogic.getCustomerById(id));
 		Set<Link> links = new HashSet<>();
-		links.add(new Link("updateCustomer", Link.getBaseDomain() + "/customerservice/customer/" + cRep.getId(), "application/InstantPot.Customer+xml|json"));
-//		links.add(new Link("deleteCustomer", Link.getBaseDomain() + "/customerservice/customer/" + cRep.getId(), null));
-		links.add(new Link("createAddress", Link.getBaseDomain() + "/addressservice/address", "application/InstantPot.Address+xml|json"));
-		links.add(new Link("createPurchase", Link.getBaseDomain() + "/purchaseservice/purchase", "application/InstantPot.Purchase+xml|json"));
-		links.add(new Link("getAddressesForCustomer", Link.getBaseDomain() + "/addressservice/customeraddresses/" + cRep.getId(), null));
-		links.add(new Link("getPurchasesForCustomer", Link.getBaseDomain() + "/purchaseservice/customerpurchases/" + cRep.getId(), null));
+		links.add(new Link("updateCustomer", "/customerservice/customer/" + cRep.getId(), "application/InstantPot.Customer+xml|json"));
+		links.add(new Link("createAddress", "/addressservice/address", "application/InstantPot.Address+xml|json"));
+		links.add(new Link("createPurchase", "/purchaseservice/purchase", "application/InstantPot.Purchase+xml|json"));
+		links.add(new Link("getAddressesForCustomer", "/addressservice/customeraddresses/" + cRep.getId(), null));
+		links.add(new Link("getPurchasesForCustomer", "/purchaseservice/customerpurchases/" + cRep.getId(), null));
 		cRep.setLinks(links);
 		return cRep;
 	}
@@ -57,12 +56,11 @@ public class CustomerActivity {
 		Customer newCustomer =  customerLogic.createCustomer(customerRequest.getFirstName(), customerRequest.getLastName(), customerRequest.getEmail(), customerRequest.getPhoneNumber());
 		CustomerRepresentation cRep = getCustomerRepresentation(newCustomer);
 		Set<Link> links = new HashSet<>();
-		links.add(new Link("updateCustomer", Link.getBaseDomain() + "/customerservice/customer/" + cRep.getId(), "application/InstantPot.Customer+xml|json"));
-//		links.add(new Link("deleteCustomer", Link.getBaseDomain() + "/customerservice/customer/" + cRep.getId(), null));
-		links.add(new Link("createAddress", Link.getBaseDomain() + "/addressservice/address", "application/InstantPot.Address+xml|json"));
-		links.add(new Link("createPurchase", Link.getBaseDomain() + "/purchaseservice/purchase", "application/InstantPot.Purchase+xml|json"));
-		links.add(new Link("getAddressesForCustomer", Link.getBaseDomain() + "/addressservice/customeraddresses/" + cRep.getId(), null));
-		links.add(new Link("getPurchasesForCustomer", Link.getBaseDomain() + "/purchaseservice/customerpurchases/" + cRep.getId(), null));
+		links.add(new Link("updateCustomer", "/customerservice/customer/" + cRep.getId(), "application/InstantPot.Customer+xml|json"));
+		links.add(new Link("createAddress", "/addressservice/address", "application/InstantPot.Address+xml|json"));
+		links.add(new Link("createPurchase", "/purchaseservice/purchase", "application/InstantPot.Purchase+xml|json"));
+		links.add(new Link("getAddressesForCustomer", "/addressservice/customeraddresses/" + cRep.getId(), null));
+		links.add(new Link("getPurchasesForCustomer", "/purchaseservice/customerpurchases/" + cRep.getId(), null));
 		cRep.setLinks(links);
 		return cRep;
 	}
@@ -72,11 +70,10 @@ public class CustomerActivity {
 		Customer customer = customerLogic.updateCustomer(id, customerRequest.getFirstName(), customerRequest.getLastName(), customerRequest.getEmail(), customerRequest.getPhoneNumber());
 		CustomerRepresentation cRep = getCustomerRepresentation(customer);
 		Set<Link> links = new HashSet<>();
-//		links.add(new Link("deleteCustomer", Link.getBaseDomain() + "/customerservice/customer/" + cRep.getId(), null));
-		links.add(new Link("createAddress", Link.getBaseDomain() + "/addressservice/address", "application/InstantPot.Address+xml|json"));
-		links.add(new Link("createPurchase", Link.getBaseDomain() + "/purchaseservice/purchase", "application/InstantPot.Purchase+xml|json"));
-		links.add(new Link("getAddressesForCustomer", Link.getBaseDomain() + "/addressservice/customeraddresses/" + cRep.getId(), null));
-		links.add(new Link("getPurchasesForCustomer", Link.getBaseDomain() + "/purchaseservice/customerpurchases/" + cRep.getId(), null));
+		links.add(new Link("createAddress", "/addressservice/address", "application/InstantPot.Address+xml|json"));
+		links.add(new Link("createPurchase", "/purchaseservice/purchase", "application/InstantPot.Purchase+xml|json"));
+		links.add(new Link("getAddressesForCustomer", "/addressservice/customeraddresses/" + cRep.getId(), null));
+		links.add(new Link("getPurchasesForCustomer", "/purchaseservice/customerpurchases/" + cRep.getId(), null));
 		cRep.setLinks(links);
 		return cRep;
 	}

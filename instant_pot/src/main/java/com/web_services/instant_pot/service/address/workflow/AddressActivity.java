@@ -16,8 +16,8 @@ public class AddressActivity {
 		Address address = al.getAddressByID(id);
 		AddressRepresentation aRep = getAddressRepresentation(address);
 		Set<Link> links = new HashSet<>();
-		links.add(new Link("updateAddress", Link.getBaseDomain() + "/addressservice/address/" + aRep.getId(), "application/InstantPot.Address+xml|json"));
-		links.add(new Link("deleteAddress", Link.getBaseDomain() + "/addressservice/address/" + aRep.getId(), null));
+		links.add(new Link("updateAddress", "/addressservice/address/" + aRep.getId(), "application/InstantPot.Address+xml|json"));
+		links.add(new Link("deleteAddress", "/addressservice/address/" + aRep.getId(), null));
 		aRep.setLinks(links);
 		return aRep;
 	}
@@ -26,8 +26,8 @@ public class AddressActivity {
 		Address newAddress = al.createAddress(addressRequest.getStreetAddress(), addressRequest.getCity(), addressRequest.getState(), addressRequest.getZip(), addressRequest.getOwnerId(), addressRequest.getOwnerType());
 		AddressRepresentation aRep = getAddressRepresentation(newAddress);
 		Set<Link> links = new HashSet<>();
-		links.add(new Link("updateAddress", Link.getBaseDomain() + "/addressservice/address/" + aRep.getId(), "application/InstantPot.Address+xml|json"));
-		links.add(new Link("deleteAddress", Link.getBaseDomain() + "/addressservice/address/" + aRep.getId(), null));
+		links.add(new Link("updateAddress", "/addressservice/address/" + aRep.getId(), "application/InstantPot.Address+xml|json"));
+		links.add(new Link("deleteAddress", "/addressservice/address/" + aRep.getId(), null));
 		aRep.setLinks(links);
 		return aRep;
 	}
@@ -53,7 +53,7 @@ public class AddressActivity {
 	public AddressRepresentation updateAddress(Long id, AddressRequest addressRequest) {
 		AddressRepresentation aRep = getAddressRepresentation(al.updateAddress(id, addressRequest.getStreetAddress(), addressRequest.getCity(), addressRequest.getState(), addressRequest.getZip()));
 		Set<Link> links = new HashSet<>();
-		links.add(new Link("deleteAddress", Link.getBaseDomain() + "/addressservice/address/" + aRep.getId(), null));
+		links.add(new Link("deleteAddress", "/addressservice/address/" + aRep.getId(), null));
 		aRep.setLinks(links);
 		return aRep;
 	}

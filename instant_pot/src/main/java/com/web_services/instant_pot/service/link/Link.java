@@ -8,22 +8,25 @@ import javax.xml.bind.annotation.XmlType;
 import java.net.InetAddress;
 
 public class Link {
-	private static String baseDomain = "";
+	private static String baseDomain;
 	
 	private String rel;
 	private String uri;
 	private String mediaType;
 	
-	public Link(String rel, String uri, String mediaType) {
+	static {
 		try {
 			baseDomain = InetAddress.getLocalHost().getHostAddress();
 		}
 		catch (Exception e) {
+			baseDomain = "";
 			System.out.println("Could not set base domain...");
 		}
-		
+	}
+	
+	public Link(String rel, String uri, String mediaType) {		
 		this.rel = rel;
-		this.uri = baseDomain + uri;
+		this.uri = this.baseDomain + uri;
 		this.mediaType = mediaType;
 	}
 	
@@ -45,11 +48,13 @@ public class Link {
 	public void setMediaType(String mediaType) {
 		this.mediaType = mediaType;
 	}
+
 	public static String getBaseDomain() {
 		return baseDomain;
 	}
+
 	public static void setBaseDomain(String baseDomain) {
 		Link.baseDomain = baseDomain;
 	}
-	
+		
 }

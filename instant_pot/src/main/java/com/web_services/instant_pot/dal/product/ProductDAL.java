@@ -41,7 +41,7 @@ public class ProductDAL {
 		return productSet;
 	}
 	
-	public HashSet<Product> getAllProductsByPartner(int partnerID){
+	public HashSet<Product> getAllProductsByPartner(Long partnerID){
 		SessionFactory sf = (SessionFactory) new Configuration().configure("hibernate.cfg.xml").buildSessionFactory();
 	    Session session = sf.openSession();
 	    

@@ -26,6 +26,16 @@ public class ProductActivity {
 		return productRepresentations;
 	}
 	
+	public Set<ProductRepresentation> getProductsByPartner(Long id) {
+		Set<ProductRepresentation> productRepresentations = new HashSet<ProductRepresentation>();
+		Set<Product> products = pl.getProductsByPartner(id);
+		for (Product product : products) {
+			ProductRepresentation productRepresentation = getProductRepresentation(product);
+			productRepresentations.add(productRepresentation);
+		}
+		return productRepresentations;
+	}
+	
 	public ProductRepresentation getProductById(Long id) {
 		Product product =  pl.getProductByID(id);
 		return getProductRepresentation(product);

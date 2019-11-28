@@ -24,7 +24,7 @@ public class ProductLogic{
 		return pd.getAllProducts();
 	}
 	
-	public HashSet<Product> getProductsByPartner(int partnerID){
+	public HashSet<Product> getProductsByPartner(Long partnerID){
 		ProductDAL pd = new ProductDAL();
 		return pd.getAllProductsByPartner(partnerID);
 	}
