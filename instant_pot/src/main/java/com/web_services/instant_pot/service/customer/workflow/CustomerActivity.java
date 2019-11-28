@@ -1,6 +1,8 @@
 package com.web_services.instant_pot.service.customer.workflow;
 
+import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 import com.web_services.instant_pot.domain.customer.Customer;
@@ -18,12 +20,12 @@ public class CustomerActivity {
 	public CustomerRepresentation getCustomerById(Long id) {
 		CustomerRepresentation cRep = getCustomerRepresentation(customerLogic.getCustomerById(id));
 		Set<Link> links = new HashSet<>();
-		// update customer; require media type application/json or application/xml
-		// delete customer
-		// create address
-		// create purchase
-		// get all addresses for customer
-		// get all purchases for customer
+		links.add(new Link("updateCustomer", Link.getBaseDomain() + "/customerservice/customer/" + cRep.getId(), "application/InstantPot.Customer+xml|json"));
+		links.add(new Link("deleteCustomer", Link.getBaseDomain() + "/customerservice/customer/" + cRep.getId(), null));
+		links.add(new Link("createAddress", Link.getBaseDomain() + "/addressservice/address", "application/InstantPot.Address+xml|json"));
+		links.add(new Link("createPurchase", Link.getBaseDomain() + "/purchaseservice/purchase", "application/InstantPot.Purchase+xml|json"));
+		links.add(new Link("getAddressesForCustomer", Link.getBaseDomain() + "/addressservice/customeraddresses/" + cRep.getId(), null));
+		links.add(new Link("getPurchasesForCustomer", Link.getBaseDomain() + "/purchaseservice/customerpurchases/" + cRep.getId(), null));
 		cRep.setLinks(links);
 		return cRep;
 	}

@@ -7,9 +7,6 @@ import javax.xml.bind.annotation.XmlType;
 
 import java.net.InetAddress;
 
-@XmlRootElement(name = "Link")
-@XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "")
 public class Link {
 	private static String baseDomain = "";
 	

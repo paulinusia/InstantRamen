@@ -1,6 +1,8 @@
 package com.web_services.instant_pot.service.customer.representation;
 
+import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 import javax.xml.bind.annotation.XmlAccessType;
@@ -68,6 +70,6 @@ public class CustomerRepresentation {
 
 	public void setLinks(Set<Link> links) {
 		this.links = links;
-	}
+	}	
 	
 }
