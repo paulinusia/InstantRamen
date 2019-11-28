@@ -46,11 +46,12 @@ public class Payment implements Serializable {
 	
 	public Payment(){}
 	
-	public Payment(String type, Long cardNumber, int expirationDate, int securityCode) {
+	public Payment(String type, Long cardNumber, int expirationDate, int securityCode, Customer paymentOwner) {
 		this.type = type;
 		this.cardNumber = cardNumber;
 		this.expirationDate = expirationDate;
 		this.securityCode = securityCode;
+		this.paymentOwner = paymentOwner;
 	}
 
 	public Long getId() {

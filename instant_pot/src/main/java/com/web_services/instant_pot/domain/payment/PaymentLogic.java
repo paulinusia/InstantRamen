@@ -26,9 +26,9 @@ public class PaymentLogic {
 		return payments;
 	}
 	
-	public Payment createPayment(String type, Long cardNumber, int expDate, int securityCode) {
+	public Payment createPayment(String type, Long cardNumber, int expDate, int securityCode, Long customerId) {
 		PaymentDAL payd = new PaymentDAL();
-		return payd.createPayment(type, cardNumber, expDate, securityCode);
+		return payd.createPayment(type, cardNumber, expDate, securityCode, customerId);
 	}
 	
 	public Payment deletePayment(Long id) {
@@ -49,6 +49,7 @@ public class PaymentLogic {
 		return payment;
 	}
 	
+	// main update method
 	public Payment updateCardNumber(Long id, String type, Long cardNumber, int expDate, int securityCode) {
 		PaymentDAL payd = new PaymentDAL();
 		return payd.updateCardNumber(id, type, cardNumber, expDate, securityCode);

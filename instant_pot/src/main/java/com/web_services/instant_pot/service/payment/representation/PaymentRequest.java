@@ -17,6 +17,8 @@ public class PaymentRequest {
 	
 	private int securityCode;
 	
+	private Long customerId;
+	
 	public String getType() {
 		return type;
 	}
@@ -41,4 +43,11 @@ public class PaymentRequest {
 	public void setSecurityCode(int securityCode) {
 		this.securityCode = securityCode;
 	}
+	public Long getCustomerId() {
+		return customerId;
+	}
+	public void setCustomerId(Long customerId) {
+		this.customerId = customerId;
+	}
+	
 }

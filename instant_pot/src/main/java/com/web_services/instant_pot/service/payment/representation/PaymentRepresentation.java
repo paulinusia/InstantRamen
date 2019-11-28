@@ -25,6 +25,8 @@ public class PaymentRepresentation {
 	
 	private int securityCode;
 	
+	private Long customerId;
+	
 	private Set<Link> links = new HashSet<>();
 	
 	public Long getId() {
@@ -63,4 +65,11 @@ public class PaymentRepresentation {
 	public void setLinks(Set<Link> links) {
 		this.links = links;
 	}
+	public Long getCustomerId() {
+		return customerId;
+	}
+	public void setCustomerId(Long customerId) {
+		this.customerId = customerId;
+	}
+	
 }

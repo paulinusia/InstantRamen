@@ -20,7 +20,7 @@ public class PaymentResource implements PaymentService {
 	
 	@GET
 	@Produces({"application/xml" , "application/json"})
-	@Path("/payments/{paymentID}")
+	@Path("/payment/{paymentID}")
 	public 	PaymentRepresentation getPayment(@PathParam("paymentID") Long paymentID) {
 		System.out.println(paymentID);
 		System.out.println("GET METHOD Request for Payment by ID .............");
@@ -40,7 +40,7 @@ public class PaymentResource implements PaymentService {
 	@PUT
 	@Consumes({"application/xml" , "application/json"})
 	@Produces({"application/xml" , "application/json"})
-	@Path("/payments/{paymentID}")
+	@Path("/payment/{paymentID}")
 	public PaymentRepresentation updateCardNumber(@PathParam("paymentID") Long id, PaymentRequest paymentRequest) {
 		System.out.println("GET METHOD Request for updating payment card number .............");
 		PaymentActivity pAct = new PaymentActivity();
@@ -51,7 +51,7 @@ public class PaymentResource implements PaymentService {
 	
 	@DELETE
 	@Produces({"application/xml" , "application/json"})
-	@Path("/payments/{paymentID}")
+	@Path("/payment/{paymentID}")
 	public Response deletePayment(@PathParam("paymentID") Long paymentID) {
 		System.out.println("GET METHOD Request for deleting a payment .............");
 		PaymentActivity pAct = new PaymentActivity();

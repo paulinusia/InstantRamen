@@ -6,6 +6,7 @@ import java.util.List;
 import org.hibernate.*;
 import org.hibernate.cfg.Configuration;
 
+import com.web_services.instant_pot.dal.customer.CustomerDAL;
 import com.web_services.instant_pot.domain.address.Address;
 import com.web_services.instant_pot.domain.customer.Customer;
 import com.web_services.instant_pot.domain.payment.Payment;
@@ -35,11 +36,12 @@ public class PaymentDAL {
 		return paymentSet;
 	}
 	
-	public Payment createPayment(String type, Long cardNumber, int expDate, int securityCode) {
+	public Payment createPayment(String type, Long cardNumber, int expDate, int securityCode, Long customerId) {
 		SessionFactory sf = (SessionFactory) new Configuration().configure("hibernate.cfg.xml").buildSessionFactory();
 		Session session = sf.openSession();
-		
-		Payment newPayment = new Payment(type, cardNumber, expDate, securityCode);
+		CustomerDAL cDal = new CustomerDAL();
+		Customer customer = cDal.getCustomerByID(customerId);
+		Payment newPayment = new Payment(type, cardNumber, expDate, securityCode, customer);
 		
 		Transaction tx = session.beginTransaction();
 		session.save(newPayment);
@@ -94,7 +96,7 @@ public class PaymentDAL {
 		return p;
 	}
 
-	public Payment updateCardNumber(long id, String type, long number, int expDate, int securityCode) {
+	public Payment updateCardNumber(Long id, String type, Long number, int expDate, int securityCode) {
 		SessionFactory sf = (SessionFactory) new Configuration().configure("hibernate.cfg.xml").buildSessionFactory();
 		Session session = sf.openSession();
 		
