@@ -15,16 +15,16 @@ public class Link {
 	private String mediaType;
 	
 	public Link(String rel, String uri, String mediaType) {
-		this.rel = rel;
-		this.uri = uri;
-		this.mediaType = mediaType;
-		
 		try {
-			InetAddress.getLocalHost().getHostName();
+			baseDomain = InetAddress.getLocalHost().getHostAddress();
 		}
 		catch (Exception e) {
 			System.out.println("Could not set base domain...");
 		}
+		
+		this.rel = rel;
+		this.uri = baseDomain + uri;
+		this.mediaType = mediaType;
 	}
 	
 	public String getRel() {

@@ -7,32 +7,29 @@ import com.web_services.instant_pot.domain.address.Address;
 import com.web_services.instant_pot.domain.address.AddressLogic;
 import com.web_services.instant_pot.service.address.representation.AddressRepresentation;
 import com.web_services.instant_pot.service.address.representation.AddressRequest;
+import com.web_services.instant_pot.service.link.Link;
 
 public class AddressActivity {
 	private static AddressLogic al = new AddressLogic();
 	
 	public AddressRepresentation getAddressByID(Long id) {
 		Address address = al.getAddressByID(id);
-		return getAddressRepresentation(address);
+		AddressRepresentation aRep = getAddressRepresentation(address);
+		Set<Link> links = new HashSet<>();
+		links.add(new Link("updateAddress", Link.getBaseDomain() + "/addressservice/address/" + aRep.getId(), "application/InstantPot.Address+xml|json"));
+		links.add(new Link("deleteAddress", Link.getBaseDomain() + "/addressservice/address/" + aRep.getId(), null));
+		aRep.setLinks(links);
+		return aRep;
 	}
-//	
-//	public Address createAddress(String streetAddress, String city, String state, String zip) {
-//		AddressDAL ad = new AddressDAL();
-//		return ad.createAddress(streetAddress, city, state, zip);
-//	}
-//	
-//	public Address updateAddress(Long id, String streetAddress, String city, String state, String zip) {
-//		AddressDAL ad = new AddressDAL();
-//		return ad.updateAddress(id, streetAddress, city, state, zip);
-//	}
-//	public Address deleteAddress(Long id){
-//		AddressDAL ad = new AddressDAL();
-//		return ad.deleteAddress(id);
-//	}
 	
 	public AddressRepresentation createAddress(AddressRequest addressRequest) {
 		Address newAddress = al.createAddress(addressRequest.getStreetAddress(), addressRequest.getCity(), addressRequest.getState(), addressRequest.getZip(), addressRequest.getOwnerId(), addressRequest.getOwnerType());
-		return getAddressRepresentation(newAddress);
+		AddressRepresentation aRep = getAddressRepresentation(newAddress);
+		Set<Link> links = new HashSet<>();
+		links.add(new Link("updateAddress", Link.getBaseDomain() + "/addressservice/address/" + aRep.getId(), "application/InstantPot.Address+xml|json"));
+		links.add(new Link("deleteAddress", Link.getBaseDomain() + "/addressservice/address/" + aRep.getId(), null));
+		aRep.setLinks(links);
+		return aRep;
 	}
 	
 	public Set<AddressRepresentation> getAllAddressForCustomer(Long customerID) {
@@ -54,7 +51,11 @@ public class AddressActivity {
 	}
 	
 	public AddressRepresentation updateAddress(Long id, AddressRequest addressRequest) {
-		return getAddressRepresentation(al.updateAddress(id, addressRequest.getStreetAddress(), addressRequest.getCity(), addressRequest.getState(), addressRequest.getZip()));
+		AddressRepresentation aRep = getAddressRepresentation(al.updateAddress(id, addressRequest.getStreetAddress(), addressRequest.getCity(), addressRequest.getState(), addressRequest.getZip()));
+		Set<Link> links = new HashSet<>();
+		links.add(new Link("deleteAddress", Link.getBaseDomain() + "/addressservice/address/" + aRep.getId(), null));
+		aRep.setLinks(links);
+		return aRep;
 	}
 	
 	public AddressRepresentation deleteAddress(Long id) {
