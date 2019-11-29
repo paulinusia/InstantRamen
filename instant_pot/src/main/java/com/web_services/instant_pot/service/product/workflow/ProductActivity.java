@@ -7,6 +7,7 @@ import java.util.Set;
 import com.web_services.instant_pot.domain.partner.PartnerLogic;
 import com.web_services.instant_pot.domain.product.Product;
 import com.web_services.instant_pot.domain.product.ProductLogic;
+import com.web_services.instant_pot.service.link.Link;
 import com.web_services.instant_pot.service.product.representation.ProductRepresentation;
 import com.web_services.instant_pot.service.product.representation.ProductRequest;
 
@@ -38,7 +39,16 @@ public class ProductActivity {
 	
 	public ProductRepresentation getProductById(Long id) {
 		Product product =  pl.getProductByID(id);
-		return getProductRepresentation(product);
+		ProductRepresentation pRep = getProductRepresentation(product);
+		Set<Link> links = new HashSet<>();
+		links.add(new Link("updateProduct", "/productservice/product/" + pRep.getId(), "application/InstantPot.Product+xml|json"));
+		links.add(new Link("deleteProduct", "/productservice/product/" + pRep.getId(), null));
+		links.add(new Link("getReviewsForProduct", "/reviewservice/productreviews/" + pRep.getId(), null));
+		links.add(new Link("getPurchasesForProduct", "/purchaseservice/productpurchases/" + pRep.getId(), null));
+		links.add(new Link("createPurchase", "/purchaseservice/purchase", "application/InstantPot.Purchase+xml|json"));
+		links.add(new Link("createReview", "/reviewservice/review", "application/InstantPot.Review+xml|json"));
+		pRep.setLinks(links);
+		return pRep;
 		
 	}
 	
@@ -72,7 +82,16 @@ public class ProductActivity {
 	public ProductRepresentation createProduct(ProductRequest productRequest) {
 		PartnerLogic partnerLogic = new PartnerLogic();
 		Product newProduct =  pl.createProduct(partnerLogic.getPartner(productRequest.getPartnerId()), productRequest.getProductName(), productRequest.getProductDescription(), productRequest.getCost());
-		return getProductRepresentation(newProduct);
+		ProductRepresentation pRep = getProductRepresentation(newProduct);
+		Set<Link> links = new HashSet<>();
+		links.add(new Link("updateProduct", "/productservice/product/" + pRep.getId(), "application/InstantPot.Product+xml|json"));
+		links.add(new Link("deleteProduct", "/productservice/product/" + pRep.getId(), null));
+		links.add(new Link("getReviewsForProduct", "/reviewservice/productreviews/" + pRep.getId(), null));
+		links.add(new Link("getPurchasesForProduct", "/purchaseservice/productpurchases/" + pRep.getId(), null));
+		links.add(new Link("createPurchase", "/purchaseservice/purchase", "application/InstantPot.Purchase+xml|json"));
+		links.add(new Link("createReview", "/reviewservice/review", "application/InstantPot.Review+xml|json"));
+		pRep.setLinks(links);
+		return pRep;
 	}
 	
 	public ProductRepresentation deleteProduct(Long id) {
@@ -81,6 +100,14 @@ public class ProductActivity {
 	}
 	
 	public ProductRepresentation updateProduct(Long id, ProductRequest productRequest) {
-		return getProductRepresentation(pl.updateProduct(id, productRequest.getProductName(), productRequest.getProductDescription(), productRequest.getCost()));
+		ProductRepresentation pRep =  getProductRepresentation(pl.updateProduct(id, productRequest.getProductName(), productRequest.getProductDescription(), productRequest.getCost()));
+		Set<Link> links = new HashSet<>();
+		links.add(new Link("deleteProduct", "/productservice/product/" + pRep.getId(), null));
+		links.add(new Link("getReviewsForProduct", "/reviewservice/productreviews/" + pRep.getId(), null));
+		links.add(new Link("getPurchasesForProduct", "/purchaseservice/productpurchases/" + pRep.getId(), null));
+		links.add(new Link("createPurchase", "/purchaseservice/purchase", "application/InstantPot.Purchase+xml|json"));
+		links.add(new Link("createReview", "/reviewservice/review", "application/InstantPot.Review+xml|json"));
+		pRep.setLinks(links);
+		return pRep;
 	}
 }
