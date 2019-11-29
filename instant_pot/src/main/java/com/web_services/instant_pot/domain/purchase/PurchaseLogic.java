@@ -44,5 +44,8 @@ public class PurchaseLogic {
 		return pd.getAllPurchasesByCustomer(customerID);
 	}
 
-
+	public Set<Purchase> getAllPurchasesByProduct(Long productID){
+		PurchaseDAL pd = new PurchaseDAL();
+		return pd.getAllPurchasesByCustomer(productID);
+	}
 }

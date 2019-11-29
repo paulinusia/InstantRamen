@@ -17,5 +17,5 @@ public interface PurchaseService {
 	public PurchaseRepresentation  updatePurchaseDetail(Long id, String purchaseDetail);
 	public PurchaseRepresentation updatePurchaseStatus(Long id, String purchaseStatus);
 	public Set<PurchaseRepresentation> getPurchasesFromCustomer(Long customerID);
-	
+	public Set<PurchaseRepresentation> getPurchasesByProduct(Long productID);
 }

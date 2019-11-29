@@ -40,8 +40,8 @@ public class PurchaseResource implements PurchaseService{
 	@PUT
 	@Consumes({"application/xml" , "application/json"})
 	@Produces({"application/xml" , "application/json"})
-	@Path("/purchase/{id}")
-	public PurchaseRepresentation updatePurchaseDetail(@PathParam("id") Long id, String purchaseDetail) {
+	@Path("/purchasedetail/{id}/{detail}")
+	public PurchaseRepresentation updatePurchaseDetail(@PathParam("id") Long id, @PathParam("detail") String purchaseDetail) {
 		System.out.println("GET METHOD Request for updating purchase detail .............");
 		PurchaseActivity pAct = new PurchaseActivity();
 		return pAct.updatePurchaseDetail(id, purchaseDetail);
@@ -50,14 +50,13 @@ public class PurchaseResource implements PurchaseService{
 	@PUT
 	@Consumes({"application/xml" , "application/json"})
 	@Produces({"application/xml" , "application/json"})
-	@Path("/purchaseStatusUpdate/{id}")
-	public PurchaseRepresentation updatePurchaseStatus(@PathParam("id") Long id, String purchaseStatus) {
+	@Path("/purchasestatus/{id}/{status}")
+	public PurchaseRepresentation updatePurchaseStatus(@PathParam("id") Long id, @PathParam("status") String purchaseStatus) {
 		System.out.println("GET METHOD Request for updating purchase status .............");
 		PurchaseActivity pAct = new PurchaseActivity();	
 		return pAct.updatePurchaseStatus(id, purchaseStatus);
 		
 	}
-	
 	
 	@GET
 	@Produces({"application/xml" , "application/json"})
@@ -68,6 +67,13 @@ public class PurchaseResource implements PurchaseService{
 		return pAct.getPurchasesFromCustomer(customerID);
 	}
 	
-
+	@GET
+	@Produces({"application/xml" , "application/json"})
+	@Path("/productpurchases/{id}")
+	public Set<PurchaseRepresentation> getPurchasesByProduct(@PathParam("id") Long productID) {
+		System.out.println("GET METHOD Request for Purchases of Product with ID ............." + Long.toString(productID));
+		PurchaseActivity pAct = new PurchaseActivity();	
+		return pAct.getPurchasesByProduct(productID);
+	}
 }
 
