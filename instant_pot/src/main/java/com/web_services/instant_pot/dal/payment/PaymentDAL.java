@@ -2,6 +2,7 @@ package com.web_services.instant_pot.dal.payment;
 
 import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 import org.hibernate.*;
 import org.hibernate.cfg.Configuration;
@@ -116,40 +117,16 @@ public class PaymentDAL {
 	
 	}
 	
-//	public Payment addPaymentToCustomer(Long paymentID, Long customerID) {	
-//		SessionFactory sf = (SessionFactory) new Configuration().configure("hibernate.cfg.xml").buildSessionFactory();
-//	    Session session = sf.openSession();
-//	    
-//	    Customer customer = session.get(Customer.class, customerID);
-//	    Payment payment = session.get(Payment.class, paymentID);
-//	    payment.setPaymentOwner(customer);
-//	    customer.getPayments().add(payment);
-//	    
-//	    Transaction tx = session.beginTransaction();
-//	    session.save(payment);
-//	    session.save(customer);
-//	    tx.commit(); 
-//	    session.close();
-//	  
-//	    return payment;
-//	}
-//	
-//	public Payment removePaymentFromCustomer(Long paymentID, Long customerID) {	
-//		SessionFactory sf = (SessionFactory) new Configuration().configure("hibernate.cfg.xml").buildSessionFactory();
-//	    Session session = sf.openSession();
-//	    
-//	    Customer customer = session.get(Customer.class, customerID);
-//	    Payment payment = session.get(Payment.class, paymentID);
-//	    payment.setPaymentOwner(null);
-//	    customer.getPayments().remove(payment);
-//	    
-//	    Transaction tx = session.beginTransaction();
-//	    session.save(payment);
-//	    session.save(customer);
-//	    tx.commit(); 
-//	    session.close();
-//	  
-//	    return payment;
-//	}
-
+	public Set<Payment> getAllPaymentForCustomer(Long customerID) {
+		
+		SessionFactory sf = (SessionFactory) new Configuration().configure("hibernate.cfg.xml").buildSessionFactory();
+	    Session session = sf.openSession();
+	    
+	    Query query = session.createQuery("from Payment where fk_customer=:customerID").setParameter("customerID", customerID);
+	    List<Payment> payments = query.list();
+	    Set<Payment> paymentSet = new HashSet<Payment>(payments);
+	    
+		session.close();
+		return paymentSet;
+	}
 }

@@ -1,5 +1,7 @@
 package com.web_services.instant_pot.service.payment;
 
+import java.util.Set;
+
 import javax.ws.rs.Consumes;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
@@ -28,6 +30,16 @@ public class PaymentResource implements PaymentService {
 		return pAct.getPayment(paymentID);
 	}
 
+	@GET
+	@Produces({"application/xml" , "application/json"})
+	@Path("/customerpayments/{id}")
+	public Set<PaymentRepresentation> getCustomerPayments(@PathParam("id") Long id) {
+		System.out.println(id);
+		System.out.println("GET METHOD Request for all Payments for Customer with ID .............");
+		PaymentActivity pAct = new PaymentActivity();
+		return pAct.getAllPaymentForCustomer(id);
+	}
+	
 	@POST
 	@Consumes({"application/xml" , "application/json"})
 	@Produces({"application/xml" , "application/json"})
@@ -52,14 +64,14 @@ public class PaymentResource implements PaymentService {
 	@DELETE
 	@Produces({"application/xml" , "application/json"})
 	@Path("/payment/{paymentID}")
-	public Response deletePayment(@PathParam("paymentID") Long paymentID) {
+	public PaymentRepresentation deletePayment(@PathParam("paymentID") Long paymentID) {
 		System.out.println("GET METHOD Request for deleting a payment .............");
 		PaymentActivity pAct = new PaymentActivity();
-		String res = pAct.deletePayment(paymentID);
-		if (pAct.equals("OK")) {
-			return Response.status(Status.OK).build();
-		}
-		return null;
+//		String res = pAct.deletePayment(paymentID);
+//		if (pAct.equals("OK")) {
+//			return Response.status(Status.OK).build();
+//		}
+		return pAct.deletePayment(paymentID);
 	}
 
 

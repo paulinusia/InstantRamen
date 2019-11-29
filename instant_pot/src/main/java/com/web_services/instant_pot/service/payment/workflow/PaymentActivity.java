@@ -58,12 +58,18 @@ public class PaymentActivity {
 	}
 		
 	
-	public String deletePayment(Long paymentID) {
+	public PaymentRepresentation deletePayment(Long paymentID) {
 		PaymentLogic pd = new PaymentLogic();
-		
-		pd.deletePayment(paymentID);
-		
-		return "OK";
+		return getPaymentRepresentation(pd.deletePayment(paymentID));
 	}
 	
+	public Set<PaymentRepresentation> getAllPaymentForCustomer(Long id) {
+		PaymentLogic pd = new PaymentLogic();
+		Set<PaymentRepresentation> paymentRepresentations = new HashSet<>();
+		Set<Payment> payments = pd.getAllPaymentForCustomer(id);
+		for (Payment p : payments) {
+			paymentRepresentations.add(getPaymentRepresentation(p));
+		}
+		return paymentRepresentations;
+	}
 }

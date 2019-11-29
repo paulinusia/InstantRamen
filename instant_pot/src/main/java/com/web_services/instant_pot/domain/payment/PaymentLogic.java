@@ -1,6 +1,7 @@
 package com.web_services.instant_pot.domain.payment;
 
 import java.util.HashSet;
+import java.util.Set;
 
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
@@ -54,6 +55,12 @@ public class PaymentLogic {
 		PaymentDAL payd = new PaymentDAL();
 		return payd.updateCardNumber(id, type, cardNumber, expDate, securityCode);
 		
+	}
+	
+	public Set<Payment> getAllPaymentForCustomer(Long id) {
+		PaymentDAL payd = new PaymentDAL();
+		Set<Payment> payments = payd.getAllPaymentForCustomer(id);
+		return payments;
 	}
 //	
 //	public Payment addPaymentToCustomer(Long paymentID, Long customerID) {	
