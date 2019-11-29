@@ -24,6 +24,8 @@ public class CustomerActivity {
 		links.add(new Link("createAddress", "/addressservice/address", "application/InstantPot.Address+xml|json"));
 		links.add(new Link("createPurchase", "/purchaseservice/purchase", "application/InstantPot.Purchase+xml|json"));
 		links.add(new Link("createPayment", "/paymentservice/payment", "application/InstantPot.Payment+xml|json"));
+		links.add(new Link("createReview", "/reviewservice/review", "application/InstantPot.Review+xml|json"));
+		links.add(new Link("getReviewsForCustomer", "/reviewservice/customerreviews/" + cRep.getId(), null));
 		links.add(new Link("getPaymentsForCustomer", "/paymentservice/customerpayments/" + cRep.getId(), null));
 		links.add(new Link("getAddressesForCustomer", "/addressservice/customeraddresses/" + cRep.getId(), null));
 		links.add(new Link("getPurchasesForCustomer", "/purchaseservice/customerpurchases/" + cRep.getId(), null));
@@ -62,6 +64,8 @@ public class CustomerActivity {
 		links.add(new Link("createAddress", "/addressservice/address", "application/InstantPot.Address+xml|json"));
 		links.add(new Link("createPurchase", "/purchaseservice/purchase", "application/InstantPot.Purchase+xml|json"));
 		links.add(new Link("createPayment", "/paymentservice/payment", "application/InstantPot.Payment+xml|json"));
+		links.add(new Link("createReview", "/reviewservice/review", "application/InstantPot.Review+xml|json"));
+		links.add(new Link("getReviewsForCustomer", "/reviewservice/customerreviews/" + cRep.getId(), null));
 		links.add(new Link("getPaymentsForCustomer", "/paymentservice/customerpayments/" + cRep.getId(), null));
 		links.add(new Link("getAddressesForCustomer", "/addressservice/customeraddresses/" + cRep.getId(), null));
 		links.add(new Link("getPurchasesForCustomer", "/purchaseservice/customerpurchases/" + cRep.getId(), null));
@@ -77,6 +81,8 @@ public class CustomerActivity {
 		links.add(new Link("createAddress", "/addressservice/address", "application/InstantPot.Address+xml|json"));
 		links.add(new Link("createPurchase", "/purchaseservice/purchase", "application/InstantPot.Purchase+xml|json"));
 		links.add(new Link("createPayment", "/paymentservice/payment", "application/InstantPot.Payment+xml|json"));
+		links.add(new Link("createReview", "/reviewservice/review", "application/InstantPot.Review+xml|json"));
+		links.add(new Link("getReviewsForCustomer", "/reviewservice/customerreviews/" + cRep.getId(), null));
 		links.add(new Link("getPaymentsForCustomer", "/paymentservice/customerpayments/" + cRep.getId(), null));
 		links.add(new Link("getAddressesForCustomer", "/addressservice/customeraddresses/" + cRep.getId(), null));
 		links.add(new Link("getPurchasesForCustomer", "/purchaseservice/customerpurchases/" + cRep.getId(), null));

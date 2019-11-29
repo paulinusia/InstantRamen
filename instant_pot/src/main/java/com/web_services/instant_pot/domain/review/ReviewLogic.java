@@ -2,6 +2,7 @@ package com.web_services.instant_pot.domain.review;
 
 import java.util.Date;
 import java.util.HashSet;
+import java.util.Set;
 
 import com.web_services.instant_pot.dal.product.ProductDAL;
 import com.web_services.instant_pot.dal.review.ReviewDAL;
@@ -16,12 +17,12 @@ public class ReviewLogic {
 		return rd.getReviewByID(reviewID);
 	}
 	
-	public HashSet<Review> getAllReviewForCustomer(long custID){
+	public Set<Review> getAllReviewForCustomer(long custID){
 		ReviewDAL rd = new ReviewDAL();
 		return rd.getAllReviewForCustomer(custID);
 	}
 
-	public HashSet<Review> getAllReviewForProduct(Long productID){
+	public Set<Review> getAllReviewForProduct(Long productID){
 		ReviewDAL rd = new ReviewDAL();
 		return rd.getAllReviewForProduct(productID);
 	}

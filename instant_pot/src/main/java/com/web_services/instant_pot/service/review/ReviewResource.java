@@ -22,47 +22,42 @@ import com.web_services.instant_pot.service.review.workflow.ReviewActivity;
 
 @Path("/reviewservice/")
 public class ReviewResource implements ReviewService {
-	
-	private static ReviewActivity reviewActivity = new ReviewActivity();
-
+	private static ReviewActivity rAct = new ReviewActivity();
 	
 	@GET
 	@Produces({"application/xml" , "application/json"})
-	@Path("/reviews/{reviewID}")
+	@Path("/review/{reviewID}")
 	public 	ReviewRepresentation getReviewByID(@PathParam("reviewID") Long reviewID) {
 		System.out.println(reviewID);
-//		System.out.println("GET METHOD Request for Review by ID ............." + Long.toString(reviewID));
 		System.out.println("GET METHOD Request for Review by ID .............");
-		ReviewActivity rAct = new ReviewActivity();
 		return rAct.getReviewByID(reviewID);
 		
 	}
 	
 	
-//	@GET
-//	@Produces({"application/xml" , "application/json"})
-//	@Path("/reviews/{custID}")
-//	public HashSet<ReviewRepresentation> getAllReviewForCustomer(@PathParam("custID") Long custID){
-//		System.out.println("GET METHOD Request for all reviews by customer .............");
-//	ReviewActivity rAct = new ReviewActivity();
-//	return rAct.getAllReviewForCustomer(custID);
-//	}
-//	
-//	@GET
-//	@Produces({"application/xml" , "application/json"})
-//	@Path("/reviews/{productID}")
-//	public HashSet<ReviewRepresentation> getAllReviewForProduct(@PathParam("productID") Long productID){
-//	System.out.println("GET METHOD Request for all reviews for product .............");
-//	ReviewActivity rAct = new ReviewActivity();
-//	return rAct.getAllReviewForProduct(productID);
-//	
-//	}
-	@POST
+	@GET
 	@Produces({"application/xml" , "application/json"})
-	@Path("/reviews")
+	@Path("/customerreviews/{custID}")
+	public Set<ReviewRepresentation> getAllReviewForCustomer(@PathParam("custID") Long custID){
+		System.out.println("GET METHOD Request for all reviews by customer .............");
+	return rAct.getAllReviewForCustomer(custID);
+	}
+	
+	@GET
+	@Produces({"application/xml" , "application/json"})
+	@Path("/productreviews/{productID}")
+	public Set<ReviewRepresentation> getAllReviewForProduct(@PathParam("productID") Long productID){
+	System.out.println("GET METHOD Request for all reviews for product .............");
+	return rAct.getAllReviewForProduct(productID);
+	
+	}
+	
+	@POST
+	@Consumes({"application/xml" , "application/json"})
+	@Produces({"application/xml" , "application/json"})
+	@Path("/review")
 	public ReviewRepresentation addReview(ReviewRequest request) {
 		System.out.println("GET METHOD Request for adding a review .............");
-		ReviewActivity rAct = new ReviewActivity();
 		return rAct.addReview(request);
 	}
 	
@@ -72,7 +67,7 @@ public class ReviewResource implements ReviewService {
 	@Path("/review/{id}")
 	public ReviewRepresentation updateReview(@PathParam("id") Long id, ReviewRequest reviewRequest) {
 		System.out.println("PUT METHOD Request for Review with ID: " + Long.toString(id));
-		return reviewActivity.updateReview(id, reviewRequest);
+		return rAct.updateReview(id, reviewRequest);
 	}
 	
 	@DELETE
@@ -80,7 +75,7 @@ public class ReviewResource implements ReviewService {
 	@Path("/review/{id}")
 	public ReviewRepresentation deleteReview(@PathParam("id") Long id) {
 		System.out.println("DELETE METHOD Request for review with ID: " + Long.toString(id));
-		return reviewActivity.deleteReview(id);
+		return rAct.deleteReview(id);
 	}
 //	public Response deleteReview(@PathParam("reviewID") Long reviewID) {
 //		System.out.println("DELETE METHOD Request for deleting a review .............");

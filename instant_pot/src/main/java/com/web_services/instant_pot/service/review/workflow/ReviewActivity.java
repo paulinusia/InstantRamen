@@ -1,9 +1,11 @@
 package com.web_services.instant_pot.service.review.workflow;
 
 import java.util.HashSet;
+import java.util.Set;
 
 import com.web_services.instant_pot.domain.review.Review;
 import com.web_services.instant_pot.domain.review.ReviewLogic;
+import com.web_services.instant_pot.service.link.Link;
 import com.web_services.instant_pot.service.review.representation.ReviewRepresentation;
 import com.web_services.instant_pot.service.review.representation.ReviewRequest;
 
@@ -11,85 +13,55 @@ public class ReviewActivity {
 	private static ReviewLogic rl = new ReviewLogic();
 	
 	public ReviewRepresentation getReviewByID(Long reviewID) {
-		ReviewLogic rd = new ReviewLogic();
-		Review review = rd.getReviewByID(reviewID);
-		
-		ReviewRepresentation rRep = new ReviewRepresentation();
-		
-		rRep.setId(review.getId());
-		rRep.setCustomerID(review.getCustomer().getId());
-		rRep.setProductID(review.getProduct().getId());
-		rRep.setReviewRating(review.getReviewRating());
-		rRep.setBody(review.getBody());
-		rRep.setTimestamp(review.getTimestamp());
+		Review review = rl.getReviewByID(reviewID);
+		ReviewRepresentation rRep = getReviewRepresentation(review);
+		Set<Link> links = new HashSet<>();
+		links.add(new Link("updateReview", "/reviewservice/review/" + rRep.getId(), "application/InstantPot.Review+xml|json"));
+		links.add(new Link("deleteReview", "/reviewservice/review/" + rRep.getId(), null));
+		rRep.setLinks(links);
 		return rRep;
 	}
 	
 	private static ReviewRepresentation getReviewRepresentation(Review review) {
 		ReviewRepresentation reviewRepresentation = new ReviewRepresentation();
-		
 		reviewRepresentation.setId(review.getId());
 		reviewRepresentation.setCustomerID(review.getCustomer().getId());
 		reviewRepresentation.setProductID(review.getProduct().getId());
 		reviewRepresentation.setReviewRating(review.getReviewRating());
 		reviewRepresentation.setBody(review.getBody());
 		reviewRepresentation.setTimestamp(review.getTimestamp());
-
 		return reviewRepresentation;
 	}
 	
-//	public HashSet<ReviewRepresentation> getAllReviewForCustomer(Long custID){
-//		ReviewLogic rd = new ReviewLogic();
-//		HashSet<Review> reviewSet = new HashSet<Review>();
-//		HashSet<ReviewRepresentation> reviewRepresentations = new HashSet<ReviewRepresentation>();
-//		reviewSet = rd.getAllReviewForCustomer(custID);
-//		
-//		for (Review review : reviewSet) {
-//			ReviewRepresentation reviewRepresentation = new ReviewRepresentation();
-//			reviewRepresentation.setBody(review.getBody());
-//			reviewRepresentation.setCustomer(review.getCustomer());
-//			reviewRepresentation.setId(review.getId());
-//			reviewRepresentation.setProduct(review.getProduct());
-//			reviewRepresentation.setReviewRating(review.getReviewRating());
-//			reviewRepresentation.setTimestamp(review.getTimestamp());
-//		}
-//		
-//		return reviewRepresentations;
-//		
-//	}
-//
-//
-//	public HashSet<ReviewRepresentation> getAllReviewForProduct(Long productID){
-//		ReviewLogic rd = new ReviewLogic();
-//		HashSet<Review> reviewProductSet = new HashSet<Review>();
-//		
-//		HashSet<ReviewRepresentation> reviewRepresentations = new HashSet<ReviewRepresentation>();
-//		reviewProductSet = rd.getAllReviewForProduct(productID);
-//		for (Review review : reviewProductSet) {
-//			ReviewRepresentation reviewRepresentation = new ReviewRepresentation();
-//			reviewRepresentation.setBody(review.getBody());
-//			reviewRepresentation.setCustomer(review.getCustomer());
-//			reviewRepresentation.setId(review.getId());
-//			reviewRepresentation.setProduct(review.getProduct());
-//			reviewRepresentation.setReviewRating(review.getReviewRating());
-//			reviewRepresentation.setTimestamp(review.getTimestamp());
-//		}
-//		
-//		return reviewRepresentations;
-//	}
+	public Set<ReviewRepresentation> getAllReviewForCustomer(Long custID){
+		Set<Review> reviews = new HashSet<>();
+		Set<ReviewRepresentation> reviewRepresentations = new HashSet<>();
+		reviews = rl.getAllReviewForCustomer(custID);
+		for (Review review : reviews) {
+			reviewRepresentations.add(getReviewRepresentation(review));
+		}
+		return reviewRepresentations;
+	}
+
+
+	public Set<ReviewRepresentation> getAllReviewForProduct(Long productID){
+		Set<Review> reviews = new HashSet<>();
+		Set<ReviewRepresentation> reviewRepresentations = new HashSet<>();
+		reviews = rl.getAllReviewForProduct(productID);
+		for (Review review : reviews) {
+			reviewRepresentations.add(getReviewRepresentation(review));
+		}
+		return reviewRepresentations;
+	}
 
 	public ReviewRepresentation addReview(ReviewRequest request) {
-		ReviewLogic rd = new ReviewLogic();
-		
-		Review review = rd.addReview(request.getCustomerID(), request.getProductID(), request.getReviewRating(),request.getBody(), request.getTimestamp());
-		
-		ReviewRepresentation rRes = new ReviewRepresentation();
-		rRes.setId(review.getId());
-		rRes.setCustomerID(review.getCustomer().getId());
-		rRes.setProductID(review.getProduct().getId());
-		rRes.setReviewRating(review.getReviewRating());
-		rRes.setBody(review.getBody());	
-		return rRes;
+		Review review = rl.addReview(request.getCustomerID(), request.getProductID(), request.getReviewRating(),request.getBody(), request.getTimestamp());
+		ReviewRepresentation rRep = getReviewRepresentation(review);
+		Set<Link> links = new HashSet<>();
+		links.add(new Link("updateReview", "/reviewservice/review/" + rRep.getId(), "application/InstantPot.Review+xml|json"));
+		links.add(new Link("deleteReview", "/reviewservice/review/" + rRep.getId(), null));
+		rRep.setLinks(links);
+		return rRep;
 		
 	}
 	
@@ -111,7 +83,11 @@ public class ReviewActivity {
 	}
 	
 	public ReviewRepresentation updateReview(Long id, ReviewRequest request) {
-		return getReviewRepresentation(rl.updateReview(id, request.getReviewRating(), request.getBody()));
+		ReviewRepresentation rRep = getReviewRepresentation(rl.updateReview(id, request.getReviewRating(), request.getBody()));
+		Set<Link> links = new HashSet<>();
+		links.add(new Link("deleteReview", "/reviewservice/review/" + rRep.getId(), null));
+		rRep.setLinks(links);
+		return rRep;
 	}
 
 }
