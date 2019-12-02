@@ -30,6 +30,8 @@ public class Link {
 		this.mediaType = mediaType;
 	}
 	
+	public Link() {}
+	
 	public String getRel() {
 		return rel;
 	}
