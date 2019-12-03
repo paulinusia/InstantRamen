@@ -47,6 +47,7 @@ public class ProductActivity {
 		links.add(new Link("getPurchasesForProduct", "/purchaseservice/productpurchases/" + pRep.getId(), null));
 		links.add(new Link("createPurchase", "/purchaseservice/purchase", "application/InstantPot.Purchase+xml|json"));
 		links.add(new Link("createReview", "/reviewservice/review", "application/InstantPot.Review+xml|json"));
+		links.add(new Link("getProductOwner", "/partnerservice/partner/" + pRep.getPartnerId(), null));
 		pRep.setLinks(links);
 		return pRep;
 		
@@ -90,6 +91,7 @@ public class ProductActivity {
 		links.add(new Link("getPurchasesForProduct", "/purchaseservice/productpurchases/" + pRep.getId(), null));
 		links.add(new Link("createPurchase", "/purchaseservice/purchase", "application/InstantPot.Purchase+xml|json"));
 		links.add(new Link("createReview", "/reviewservice/review", "application/InstantPot.Review+xml|json"));
+		links.add(new Link("getProductOwner", "/partnerservice/partner/" + pRep.getPartnerId(), null));
 		pRep.setLinks(links);
 		return pRep;
 	}
@@ -107,6 +109,7 @@ public class ProductActivity {
 		links.add(new Link("getPurchasesForProduct", "/purchaseservice/productpurchases/" + pRep.getId(), null));
 		links.add(new Link("createPurchase", "/purchaseservice/purchase", "application/InstantPot.Purchase+xml|json"));
 		links.add(new Link("createReview", "/reviewservice/review", "application/InstantPot.Review+xml|json"));
+		links.add(new Link("getProductOwner", "/partnerservice/partner/" + pRep.getPartnerId(), null));
 		pRep.setLinks(links);
 		return pRep;
 	}
