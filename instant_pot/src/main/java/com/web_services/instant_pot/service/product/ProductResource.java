@@ -33,34 +33,29 @@ public class ProductResource implements ProductService{
 	@Context
     private HttpHeaders headers;
 	
-	@OPTIONS
-	@Path("/username")
-	@LocalPreflight
-	public Response options(@PathParam("username") String username) {
-		String origin = headers.getRequestHeader("Origin").get(0);
-		
-		if ("http://localhost:8082".equals(origin)) {
-			return Response.ok()
-					.header(CorsHeaderConstants.HEADER_AC_ALLOW_METHODS, "GET")
-					.header(CorsHeaderConstants.HEADER_AC_ALLOW_CREDENTIALS, "true")
-					.header(CorsHeaderConstants.HEADER_AC_ALLOW_ORIGIN, "http://localhost:8082")
-					.header(CorsHeaderConstants.HEADER_AC_ALLOW_HEADERS, "Content-Type")
-					.build();
-		}
-		else return Response.ok().build();
-	}
+//	@OPTIONS
+//	@Path("/username")
+//	@LocalPreflight
+//	public Response options(@PathParam("username") String username) {
+//		String origin = headers.getRequestHeader("Origin").get(0);
+//		return Response.ok()
+//				.header(CorsHeaderConstants.HEADER_AC_ALLOW_METHODS, "GET")
+//				.header(CorsHeaderConstants.HEADER_AC_ALLOW_CREDENTIALS, "true")
+//				.header(CorsHeaderConstants.HEADER_AC_ALLOW_ORIGIN, origin)
+//				.header(CorsHeaderConstants.HEADER_AC_ALLOW_HEADERS, "Content-Type")
+//				.build();
+//}
 	
-	@OPTIONS
-	@Path("/")
-	@LocalPreflight
-	public Response options() {
-		String origin = headers.getRequestHeader("Origin").get(0);
-		
-		return Response.ok()
-				.header(CorsHeaderConstants.HEADER_AC_ALLOW_CREDENTIALS, "true")
-				.header(CorsHeaderConstants.HEADER_AC_ALLOW_ORIGIN, "http://localhost:8082")
-				.build();
-	}
+//	@OPTIONS
+//	@Path("/")
+//	@LocalPreflight
+//	public Response options() {
+//		String origin = headers.getRequestHeader("Origin").get(0);
+//		return Response.ok()
+//				.header(CorsHeaderConstants.HEADER_AC_ALLOW_CREDENTIALS, "true")
+//				.header(CorsHeaderConstants.HEADER_AC_ALLOW_ORIGIN, origin)
+//				.build();
+//	}
 	
 	private static ProductActivity productActivity = new ProductActivity();
 	
