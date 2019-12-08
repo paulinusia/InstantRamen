@@ -77,7 +77,7 @@ public class PurchaseDAL {
 	    
 	    Purchase purchase = session.get(Purchase.class, id);
 	    if (purchase != null) {
-	    	purchase.setPurchaseDetail(status);
+	    	purchase.setPurchaseStatus(status);
 	    	Transaction tx = session.beginTransaction();
 	    	session.save(purchase);
 		    tx.commit();

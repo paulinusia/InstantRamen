@@ -36,7 +36,7 @@ public class PurchaseLogic {
 	
 	public Purchase updatePurchaseStatus(Long id, String purchaseStatus) {
 		PurchaseDAL purchase = new PurchaseDAL();
-	    return purchase.updatePurchaseDetail(id,purchaseStatus);
+	    return purchase.updatePurchaseStatus(id,purchaseStatus);
 	}
 	
 	public Set<Purchase> getAllPurchasesByCustomer(Long customerID){
