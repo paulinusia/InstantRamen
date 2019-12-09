@@ -45,7 +45,7 @@ public class ProductDAL {
 		SessionFactory sf = (SessionFactory) new Configuration().configure("hibernate.cfg.xml").buildSessionFactory();
 	    Session session = sf.openSession();
 	    
-	    Query query = session.createQuery("from Product where partner_id=:partnerID").setParameter("partnerID", partnerID);
+	    Query query = session.createQuery("from Product where fk_product_owner=:partnerID").setParameter("partnerID", partnerID);
 	    List<Product> products = query.list();
 	    HashSet<Product> productSet = new HashSet<Product>(products);
 	    
