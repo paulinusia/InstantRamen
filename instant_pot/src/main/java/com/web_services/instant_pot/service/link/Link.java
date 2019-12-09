@@ -14,7 +14,7 @@ public class Link {
 	private String uri;
 	private String mediaType;
 	
-	static {
+	/*static {
 		try {
 			System.out.println("HITTING LINK.JAVA");
 			baseDomain = InetAddress.getLocalHost().getHostAddress();
@@ -23,11 +23,11 @@ public class Link {
 			baseDomain = "";
 			System.out.println("Could not set base domain...");
 		}
-	}
+	}*/
 	
 	public Link(String rel, String uri, String mediaType) {		
 		this.rel = rel;
-		this.uri = this.baseDomain + uri;
+		this.uri = uri;
 		this.mediaType = mediaType;
 	}
 	

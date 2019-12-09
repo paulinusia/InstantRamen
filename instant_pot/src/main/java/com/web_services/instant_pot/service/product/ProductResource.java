@@ -27,11 +27,11 @@ import com.web_services.instant_pot.service.product.representation.ProductReques
 import com.web_services.instant_pot.service.product.workflow.ProductActivity;
 
 @Path("/productservice/")
-@CrossOriginResourceSharing(allowAllOrigins=true)
+//@CrossOriginResourceSharing(allowAllOrigins=true)
 public class ProductResource implements ProductService{
 
-	@Context
-    private HttpHeaders headers;
+	//@Context
+    //private HttpHeaders headers;
 	
 //	@OPTIONS
 //	@Path("/username")
