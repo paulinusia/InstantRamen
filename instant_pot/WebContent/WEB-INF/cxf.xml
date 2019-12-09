@@ -12,7 +12,7 @@
   <import resource="classpath:META-INF/cxf/cxf.xml" />
   <import resource="classpath:META-INF/cxf/cxf-servlet.xml" />
   	
-  <!--  <bean id="cors-filter" class="org.apache.cxf.rs.security.cors.CrossOriginResourceSharingFilter"/> -->
+  <bean id="cors-filter" class="org.apache.cxf.rs.security.cors.CrossOriginResourceSharingFilter"/> 
   
   <jaxrs:server name="InstantPotService" address="http://localhost:8081">
 		<jaxrs:serviceBeans>
@@ -25,9 +25,9 @@
 			<ref bean="addressServiceRest" />
 		</jaxrs:serviceBeans>
 
-		<!-- <jaxrs:providers>
+	 <jaxrs:providers>
             <ref bean="cors-filter" />
-        </jaxrs:providers> -->
+        </jaxrs:providers>
 
 		<jaxrs:schemaLocations>
 			<jaxrs:schemaLocation>com.web_services.instant_pot.service.customer.representation.CustomerRepresentation</jaxrs:schemaLocation>
