@@ -14,19 +14,19 @@ public class Link {
 	private String uri;
 	private String mediaType;
 	
-//	static {
-//		try {
-//			baseDomain = InetAddress.getLocalHost().getHostAddress();
-//		}
-//		catch (Exception e) {
-//			baseDomain = "";
-//			System.out.println("Could not set base domain...");
-//		}
-//	}
+	static {
+		try {
+			baseDomain = InetAddress.getLocalHost().getHostAddress();
+		}
+		catch (Exception e) {
+			baseDomain = "";
+			System.out.println("Could not set base domain...");
+		}
+	}
 	
 	public Link(String rel, String uri, String mediaType) {		
 		this.rel = rel;
-		this.uri = uri;
+		this.uri = this.baseDomain + uri;
 		this.mediaType = mediaType;
 	}
 	
