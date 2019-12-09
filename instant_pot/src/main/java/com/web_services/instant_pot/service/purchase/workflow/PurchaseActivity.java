@@ -20,8 +20,8 @@ public class PurchaseActivity {
 		Purchase purchase = pl.getPurchaseByID(id);
 		PurchaseRepresentation pRep = getPurchaseRepresentation(purchase);
 		Set<Link> links = new HashSet<>();
-		links.add(new Link("updatePurchaseStatus", "/purchaseservice/purchasestatus/" + pRep.getId() + "/{status}", null));
-		links.add(new Link("updatePurchaseDetail", "/purchaseservice/purchasedetail/" + pRep.getId() + "/{detail}", null));
+		links.add(new Link("updatePurchaseStatus", "/purchaseservice/purchasestatus/" + pRep.getId() + "/", null));
+		links.add(new Link("updatePurchaseDetail", "/purchaseservice/purchasedetail/" + pRep.getId() + "/", null));
 		pRep.setLinks(links);
 		return pRep;
 	}
@@ -31,7 +31,7 @@ public class PurchaseActivity {
 		Purchase purchase = pl.updatePurchaseDetail(id, purchaseDetail);
 		PurchaseRepresentation pRep = getPurchaseRepresentation(purchase);
 		Set<Link> links = new HashSet<>();
-		links.add(new Link("updatePurchaseStatus", "/purchaseservice/purchasestatus/" + pRep.getId() + "/{status}", null));
+		links.add(new Link("updatePurchaseStatus", "/purchaseservice/purchasestatus/" + pRep.getId() + "/", null));
 		pRep.setLinks(links);
 		return pRep;
 	}
@@ -40,7 +40,7 @@ public class PurchaseActivity {
 		Purchase purchase = pl.updatePurchaseStatus(id, purchaseStatus);
 		PurchaseRepresentation pRep = getPurchaseRepresentation(purchase);
 		Set<Link> links = new HashSet<>();
-		links.add(new Link("updatePurchaseDetail", "/purchaseservice/purchasedetail/" + pRep.getId() + "/{detail}", null));
+		links.add(new Link("updatePurchaseDetail", "/purchaseservice/purchasedetail/" + pRep.getId() + "/", null));
 		pRep.setLinks(links);
 		return pRep;
 		
@@ -79,8 +79,8 @@ public class PurchaseActivity {
 		Purchase purchase = pl.newPurchase(request.getpurchaseOwner(), request.getProductID(), request.getPurchaseDetail(), request.getPurchaseStatus(), request.getPurchasePaymentID(), request.getAddressID());
 		PurchaseRepresentation pRep = getPurchaseRepresentation(purchase);
 		Set<Link> links = new HashSet<>();
-		links.add(new Link("updatePurchaseStatus", "/purchaseservice/purchasestatus/" + pRep.getId() + "/{status}", null));
-		links.add(new Link("updatePurchaseDetail", "/purchaseservice/purchasedetail/" + pRep.getId() + "/{detail}", null));
+		links.add(new Link("updatePurchaseStatus", "/purchaseservice/purchasestatus/" + pRep.getId() + "/", null));
+		links.add(new Link("updatePurchaseDetail", "/purchaseservice/purchasedetail/" + pRep.getId() + "/", null));
 		pRep.setLinks(links);
 		return pRep;
 	}
