@@ -16,6 +16,7 @@ public class Link {
 	
 	static {
 		try {
+			System.out.println("HITTING LINK.JAVA");
 			baseDomain = InetAddress.getLocalHost().getHostAddress();
 		}
 		catch (Exception e) {
